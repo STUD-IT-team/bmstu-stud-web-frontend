@@ -2,13 +2,14 @@
 @require '../styles/constants.styl'
 @require '../styles/buttons.styl'
 @require '../styles/fonts.styl'
+@require '../styles/components.styl'
 
 </style>
 
 <template>
   <div class="root-page">
     <!-- ... -->
-    some text
+    NEWS PAGE
   </div>
 </template>
 

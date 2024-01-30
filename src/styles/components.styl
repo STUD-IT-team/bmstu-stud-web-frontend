@@ -1,0 +1,17 @@
+@require 'constants.styl'
+@require 'fonts.styl'
+@require 'buttons.styl'
+@require 'utils.styl'
+
+block()
+    border colorBorders 2px solid
+
+block-radius(radius)
+    block()
+    border-radius radius
+
+block-glass(bgColor=colorMain)
+    block()
+    border none
+    backdrop-filter blur(10px) brightness(1.2)
+    background mix(bgColor, transparent, 50%)

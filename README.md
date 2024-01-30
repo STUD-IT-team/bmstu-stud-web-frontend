@@ -1,4 +1,4 @@
-![GithubCI](https://github.com/sergtyapkin/vue-frontend-template/actions/workflows/deploy.yml/badge.svg)
+![GithubCI](https://github.com/STUD-IT-team/bmstu-stud-web-frontend/actions/workflows/deploy.yml/badge.svg)
 
 # Фронтенд в _Docker_ с раздачей через _Nginx_ с авто-деплоем на _Github Actions_ и авто-получением сертификатов _Letsencript_
 
@@ -12,7 +12,7 @@ yarn dev
 
 ### 1. Клонируем репозиторий:
 ```SHELL
-git clone git@github.com:SergTyapkin/vue-frontend-template.git
+git clone git@github.com:STUD-IT-team/bmstu-stud-web-frontend.git
 ```
 
 ### 2. Настраиваем вообще всё.
