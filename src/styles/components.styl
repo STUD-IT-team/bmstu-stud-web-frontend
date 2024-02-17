@@ -4,14 +4,38 @@
 @require 'utils.styl'
 
 block()
-    border colorBorders 2px solid
+    padding borderRadiusXL
+    border colorBorder 2px solid
+    border-radius borderRadiusXL
+    header
+        font-large()
+    section
+        font-medium()
+block-bg()
+    background colorBg3
 
-block-radius(radius)
-    block()
-    border-radius radius
+block-glass(bgColor=colorBg)
+    margin 0
+    padding borderRadiusS
+    backdrop-filter blur(15px) brightness(.8)
+    background mix(bgColor, transparent, 35%)
+    border-radius borderRadiusS
+    header
+        font-medium()
+    section
+        font-small()
 
-block-glass(bgColor=colorMain)
-    block()
-    border none
-    backdrop-filter blur(10px) brightness(1.2)
-    background mix(bgColor, transparent, 50%)
+input()
+    margin 0
+    padding 5px 10px
+    background colorBg3
+    border colorBorder 1px solid
+    border-radius borderRadiusXS
+    color colorText2
+    cursor text
+    trans()
+    &:focus
+        border-color colorBg6
+        color colorText1
+    &::placeholder
+        color colorText4

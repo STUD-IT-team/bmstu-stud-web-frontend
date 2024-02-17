@@ -3,18 +3,17 @@
 @require 'utils.styl'
 
 
-border-color = colorBorder
-border-color-hover = colorEmp1
-border-color-disabled = mix(colorBorder, colorBg, 50%)
-text-color = colorBorder
-text-color-hover-1 = colorEmp1
-text-color-disabled = mix(colorBorder, colorBg, 50%)
-bg-color = colorBg
-bg-color-hover = saturation(bg-color, 120%)
-bg-color-disabled = saturation(bg-color, 20%)
+border-color = transparent
+border-color-hover = transparent
+border-color-disabled = colorBg3
+text-color = colorText1
+text-color-hover-1 = colorText1
+text-color-disabled = colorText4
+bg-color = colorBg3
+bg-color-hover = colorPalette2
+bg-color-disabled = colorBg3
 
 text-color-hover-2 = colorText1
-shadow-color = mix(black, transparent, 70%)
 
 
 button()
@@ -22,8 +21,7 @@ button()
     font-medium()
     font-bold()
     padding 10px
-    border colorBorder solid 1px
-    border-radius 999999999px
+    border-radius borderRadiusMax
     text-shadow none
     transition all 0.2s ease
     cursor pointer
@@ -31,12 +29,9 @@ button()
     background bg-color
     centered-margin()
     centered-flex-container()
-
     &:hover
         color text-color-hover-1
         border-color border-color-hover
-    //box-shadow 5px 5px 15px shadow-color
-
     &[disabled]:not([disabled=false])
         pointer-events none
         color text-color-disabled
