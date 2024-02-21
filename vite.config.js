@@ -44,11 +44,11 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '~', // to use ~ as project root like: "import Some from '../../components/Some.vue'"
+        find: '~', // to use ~ as project root like: "import Some from '~/components/Some.vue'"
         replacement: path.resolve(__dirname, 'src')
       },
       {
-        find: '@~', // to use @~ as node_modules root like: "import Some from '@../../Some'"
+        find: '@~', // to use @~ as node_modules root like: "import Some from '@~/Some'"
         replacement: path.resolve(__dirname, 'node_modules')
       }
     ]
