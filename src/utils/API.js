@@ -1,6 +1,6 @@
 import REST_API from "@sergtyapkin/rest-api"
 import validateModel from "@sergtyapkin/models-validator";
-import * as Models from "~/models";
+import * as Models from "~/utils/apiModels";
 
 export default class MY_API extends REST_API {
     login = (email, password, clientBrowser, clientOS) => this.post('/api/user/auth', {_model: Models.User, email, password, clientBrowser, clientOS});

@@ -3,7 +3,7 @@
 @require 'buttons.styl'
 @require 'utils.styl'
 
-block()
+block(colorBorder=colorBorder)
     padding borderRadiusXL
     border colorBorder 2px solid
     border-radius borderRadiusXL
@@ -11,8 +11,8 @@ block()
         font-large()
     section
         font-medium()
-block-bg()
-    background colorBg3
+block-bg(colorBg=colorBg3)
+    background colorBg
 
 block-glass(bgColor=colorBg)
     margin 0
