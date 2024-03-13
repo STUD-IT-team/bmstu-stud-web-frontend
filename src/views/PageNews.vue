@@ -8,7 +8,7 @@
   font-large()
 
 .root-page
-  margin-top 10%
+  margin-top 2.5%
   margin-left 10%
   margin-right 10%
 
@@ -25,12 +25,11 @@ nav
 
       a
         display: block
-        color: #aaa
+        color: #ffffff
         font-weight: 800
         transition: all .5s
+        font-small()
 
-        &:hover
-          color: #555
 
 // stroke
 nav.stroke
@@ -49,7 +48,7 @@ nav.stroke
     width: 0%
     content: '.'
     color: transparent
-    background: #aaa
+    background: #ffffff
     height: 1px
 
   ul li a:hover:after
