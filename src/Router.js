@@ -23,6 +23,8 @@ export default function createVueRouter(Store) {
         {path: '/password/restore', name: 'restorePassword', component: RestorePassword, meta: {noLoginRequired: true}},
         // {path: '/admin', name: 'admin', component: Admin, meta: {adminRequired: true}},
 
+        {path: '/miss', name: 'miss', component: PageNews, meta: {}},
+
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
     ];
 
