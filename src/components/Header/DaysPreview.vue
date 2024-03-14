@@ -45,6 +45,7 @@
       margin-top 8px
   .days-info-block
     display flex
+    width 100%
     .day
       padding 3px 10px
       width 33%
