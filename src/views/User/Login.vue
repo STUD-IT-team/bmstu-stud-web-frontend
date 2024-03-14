@@ -2,128 +2,102 @@
 @require '../../styles/constants.styl'
 @require '../../styles/buttons.styl'
 
+@keyframes fade-in {
+  from {
+    filter: blur(5px)
+    opacity 0
+  }
+  to {
+    opacity 1
+  }
+}
+
 .root-signin
   width 100%
-  padding 20px
-  background colorBg6
-  .box
+  background colorBg
+  .navbar
+    border-bottom solid
+    border-bottom-width 1px
+    border-bottom-color colorBg6
+  .content
+    margin 150px auto
     max-width 1000px
-    margin 20px auto
-    .header
-      font-large()
-      font-bold()
-      color colorText5
-    .panel
-      margin 5px auto
-      min-height 100px
-      background-color colorBg
-      border-radius borderRadiusXS
-      .navbar
-        height 80px
-        padding-top 10px
+    text-align center
+    display flex
+    justify-content space-between
+    .animation
+      width 45%
+      .el1
+      .el2
+      .el3
+        opacity 0
+        animation fade-in 1.5s forwards
         padding-bottom 10px
-        border-bottom 1px
-        border-bottom-style solid
-        border-bottom-color colorBg6
-        display flex
-        justify-content space-around
-        .button
-          font-medium()
-          background-color colorBg
-          color colorText1
-          border-style none
-      .content
-        padding 0 50px
-        text-align center
-        display flex
-        justify-content space-around
-        .picture
-          width 10%
-        .form
-          padding 40px 20px
-          text-align center
-          font-large()
-          font-bold()
-          color colorText1
-          .profile-link
-            text-decoration none
-            text-align left
-          .profile-button
-            button()
-          .signin-links
-            display flex
-            width 100%
-            margin-top 20px
-            font-small()
-            text-decoration none
-            justify-content space-between
-            .signin-by-email-link
-              color colorText1
-              text-decoration none
-            .restore-password-link
-              color colorText1
-              text-decoration none
+      .el1
+        animation-delay 0s
+      .el2
+        animation-delay 0.5s
+      .el3
+        animation-delay 1s
+    .form
+      width 45%
+      //align-self center
+      text-align left
+      font-large-extra()
+      font-bold()
+      color colorText1
+      .profile-link
+        text-decoration none
+        text-align left
+      .profile-button
+        button()
 </style>
 
 <template>
   <div class="root-signin">
 
-    <div class="box">
-      <p class="header">Авторизация</p>
-      <div class="panel">
-        <div class="navbar">
-          <img class="element" src="/res/icons/stud-logo.svg"> 
-          <button class="button">Новости</button> 
-          <button class="button">Документы</button> 
-          <button class="button">Мероприятия</button> 
-          <img class="element" src="/res/icons/profile.svg"> 
-        </div>
-        <div class="content">
-          <img class="picture" src="/res/icons/technical-works.svg">
-          <div class="form">
-            АВТОРИЗАЦИЯ<br>
-            <FormWithErrors
-              ref="form"
-              :fields="fields"
-              submitText="Вход"
-              @success="login"
-              :loading="loading"
-            ></FormWithErrors>
-            <router-link class="profile-link" :to="{name: 'register'}">
-              <button class="profile-button">Зарегистрироваться</button>
-            </router-link>
-
-      <!--      <div class="signin-links">-->
-      <!--        <router-link class="signin-by-email-link" :to="{name: 'signInByEmail'}">Войти по почте</router-link>-->
-      <!--        <router-link class="restore-password-link" :to="{name: 'restorePassword'}">Восстановить пароль</router-link>-->
-      <!--      </div>-->
-          </div>
-        </div>
+    <NavBar class="navbar"></NavBar>
+    <div class="content">
+      <div class="animation">
+        <img class="el1" src="/res/images/339.svg">
+        <img class="el2" src="/res/images/339.svg">
+        <img class="el3" src="/res/images/339.svg">
+      </div>
+      <div class="form">
+        Авторизация<br>
+        <FormWithErrors
+          ref="form"
+          :fields="fields"
+          submitText="Войти"
+          @success="login"
+          :loading="loading"
+        ></FormWithErrors>
+        <!-- <router-link class="profile-link" :to="{name: 'register'}"> -->
+          <!-- <button class="profile-button">Зарегистрироваться</button> -->
+        <!-- </router-link> -->
       </div>
     </div>
-
-
-
   </div>
 </template>
 
 <script>
 import FormWithErrors from "~/components/FormWithErrors.vue";
+import NavBar from "~/components/NavBar.vue";
 import {detectBrowser, detectOS} from "~/utils/utils";
 import CircleLoading from "~/components/CircleLoading.vue";
 import {Validators} from "~/utils/validators";
 
 
 export default {
-  components: {CircleLoading, FormWithErrors},
+  components: {CircleLoading, FormWithErrors, NavBar},
   data() {
     return {
       fields: {
         email: {
-          title: 'Электронная почта',
-          name: 'email',
+          title: 'Логин',
+          name: 'login',
           type: 'text',
-          placeholder: 'legends@bmstu.ru',
+          placeholder: 'bmstu_1830',
           validationRegExp: Validators.email.regExp,
           prettifyResult: Validators.email.prettifyResult,
           autocomplete: 'email',
@@ -132,7 +106,8 @@ export default {
           title: 'Пароль',
           name: 'password',
           type: 'password',
-          placeholder: '●●●●●●',
+          // placeholder: '●●●●●●',
+          placeholder: '******',
           validationRegExp: Validators.password.regExp,
           prettifyResult: Validators.password.prettifyResult,
           autocomplete: 'password',

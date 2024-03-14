@@ -4,27 +4,33 @@
 @require '../styles/fonts.styl'
 
 border-color = colorText1
-input-border = 2px solid border-color
+input-border = 1px solid border-color
 
 .root-form
   .input-container
     position relative
     padding-top 12px
+    color colorText4
+
+    .title
+      font-large()
+      font-normal()
+      padding 5px 0
 
     label
     .placeholder
       position absolute
-      top 22px
-      left 10px
+      top calc(2.4rem + 24px)
+      left 8px
       text-align left
       padding-left 10px
       font-medium()
-      opacity .5
+      opacity 0.1
       transition all 0.2s ease
       pointer-events none
       user-select none
     label
-      opacity 1
+      opacity 0
 
     input
       all unset
@@ -32,32 +38,38 @@ input-border = 2px solid border-color
       display block
       width 100%
       border input-border
-      border-top-width 0
+      //border-top-width 0
       text-align left
       padding-top 10px
       padding-bottom 10px
       padding-left 17px
-      border-radius borderRadiusL
-      outline input-border
-      outline-offset -2px
+      border-radius borderRadiusS
+      border-color colorBorder
+      background-color colorBg3
+      //outline input-border
+      //outline-offset 0
       transition all 0.2s ease, background-size 0.1s ease
       font-medium()
       &::placeholder
         opacity 0
         visibility hidden
       &:focus
-      &:not(:placeholder-shown)
+      //&:not(:placeholder-shown)
+        border-color transparent
         outline-color transparent
         outline-offset 5px
-      &:not(:placeholder-shown) ~ label
-      &:focus ~ label
-        left 15px
-        top 2px
-        opacity 0.3
+      //&:not(:placeholder-shown) ~ label
+      //&:focus ~ label
+      //  left 15px
+      //  top 2px
+      //  opacity 0.3
       &:not(:focus) ~ .placeholder
+        opacity 0.6
+        left 8px
       &:not(:placeholder-shown) ~ .placeholder
         opacity 0
-        left 40px
+      &.error 
+        color colorError
 
     .error
     .success
@@ -91,23 +103,33 @@ input-border = 2px solid border-color
       color colorSuccess
       .success:not(.hidden)
         opacity 1
-
+  .error-msg
+    font-small()
+    color colorError
+    margin-top 20px
+    &.hidden
+      visibility hidden
+      height 0
   .submit
     button-submit()
-    margin-top 10px
+    font-large()
+    margin-top 30px
     margin-bottom 10px
 </style>
 
 <template>
   <div class="root-form" @keydown.enter="submit" @input="() => {isSubmittedAlready ? checkFormat() : null}">
     <div class="input-container" v-for="[fieldName, field] in Object.entries(fields)" :class="{error: field.__error, success: field.__success}">
+      <div class="title">{{field.title}}</div>
       <input v-bind="field" :id="`${uid}-${fieldName}`" :type="field.type || 'text'" v-model="field.value" :autocomplete="field.autocomplete || 'off'" placeholder="-">
       <label :for="`${uid}-${fieldName}`">{{ field.title }}</label>
       <div class="info" v-if="field.info">{{ field.info }}</div>
       <div class="placeholder">{{ field.placeholder }}</div>
-      <div class="error" :class="{hidden: !errorSuccessShowed}">{{ field.overrideErrorText || field.errorText || 'Неверный формат' }}</div>
+      <!-- <div class="error" :class="{hidden: !errorSuccessShowed}">{{ field.overrideErrorText || field.errorText || 'Неверный формат' }}</div> -->
       <div class="success" :class="{hidden: !errorSuccessShowed}">{{ field.successText || 'Успех' }}</div>
     </div>
+
+    <div class="error-msg" :class="{hidden: !errorSuccessShowed}">Неверные логин или пароль</div>
 
     <button class="submit" @click="submit">
       <transition name="opacity" mode="out-in" duration="200">
