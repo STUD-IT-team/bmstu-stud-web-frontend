@@ -102,8 +102,10 @@ nav.fill
   border-color #FE5960
   font-medium()
 
-ul
-  list-style-image: url(../../../res/images/star.png)
+  ul
+    list-style-image: url(../../../res/images/Star.svg)
+    margin-left 7%
+
 </style>
 
 <template>
@@ -124,9 +126,9 @@ ul
     <div class="container">
       <div class="congratulations">
         <ul>
-          <li>Поздравляем Антон Павленко с ДР!!!</li>
-          <li>Саша Морозова всё ещё не сделала дизайн.</li>
-          <li>Стрим идёт хорошо!!!</li>
+          <li>Поздравляем Антона Павленко с ДР!!!</li>
+          <li>Поздравляем Антона Успенского со званием мисс.</li>
+          <li>А вас не бесит it отдел?</li>
           <li>Это студенческий совет МГТУ им. Н.Э. Баумана.</li>
         </ul>
       </div>
