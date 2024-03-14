@@ -95,8 +95,9 @@ nav.fill
     //top 50%
 
 .congratulations
-  float left
-  display block
+  float right
+  display inline-block
+  margin-right 20%
   width 300px
   block()
   border-color #FE5960
@@ -105,6 +106,23 @@ nav.fill
   ul
     list-style-image: url(../../../res/images/Star.svg)
     margin-left 7%
+
+.hotNews
+  float right
+  display inline-block
+  width 300px
+  margin-right 20%
+  margin-top 10px
+  block()
+  border-color #FE5960
+  font-medium()
+
+  ul
+    list-style-image: url(../../../res/images/Star.svg)
+    margin-left 7%
+
+.heading
+  font-large()
 
 </style>
 
@@ -125,11 +143,21 @@ nav.fill
     <!--    <CircleLoading v-if="isLoading"></CircleLoading>-->
     <div class="container">
       <div class="congratulations">
+        <div class="heading">Поздравляем</div>
         <ul>
           <li>Поздравляем Антона Павленко с ДР!!!</li>
           <li>Поздравляем Антона Успенского со званием мисс.</li>
           <li>А вас не бесит it отдел?</li>
           <li>Это студенческий совет МГТУ им. Н.Э. Баумана.</li>
+        </ul>
+      </div>
+      <div class="hotNews">
+        <div class="heading">Горячие новости</div>
+        <ul>
+          <li>Антон Павленко родился!!!</li>
+          <li>Антон Успенский все мисс очарование сразу</li>
+          <li>А вас не бесит it отдел?</li>
+          <li>Меня бесит сайт для мисски</li>
         </ul>
       </div>
     </div>
