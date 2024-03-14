@@ -3,6 +3,7 @@
 @require '../../styles/fonts.styl'
 @require '../../styles/utils.styl'
 @require '../../styles/buttons.styl'
+@require '../../styles/components.styl'
 
 .root-3-days-preview
   display flex
@@ -13,13 +14,11 @@
   .right-arrow
     display flex
     align-items center
-    cursor pointer
     background none
     border none
     outline none
     transition all 0.2s ease
-    &:hover
-      opacity 0.7
+    hover-effect()
     img
       width 20px
       height 25px

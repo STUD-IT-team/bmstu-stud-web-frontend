@@ -3,6 +3,7 @@
 @require '../styles/fonts.styl'
 @require '../styles/utils.styl'
 @require '../styles/buttons.styl'
+@require '../styles/components.styl'
 
 .root-navbar
   position fixed
@@ -16,10 +17,14 @@
   backdrop-filter blur(20px) brightness(1.5)
   font-large()
   .left-container
-    height 40px
+  .right-container
+    height 50px
     cursor pointer
+    hover-effect()
     img
       height 100%
+  .right-container
+    height 20px
   .middle-container
     flex 0.7
     display flex
@@ -29,16 +34,10 @@
     white-space nowrap
     .link
       padding 0 5px
-      transition all 0.2s ease
+      hover-effect()
       &.router-link-exact-active
         border-bottom 1px solid colorBorder
-      &:hover
-        opacity 0.7
-  .right-container
-    height 25px
-    cursor pointer
-    img
-      height 100%
+
 </style>
 
 <template>
