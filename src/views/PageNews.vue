@@ -28,7 +28,7 @@ nav
         color: #ffffff
         font-weight: 800
         transition: all .5s
-        font-small()
+        font-medium()
 
 
 // stroke
@@ -93,6 +93,17 @@ nav.fill
     height 1px
     background-color #dddddd
     //top 50%
+
+.congratulations
+  float left
+  display block
+  width 300px
+  block()
+  border-color #FE5960
+  font-medium()
+
+ul
+  list-style-image: url(../../../res/images/star.png)
 </style>
 
 <template>
@@ -110,9 +121,16 @@ nav.fill
     <div class="line"></div>
 
     <!--    <CircleLoading v-if="isLoading"></CircleLoading>-->
-    <Transition name="fade" mode="out-in">
-      <div>Text</div>
-    </Transition>
+    <div class="container">
+      <div class="congratulations">
+        <ul>
+          <li>Поздравляем Антон Павленко с ДР!!!</li>
+          <li>Саша Морозова всё ещё не сделала дизайн.</li>
+          <li>Стрим идёт хорошо!!!</li>
+          <li>Это студенческий совет МГТУ им. Н.Э. Баумана.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
