@@ -16,9 +16,10 @@
   background mix(colorBg, transparent, 20%)
   backdrop-filter blur(20px) brightness(1.5)
   font-large()
+  trans()
   .left-container
   .right-container
-    height 50px
+    height 60px
     cursor pointer
     hover-effect()
     img
@@ -37,11 +38,14 @@
       hover-effect()
       &.router-link-exact-active
         border-bottom 1px solid colorBorder
-
+  &.with-bg
+    block-bg()
+    .left-container
+      height 35px
 </style>
 
 <template>
-  <nav class="root-navbar">
+  <nav class="root-navbar" :class="{'with-bg': isScrolledMoreThanScreen}">
     <router-link :to="{name: 'default'}" class="left-container">
       <img src="../../res/icons/stud-logo.svg" alt="stud-logo">
     </router-link>
@@ -64,17 +68,27 @@ export default {
 
   data() {
     return {
+      isScrolledMoreThanScreen: false,
     }
   },
 
   mounted() {
+    document.body.addEventListener('scroll', this.watchForScroll);
+    this.watchForScroll();
+  },
+
+  unmounted() {
+    document.body.removeEventListener('scroll', this.watchForScroll);
   },
 
   methods: {
+    watchForScroll(e) {
+      this.isScrolledMoreThanScreen = (document.body.scrollTop >= window.innerHeight);
+    },
     logout() {
       this.$store.dispatch('DELETE_USER');
       this.$router.push({name: 'default'});
     }
-  }
+  },
 };
 </script>

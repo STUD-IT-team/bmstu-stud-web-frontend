@@ -152,7 +152,7 @@ images-section-width = 250px
       <img v-for="imageSrc in imagesSrc" :src="imageSrc" alt="">
     </section>
 
-    <div v-if="true || $user?.isAdmin" class="button-edit-container">
+    <div v-if="$user?.isAdmin" class="button-edit-container">
       <transition name="opacity" mode="out-in">
         <CircleLoading v-if="loading"></CircleLoading>
         <button v-else @click.stop="isEditBlockOpened = !isEditBlockOpened"><img src="../../res/icons/3-points.svg" alt="edit"></button>
