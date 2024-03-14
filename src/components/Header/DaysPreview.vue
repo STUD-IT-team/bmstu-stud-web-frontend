@@ -3,6 +3,7 @@
 @require '../../styles/fonts.styl'
 @require '../../styles/utils.styl'
 @require '../../styles/buttons.styl'
+@require '../../styles/components.styl'
 
 .root-3-days-preview
   display flex
@@ -13,13 +14,11 @@
   .right-arrow
     display flex
     align-items center
-    cursor pointer
     background none
     border none
     outline none
     transition all 0.2s ease
-    &:hover
-      opacity 0.7
+    hover-effect()
     img
       width 20px
       height 25px
@@ -92,10 +91,10 @@ export default {
   async mounted() {
     const MS_IN_DAY = 1000*60*60*24;
     this.loading = true;
-    const {ok, data, code} = await this.$api.getEvents(new Date().toISOString(), new Date(new Date() + MS_IN_DAY).toISOString());
+    const {ok, data, status} = await this.$api.getEvents(new Date().toISOString(), new Date(new Date() + MS_IN_DAY).toISOString());
     this.loading = false;
     if (!ok) {
-      this.$popups.error(`Ошибка ${code}`, 'Не удалось получить события');
+      this.$popups.error(`Ошибка ${status}`, 'Не удалось получить события');
       return;
     }
     this.eventsAll = data.events;

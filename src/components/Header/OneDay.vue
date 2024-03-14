@@ -11,6 +11,7 @@
     white-space nowrap
     overflow-x hidden
     text-overflow ellipsis
+    text-transform capitalize
   .events
     list-style none
     padding 0
