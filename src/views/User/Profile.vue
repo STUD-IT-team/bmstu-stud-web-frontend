@@ -113,7 +113,7 @@ export default {
 
     async logout() {
       this.loadingProfile = true;
-      const {data, code, ok} = await this.$api.logout();
+      const {data, status, ok} = await this.$api.logout();
       this.loadingProfile = true;
 
       if (!ok) {

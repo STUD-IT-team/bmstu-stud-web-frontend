@@ -13,6 +13,17 @@
     min-height 100vh
 </style>
 
+<style lang="stylus">
+@require 'styles/fonts.styl'
+@require 'styles/components.styl'
+@require 'styles/buttons.styl'
+
+.root-modals
+  font-medium()
+  button
+    button()
+</style>
+
 <template>
   <div class="wrapper">
     <router-view v-slot="{ Component }">
@@ -23,7 +34,7 @@
   </div>
 
   <Popups ref="popups"></Popups>
-  <Modals ref="modals"></Modals>
+  <Modals ref="modals" class="root-modals"></Modals>
 </template>
 
 <style>
@@ -105,7 +116,7 @@ export default {
     this.global = getCurrentInstance().appContext.config.globalProperties;
 
     this.global.$user = this.$store.state.user;
-    this.global.$modal = this.$refs.modals;
+    this.global.$modals = this.$refs.modals;
     this.global.$popups = this.$refs.popups;
     this.global.$app = this;
     this.global.$api = new API(`/api`);

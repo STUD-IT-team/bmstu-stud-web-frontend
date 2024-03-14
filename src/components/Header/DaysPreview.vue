@@ -91,10 +91,10 @@ export default {
   async mounted() {
     const MS_IN_DAY = 1000*60*60*24;
     this.loading = true;
-    const {ok, data, code} = await this.$api.getEvents(new Date().toISOString(), new Date(new Date() + MS_IN_DAY).toISOString());
+    const {ok, data, status} = await this.$api.getEvents(new Date().toISOString(), new Date(new Date() + MS_IN_DAY).toISOString());
     this.loading = false;
     if (!ok) {
-      this.$popups.error(`Ошибка ${code}`, 'Не удалось получить события');
+      this.$popups.error(`Ошибка ${status}`, 'Не удалось получить события');
       return;
     }
     this.eventsAll = data.events;
