@@ -12,9 +12,9 @@
   display flex
   justify-content space-between
   align-items center
-  background mix(white, transparent, 15%)
-  backdrop-filter blur(20px)
-  font-medium()
+  background mix(colorBg, transparent, 20%)
+  backdrop-filter blur(20px) brightness(1.5)
+  font-large()
   .left-container
     height 40px
     cursor pointer
@@ -23,10 +23,17 @@
   .middle-container
     flex 0.7
     display flex
-    gap 20px
+    gap 15px
     justify-content space-between
     align-items center
     white-space nowrap
+    .link
+      padding 0 5px
+      transition all 0.2s ease
+      &.router-link-exact-active
+        border-bottom 1px solid colorBorder
+      &:hover
+        opacity 0.7
   .right-container
     height 25px
     cursor pointer
@@ -40,9 +47,9 @@
       <img src="../../res/icons/stud-logo.svg" alt="stud-logo">
     </router-link>
     <div class="middle-container">
-      <router-link :to="{name: 'news'}">Новости</router-link>
-      <router-link :to="{name: 'calendar'}">Мероприятия</router-link>
-      <router-link :to="{name: 'miss'}">Мисс Очарование 2024</router-link>
+      <router-link :to="{name: 'news'}" class="link">Новости</router-link>
+      <router-link :to="{name: 'calendar'}" class="link">Мероприятия</router-link>
+      <router-link :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
     </div>
     <div class="right-container" @click="logout">
       <img src="../../res/icons/logout.svg" alt="logout">
