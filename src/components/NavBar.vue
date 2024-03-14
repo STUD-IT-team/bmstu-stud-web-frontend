@@ -50,9 +50,10 @@
       <router-link :to="{name: 'calendar'}" class="link">Мероприятия</router-link>
       <router-link :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
     </div>
-    <div class="right-container" @click="logout">
+    <div v-if="$user?.isAdmin" class="right-container" @click="logout">
       <img src="../../res/icons/logout.svg" alt="logout">
     </div>
+    <div v-else class="right-container"></div>
   </nav>
 </template>
 
