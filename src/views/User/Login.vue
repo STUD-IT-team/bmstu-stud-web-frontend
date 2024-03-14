@@ -4,6 +4,9 @@
 
 @keyframes fade-in {
   from {
+    //transform: translate(0, 60px);
+    //transform: translate(0, -50px);
+    transform: translate(-50px, 0); 
     filter: blur(5px)
     opacity 0
   }
@@ -11,6 +14,9 @@
     opacity 1
   }
 }
+
+
+animation-time = 3s
 
 .root-signin
   width 100%
@@ -31,14 +37,14 @@
       .el2
       .el3
         opacity 0
-        animation fade-in 1.5s forwards
+        animation fade-in animation-time forwards
         padding-bottom 10px
       .el1
         animation-delay 0s
       .el2
-        animation-delay 0.5s
+        animation-delay 0.25*animation-time
       .el3
-        animation-delay 1s
+        animation-delay 0.5*animation-time
     .form
       width 45%
       //align-self center
@@ -93,14 +99,14 @@ export default {
   data() {
     return {
       fields: {
-        email: {
+        login: {
           title: 'Логин',
           name: 'login',
           type: 'text',
           placeholder: 'bmstu_1830',
-          validationRegExp: Validators.email.regExp,
-          prettifyResult: Validators.email.prettifyResult,
-          autocomplete: 'email',
+          validationRegExp: Validators.login.regExp,
+          prettifyResult: Validators.login.prettifyResult,
+          autocomplete: 'login',
         },
         password: {
           title: 'Пароль',
@@ -120,11 +126,11 @@ export default {
   methods: {
     async login(data) {
       this.loading = true;
-      const {ok} = await this.$api.login(data.email, data.password, detectBrowser(), detectOS());
+      const {ok} = await this.$api.login(data.login, data.password, detectBrowser(), detectOS());
       this.loading = false;
 
       if (!ok) {
-        this.$refs.form.setError([this.fields.email, this.fields.password], 'Неверные email или пароль');
+        this.$refs.form.setError([this.fields.login, this.fields.password], "Неверные логин или пароль");
         return;
       }
       this.loading = true;

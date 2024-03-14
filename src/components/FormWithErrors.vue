@@ -125,11 +125,9 @@ input-border = 1px solid border-color
       <label :for="`${uid}-${fieldName}`">{{ field.title }}</label>
       <div class="info" v-if="field.info">{{ field.info }}</div>
       <div class="placeholder">{{ field.placeholder }}</div>
-      <!-- <div class="error" :class="{hidden: !errorSuccessShowed}">{{ field.overrideErrorText || field.errorText || 'Неверный формат' }}</div> -->
+      <div class="error" :class="{hidden: !errorSuccessShowed}">{{ field.overrideErrorText || field.errorText || 'Неверный формат' }}</div>
       <div class="success" :class="{hidden: !errorSuccessShowed}">{{ field.successText || 'Успех' }}</div>
     </div>
-
-    <div class="error-msg" :class="{hidden: !errorSuccessShowed}">Неверные логин или пароль</div>
 
     <button class="submit" @click="submit">
       <transition name="opacity" mode="out-in" duration="200">
@@ -170,6 +168,7 @@ export default {
         }
       }
     },
+    errorText: String,
     submitText: String, // default: 'Отправить'
     setSuccesses: Boolean, // default: false. Can set on fields only errors
     loading: Boolean, // default: false
@@ -216,6 +215,7 @@ export default {
         }
         if (field.__error) {
           field.overrideErrorText = null;
+          errorText = "абоба"
         }
         field.__success = this.setSuccesses && !field.__error;
         res = res && !field.__error;
@@ -233,6 +233,7 @@ export default {
         return;
       }
       this.__setErrorOnField(fields, errorText);
+      this.errorText = errorText
     }
   }
 }
