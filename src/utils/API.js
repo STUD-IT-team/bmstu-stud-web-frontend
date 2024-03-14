@@ -16,6 +16,48 @@ export default class MY_API extends REST_API {
     restorePassword = (secretCode, newPassword) => this.put('/api/user/password', {_model: Models.User, secretCode, newPassword});
     authCode = (secretCode, clientBrowser, clientOS) => this.post('/api/user/auth/code', {_model: Models.User, secretCode, clientBrowser, clientOS});
 
+    getEvents = (startDate, endDate) => ({ok: true, code: 200, data: {
+        events: [
+            {
+                id: 1,
+                description: "Большое и красивое событие 1",
+                date: new Date('2024-03-16'),
+                approved: true,
+                created_at: new Date('2024-03-20'),
+                reg_url: 'http://ya.ru',
+                reg_open_date: new Date('2024-03-16'),
+                feedback_url: 'http://google.com',
+            },
+            {
+                id: 2,
+                description: "Большое и красивое событие 2",
+                date: new Date('2024-03-17'),
+                approved: true,
+                created_at: new Date('2024-03-20'),
+                reg_url: 'http://ya.ru',
+                reg_open_date: new Date('2024-03-16'),
+                feedback_url: 'http://google.com',
+            },
+            {
+                id: 3,
+                description: "Большое и красивое событие 3",
+                date: new Date('2024-03-18'),
+                approved: true,
+                created_at: new Date('2024-03-20'),
+                reg_url: 'http://ya.ru',
+                reg_open_date: new Date('2024-03-16'),
+                feedback_url: 'http://google.com',
+            },
+        ]
+    }})
+    // this.get(`/api/events`, {_model: Models.Events, start_date: startDate, end_date: endDate});
+    getNews = () => ({ok: true, code: 200, data: {
+        news: []
+    }})
+    // this.get(`/api/feed`, {_model: Models.Feeds});
+
+
+
 
     modelParsedRequest(func, path, data = {}) {
         if (!data._model) {
