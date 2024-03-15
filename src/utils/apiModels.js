@@ -17,6 +17,7 @@ export const Feed = {
   },
   created_by: Number,
   updated_at: Date,
+  created_at: Date,
 }
 
 export const Feeds = {

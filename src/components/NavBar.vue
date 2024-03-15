@@ -3,6 +3,7 @@
 @require '../styles/fonts.styl'
 @require '../styles/utils.styl'
 @require '../styles/buttons.styl'
+@require '../styles/components.styl'
 
 .root-navbar
   position fixed
@@ -15,11 +16,16 @@
   background mix(colorBg, transparent, 20%)
   backdrop-filter blur(20px) brightness(1.5)
   font-large()
+  trans()
   .left-container
-    height 40px
+  .right-container
+    height 60px
     cursor pointer
+    hover-effect()
     img
       height 100%
+  .right-container
+    height 20px
   .middle-container
     flex 0.7
     display flex
@@ -29,20 +35,18 @@
     white-space nowrap
     .link
       padding 0 5px
-      transition all 0.2s ease
+      hover-effect-underline()
       &.router-link-exact-active
-        border-bottom 1px solid colorBorder
-      &:hover
-        opacity 0.7
-  .right-container
-    height 25px
-    cursor pointer
-    img
-      height 100%
+        background-size 100% 1px
+  &.with-bg
+    block-bg()
+    display flex
+    .left-container
+      height 35px
 </style>
 
 <template>
-  <nav class="root-navbar">
+  <nav class="root-navbar" :class="{'with-bg': isScrolledMoreThanScreen}">
     <router-link :to="{name: 'default'}" class="left-container">
       <img src="../../res/icons/stud-logo.svg" alt="stud-logo">
     </router-link>
@@ -51,9 +55,10 @@
       <router-link :to="{name: 'calendar'}" class="link">Мероприятия</router-link>
       <router-link :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
     </div>
-    <div class="right-container" @click="logout">
+    <div v-if="$user?.isAdmin" class="right-container" @click="logout">
       <img src="../../res/icons/logout.svg" alt="logout">
     </div>
+    <div v-else class="right-container"></div>
   </nav>
 </template>
 
@@ -64,17 +69,27 @@ export default {
 
   data() {
     return {
+      isScrolledMoreThanScreen: false,
     }
   },
 
   mounted() {
+    document.body.addEventListener('scroll', this.watchForScroll);
+    this.watchForScroll();
+  },
+
+  unmounted() {
+    document.body.removeEventListener('scroll', this.watchForScroll);
   },
 
   methods: {
+    watchForScroll(e) {
+      this.isScrolledMoreThanScreen = (document.body.scrollTop >= window.innerHeight);
+    },
     logout() {
       this.$store.dispatch('DELETE_USER');
       this.$router.push({name: 'default'});
     }
-  }
+  },
 };
 </script>

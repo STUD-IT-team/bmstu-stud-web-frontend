@@ -3,6 +3,7 @@
 @require '../../styles/fonts.styl'
 @require '../../styles/utils.styl'
 @require '../../styles/buttons.styl'
+@require '../../styles/components.styl'
 
 .root-3-days-preview
   display flex
@@ -13,13 +14,11 @@
   .right-arrow
     display flex
     align-items center
-    cursor pointer
     background none
     border none
     outline none
     transition all 0.2s ease
-    &:hover
-      opacity 0.7
+    hover-effect()
     img
       width 20px
       height 25px
@@ -45,6 +44,7 @@
       margin-top 8px
   .days-info-block
     display flex
+    width 100%
     .day
       padding 3px 10px
       width 33%
@@ -54,53 +54,88 @@
 
 <template>
   <div class="root-3-days-preview">
-    <button class="left-arrow"><img src="../../../res/icons/arrow-left.svg" alt="arrow-left"></button>
+    <button class="left-arrow" @click="changeDay(-1)"><img src="../../../res/icons/arrow-left.svg" alt="arrow-left"></button>
     <div class="week-info-block">
       <div class="evenness">ЧС</div>
       <div class="week-number">17 нед</div>
     </div>
     <div class="days-info-block">
-      <OneDay v-for="event in eventsAll" class="day" :date="event.date" :event-names="[event.description]"></OneDay>
+      <OneDay v-for="eventDay in eventsByDays" class="day" :date="eventDay.date" :events="eventDay.events"></OneDay>
     </div>
-    <button class="right-arrow"><img src="../../../res/icons/arrow-right.svg" alt="arrow-left"></button>
+    <button class="right-arrow" @click="changeDay(+1)"><img src="../../../res/icons/arrow-right.svg" alt="arrow-left"></button>
   </div>
 </template>
 
 <script>
 import OneDay from "~/components/Header/OneDay.vue";
 
+const MS_IN_DAY = 1000*60*60*24;
+
 export default {
   components: {OneDay},
   props: {
+    fromDate: Date,
+    daysPeriod: {
+      type: Number,
+      default: 3,
+    }
   },
 
   data() {
     return {
       eventsAll: [],
+      dateFrom: this.$props.fromDate || new Date(),
 
       loading: false,
     }
   },
 
   computed: {
-    eventsDays() {
-      return this.events;
-    }
+    dateStart() {
+      const date = new Date(this.dateFrom);
+      date.setUTCHours(0,0,0,0);
+      return date;
+    },
+    dateEnd() {
+      const date = this.getDateAddDays(this.dateStart, this.daysPeriod);
+      date.setUTCHours(23,59,59,999);
+      return date;
+    },
+    eventsByDays() {
+      const res = [];
+      for (let i = 0; i < this.daysPeriod; i++) {
+        const dateDay = this.getDateAddDays(this.dateFrom, i);
+        res.push({
+          date: dateDay,
+          events: this.eventsAll.filter((event) => (event.date.getDate() === dateDay.getDate() && event.date.getMonth() === dateDay.getMonth() && event.date.getFullYear() === dateDay.getFullYear())),
+        });
+      }
+      return res;
+    },
   },
 
-  async mounted() {
-    const MS_IN_DAY = 1000*60*60*24;
-    this.loading = true;
-    const {ok, data, code} = await this.$api.getEvents(new Date().toISOString(), new Date(new Date() + MS_IN_DAY).toISOString());
-    this.loading = false;
-    if (!ok) {
-      this.$popups.error(`Ошибка ${code}`, 'Не удалось получить события');
-      return;
-    }
-    this.eventsAll = data.events;
+  mounted() {
+    this.updateEvents();
   },
 
   methods: {
+    async updateEvents() {
+      this.loading = true;
+      const {ok, data, status} = await this.$api.getEvents(this.dateStart, this.dateEnd);
+      this.loading = false;
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить события');
+        return;
+      }
+      this.eventsAll = data.events;
+    },
+    changeDay(addDays) {
+      this.dateFrom = this.getDateAddDays(this.dateFrom, addDays);
+      this.updateEvents();
+    },
+    getDateAddDays(date, days) {
+      return new Date(Number(date) + MS_IN_DAY * days);
+    }
   }
 };
 </script>

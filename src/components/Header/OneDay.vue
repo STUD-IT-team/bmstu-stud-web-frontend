@@ -11,6 +11,7 @@
     white-space nowrap
     overflow-x hidden
     text-overflow ellipsis
+    text-transform capitalize
   .events
     list-style none
     padding 0
@@ -28,8 +29,8 @@
   <div class="root-day-preview">
     <header class="title">{{ datePrettified }}</header>
     <ul class="events">
-      <li v-for="eventName in eventNames" class="event">
-        {{ eventName }}
+      <li v-for="event in events" class="event">
+        {{ event.description }}
       </li>
     </ul>
   </div>
@@ -38,7 +39,7 @@
 <script>
 export default {
   props: {
-    eventNames: {
+    events: {
       type: Array,
       required: true,
     },
