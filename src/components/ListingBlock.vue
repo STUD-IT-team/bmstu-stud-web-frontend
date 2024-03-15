@@ -7,6 +7,7 @@
 
 .root-listing-block
   block(colorPalette4)
+  block-bg()
   .header
     font-large()
     margin-bottom 10px

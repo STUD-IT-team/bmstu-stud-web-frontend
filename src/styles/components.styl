@@ -5,28 +5,16 @@
 
 block(colorBorder=colorBorder)
     display block
-    padding borderRadiusXL
+    padding 35px
     border colorBorder 2px solid
     border-radius borderRadiusXL
     header
         font-large()
     section
         font-medium()
-block-bg(colorBg=colorBg3)
+block-bg(colorBg=colorBg2)
     display block
     background colorBg
-
-block-glass(bgColor=colorBg)
-    display block
-    margin 0
-    padding borderRadiusS
-    backdrop-filter blur(15px) brightness(.8)
-    background mix(bgColor, transparent, 35%)
-    border-radius borderRadiusS
-    header
-        font-medium()
-    section
-        font-small()
 
 input()
     margin 0
