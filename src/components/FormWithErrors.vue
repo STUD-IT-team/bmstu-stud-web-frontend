@@ -14,8 +14,8 @@ input-border = 1px solid border-color
 
     .title
       font-large()
-      font-normal()
       padding 5px 0
+      color colorText1
 
     label
     .placeholder
@@ -68,7 +68,7 @@ input-border = 1px solid border-color
         left 8px
       &:not(:placeholder-shown) ~ .placeholder
         opacity 0
-      &.error 
+      &.error
         color colorError
 
     .error
@@ -99,10 +99,14 @@ input-border = 1px solid border-color
       color colorError
       .error:not(.hidden)
         opacity 1
+      .title
+        color colorError
     &.success
       color colorSuccess
       .success:not(.hidden)
         opacity 1
+      .title
+        color colorSuccess
   .error-msg
     font-small()
     color colorError
@@ -120,7 +124,7 @@ input-border = 1px solid border-color
 <template>
   <div class="root-form" @keydown.enter="submit" @input="() => {isSubmittedAlready ? checkFormat() : null}">
     <div class="input-container" v-for="[fieldName, field] in Object.entries(fields)" :class="{error: field.__error, success: field.__success}">
-      <div class="title">{{field.title}}</div>
+      <div class="title">{{ field.title }}</div>
       <input v-bind="field" :id="`${uid}-${fieldName}`" :type="field.type || 'text'" v-model="field.value" :autocomplete="field.autocomplete || 'off'" placeholder="-">
       <label :for="`${uid}-${fieldName}`">{{ field.title }}</label>
       <div class="info" v-if="field.info">{{ field.info }}</div>
@@ -215,7 +219,6 @@ export default {
         }
         if (field.__error) {
           field.overrideErrorText = null;
-          errorText = "абоба"
         }
         field.__success = this.setSuccesses && !field.__error;
         res = res && !field.__error;

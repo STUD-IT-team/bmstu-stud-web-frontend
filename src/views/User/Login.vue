@@ -2,75 +2,93 @@
 @require '../../styles/constants.styl'
 @require '../../styles/buttons.styl'
 
-@keyframes fade-in {
-  from {
-    //transform: translate(0, 60px);
-    //transform: translate(0, -50px);
-    transform: translate(-50px, 0); 
-    filter: blur(5px)
-    opacity 0
-  }
-  to {
-    opacity 1
-  }
-}
-
-
-animation-time = 3s
-
 .root-signin
   width 100%
   background colorBg
-  .navbar
-    border-bottom solid
-    border-bottom-width 1px
-    border-bottom-color colorBg6
   .content
     margin 150px auto
-    max-width 1000px
+    max-width 1150px
     text-align center
     display flex
     justify-content space-between
     .animation
       width 45%
-      .el1
-      .el2
-      .el3
+      > *
         opacity 0
-        animation fade-in animation-time forwards
+        animation fade-in ease forwards
         padding-bottom 10px
-      .el1
-        animation-delay 0s
-      .el2
-        animation-delay 0.25*animation-time
-      .el3
-        animation-delay 0.5*animation-time
+        @keyframes fade-in
+          0%
+            transform translateY(var(--animation-translate-value))
+            opacity 0
+          10%
+            filter blur(0)
+          100%
+            opacity 1
+            filter blur(var(--animation-blur-value))
+        &:nth-child(1)
+          --animation-translate-value -20px
+          --animation-blur-value 0px
+          animation-duration .8s
+          animation-delay 0s
+          animation-timing-function ease
+        &:nth-child(2)
+          --animation-translate-value -140px
+          --animation-blur-value 1.5px
+          animation-duration 2s
+          animation-delay .1s
+          animation-timing-function cubic-bezier(0.19, 0.87, 0.73, 0.99)
+        &:nth-child(3)
+          --animation-translate-value -200px
+          --animation-blur-value 3px
+          animation-duration 3s
+          animation-delay .3s
+          animation-timing-function cubic-bezier(0.09, 1.11, 0.73, 0.99)
+        img
+          animation shake 15s cubic-bezier(0.4, 0.11, 0.68, 1.25) infinite
+          @keyframes shake
+            0%
+              transform translate(0, 0)
+            20%
+              transform translate(5px, 3px)
+            40%
+              transform translate(3px, -2px)
+            60%
+              transform translate(-1px, 6px)
+            80%
+              transform translate(3px, 3px)
+            90%
+              transform translate(-5px, 3px)
+        &:nth-child(1)
+          img
+            animation-delay 0s
+        &:nth-child(2)
+          img
+            animation-delay 5s
+        &:nth-child(3)
+          img
+            animation-delay 10s
     .form
       width 45%
-      //align-self center
       text-align left
-      font-large-extra()
-      font-bold()
       color colorText1
-      .profile-link
-        text-decoration none
-        text-align left
+      .header
+        font-large-xx()
       .profile-button
         button()
 </style>
 
 <template>
   <div class="root-signin">
+    <main class="content">
+      <section class="animation">
+        <div><img src="../../../res/images/339.svg" alt=""></div>
+        <div><img src="../../../res/images/339.svg" alt=""></div>
+        <div><img src="../../../res/images/339.svg" alt=""></div>
+      </section>
 
-    <NavBar class="navbar"></NavBar>
-    <div class="content">
-      <div class="animation">
-        <img class="el1" src="/res/images/339.svg">
-        <img class="el2" src="/res/images/339.svg">
-        <img class="el3" src="/res/images/339.svg">
-      </div>
-      <div class="form">
-        Авторизация<br>
+      <section class="form">
+        <header class="header">Авторизация</header>
         <FormWithErrors
           ref="form"
           :fields="fields"
@@ -78,11 +96,10 @@ animation-time = 3s
           @success="login"
           :loading="loading"
         ></FormWithErrors>
-        <!-- <router-link class="profile-link" :to="{name: 'register'}"> -->
-          <!-- <button class="profile-button">Зарегистрироваться</button> -->
-        <!-- </router-link> -->
-      </div>
-    </div>
+      </section>
+    </main>
+
+    <NavBar class="navbar"></NavBar>
   </div>
 </template>
 
@@ -104,16 +121,15 @@ export default {
           name: 'login',
           type: 'text',
           placeholder: 'bmstu_1830',
-          validationRegExp: Validators.login.regExp,
-          prettifyResult: Validators.login.prettifyResult,
+          validationRegExp: Validators.username.regExp,
+          prettifyResult: Validators.username.prettifyResult,
           autocomplete: 'login',
         },
         password: {
           title: 'Пароль',
           name: 'password',
           type: 'password',
-          // placeholder: '●●●●●●',
-          placeholder: '******',
+          placeholder: '●●●●●●',
           validationRegExp: Validators.password.regExp,
           prettifyResult: Validators.password.prettifyResult,
           autocomplete: 'password',
@@ -136,7 +152,7 @@ export default {
       this.loading = true;
       await this.$store.dispatch('GET_USER');
       this.loading = false;
-      this.$router.push({name: 'profile'});
+      this.$router.push({name: 'default'});
     }
   }
 }
