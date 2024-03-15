@@ -7,10 +7,12 @@ border-color = transparent
 border-color-hover = transparent
 border-color-disabled = colorBg3
 text-color = colorText1
-text-color-hover-1 = colorText1
+// text-color-hover-1 = colorText1
+text-color-hover-1 = colorBg
 text-color-disabled = colorText4
 bg-color = colorBg3
-bg-color-hover = colorPalette2
+// bg-color-hover = colorPalette2
+bg-color-hover = colorPalette3
 bg-color-disabled = colorBg3
 
 text-color-hover-2 = colorText1
@@ -18,10 +20,11 @@ text-color-hover-2 = colorText1
 
 button()
     color text-color
-    font-medium()
-    font-bold()
+    font-large()
+    font-normal()
     padding 10px
-    border-radius borderRadiusMax
+    border-radius borderRadiusS
+    border-color transparent
     text-shadow none
     transition all 0.2s ease
     cursor pointer
@@ -31,6 +34,7 @@ button()
     centered-flex-container()
     &:hover
         color text-color-hover-1
+        background bg-color-hover
         border-color border-color-hover
     &[disabled]:not([disabled=false])
         pointer-events none
@@ -69,3 +73,6 @@ button-success()
         border-color mix(colorSuccess, white)
         color colorText1
 
+button-submit()
+    button()
+    
