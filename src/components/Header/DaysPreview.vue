@@ -54,7 +54,7 @@
 
 <template>
   <div class="root-3-days-preview">
-    <button class="left-arrow" @click="changeDay(-1)"><img src="../../../res/icons/arrow-left.svg" alt="arrow-left"></button>
+    <button class="left-arrow" @click="changeDateFrom(-1)"><img src="../../../res/icons/arrow-left.svg" alt="arrow-left"></button>
     <div class="week-info-block">
       <div class="evenness">ЧС</div>
       <div class="week-number">17 нед</div>
@@ -62,14 +62,14 @@
     <div class="days-info-block">
       <OneDay v-for="eventDay in eventsByDays" class="day" :date="eventDay.date" :events="eventDay.events"></OneDay>
     </div>
-    <button class="right-arrow" @click="changeDay(+1)"><img src="../../../res/icons/arrow-right.svg" alt="arrow-left"></button>
+    <button class="right-arrow" @click="changeDateFrom(+1)"><img src="../../../res/icons/arrow-right.svg" alt="arrow-left"></button>
   </div>
 </template>
 
 <script>
 import OneDay from "~/components/Header/OneDay.vue";
+import {addDaysToDate, compressEventsByDays, getDateDayEnd, getDateDayStart} from "~/utils/utils";
 
-const MS_IN_DAY = 1000*60*60*24;
 
 export default {
   components: {OneDay},
@@ -92,25 +92,13 @@ export default {
 
   computed: {
     dateStart() {
-      const date = new Date(this.dateFrom);
-      date.setUTCHours(0,0,0,0);
-      return date;
+      return getDateDayStart(this.dateFrom);
     },
     dateEnd() {
-      const date = this.getDateAddDays(this.dateStart, this.daysPeriod);
-      date.setUTCHours(23,59,59,999);
-      return date;
+      return getDateDayEnd(this.dateStart, this.daysPeriod);
     },
     eventsByDays() {
-      const res = [];
-      for (let i = 0; i < this.daysPeriod; i++) {
-        const dateDay = this.getDateAddDays(this.dateFrom, i);
-        res.push({
-          date: dateDay,
-          events: this.eventsAll.filter((event) => (event.date.getDate() === dateDay.getDate() && event.date.getMonth() === dateDay.getMonth() && event.date.getFullYear() === dateDay.getFullYear())),
-        });
-      }
-      return res;
+      return compressEventsByDays(this.dateFrom, this.daysPeriod, this.eventsAll);
     },
   },
 
@@ -129,13 +117,10 @@ export default {
       }
       this.eventsAll = data.events;
     },
-    changeDay(addDays) {
-      this.dateFrom = this.getDateAddDays(this.dateFrom, addDays);
+    changeDateFrom(addDays) {
+      this.dateFrom = addDaysToDate(this.dateFrom, addDays);
       this.updateEvents();
     },
-    getDateAddDays(date, days) {
-      return new Date(Number(date) + MS_IN_DAY * days);
-    }
   }
 };
 </script>

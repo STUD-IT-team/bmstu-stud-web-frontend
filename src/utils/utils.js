@@ -72,3 +72,29 @@ export function detectOS() {
   if (window.navigator.userAgent.indexOf("Linux")          !== -1) return "Linux";
   return "Unknown OS";
 }
+
+export function getDateDayStart(date) {
+  const dateStart = new Date(date);
+  dateStart.setUTCHours(0, 0, 0, 0);
+  return dateStart;
+}
+export function getDateDayEnd(date, daysToEnd=0) {
+  const dateEnd = addDaysToDate(date, daysToEnd);
+  dateEnd.setUTCHours(23,59,59,999);
+  return dateEnd;
+}
+export function addDaysToDate(date, days) {
+  const MS_IN_DAY = 1000*60*60*24;
+  return new Date(Number(date) + MS_IN_DAY * days);
+}
+export function compressEventsByDays(dateFrom, daysPeriod, events) {
+  const res = [];
+  for (let i = 0; i < daysPeriod; i++) {
+    const dateDay = addDaysToDate(dateFrom, i);
+    res.push({
+      date: dateDay,
+      events: events.filter((event) => (event.date.getDate() === dateDay.getDate() && event.date.getMonth() === dateDay.getMonth() && event.date.getFullYear() === dateDay.getFullYear())),
+    });
+  }
+  return res;
+}
