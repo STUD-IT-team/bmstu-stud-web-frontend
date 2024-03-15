@@ -10,13 +10,15 @@
   block-bg()
   .header
     font-large()
-    margin-bottom 10px
+    margin-bottom 20px
   ul.rows
-    font-medium()
-    list-style-image url(../../../res/images/Star.svg)
-    margin-left 30px
-    li.row::marker
-      w 1
+    list-style none
+    li.row
+      padding-left 30px
+      background url(../../../res/icons/Star.svg) 0 50% no-repeat
+      font-medium()
+      &:not(:last-child)
+        margin-bottom 20px
 </style>
 
 <template>
