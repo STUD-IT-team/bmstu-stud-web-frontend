@@ -36,10 +36,12 @@
     .link
       padding 0 5px
       hover-effect()
+      hover-effect-underline()
       &.router-link-exact-active
-        border-bottom 1px solid colorBorder
+        background-size 100% 1px
   &.with-bg
     block-bg()
+    display flex
     .left-container
       height 35px
 </style>

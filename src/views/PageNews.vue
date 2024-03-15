@@ -3,30 +3,50 @@
 @require '../styles/buttons.styl'
 @require '../styles/fonts.styl'
 @require '../styles/components.styl'
+@require '../styles/utils.styl'
 
+padding-sides = 50px
 between-news-gap = 30px
 between-columns-gap = between-news-gap
+main-part-max-width = 1150px
 
 .root-page-news
   .main-container
-    display flex
-    gap between-columns-gap
+    padding-top 50px
     centered-margin()
-    width fit-content
-    .news-container
-      max-width 750px
+    max-width main-part-max-width
+    .header
+      font-large-xx()
+      margin-bottom 20px
+    .navbar-organizations
+      margin-left-size = ('min(0px, calc((100vw - %s) / -2))' % main-part-max-width)
+      padding-left-size = ('max(0px, calc((100vw - %s) / 2))' % main-part-max-width)
+      margin-left margin-left-size
+      padding 20px padding-left-size
+      width 100vw
+      border 1px solid white
+      border-left none
+      border-right none
+      margin-bottom 50px
+      .organization-button
+        padding 5px 3px
+        font-medium()
+        transition all .2s
+        hover-effect-underline()
+    .news-blocks-section-container
       display flex
-      flex-direction column
-      gap between-news-gap
-    .side-blocks-container
-      max-width 360px
-      width 360px
-      display flex
-      flex-direction column
-      gap between-news-gap
-      > *
-        block(colorPalette4)
-        block-bg()
+      gap between-columns-gap
+      .news-container
+        width 100%
+        display flex
+        flex-direction column
+        gap between-news-gap
+      .side-blocks-container
+        display flex
+        flex-direction column
+        gap between-news-gap
+        > *
+          width 360px
 </style>
 
 <template>
@@ -34,25 +54,50 @@ between-columns-gap = between-news-gap
     <Header></Header>
 
     <main class="main-container">
-      <ul class="news-container">
-        <New v-for="(oneNew, idx) in news"
-             :id="oneNew.id"
-             :title="oneNew.title"
-             :text="oneNew.description"
-             organization-name="Студнческий совет МГТУ им. Н.Э. Баумана"
-             :organization-logo="StudLogo"
-             :images-src="[Picture]"
-             :time-published="oneNew.created_at"
-             @delete="news.splice(idx, 1)"
-        ></New>
-      </ul>
-      <section class="side-blocks-container">
-        <div>Поздравляем</div>
-        <div>Горячие новости</div>
+      <header class="header">Лента новостей</header>
+
+      <nav class="navbar-organizations">
+        <router-link to="#" class="organization-button">Все события</router-link>
+      </nav>
+
+      <section class="news-blocks-section-container">
+        <ul class="news-container">
+          <New v-for="(oneNew, idx) in news"
+               :id="oneNew.id"
+               :title="oneNew.title"
+               :text="oneNew.description"
+               organization-name="Студнческий совет МГТУ им. Н.Э. Баумана"
+               :organization-logo="StudLogo"
+               :images-src="[Picture]"
+               :time-published="oneNew.created_at"
+               @delete="news.splice(idx, 1)"
+          ></New>
+        </ul>
+        <div class="side-blocks-container">
+          <ListingBlock title="Поздравляем!"
+                        :text-rows="[
+                        'Поздравляем Антона Павленко с ДР!!!',
+                        'Поздравляем Антона Успенского со званием мисс',
+                        'А вас не бесит it отдел?',
+                        'Это студенческий совет МГТУ им. Н.Э. Баумана',
+                      ]">
+          </ListingBlock>
+          <ListingBlock title="Горячие новости"
+                        :text-rows="[
+                        'А вас не бесит it отдел?',
+                        'Меня лично бесит',
+                        'Можно выйти пж?',
+                        'Блин кнопку выхода не сделали :(',
+                        'Я запрещаю вам выходить из IT-отдела!',
+                      ]">
+          </ListingBlock>
+        </div>
       </section>
     </main>
 
-    <NavBar></NavBar>
+    <Footer></Footer>
+
+    <NavBar></NavBar> <!-- it has "position: fixed" -->
   </div>
 </template>
 
@@ -64,10 +109,11 @@ import New from "~/components/New.vue";
 
 import StudLogo from "#~/images/stud-logo-circle.svg";
 import Picture from "#~/images/stud-logo-circle.svg";
+import ListingBlock from "~/components/ListingBlock.vue";
 
 
 export default {
-  components: {New, Header, NavBar},
+  components: {ListingBlock, New, Header, NavBar},
 
   data() {
     return {

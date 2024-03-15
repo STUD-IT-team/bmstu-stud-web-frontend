@@ -7,6 +7,7 @@
 
 block-bg-color = colorBg2
 images-section-width = 250px
+text-section-max-height = 265px
 
 .root-new
   block(colorPalette3)
@@ -18,7 +19,7 @@ images-section-width = 250px
   .text-section
     display flex
     flex-direction column
-    max-height 250px
+    max-height text-section-max-height
     transition max-height 2s ease-in
     position relative
     .header
