@@ -98,21 +98,18 @@
         ></FormWithErrors>
       </section>
     </main>
-
-    <NavBar class="navbar"></NavBar>
   </div>
 </template>
 
 <script>
 import FormWithErrors from "~/components/FormWithErrors.vue";
-import NavBar from "~/components/NavBar.vue";
 import {detectBrowser, detectOS} from "~/utils/utils";
 import CircleLoading from "~/components/CircleLoading.vue";
 import {Validators} from "~/utils/validators";
 
 
 export default {
-  components: {CircleLoading, FormWithErrors, NavBar},
+  components: {CircleLoading, FormWithErrors},
   data() {
     return {
       fields: {

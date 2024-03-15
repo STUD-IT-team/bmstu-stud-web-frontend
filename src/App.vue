@@ -32,6 +32,7 @@
       </transition>
     </router-view>
   </div>
+  <NavBar></NavBar>
 
   <Popups ref="popups"></Popups>
   <Modals ref="modals" class="root-modals"></Modals>
@@ -90,12 +91,13 @@
 <script>
 import {getCurrentInstance} from "vue";
 import {Modals, Popups} from "@sergtyapkin/modals-popups";
-import CircleLoading from "./components/CircleLoading.vue";
-import API from "./utils/API";
+import CircleLoading from "~/components/CircleLoading.vue";
+import API from "~/utils/API";
+import NavBar from "~/components/NavBar.vue";
 
 
 export default {
-  components: { CircleLoading, Modals, Popups },
+  components: {NavBar, CircleLoading, Modals, Popups},
 
   data() {
     return {

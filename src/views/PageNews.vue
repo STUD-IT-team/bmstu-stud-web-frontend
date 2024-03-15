@@ -96,14 +96,11 @@ main-part-max-width = 1150px
     </main>
 
     <Footer></Footer>
-
-    <NavBar></NavBar> <!-- it has "position: fixed" -->
   </div>
 </template>
 
 
 <script>
-import NavBar from "~/components/NavBar.vue";
 import Header from "~/components/Header/Header.vue";
 import New from "~/components/New.vue";
 
@@ -113,7 +110,7 @@ import ListingBlock from "~/components/ListingBlock.vue";
 
 
 export default {
-  components: {ListingBlock, New, Header, NavBar},
+  components: {ListingBlock, New, Header},
 
   data() {
     return {
