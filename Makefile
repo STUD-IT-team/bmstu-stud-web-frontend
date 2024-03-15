@@ -117,4 +117,7 @@ all:
 	echo 'It seems like values must be:' && \
 	echo 'SERVER_USERNAME=$$(whoami) - [! MUST BE SECRET VARIABLE !]' && \
 	echo 'DEPLOY_HOST=$$(cat ./docker-deploy/.env | grep DOMAIN_URL | sed "s/.*=//") - [NOT SECURE]' && \
-	echo 'PROJECT_PATH=$$(pwd) - [NOT SECURE]'
+	echo 'PROJECT_PATH=$$(pwd) - [NOT SECURE]' && \
+	echo '[press Enter to finish setup]'
+	read ENTER
+
