@@ -4,146 +4,48 @@
 @require '../styles/fonts.styl'
 @require '../styles/components.styl'
 
-.text-big
-  font-large()
 
-.root-page
-  margin-top 2.5%
-  margin-left 10%
-  margin-right 10%
+.root-page-news
+  padding 50px
+  .header
+    font-large-extra()
+  .navbar-organizations
+    width 100%
+    border 1px solid white
+    border-left none
+    border-right none
+    padding 10px 0
+    .organization-button
+      font-medium()
+      font-bold()
+      transition all .2s
+      background linear-gradient(white, white) 50% 100% / 0 1px no-repeat
+      &:hover
+        background-size 100% 1px
 
-/* NAVIGATION */
-nav
-  width: 80%
-
-  ul
-    list-style: none
-    text-align: left
-
-    li
-      display: inline-block
-
-      a
-        display: block
-        color: #ffffff
-        font-weight: 800
-        transition: all .5s
-        font-medium()
-
-
-// stroke
-nav.stroke
-  ul li a,
-  ul li a:after,
-  ul li a:before
-    position: relative
-    transition: all .5s
-
-  ul li a:after
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    margin: auto
-    width: 0%
-    content: '.'
-    color: transparent
-    background: #ffffff
-    height: 1px
-
-  ul li a:hover:after
-    width: 100%
-
-// fill
-nav.fill
-  ul li a
-    position: relative
-    transition: all 2s
-
-  ul li a:after
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    margin: 0
-    content: '.'
-    color: transparent
-    background: #aaa
-    height: 1px
-    opacity: 0
-
-  ul li a:hover
-    color: #fff
-    z-index: 1
-
-  ul li a:hover:after
-    z-index: -10
-    animation: fill 1s forwards
-    -webkit-animation: fill 1s forwards
-    -moz-animation: fill 1s forwards
-    opacity: 1
-
-.line
-  margin-top 1%
-  margin-bottom 1%
-  &:after
-    content ""
-    display block
-    width 80%
-    height 1px
-    background-color #dddddd
-    //top 50%
-
-.congratulations
-  float right
-  display inline-block
-  margin-right 20%
-  width 300px
-  block()
-  border-color #FE5960
-  font-medium()
-
-  ul
-    list-style-image: url(../../../res/images/Star.svg)
-    margin-left 7%
-
-.hotNews
-  float right
-  display inline-block
-  width 300px
-  margin-right 20%
-  margin-top 10px
-  block()
-  border-color #FE5960
-  font-medium()
-
-  ul
-    list-style-image: url(../../../res/images/Star.svg)
-    margin-left 7%
-
-.heading
-  font-large()
-
+  .side-block
+    display inline-block
+    block(colorPalette4)
+    .heading
+      font-large()
+      margin-bottom 10px
+    ul
+      font-medium()
+      list-style-image url(../../../res/images/Star.svg)
+      margin-left 30px
 </style>
 
 <template>
-  <div class="root-page">
-    <!-- ... -->
-    <div class="text-big"> Лента новостей</div>
-    <div class="line"></div>
-    <div>
-      <nav class="stroke">
-        <ul>
-          <li><a href="#">Все события</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="line"></div>
+  <div class="root-page-news">
+    <header class="header">Лента новостей</header>
 
-    <!--    <CircleLoading v-if="isLoading"></CircleLoading>-->
+    <nav class="navbar-organizations">
+      <router-link to="#" class="organization-button">Все события</router-link>
+    </nav>
+
     <div class="container">
-      <div class="congratulations">
-        <div class="heading">Поздравляем</div>
+      <div class="side-block">
+        <header class="heading">Поздравляем</header>
         <ul>
           <li>Поздравляем Антона Павленко с ДР!!!</li>
           <li>Поздравляем Антона Успенского со званием мисс.</li>
@@ -151,8 +53,8 @@ nav.fill
           <li>Это студенческий совет МГТУ им. Н.Э. Баумана.</li>
         </ul>
       </div>
-      <div class="hotNews">
-        <div class="heading">Горячие новости</div>
+      <div class="side-block">
+        <header class="heading">Горячие новости</header>
         <ul>
           <li>Антон Павленко родился!!!</li>
           <li>Антон Успенский все мисс очарование сразу</li>
@@ -166,22 +68,26 @@ nav.fill
 
 
 <script>
-import CircleLoading from "~/components/CircleLoading.vue";
-
 export default {
   components: {},
 
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    }
+  },
+
   data() {
     return {
-      feeds: [],
-
-      isLoading: false,
+      loading: false,
     }
   },
 
   async mounted() {
   },
 
-  methods: {}
+  methods: {
+  }
 }
 </script>
