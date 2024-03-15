@@ -35,7 +35,6 @@
     white-space nowrap
     .link
       padding 0 5px
-      hover-effect()
       hover-effect-underline()
       &.router-link-exact-active
         background-size 100% 1px

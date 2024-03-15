@@ -20,7 +20,7 @@ export default class MY_API extends REST_API {
         events: [
             {
                 id: 1,
-                description: "Большое и красивое событие 1",
+                description: "Cобытие 1",
                 date: new Date('2024-03-16'),
                 approved: true,
                 created_at: new Date('2024-03-20'),
@@ -30,7 +30,7 @@ export default class MY_API extends REST_API {
             },
             {
                 id: 2,
-                description: "Большое и красивое событие 2",
+                description: "Cобытие 2",
                 date: new Date('2024-03-17'),
                 approved: true,
                 created_at: new Date('2024-03-20'),
@@ -40,8 +40,28 @@ export default class MY_API extends REST_API {
             },
             {
                 id: 3,
-                description: "Большое и красивое событие 3",
+                description: "Cобытие 3",
                 date: new Date('2024-03-18'),
+                approved: true,
+                created_at: new Date('2024-03-20'),
+                reg_url: 'http://ya.ru',
+                reg_open_date: new Date('2024-03-16'),
+                feedback_url: 'http://google.com',
+            },
+            {
+                id: 4,
+                description: "Cобытие 4",
+                date: new Date('2024-03-16'),
+                approved: true,
+                created_at: new Date('2024-03-20'),
+                reg_url: 'http://ya.ru',
+                reg_open_date: new Date('2024-03-16'),
+                feedback_url: 'http://google.com',
+            },
+            {
+                id: 5,
+                description: "Cобытие 5",
+                date: new Date('2024-03-15'),
                 approved: true,
                 created_at: new Date('2024-03-20'),
                 reg_url: 'http://ya.ru',
@@ -50,7 +70,7 @@ export default class MY_API extends REST_API {
             },
         ]
     }})
-    // this.get(`/api/events`, {_model: Models.Events, start_date: startDate, end_date: endDate});
+    // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
     getNews = () => ({ok: true, status: 200, data: {
         feed: [
             {
