@@ -4,35 +4,27 @@
 @require '../styles/fonts.styl'
 @require '../styles/components.styl'
 
-
+padding-sides = 50px
 .root-page-news
-  padding 50px
+  padding padding-sides
   .header
     font-large-extra()
+    margin-bottom 20px
   .navbar-organizations
-    width 100%
+    padding 20px padding-sides
+    margin-left (- padding-sides)
+    width 'calc(100% + %s)' % (padding-sides * 2)
     border 1px solid white
     border-left none
     border-right none
-    padding 10px 0
+    margin-bottom 50px
     .organization-button
+      padding 5px 3px
       font-medium()
-      font-bold()
       transition all .2s
       background linear-gradient(white, white) 50% 100% / 0 1px no-repeat
       &:hover
         background-size 100% 1px
-
-  .side-block
-    display inline-block
-    block(colorPalette4)
-    .heading
-      font-large()
-      margin-bottom 10px
-    ul
-      font-medium()
-      list-style-image url(../../../res/images/Star.svg)
-      margin-left 30px
 </style>
 
 <template>
@@ -44,32 +36,33 @@
     </nav>
 
     <div class="container">
-      <div class="side-block">
-        <header class="heading">Поздравляем</header>
-        <ul>
-          <li>Поздравляем Антона Павленко с ДР!!!</li>
-          <li>Поздравляем Антона Успенского со званием мисс.</li>
-          <li>А вас не бесит it отдел?</li>
-          <li>Это студенческий совет МГТУ им. Н.Э. Баумана.</li>
-        </ul>
-      </div>
-      <div class="side-block">
-        <header class="heading">Горячие новости</header>
-        <ul>
-          <li>Антон Павленко родился!!!</li>
-          <li>Антон Успенский все мисс очарование сразу</li>
-          <li>А вас не бесит it отдел?</li>
-          <li>Меня бесит сайт для мисски</li>
-        </ul>
-      </div>
+      <ListingBlock title="Поздравляем!"
+                    :text-rows="[
+                      'Поздравляем Антона Павленко с ДР!!!',
+                      'Поздравляем Антона Успенского со званием мисс',
+                      'А вас не бесит it отдел?',
+                      'Это студенческий совет МГТУ им. Н.Э. Баумана',
+                    ]">
+      </ListingBlock>
+      <ListingBlock title="Горячие новости"
+                    :text-rows="[
+                      'А вас не бесит it отдел?',
+                      'Меня лично бесит',
+                      'Можно выйти пж?',
+                      'Блин кнопку выхода не сделали :(',
+                      'Я запрещаю вам выходить из IT-отдела!',
+                    ]">
+      </ListingBlock>
     </div>
   </div>
 </template>
 
 
 <script>
+import ListingBlock from "~/components/ListingBlock.vue";
+
 export default {
-  components: {},
+  components: {ListingBlock},
 
   props: {
     items: {
