@@ -8,6 +8,9 @@ import Page404 from "./views/Page404.vue";
 import RestorePassword from "./views/User/RestorePassword.vue";
 import PageNews from "~/views/PageNews.vue";
 import PageCalendar from "~/views/PageCalendar.vue";
+import PageMainStart from "~/views/Miss/PageMainStart.vue";
+import PageMainVote from "~/views/Miss/PageMainVote.vue";
+import PageMainFinal from "~/views/Miss/PageMainFinal.vue";
 
 export default function createVueRouter(Store) {
     const routes = [
@@ -22,6 +25,10 @@ export default function createVueRouter(Store) {
         {path: '/password/change', name: 'changePassword', component: ChangePassword, meta: {loginRequired: true}},
         {path: '/password/restore', name: 'restorePassword', component: RestorePassword, meta: {noLoginRequired: true}},
         // {path: '/admin', name: 'admin', component: Admin, meta: {adminRequired: true}},
+
+        {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
+        {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
+        {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},
 
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
     ];
