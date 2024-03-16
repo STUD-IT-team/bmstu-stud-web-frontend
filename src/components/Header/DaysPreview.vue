@@ -27,7 +27,7 @@
   .days-info-block
     margin 0
     padding 10px 7px 15px 7px
-    backdrop-filter blur(10px) brightness(1)
+    backdrop-filter blur(10px) brightness(1.2)
     background mix(colorBg, transparent, 20%)
     border-radius borderRadiusS
 
