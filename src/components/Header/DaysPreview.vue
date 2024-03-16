@@ -43,13 +43,51 @@
       transform rotate(180deg)
       margin-top 8px
   .days-info-block
-    display flex
-    width 100%
-    .day
-      padding 3px 10px
-      width 33%
-    .day:not(:last-child)
-      border-right 1px solid white
+    max-width 99999px
+    width 99999px
+    > *
+      display flex
+      height 100%
+      .day
+        height 100%
+        padding 3px 10px
+        width 33%
+      .day:not(:last-child)
+        border-right 1px solid white
+</style>
+
+<style lang="stylus" scoped>
+.list-flip-enter-from
+  transform scale(0.9)
+  max-width 0
+  margin 0
+  padding 0
+  overflow hidden
+.list-flip-enter-active
+  transition all 0.2s ease
+  opacity 0
+  transform scale(0.9)
+  overflow hidden
+.list-flip-enter-to
+  transition all 0.2s ease
+  opacity 1
+  transform scale(1)
+
+.list-flip-leave-active
+  height 100%
+  transition all 0.2s ease
+  max-width 150px
+  opacity 1
+  transform scale(1, 1)
+.list-flip-leave-to
+  max-width 0
+  padding 0
+  margin 0
+  opacity 0
+  transform scale(0.9, 0)
+  overflow hidden
+.list-flip-move
+  transition all 0.2s
 </style>
 
 <template>
@@ -60,7 +98,14 @@
       <div class="week-number">17 нед</div>
     </div>
     <div class="days-info-block">
-      <OneDay v-for="eventDay in eventsByDays" class="day" :date="eventDay.date" :events="eventDay.events"></OneDay>
+      <transition-group name="list-flip" tag="div">
+        <OneDay v-for="eventDay in eventsByDays"
+                class="day"
+                :date="eventDay.date"
+                :events="eventDay.events"
+                :key="eventDay.date.toDateString()"
+        ></OneDay>
+      </transition-group>
     </div>
     <button class="right-arrow" @click="changeDateFrom(+1)"><img src="../../../res/icons/arrow-right.svg" alt="arrow-left"></button>
   </div>
