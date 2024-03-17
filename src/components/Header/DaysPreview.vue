@@ -49,9 +49,9 @@
       display flex
       height 100%
       .day
+        width 100%
         height 100%
         padding 3px 10px
-        width 33%
       .day:not(:last-child)
         border-right 1px solid white
 </style>
@@ -80,12 +80,13 @@
   opacity 1
   transform scale(1, 1)
 .list-flip-leave-to
-  max-width 0
-  padding 0
-  margin 0
-  opacity 0
-  transform scale(0.9, 0)
-  overflow hidden
+  flex 0 !important
+  max-width 0 !important
+  padding 0 !important
+  margin 0 !important
+  opacity 0 !important
+  transform scale(0.9, 0) !important
+  overflow hidden !important
 .list-flip-move
   transition all 0.2s
 </style>
@@ -98,7 +99,7 @@
       <div class="week-number">17 нед</div>
     </div>
     <div class="days-info-block">
-      <transition-group name="list-flip" tag="div">
+      <transition-group name="list-flip" tag="div" :duration="1000000">
         <OneDay v-for="eventDay in eventsByDays"
                 class="day"
                 :date="eventDay.date"
