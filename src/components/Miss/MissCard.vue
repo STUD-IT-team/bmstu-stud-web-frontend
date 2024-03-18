@@ -6,14 +6,14 @@
 @require '../../styles/components.styl'
 
 .root-miss-card
-  border-radius 13px
+  border-radius borderRadiusM
   overflow hidden
   background white
   border 2px solid colorMiss1
-  margin 10px
   img.miss-photo
-    width 214px
+    width 100%
     height 225px
+    object-fit cover
   .info
     margin-bottom 10px
     display flex
@@ -33,8 +33,11 @@
     .name-group-container
       .name
         font-small()
-        line-height circle-size
         color colorMiss2
+        line-height circle-size
+        &.too-long
+          font-small-extra()
+          line-height circle-size
       .group
         font-small-extra()
         color colorMiss2
@@ -46,7 +49,7 @@
     <section class="info">
       <div class="circle-position">{{ position }}</div>
       <div class="name-group-container">
-        <div class="name">{{ name }}</div>
+        <div class="name" :class="{'too-long': name.length >= 21}">{{ name }}</div>
         <div class="group">Группа: {{ group }}</div>
       </div>
     </section>

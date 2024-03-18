@@ -8,18 +8,27 @@
   background-image url("../../../res/images/backgroundLarge.png")
   background-size cover
   .main
+    padding 25px 60px
+    @media ({mobile})
+      padding-left 0
+      padding-right 0
     .title
       font-large()
       font-normal()
       text-align center
-      padding-top 25px
       color colorMiss1
+      margin-bottom 20px
     .cards-container
       list-style none
       display flex
       flex-wrap wrap
       justify-content space-between
-      padding 20px 40px 65px 40px
+      @media ({mobile})
+        justify-content center
+      gap 20px
+      .card
+        width 100%
+        max-width 220px
 </style>
 
 <template>
@@ -29,7 +38,13 @@
     <main class="main">
       <header class="title">ФИНАЛИСТКИ КОНКУРСА 2024</header>
       <ul class="cards-container">
-        <MissCard v-for="(miss, idx) in missList" :group="miss.group" :name="miss.name" :position="idx + 1" :image="miss.image"></MissCard>
+        <MissCard v-for="(miss, idx) in missList"
+                  class="card"
+                  :group="miss.group"
+                  :name="miss.name"
+                  :position="idx + 1"
+                  :image="miss.image"
+        ></MissCard>
       </ul>
     </main>
 
