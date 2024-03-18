@@ -7,25 +7,21 @@
 .footer-container
   border-top 1px solid colorMiss1
   text-align center
-  margin-bottom 10px
+  padding 25px 0
   .footer-logo
-    padding-top 25px
-    padding-bottom 25px
+    margin-bottom 25px
   .footer-text
     font-medium()
-    padding-top 25px
 </style>
 
 <template>
   <footer class="footer-container">
-    <div>
-      <img class="footer-logo" src="../../../res/images/logoStudMiss.png" alt="miss-photo"/>
-      <br>
-      <span class="footer-text">Студенческий совет МГТУ им. Н.Э. Баумана 2024</span>
-    </div>
+    <img class="footer-logo" src="../../../res/images/logoStudMiss.png" alt="miss-photo"/>
+    <div class="footer-text">Студенческий совет МГТУ им. Н.Э. Баумана 2024</div>
   </footer>
 </template>
 
 <script>
-export default {}
+export default {
+}
 </script>
