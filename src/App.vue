@@ -32,7 +32,7 @@
       </transition>
     </router-view>
   </div>
-  <NavBar></NavBar>
+  <NavBar v-if="!/^\/miss/.test($route.path)"></NavBar>
 
   <Popups ref="popups"></Popups>
   <Modals ref="modals" class="root-modals"></Modals>

@@ -24,6 +24,7 @@
     hover-effect()
     img
       height 100%
+      width 50px
   .right-container
     height 20px
   .middle-container

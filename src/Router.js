@@ -53,14 +53,14 @@ export default function createVueRouter(Store) {
             name: 'profile',
         }
 
-        if (to.path === '/' || to.path === '') {
-            if (Store.state.user.isSignedIn) {
-                next(loginedRedirect);
-                return;
-            }
-            next(notLoginedRedirect);
-            return;
-        }
+        // if (to.path === '/' || to.path === '') {
+        //     if (Store.state.user.isSignedIn) {
+        //         next(loginedRedirect);
+        //         return;
+        //     }
+        //     next(notLoginedRedirect);
+        //     return;
+        // }
 
         // Login required redirects
         if (to.matched.some(record => record.meta.loginRequired === true || record.meta.adminRequired === true)) {
