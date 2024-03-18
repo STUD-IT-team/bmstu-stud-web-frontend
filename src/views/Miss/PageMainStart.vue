@@ -3,107 +3,100 @@
 @require '../../styles/buttons.styl'
 @require '../../styles/fonts.styl'
 @require '../../styles/components.styl'
-  .root-page
-    background-image url("../../../res/images/backgroundLarge.png")
-    background-size cover
-    .header-container
-      text-align center
-      border-bottom 1px solid colorMiss1
-      padding-bottom 20px
-      .title
+
+.root-page
+  background-image url("../../../res/images/backgroundLarge.png")
+  background-size cover
+  .header-container
+    text-align center
+    border-bottom 1px solid colorMiss1
+    padding-bottom 20px
+    .title
+      padding-top 70px
+      padding-bottom 70px
+      .special
+        font-special()
+      .normal
         font-large-extra()
-        font-normal()
-        padding-top 70px
-        padding-bottom 70px
-      .buttons-container
-        font-medium()
-        width 100%
-        display flex 
-        justify-content space-between
-        padding-left 100px
-        padding-right 100px
-    .body
-      .body-title
-        font-large()
-        font-normal()
-        text-align center
-        padding-top 25px
-        color colorMiss1
-      .cards-container
-        list-style none
-        display flex
-        flex-wrap wrap
-        justify-content space-between
-        padding-left 40px
-        padding-right 40px
-        padding-top 20px
-        padding-bottom 65px
-        .card
-          border-radius 13px
-          overflow hidden
-          background white
-          border 2px solid colorMiss1
-          margin-left 10px
-          margin-right 10px
-          margin-top 10px
-          margin-bottom 10px
-          .main-miss
-            width 214px
-            height 225px
-          .card-form
-            margin-bottom 10px
-            .circle
-              font-medium()
-              color white
-              width 26px
-              height 26px
-              line-height 26px
-              background colorMiss1
-              margin 4px
-              border-radius 50%
-              text-align center
-              display inline-block
-            .card-title
-              font-small()
-              font-size 14.7px
-              color colorMiss2
-              display inline
-            .card-group
-              font-small-extra()
-              font-thin()
-              color colorMiss2
-              display inline
-              margin-left 34px
-    .footer-container
-      border-top 1px solid colorMiss1
+        margin-top -25px
+    .buttons-container
+      font-medium()
+      width 100%
+      display flex
+      justify-content space-between
+      padding-left 100px
+      padding-right 100px
+  .body
+    .body-title
+      font-large()
+      font-normal()
       text-align center
-      margin-bottom 10px
-      .footer-logo
-        padding-top 25px
-        padding-bottom 25px
-      .footer-text
-        font-medium()
-        padding-top 25px
-        
-          
-          
-          
-          
-
-
-          
-        
-
-
-        
-
-
+      padding-top 25px
+      color colorMiss1
+    .cards-container
+      list-style none
+      display flex
+      flex-wrap wrap
+      justify-content space-between
+      padding-left 40px
+      padding-right 40px
+      padding-top 20px
+      padding-bottom 65px
+      .card
+        border-radius 13px
+        overflow hidden
+        background white
+        border 2px solid colorMiss1
+        margin-left 10px
+        margin-right 10px
+        margin-top 10px
+        margin-bottom 10px
+        .main-miss
+          width 214px
+          height 225px
+        .card-form
+          margin-bottom 10px
+          .circle
+            font-medium()
+            color white
+            width 26px
+            height 26px
+            line-height 26px
+            background colorMiss1
+            margin 4px
+            border-radius 50%
+            text-align center
+            display inline-block
+          .card-title
+            font-small()
+            font-size 14.7px
+            color colorMiss2
+            display inline
+          .card-group
+            font-small-extra()
+            font-thin()
+            color colorMiss2
+            display inline
+            margin-left 34px
+  .footer-container
+    border-top 1px solid colorMiss1
+    text-align center
+    margin-bottom 10px
+    .footer-logo
+      padding-top 25px
+      padding-bottom 25px
+    .footer-text
+      font-medium()
+      padding-top 25px
 </style>
 
 <template>
   <div class="root-page">
     <header class="header-container">
-      <div class="title">МИСС<br>ОЧАРОВАНИЕ</div>
+      <div class="title">
+        <div class="special">Мисс</div>
+        <div class="normal">ОЧАРОВАНИЕ</div>
+      </div>
       <div class="buttons-container">
         <span class="button">ГЛАВНАЯ</span>
         <span class="button">О КОНКУРСЕ</span>
@@ -111,7 +104,7 @@
         <span class="button">КОНТАКТЫ</span>
         <span class="button">СТУДЕНЧЕСКИЙ СОВЕТ</span>
       </div>
-    </header> 
+    </header>
     <div class="body">
       <div class="body-title">ФИНАЛИСТКИ КОНКУРСА 2024</div>
       <ul class="cards-container">
