@@ -29,6 +29,9 @@ export const Validators = {
   id: {
     regExp: /^#?[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/i,
     prettifyResult: (str) => str.replace('#', '').toLowerCase(),
+  },
+  username: {
+    regExp: /^[\w-.]{4,16}$/i,
   }
 }
 Object.entries(Validators).forEach(([name, validator]) => {

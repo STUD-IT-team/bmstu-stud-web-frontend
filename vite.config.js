@@ -48,6 +48,10 @@ export default defineConfig({
         replacement: path.resolve(__dirname, 'src')
       },
       {
+        find: '#~', // to use #~ as resources root like: "import SomeImage from '#~/images/someImage.png'"
+        replacement: path.resolve(__dirname, 'res')
+      },
+      {
         find: '@~', // to use @~ as node_modules root like: "import Some from '@~/Some'"
         replacement: path.resolve(__dirname, 'node_modules')
       }

@@ -18,7 +18,7 @@
       .buttons-container
         font-medium()
         width 100%
-        display flex 
+        display flex
         justify-content space-between
         padding-left 100px
         padding-right 100px
@@ -110,20 +110,20 @@
             text-align center
             margin-bottom 10px
             .how-many-vote
-              font-XXS()
+              font-small-xx()
               color colorMiss2
-    
-          
-          
-          
-          
 
 
-          
-        
 
 
-        
+
+
+
+
+
+
+
+
 
 
 </style>
@@ -139,7 +139,7 @@
         <span class="button">КОНТАКТЫ</span>
         <span class="button">СТУДЕНЧЕСКИЙ СОВЕТ</span>
       </div>
-    </header> 
+    </header>
     <div class="body">
       <div class="body-title">ФИНАЛИСТКИ КОНКУРСА 2024</div>
       <div class="body-text">

@@ -26,6 +26,7 @@ export default function createVueRouter(Store) {
         {path: '/password/restore', name: 'restorePassword', component: RestorePassword, meta: {noLoginRequired: true}},
         // {path: '/admin', name: 'admin', component: Admin, meta: {adminRequired: true}},
 
+        {path: '/miss', name: 'missMainStart', component: PageMainStart, meta: {}},
         {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
         {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
         {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},

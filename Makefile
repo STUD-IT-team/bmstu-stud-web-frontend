@@ -111,10 +111,13 @@ all:
 	make set-auto-renewing-certs
 	make down
 	make setup-ci
-	sudo chmod ugo+rwx -R /home/legend/vue-frontend-template/docker-deploy/certbot/
+	sudo chmod ugo+rwx -R ~/docker-deploy/certbot/
 	make update
 	echo 'Now read README.md and setup another deploy environments variables.' && \
 	echo 'It seems like values must be:' && \
 	echo 'SERVER_USERNAME=$$(whoami) - [! MUST BE SECRET VARIABLE !]' && \
 	echo 'DEPLOY_HOST=$$(cat ./docker-deploy/.env | grep DOMAIN_URL | sed "s/.*=//") - [NOT SECURE]' && \
-	echo 'PROJECT_PATH=$$(pwd) - [NOT SECURE]'
+	echo 'PROJECT_PATH=$$(pwd) - [NOT SECURE]' && \
+	echo '[press Enter to finish setup]'
+	read ENTER
+
