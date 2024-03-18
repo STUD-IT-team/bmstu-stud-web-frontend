@@ -19,13 +19,17 @@
       .normal
         font-large-extra()
         margin-top -25px
-    .buttons-container
+    .navbar-container
       font-medium()
       width 100%
       display flex
-      justify-content space-between
-      padding-left 100px
-      padding-right 100px
+      justify-content space-evenly
+      align-items center
+      flex-wrap wrap
+      gap 5px 20px
+      padding 0 20px
+      .button
+        white-space nowrap
   .body
     .body-title
       font-large()
@@ -97,13 +101,13 @@
         <div class="special">Мисс</div>
         <div class="normal">ОЧАРОВАНИЕ</div>
       </div>
-      <div class="buttons-container">
-        <span class="button">ГЛАВНАЯ</span>
-        <span class="button">О КОНКУРСЕ</span>
-        <span class="button">ПАРТНЕРЫ</span>
-        <span class="button">КОНТАКТЫ</span>
-        <span class="button">СТУДЕНЧЕСКИЙ СОВЕТ</span>
-      </div>
+      <nav class="navbar-container">
+        <div class="button">ГЛАВНАЯ</div>
+        <div class="button">О КОНКУРСЕ</div>
+        <div class="button">ПАРТНЕРЫ</div>
+        <div class="button">КОНТАКТЫ</div>
+        <div class="button">СТУДЕНЧЕСКИЙ СОВЕТ</div>
+      </nav>
     </header>
     <div class="body">
       <div class="body-title">ФИНАЛИСТКИ КОНКУРСА 2024</div>
