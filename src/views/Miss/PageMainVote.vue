@@ -176,7 +176,7 @@
 
 
 <script>
-import Footer from "~/components/Miss/Footer.vue";
+import Footer from "~/components/Miss/FooterTenPartners.vue";
 export default {
   components: {Footer},
 

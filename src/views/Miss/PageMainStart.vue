@@ -18,7 +18,7 @@
       .buttons-container
         font-medium()
         width 100%
-        display flex 
+        display flex
         justify-content space-between
         padding-left 100px
         padding-right 100px
@@ -78,12 +78,42 @@
       border-top 1px solid colorMiss1
       text-align center
       margin-bottom 10px
-      .footer-logo
-        padding-top 25px
+      padding-top 25px
+      .footer-top
         padding-bottom 25px
-      .footer-text
-        font-medium()
-        padding-top 25px
+        .footer-title
+          font-large()
+          font-normal()
+          color colorMiss1
+        .partners-conteiner
+          height auto
+          width 800px
+          display inline-grid
+          grid-template-columns repeat(5, 2fr)
+          grid-template-rows repeat(1, 2fr)
+          grid-column-gap 10px
+          grid-row-gap 10px
+          padding-left 60px
+          padding-right 60px
+          margin-top 15px
+          text-align center
+          .partner
+            width 100%
+            margin 4px
+      .footer-bottom
+        border-top 1px solid colorMiss1
+        padding-top 20px
+        .footer-bottom-title
+          font-medium()
+          display inline-block
+          .footer-logo
+            width 60px
+            height 23px
+            display inline
+            vertical-align bottom 
+
+        
+        
         
           
           
@@ -197,13 +227,6 @@
           </li>
       </ul>
     </div>
-    <footer class="footer-container">
-      <div>
-        <img class="footer-logo" src="../../../res/images/logoStudMiss.png" alt="miss-photo"/>
-        <br>
-        <span class="footer-text">Студенческий совет МГТУ им. Н.Э. Баумана 2024</span>
-      </div>
-    </footer>
   </div>
 </template>
 
