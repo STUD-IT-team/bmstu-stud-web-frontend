@@ -11,6 +11,7 @@ import PageCalendar from "~/views/PageCalendar.vue";
 import PageMainStart from "~/views/Miss/PageMainStart.vue";
 import PageMainVote from "~/views/Miss/PageMainVote.vue";
 import PageMainFinal from "~/views/Miss/PageMainFinal.vue";
+import PageMain from "~/views/Miss/PageMain.vue";
 
 export default function createVueRouter(Store) {
     const routes = [
@@ -26,10 +27,11 @@ export default function createVueRouter(Store) {
         {path: '/password/restore', name: 'restorePassword', component: RestorePassword, meta: {noLoginRequired: true}},
         // {path: '/admin', name: 'admin', component: Admin, meta: {adminRequired: true}},
 
-        {path: '/miss', name: 'miss', component: PageMainStart, meta: {}},
-        {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
-        {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
-        {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},
+        {path: '/miss', name: 'miss', component: PageMain, meta: {}, children: [
+            {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
+            {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
+            {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},
+        ]},
 
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
     ];
