@@ -11,6 +11,7 @@ import PageCalendar from "~/views/PageCalendar.vue";
 import PageMainStart from "~/views/Miss/PageMainStart.vue";
 import PageMainVote from "~/views/Miss/PageMainVote.vue";
 import PageMainFinal from "~/views/Miss/PageMainFinal.vue";
+import PageMain from "~/views/Miss/PageMain.vue";
 
 export default function createVueRouter(Store) {
     const routes = [
@@ -26,9 +27,11 @@ export default function createVueRouter(Store) {
         {path: '/password/restore', name: 'restorePassword', component: RestorePassword, meta: {noLoginRequired: true}},
         // {path: '/admin', name: 'admin', component: Admin, meta: {adminRequired: true}},
 
-        {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
-        {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
-        {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},
+        {path: '/miss', name: 'miss', component: PageMain, meta: {}, children: [
+            {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
+            {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
+            {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},
+        ]},
 
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
     ];
@@ -52,14 +55,14 @@ export default function createVueRouter(Store) {
             name: 'profile',
         }
 
-        if (to.path === '/' || to.path === '') {
-            if (Store.state.user.isSignedIn) {
-                next(loginedRedirect);
-                return;
-            }
-            next(notLoginedRedirect);
-            return;
-        }
+        // if (to.path === '/' || to.path === '') {
+        //     if (Store.state.user.isSignedIn) {
+        //         next(loginedRedirect);
+        //         return;
+        //     }
+        //     next(notLoginedRedirect);
+        //     return;
+        // }
 
         // Login required redirects
         if (to.matched.some(record => record.meta.loginRequired === true || record.meta.adminRequired === true)) {

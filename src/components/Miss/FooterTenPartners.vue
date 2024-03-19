@@ -40,7 +40,7 @@
         width 60px
         height 23px
         display inline
-        vertical-align bottom 
+        vertical-align bottom
 </style>
 
 <template>
@@ -48,20 +48,11 @@
         <div class="footer-top">
         <span class="footer-title">ПАРТНЁРЫ КОНКУРСА<br></span>
         <div class="partners-conteiner">
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-            <img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
+            <img v-for="_ in 10" class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
         </div>
         </div>
         <div class="footer-bottom">
-        <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024 
+        <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024
             <img class="footer-logo" src="../../../res/images/logoStudMiss.png" alt="stud-miss-logo"/>
         </div>
         </div>
