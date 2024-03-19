@@ -10,8 +10,8 @@
   padding-top 70px
   padding-bottom 20px
   .title
-    margin 0 auto
-    width min-content
+    width 100%
+    text-align center
     margin-bottom 70px
     .special
       font-special()

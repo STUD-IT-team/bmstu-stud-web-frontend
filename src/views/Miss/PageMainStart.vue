@@ -8,16 +8,16 @@
   background-image url("../../../res/images/backgroundLarge.png")
   background-size cover
   .main
-    padding 25px 60px
+    padding 40px 60px
     @media ({mobile})
       padding-left 0
       padding-right 0
     .title
-      font-large()
+      font-large-extra()
       font-normal()
       text-align center
       color colorMiss1
-      margin-bottom 20px
+      margin-bottom 15px
     .cards-container
       list-style none
       display flex
@@ -36,7 +36,7 @@
     <Header></Header>
 
     <main class="main">
-      <header class="title">ФИНАЛИСТКИ КОНКУРСА 2024</header>
+      <header class="title">ФИНАЛИСТКИ 2024</header>
       <ul class="cards-container">
         <MissCard v-for="(miss, idx) in missList"
                   class="card"
