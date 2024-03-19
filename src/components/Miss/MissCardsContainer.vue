@@ -28,6 +28,8 @@
               :image="miss.image"
               :votes-count="miss.votesCount"
               :show-votes="showVotes"
+              :max-votes-count="maxVotesCount"
+              :total-votes-count="totalVotesCount"
     ></MissCard>
   </ul>
 </template>
@@ -41,6 +43,15 @@ export default {
 
   props: {
     showVotes: Boolean,
+  },
+
+  computed: {
+    maxVotesCount() {
+      return this.missList.reduce((maxVotes, miss) => Math.max(maxVotes, miss.votesCount), -Infinity);
+    },
+    totalVotesCount() {
+      return this.missList.reduce((maxVotes, miss) => maxVotes + miss.votesCount, 0);
+    }
   },
 
   data() {

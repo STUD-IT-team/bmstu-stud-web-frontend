@@ -46,24 +46,36 @@
         color colorMiss2
 
   .section-voting
+    padding-bottom 7px
     .info
       font-small-extra()
       border-top 1px solid colorMiss1
-      padding-top 5px
-      margin-bottom 3px
-      margin-right 5px
-      margin-left 5px
+      padding 5px
       text-align center
       color colorMiss1
       .text-colored
         color colorMiss2
-    .slider-container
+
+    .slider
+      slider-height = 10px
+      margin-sides = 10px
+      font-small-xxx()
+      background colorMiss1
+      width 'calc(var(--progress) * 100% - %s)' % (margin-sides * 2)
+      margin 0 margin-sides
+      padding 0 10px
+      height slider-height
+      line-height slider-height
+      padding-top 1px
+      border-radius borderRadiusMax
+      margin-bottom 5px
+      trans()
+
+    .votes-count
+      font-small-xx()
+      color colorMiss2
       width 100%
       text-align center
-      margin-bottom 10px
-      .votes-count
-        font-small-xx()
-        color colorMiss2
 </style>
 
 <template>
@@ -83,10 +95,8 @@
         с кодом
         <span class="text-colored">СТУД {{ position }}</span>
       </div>
-      <div class="slider-container">
-        <input type="range" min="1" max="1000" class="slide" id="myRange" v-model="value">
-        <div class="votes-count">Количество голосов: {{ votesCount }}</div>
-      </div>
+      <div class="slider" :style="{'--progress': progressToMax}">{{ Math.ceil(progressTotal * 100 * 100 / 100) }}%</div>
+      <div class="votes-count">Количество голосов: {{ votesCount }}</div>
     </section>
   </li>
 </template>
@@ -112,6 +122,17 @@ export default {
     },
     showVotes: Boolean,
     votesCount: Number,
+    maxVotesCount: Number,
+    totalVotesCount: Number,
   },
+
+  computed: {
+    progressTotal() {
+      return this.votesCount / this.totalVotesCount;
+    },
+    progressToMax() {
+      return this.votesCount / this.maxVotesCount;
+    }
+  }
 }
 </script>
