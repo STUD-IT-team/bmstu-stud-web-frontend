@@ -38,7 +38,7 @@
         color colorMiss2
         line-height circle-size
         &.too-long
-          letter-spacing -.3px
+          letter-spacing -0.3px
           font-small-extra()
           line-height circle-size
       .group
@@ -63,10 +63,9 @@
       background colorMiss1
       width 'calc(var(--progress) * 100% - %s)' % (margin-sides * 2)
       margin 0 margin-sides
-      padding 0 10px
+      padding 0 15px 0 10px
       height slider-height
       line-height slider-height
-      padding-top 1px
       border-radius borderRadiusMax
       margin-bottom 5px
       trans()
@@ -82,19 +81,14 @@
   <li class="root-miss-card">
     <img class="miss-photo" :src="image" alt="photo"/>
     <section class="section-info">
-      <div class="circle-position">{{ position }}</div>
+      <div class="circle-position">{{ id }}</div>
       <div class="name-group-container">
         <div class="name" :class="{'too-long': name.length >= 20}">{{ name }}</div>
         <div class="group">Группа: {{ group }}</div>
       </div>
     </section>
     <section v-if="showVotes" class="section-voting">
-      <div class="info">
-        Для голосования отправить SMS на номер
-        <span class="text-colored">5533 </span>
-        с кодом
-        <span class="text-colored">СТУД {{ position }}</span>
-      </div>
+      <div class="info">Для голосования отправить SMS на номер <span class="text-colored">{{ phoneNumberToVoting }} </span> с кодом <span class="text-colored">СТУД {{ id }}</span></div>
       <div class="slider" :style="{'--progress': progressToMax}">{{ Math.ceil(progressTotal * 100 * 100 / 100) }}%</div>
       <div class="votes-count">Количество голосов: {{ votesCount }}</div>
     </section>
@@ -102,13 +96,15 @@
 </template>
 
 <script>
+import {phoneNumberToVoting} from "~/utils/constants";
+
 export default {
   props: {
     image: {
       type: String,
       required: true,
     },
-    position: {
+    id: {
       type: Number,
       required: true,
     },
@@ -132,6 +128,12 @@ export default {
     },
     progressToMax() {
       return this.votesCount / this.maxVotesCount;
+    }
+  },
+
+  data() {
+    return {
+      phoneNumberToVoting,
     }
   }
 }
