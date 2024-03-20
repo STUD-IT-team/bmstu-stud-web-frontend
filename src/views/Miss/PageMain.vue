@@ -7,11 +7,60 @@
 .root-page-main
   background-image url("../../../res/images/backgroundLarge.png")
   background-size cover
+  position relative
+  overflow hidden
   .main
     padding 40px 120px
     @media ({mobile})
       padding-left 20px
       padding-right 20px
+  .decoration
+    position absolute
+    inset 0
+    pointer-events none
+    .group
+      position absolute
+      inset 0
+      top calc(var(--repeat-number) * 2000px)
+      > *
+        position absolute
+        transition all 0.5s cubic-bezier(0.02, 0.52, 0.2, 1)
+      .spiral
+      .sphere-right
+        transform translateY(calc(var(--scroll-value) * -1px))
+      .ring
+      .sphere-left
+        transform translateY(calc(var(--scroll-value) * -2px))
+
+      .spiral
+        left -210px
+        top 500px
+        width 400px
+        @media ({mobile})
+          left -100px
+          width 200px
+      .sphere-left
+        left -80px
+        top 2000px
+        width 220px
+        @media ({mobile})
+          left -60px
+          width 120px
+      .sphere-right
+        right -80px
+        top 300px
+        width 220px
+        @media ({mobile})
+          right -60px
+          width 120px
+      .ring
+        right -100px
+        top 1500px
+        width 220px
+        @media ({mobile})
+          right -70px
+          width 140px
+
 </style>
 
 <template>
@@ -27,6 +76,15 @@
     </main>
 
     <Footer></Footer>
+
+    <section class="decoration" :style="{'--scroll-value': scrollTop}">
+      <div v-for="i in 3" :style="{'--repeat-number': i - 1}" class="group">
+        <img class="spiral" src="../../../res/images/miss-decorations/side-spiral.png" alt="">
+        <img class="sphere-left" src="../../../res/images/miss-decorations/side-sphere.png" alt="">
+        <img class="sphere-right" src="../../../res/images/miss-decorations/side-sphere.png" alt="">
+        <img class="ring" src="../../../res/images/miss-decorations/side-ring.png" alt="">
+      </div>
+    </section>
   </div>
 </template>
 
@@ -39,13 +97,22 @@ export default {
 
   data() {
     return {
+      scrollTop: 0,
     }
   },
 
-  async mounted() {
+  mounted() {
+    window.addEventListener('scroll', this.onScroll, {passive: true});
+  },
+
+  unmounted() {
+    document.documentElement.removeEventListener('scroll', this.onScroll);
   },
 
   methods: {
+    onScroll() {
+      this.scrollTop = document.documentElement.scrollTop;
+    }
   }
 }
 </script>

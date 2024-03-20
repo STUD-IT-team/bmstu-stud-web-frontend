@@ -20,13 +20,15 @@ centered-absolute-transform()
 hover-effect()
     cursor pointer
     transition all 0.2s ease
-    &:hover
-        opacity 0.7
+    @media ({desktop})
+        &:hover
+            opacity 0.7
 hover-effect-underline(color=white)
     background linear-gradient(color, color) 50% 100% / 0 1px no-repeat
     transition all .2s
-    &:hover
-        background-size 100% 1px
+    @media ({desktop})
+        &:hover
+            background-size 100% 1px
 
 button-no-styles()
     background none

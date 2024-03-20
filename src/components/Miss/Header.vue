@@ -9,10 +9,12 @@
   border-bottom 1px solid colorMiss1
   padding-top 60px
   padding-bottom 12px
+  position relative
   .title
     width 100%
     text-align center
     margin-bottom 60px
+    user-select none
     .special
       font-special()
     .normal
@@ -30,6 +32,18 @@
     .button
       white-space nowrap
       hover-effect-underline()
+  .decoration
+    position absolute
+    inset 0
+    pointer-events none
+    .sparkle
+      position absolute
+      &:nth-child(1)
+        top 30%
+        left calc(10% - 120px)
+      &:nth-child(2)
+        top 10%
+        right calc(20% - 240px)
 </style>
 
 <template>
@@ -45,6 +59,11 @@
       <router-link :to="{name: 'miss'}" class="button">КОНТАКТЫ</router-link>
       <router-link :to="{name: 'default'}" class="button">СТУДЕНЧЕСКИЙ СОВЕТ</router-link>
     </nav>
+
+    <section class="decoration">
+      <img class="sparkle" src="../../../res/images/miss-decorations/sparkle.png" alt="">
+      <img class="sparkle" src="../../../res/images/miss-decorations/sparkle.png" alt="">
+    </section>
   </header>
 </template>
 
