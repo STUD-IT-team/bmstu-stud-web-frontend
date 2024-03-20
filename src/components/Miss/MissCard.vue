@@ -28,7 +28,6 @@
       height circle-size
       line-height circle-size
       text-align center
-      padding-top 2px
       background colorMiss1
       border-radius borderRadiusMax
       overflow hidden
