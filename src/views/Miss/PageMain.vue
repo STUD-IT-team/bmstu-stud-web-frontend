@@ -27,10 +27,10 @@
         transition all 0.5s cubic-bezier(0.02, 0.52, 0.2, 1)
       .spiral
       .sphere-right
-        transform translateY(calc(var(--scroll-value) * -1px))
+        transform translateY(calc(var(--scroll-value) * -0.5px))
       .ring
       .sphere-left
-        transform translateY(calc(var(--scroll-value) * -2px))
+        transform translateY(calc(var(--scroll-value) * -1px))
 
       .spiral
         left -210px
