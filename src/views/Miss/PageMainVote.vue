@@ -22,16 +22,27 @@
     a
       text-decoration underline
       hover-effect()
+    .text-colored
+      color colorMiss1
 </style>
 
 <template>
   <div class="root-page-vote">
     <div class="header">ФИНАЛИСТКИ 2024</div>
     <div class="main-text">
-      <p>Для того чтобы отдать голос за фаворитку, необходимо отправить SMS в формате:<br>«СТУД» и номер участницы на короткий номер {{ phoneNumberToVoting }}.<br></p>
-      <p>Например, для голосования за конкурсантку №1, нужно отправить SMS на номер {{ phoneNumberToVoting }}<br>с кодом: Студ 1 (пробел обязателен, регистр букв значения не имеет).<br></p>
-      <p>Только для Операторов России: Билайн, Мегафон, Tele2, Тинькофф, Мотив.<br></p>
-      <p>Стоимость отправки SMS: 11 рублей.<br>(SMS для подтверждения Оператору - бесплатно)<br></p>
+      <p>
+        Для того чтобы отдать голос за фаворитку, необходимо <span class="text-colored">отправить SMS</span> в формате:<br>
+        «СТУД» и номер участницы на короткий номер {{ phoneNumberToVoting }}.
+      </p>
+      <p>
+        Например, для голосования за конкурсантку №1, нужно отправить SMS на номер <span class="text-colored">{{ phoneNumberToVoting }}</span><br>
+        с кодом: <span class="text-colored">Студ 1</span> (пробел обязателен, регистр букв значения не имеет).
+      </p>
+      <p>Только для операторов России: Билайн, Мегафон, Tele2, Тинькофф, Мотив.</p>
+      <p>
+        Стоимость отправки SMS: 11 рублей.<br>
+        (SMS для подтверждения Оператору - бесплатно)
+      </p>
       <p>Организация голосования: <a href="https://mvote.ru" target="_blank">Mvote.ru</a></p>
     </div>
     <MissCardsContainer show-votes></MissCardsContainer>
