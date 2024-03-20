@@ -16,11 +16,22 @@
   .card
     width 100%
     max-width 190px
+    opacity 0
+    animation card-in 0.5s ease forwards
+    animation-delay calc(var(--index) * 0.05s)
+    @keyframes card-in
+      from
+        opacity 0
+        transform translateY(-20px)
+      to
+        opacity 1
+        transform translateY(0)
 </style>
 
 <template>
   <ul class="root-miss-cards-container">
-    <MissCard v-for="miss in missList"
+    <MissCard v-for="(miss, idx) in missList"
+              :style="{'--index': idx}"
               class="card"
               :group="miss.group"
               :name="miss.name"

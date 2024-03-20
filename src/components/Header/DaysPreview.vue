@@ -43,8 +43,6 @@
       transform rotate(180deg)
       margin-top 8px
   .days-info-block
-    max-width 99999px
-    width 99999px
     > *
       display flex
       height 100%
@@ -58,24 +56,23 @@
 
 <style lang="stylus" scoped>
 .list-flip-enter-from
-  transform scale(0.9)
-  max-width 0
-  margin 0
-  padding 0
-  overflow hidden
+  transform scale(0.9) !important
+  max-width 0 !important
+  margin 0 !important
+  padding 0 !important
+  padding-top 20px !important
+  overflow hidden !important
 .list-flip-enter-active
-  transition all 0.2s ease
   opacity 0
   transform scale(0.9)
   overflow hidden
 .list-flip-enter-to
-  transition all 0.2s ease
+  transition all 0.3s ease
   opacity 1
   transform scale(1)
 
 .list-flip-leave-active
   height 100%
-  transition all 0.2s ease
   max-width 150px
   opacity 1
   transform scale(1, 1)
@@ -87,6 +84,7 @@
   opacity 0 !important
   transform scale(0.9, 0) !important
   overflow hidden !important
+  transition all 0.2s ease
 .list-flip-move
   transition all 0.2s
 </style>
@@ -99,7 +97,7 @@
       <div class="week-number">17 нед</div>
     </div>
     <div class="days-info-block">
-      <transition-group name="list-flip" tag="div" :duration="1000000">
+      <transition-group name="list-flip" tag="div">
         <OneDay v-for="eventDay in eventsByDays"
                 class="day"
                 :date="eventDay.date"

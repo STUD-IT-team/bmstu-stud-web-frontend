@@ -39,6 +39,21 @@
       hover-effect-underline()
       &.router-link-exact-active
         background-size 100% 1px
+
+  .left-container
+  .middle-container
+  .right-container
+    & > *
+      opacity 0
+      animation button-in 0.5s ease forwards
+      animation-delay calc(var(--animation-index) * 0.05s)
+      @keyframes button-in
+        from
+          opacity 0
+          transform translateY(20px)
+        to
+          opacity 1
+          transform translateY(0)
   &.with-bg
     block-bg()
     display flex
@@ -49,15 +64,15 @@
 <template>
   <nav class="root-navbar" :class="{'with-bg': isScrolledMoreThanScreen}">
     <router-link :to="{name: 'default'}" class="left-container">
-      <img src="../../res/icons/stud-logo.svg" alt="stud-logo">
+      <img style="--animation-index: 0" src="../../res/icons/stud-logo.svg" alt="stud-logo">
     </router-link>
     <div class="middle-container">
-      <router-link :to="{name: 'news'}" class="link">Новости</router-link>
-      <router-link :to="{name: 'calendar'}" class="link">Мероприятия</router-link>
-      <router-link :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
+      <router-link style="--animation-index: 1" :to="{name: 'news'}" class="link">Новости</router-link>
+      <router-link style="--animation-index: 2" :to="{name: 'calendar'}" class="link">Мероприятия</router-link>
+      <router-link style="--animation-index: 3" :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
     </div>
     <div v-if="$user?.isAdmin" class="right-container" @click="logout">
-      <img src="../../res/icons/logout.svg" alt="logout">
+      <img style="--animation-index: 4" src="../../res/icons/logout.svg" alt="logout">
     </div>
     <div v-else class="right-container"></div>
   </nav>

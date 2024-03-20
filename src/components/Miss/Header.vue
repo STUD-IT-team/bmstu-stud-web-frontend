@@ -15,6 +15,14 @@
     text-align center
     margin-bottom 60px
     user-select none
+    animation header-in 1s ease forwards
+    @keyframes header-in
+      from
+        opacity 0
+        letter-spacing 5px
+      to
+        opacity 1
+        letter-spacing 0
     .special
       font-special()
     .normal
@@ -32,6 +40,16 @@
     .button
       white-space nowrap
       hover-effect-underline()
+      opacity 0
+      animation button-in 0.5s ease forwards
+      animation-delay calc(var(--animation-index) * 0.05s)
+      @keyframes button-in
+        from
+          opacity 0
+          transform translateY(20px)
+        to
+          opacity 1
+          transform translateY(0)
   .decoration
     position absolute
     inset 0
@@ -53,11 +71,11 @@
       <div class="normal">ОЧАРОВАНИЕ</div>
     </header>
     <nav class="navbar-container">
-      <router-link :to="{name: 'missMainStart'}" class="button">ГЛАВНАЯ</router-link>
-      <router-link :to="{name: 'missMainVote'}" class="button">О КОНКУРСЕ</router-link>
-      <router-link :to="{name: 'missMainFinal'}" class="button">ПАРТНЕРЫ</router-link>
-      <router-link :to="{name: 'miss'}" class="button">КОНТАКТЫ</router-link>
-      <router-link :to="{name: 'default'}" class="button">СТУДЕНЧЕСКИЙ СОВЕТ</router-link>
+      <router-link :to="{name: 'missMainStart'}" style="--animation-index: 0" class="button">ГЛАВНАЯ</router-link>
+      <router-link :to="{name: 'missMainVote'}" style="--animation-index: 1" class="button">О КОНКУРСЕ</router-link>
+      <router-link :to="{name: 'missMainFinal'}" style="--animation-index: 2" class="button">ПАРТНЕРЫ</router-link>
+      <router-link :to="{name: 'miss'}" style="--animation-index: 3" class="button">КОНТАКТЫ</router-link>
+      <router-link :to="{name: 'default'}" style="--animation-index: 4" class="button">СТУДЕНЧЕСКИЙ СОВЕТ</router-link>
     </nav>
 
     <section class="decoration">
