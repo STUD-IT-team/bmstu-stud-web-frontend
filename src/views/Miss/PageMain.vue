@@ -20,7 +20,7 @@
 
     <main class="main">
       <router-view v-slot="{ Component }">
-        <transition name="scale-in">
+        <transition name="scale-in" mode="out-in">
           <component :is="Component"/>
         </transition>
       </router-view>

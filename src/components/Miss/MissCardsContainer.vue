@@ -20,11 +20,11 @@
 
 <template>
   <ul class="root-miss-cards-container">
-    <MissCard v-for="(miss, idx) in missList"
+    <MissCard v-for="miss in missList"
               class="card"
               :group="miss.group"
               :name="miss.name"
-              :position="idx + 1"
+              :id="miss.id"
               :image="miss.image"
               :votes-count="miss.votesCount"
               :show-votes="showVotes"
