@@ -52,7 +52,7 @@
         top 500px
         width 400px
         @media ({mobile})
-          left -100px
+          left -120px
           width 200px
       .sphere-left
         left -80px

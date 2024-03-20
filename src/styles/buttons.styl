@@ -34,6 +34,8 @@ button()
     centered-flex-container()
     &:hover
         color text-color-hover-1
+        > *
+            color text-color-hover-1
         background bg-color-hover
         border-color border-color-hover
     &[disabled]:not([disabled=false])
@@ -71,8 +73,7 @@ button-success()
     color colorText3
     &:hover
         border-color mix(colorSuccess, white)
-        color colorText1
+        color colorText
 
 button-submit()
     button()
-    

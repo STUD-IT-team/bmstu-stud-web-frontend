@@ -16,6 +16,9 @@
     text-align center
     padding 18px 40px
     margin-bottom 30px
+    @media ({mobile})
+      padding-left 10px
+      padding-right 10px
     font-medium()
     p:not(:last-child)
       margin-bottom 10px

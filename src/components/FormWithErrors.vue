@@ -51,6 +51,7 @@ input-border = 1px solid border-color
       transition all 0.2s ease, background-size 0.1s ease
       font-medium()
       &::placeholder
+        transform translateY(5px)
         opacity 0
         visibility hidden
       &:focus
