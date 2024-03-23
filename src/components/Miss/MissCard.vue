@@ -38,16 +38,16 @@
         line-height circle-size
         &.too-long
           letter-spacing -0.3px
-          font-small-extra()
+          font-small-x()
           line-height circle-size
       .group
-        font-small-extra()
+        font-small-x()
         color colorMiss2
 
   .section-voting
     padding-bottom 7px
     .info
-      font-small-extra()
+      font-small-x()
       border-top 1px solid colorMiss1
       padding 5px
       text-align center

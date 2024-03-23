@@ -77,7 +77,7 @@ input-border = 1px solid border-color
       position absolute
       top 26px
       right 20px
-      font-small-extra()
+      font-small-x()
       opacity 0
       transition opacity 0.2s ease
       pointer-events none
@@ -92,7 +92,7 @@ input-border = 1px solid border-color
       text-align left
       margin-top 2px
       padding-left 20px
-      font-small-extra()
+      font-small-x()
       opacity 0.5
       user-select none
 

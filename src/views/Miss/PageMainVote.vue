@@ -6,7 +6,7 @@
 
 .root-page-vote
   .header
-    font-large-extra()
+    font-large-x()
     text-align center
     color colorMiss1
     margin-bottom 15px
@@ -16,34 +16,32 @@
     text-align center
     padding 18px 40px
     margin-bottom 30px
-    @media ({mobile})
-      padding-left 10px
-      padding-right 10px
     font-medium()
     p:not(:last-child)
       margin-bottom 10px
     a
       text-decoration underline
       hover-effect()
-    .text-colored
+    mark
+      background none
       color colorMiss1
 </style>
 
 <template>
   <div class="root-page-vote">
-    <div class="header">ФИНАЛИСТКИ 2024</div>
+    <header class="header">ФИНАЛИСТКИ 2024</header>
     <div class="main-text">
       <p>
-        Для того чтобы отдать голос за фаворитку, необходимо <span class="text-colored">отправить SMS</span> в формате:<br>
+        Для того чтобы отдать голос за фаворитку, необходимо <mark>отправить SMS</mark> в формате:<br>
         «СТУД» и номер участницы на короткий номер {{ phoneNumberToVoting }}.
       </p>
       <p>
-        Например, для голосования за конкурсантку №1, нужно отправить SMS на номер <span class="text-colored">{{ phoneNumberToVoting }}</span><br>
-        с кодом: <span class="text-colored">Студ 1</span> (пробел обязателен, регистр букв значения не имеет).
+        Например, для голосования за конкурсантку №1, нужно отправить SMS на номер <mark>{{ phoneNumberToVoting }}</mark><br>
+        с кодом: <mark>Студ 1</mark> (пробел обязателен, регистр букв значения не имеет).
       </p>
       <p>Только для операторов России: Билайн, Мегафон, Tele2, Тинькофф, Мотив.</p>
       <p>
-        Стоимость отправки SMS: 11 рублей.<br>
+        Стоимость отправки <mark>SMS</mark> - 11 рублей.<br>
         (SMS для подтверждения Оператору - бесплатно)
       </p>
       <p>Организация голосования: <a href="https://mvote.ru" target="_blank">Mvote.ru</a></p>

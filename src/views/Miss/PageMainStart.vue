@@ -5,8 +5,8 @@
 @require '../../styles/components.styl'
 
 .root-page-start
-  .title
-    font-large-extra()
+  .header
+    font-large-x()
     font-normal()
     text-align center
     color colorMiss1
@@ -15,7 +15,7 @@
 
 <template>
   <div class="root-page-start">
-    <header class="title">ФИНАЛИСТКИ 2024</header>
+    <header class="header">ФИНАЛИСТКИ 2024</header>
     <MissCardsContainer></MissCardsContainer>
   </div>
 </template>

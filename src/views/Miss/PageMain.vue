@@ -14,6 +14,7 @@
     @media ({mobile})
       padding-left 20px
       padding-right 20px
+    trans()
     max-height 0
     overflow hidden
     animation main-roll-down 2s ease forwards
@@ -27,8 +28,10 @@
         opacity 1
         padding-top 40px
         padding-bottom 40px
-      100%
+      99%
         max-height 3000px
+      100%
+        max-height unset
   .decoration
     position absolute
     inset 0
