@@ -12,6 +12,8 @@ import PageMainStart from "~/views/Miss/PageMainStart.vue";
 import PageMainVote from "~/views/Miss/PageMainVote.vue";
 import PageMainFinal from "~/views/Miss/PageMainFinal.vue";
 import PageMain from "~/views/Miss/PageMain.vue";
+import PageAbout from "~/views/Miss/PageAbout.vue";
+import PageContacts from "~/views/Miss/PageContacts.vue";
 
 export default function createVueRouter(Store) {
     const routes = [
@@ -32,6 +34,8 @@ export default function createVueRouter(Store) {
             {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
             {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
             {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},
+            {path: '/miss/about', name: 'missAbout', component: PageAbout, meta: {}},
+            {path: '/miss/contacts', name: 'missContacts', component: PageContacts, meta: {}},
         ]},
 
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},

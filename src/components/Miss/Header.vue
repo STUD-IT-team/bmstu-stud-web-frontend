@@ -26,7 +26,7 @@
     .special
       font-special()
     .normal
-      font-large-extra()
+      font-large-x()
       margin-top -25px
   .navbar-container
     font-medium()
@@ -71,10 +71,10 @@
       <div class="normal">ОЧАРОВАНИЕ</div>
     </header>
     <nav class="navbar-container">
-      <router-link :to="{name: 'missMainStart'}" style="--animation-index: 0" class="button">ГЛАВНАЯ</router-link>
-      <router-link :to="{name: 'missMainVote'}" style="--animation-index: 1" class="button">О КОНКУРСЕ</router-link>
+      <router-link :to="{name: 'missMainVote'}" style="--animation-index: 0" class="button">ГЛАВНАЯ</router-link>
+      <router-link :to="{name: 'missAbout'}" style="--animation-index: 1" class="button">О КОНКУРСЕ</router-link>
       <router-link :to="{name: 'missMainFinal'}" style="--animation-index: 2" class="button">ПАРТНЕРЫ</router-link>
-      <router-link :to="{name: 'miss'}" style="--animation-index: 3" class="button">КОНТАКТЫ</router-link>
+      <router-link :to="{name: 'missContacts'}" style="--animation-index: 3" class="button">КОНТАКТЫ</router-link>
       <router-link :to="{name: 'default'}" style="--animation-index: 4" class="button">СТУДЕНЧЕСКИЙ СОВЕТ</router-link>
     </nav>
 
