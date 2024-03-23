@@ -6,17 +6,19 @@
 @require '../styles/components.styl'
 
 .root-calendar-one-day
-  block()
+  block(#F9E59A)
   .date
     text-transform capitalize
   .events-container
-    block()
+    //block()
     .event
       .title
+        color #F9E59A
         font-medium()
         margin-right 20px
       .date
         font-small()
+
 </style>
 
 <template>
