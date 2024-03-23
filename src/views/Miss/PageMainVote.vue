@@ -30,7 +30,7 @@
 <template>
   <div class="root-page-vote">
     <header class="header">ФИНАЛИСТКИ 2024</header>
-    <div class="main-text">
+    <section class="main-text">
       <p>
         Для того чтобы отдать голос за фаворитку, необходимо <mark>отправить SMS</mark> в формате:<br>
         «СТУД» и номер участницы на короткий номер {{ phoneNumberToVoting }}.
@@ -45,7 +45,7 @@
         (SMS для подтверждения Оператору - бесплатно)
       </p>
       <p>Организация голосования: <a href="https://mvote.ru" target="_blank">Mvote.ru</a></p>
-    </div>
+    </section>
     <MissCardsContainer show-votes></MissCardsContainer>
   </div>
 </template>

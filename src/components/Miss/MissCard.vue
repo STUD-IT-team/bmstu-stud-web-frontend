@@ -10,7 +10,7 @@
   overflow hidden
   background white
   border 2px solid colorMiss1
-  img.miss-photo
+  img.photo
     width 100%
     height 210px
     object-fit cover
@@ -78,7 +78,7 @@
 
 <template>
   <li class="root-miss-card">
-    <img class="miss-photo" :src="image" alt="photo"/>
+    <img class="photo" :src="image" alt="photo"/>
     <section class="section-info">
       <div class="circle-position">{{ id }}</div>
       <div class="name-group-container">
