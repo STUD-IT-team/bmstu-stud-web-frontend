@@ -50,21 +50,21 @@
 
     <ul class="organizers-container">
       <OrganizerCard class="organizer-card"
-                     image="../../../res/images/miss-organizers/PavelOrlov.png"
+                     :image="ImagePavelOrlov"
                      name="Павел Орлов"
                      phone="+7 (915) 720-89-11"
                      mail="orlov@bmstu.ru"
                      title="Председатель Студенческого Совета"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
-                     image="../../../res/images/miss-organizers/TamaraSergeeva.png"
+                     :image="ImageTamaraSergeeva"
                      name="Тамара Сергеева"
                      phone="+7 (964) 998-35-65"
                      mail="mescheryakova@bmstu.ru"
                      title="Главный организатор конкурса"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
-                     image="../../../res/images/miss-organizers/GeorgiyAvdeev.png"
+                     :image="ImageGeorgiyAvdeev"
                      name="Георгий Авдеев"
                      phone="+7 (968) 094-28-12"
                      mail="partners.studsovet@gmail.com"
@@ -76,8 +76,19 @@
 
 <script>
 import OrganizerCard from "~/components/Miss/OrganizerCard.vue";
+import ImagePavelOrlov from '../../../res/images/miss-organizers/PavelOrlov.png';
+import ImageTamaraSergeeva from '../../../res/images/miss-organizers/TamaraSergeeva.png';
+import ImageGeorgiyAvdeev from '../../../res/images/miss-organizers/GeorgiyAvdeev.png';
 
 export default {
-  components: {OrganizerCard}
+  components: {OrganizerCard},
+
+  data() {
+    return {
+      ImagePavelOrlov,
+      ImageTamaraSergeeva,
+      ImageGeorgiyAvdeev,
+    }
+  }
 }
 </script>
