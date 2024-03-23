@@ -102,7 +102,7 @@
         <li>Председатель Правления акционерного общества «Роснано», выпускник МГТУ им. Н.Э. Баумана — Сергей Александрович Куликов;</li>
         <li>Российская актриса и телеведущая — Юлия Михалкова.</li>
       </ul>
-      <ul class="horizontal-scroll-container">
+      <ul class="horizontal-scroll-container" ref="juryScrollerContainer">
         <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
         <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
         <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
@@ -145,5 +145,21 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      juryScrollingTimer: undefined,
+    }
+  },
+
+
+  mounted() {
+    this.juryScrollingTimer = setInterval(() => {
+      this.$refs.juryScrollerContainer.scrollBy({left: 1});
+    }, 50);
+  },
+  unmounted() {
+    clearInterval(this.juryScrollingTimer);
+  },
+}
 </script>

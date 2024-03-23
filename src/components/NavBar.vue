@@ -77,7 +77,7 @@ max-main-part-width = 1150px
         <router-link style="--animation-index: 2" :to="{name: 'calendar'}" class="link">Мероприятия</router-link>
         <router-link style="--animation-index: 3" :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
       </div>
-      <div v-if="$user?.isAdmin" class="right-container" @click="logout">
+      <div v-if="$store?.state?.user?.isAdmin" class="right-container" @click="logout">
         <img style="--animation-index: 4" src="../../res/icons/logout.svg" alt="logout">
       </div>
       <div v-else class="right-container"></div>
