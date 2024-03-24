@@ -5,22 +5,23 @@
 @require '../styles/components.styl'
 @require '../styles/utils.styl'
 
-padding-sides = 50px
 between-news-gap = 30px
 between-columns-gap = between-news-gap
 main-part-max-width = 1140px
+padding-sides = 20px
 
 .root-page-news
   .main-container
+    padding 0 padding-sides
     padding-top 50px
     centered-margin()
-    max-width main-part-max-width
+    max-width (main-part-max-width + padding-sides * 2)
     .header
       font-large-xx()
       margin-bottom 20px
     .navbar-organizations
-      margin-left-size = ('min(0px, calc((100vw - %s) / -2))' % main-part-max-width)
-      padding-left-size = ('max(0px, calc((100vw - %s) / 2))' % main-part-max-width)
+      margin-left-size = 'min(-%s, calc((100vw - %s) / -2))' % (padding-sides main-part-max-width)
+      padding-left-size = 'max(%s, calc((100vw - %s) / 2))' % (padding-sides main-part-max-width)
       margin-left margin-left-size
       padding 20px padding-left-size
       width 100vw
