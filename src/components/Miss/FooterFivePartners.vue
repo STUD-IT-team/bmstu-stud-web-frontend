@@ -48,12 +48,12 @@
       <div class="footer-top">
         <span class="footer-title">ПАРТНЁРЫ КОНКУРСА<br></span>
         <div class="partners-conteiner">
-          <div v-for="_ in 5"><img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/></div>
+          <div v-for="_ in 5"><img class="partner" src="../../../res/icons/stud-logo.svg" alt="partnere-test-logo"/></div>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024
-          <img class="footer-logo" src="../../../res/images/logoStudMiss.png" alt="stud-miss-logo"/>
+          <img class="footer-logo" src="../../../res/icons/logoBaumStudMiss.svg" alt="stud-miss-logo"/>
         </div>
       </div>
     </footer>
