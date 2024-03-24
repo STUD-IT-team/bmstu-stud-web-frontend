@@ -16,7 +16,7 @@
             <div class="user-name">{{ $user.name }}</div>
             <div class="user-id">#{{ String($user.id || '').padStart(4, '0') }}</div>
           </div>
-          <button class="copy-id-button" @click="copyToClipboard($user.id, 'Твоё ID')"><img src="../../../res/icons/copy.svg" alt=""></button>
+          <button class="copy-id-button" @click="copyToClipboard($user.id, 'Твоё ID')"><img src="/res/icons/copy.svg" alt=""></button>
 
           <CircleLoading v-if="loadingProfile" size="30px" light></CircleLoading>
           <button v-else class="button-edit" @click="changeUserParam('name')">Изменить</button>

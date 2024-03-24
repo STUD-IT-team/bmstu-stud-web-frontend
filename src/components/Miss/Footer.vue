@@ -16,7 +16,7 @@
 
 <template>
   <footer class="footer-container">
-    <img class="footer-logo" src="../../../res/images/logoStudMiss.png" alt="miss-photo"/>
+    <img class="footer-logo" src="/res/images/logoStudMiss.png" alt="miss-photo"/>
     <div class="footer-text">Студенческий совет МГТУ им. Н.Э. Баумана 2024</div>
   </footer>
 </template>

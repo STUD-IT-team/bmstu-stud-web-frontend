@@ -88,7 +88,7 @@
       </ul>
       <p>После проведения всех этапов <mark>подводятся итоги</mark> и, конечно же, <mark>проходит награждение</mark> всех финалисток.</p>
       <header class="header-colored">КАК ЭТО БЫЛО</header>
-      <img class="image-full-size" src="../../../res/images/missAwarding.png" alt="photo from awarding">
+      <img class="image-full-size" src="/res/images/missAwarding.png" alt="photo from awarding">
     </section>
 
     <header class="header">ЖЮРИ</header>
@@ -103,16 +103,16 @@
         <li>Российская актриса и телеведущая — Юлия Михалкова.</li>
       </ul>
       <ul class="horizontal-scroll-container" ref="juryScrollerContainer">
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
-        <li><img class="image-jury-photo" src="../../../res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
+        <li><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""></li>
       </ul>
     </section>
 

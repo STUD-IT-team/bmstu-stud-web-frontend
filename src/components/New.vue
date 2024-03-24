@@ -156,7 +156,7 @@ text-section-max-height = 265px
     <div v-if="$user?.isAdmin" class="button-edit-container">
       <transition name="opacity" mode="out-in">
         <CircleLoading v-if="loading"></CircleLoading>
-        <button v-else @click.stop="isEditBlockOpened = !isEditBlockOpened"><img src="../../res/icons/3-points.svg" alt="edit"></button>
+        <button v-else @click.stop="isEditBlockOpened = !isEditBlockOpened"><img src="/res/icons/3-points.svg" alt="edit"></button>
       </transition>
     </div>
     <transition name="scale-in">

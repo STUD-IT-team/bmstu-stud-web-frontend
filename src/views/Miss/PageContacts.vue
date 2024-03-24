@@ -76,9 +76,9 @@
 
 <script>
 import OrganizerCard from "~/components/Miss/OrganizerCard.vue";
-import ImagePavelOrlov from '../../../res/images/miss-organizers/PavelOrlov.png';
-import ImageTamaraSergeeva from '../../../res/images/miss-organizers/TamaraSergeeva.png';
-import ImageGeorgiyAvdeev from '../../../res/images/miss-organizers/GeorgiyAvdeev.png';
+import ImagePavelOrlov from '#~/images/miss-organizers/PavelOrlov.png';
+import ImageTamaraSergeeva from '#~/images/miss-organizers/TamaraSergeeva.png';
+import ImageGeorgiyAvdeev from '#~/images/miss-organizers/GeorgiyAvdeev.png';
 
 export default {
   components: {OrganizerCard},

@@ -5,7 +5,7 @@
 @require '../../styles/components.styl'
 
 .root-page-main
-  background-image url("../../../res/images/backgroundLarge.png")
+  background-image url("/res/images/backgroundLarge.png")
   background-size cover
   position relative
   overflow hidden
@@ -97,10 +97,10 @@
 
     <section class="decoration" :style="{'--scroll-value': scrollTop}">
       <div v-for="i in 3" :style="{'--repeat-number': i - 1}" class="group">
-        <img class="spiral" src="../../../res/images/miss-decorations/side-spiral.png" alt="">
-        <img class="sphere-left" src="../../../res/images/miss-decorations/side-sphere.png" alt="">
-        <img class="sphere-right" src="../../../res/images/miss-decorations/side-sphere.png" alt="">
-        <img class="ring" src="../../../res/images/miss-decorations/side-ring.png" alt="">
+        <img class="spiral" src="/res/images/miss-decorations/side-spiral.png" alt="">
+        <img class="sphere-left" src="/res/images/miss-decorations/side-sphere.png" alt="">
+        <img class="sphere-right" src="/res/images/miss-decorations/side-sphere.png" alt="">
+        <img class="ring" src="/res/images/miss-decorations/side-ring.png" alt="">
       </div>
     </section>
   </div>

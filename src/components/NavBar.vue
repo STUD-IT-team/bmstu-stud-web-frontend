@@ -70,7 +70,7 @@ max-main-part-width = 1150px
   <nav class="root-navbar" :class="{'with-bg': isScrolledMoreThanScreen}">
     <div class="main-part">
       <router-link :to="{name: 'default'}" class="left-container">
-        <img style="--animation-index: 0" src="../../res/icons/stud-logo.svg" alt="stud-logo">
+        <img style="--animation-index: 0" src="/res/icons/stud-logo.svg" alt="stud-logo">
       </router-link>
       <div class="middle-container">
         <router-link style="--animation-index: 1" :to="{name: 'news'}" class="link">Новости</router-link>
@@ -78,7 +78,7 @@ max-main-part-width = 1150px
         <router-link style="--animation-index: 3" :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
       </div>
       <div v-if="$store?.state?.user?.isAdmin" class="right-container" @click="logout">
-        <img style="--animation-index: 4" src="../../res/icons/logout.svg" alt="logout">
+        <img style="--animation-index: 4" src="/res/icons/logout.svg" alt="logout">
       </div>
       <div v-else class="right-container"></div>
     </div>

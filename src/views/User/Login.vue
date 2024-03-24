@@ -82,9 +82,9 @@
   <div class="root-signin">
     <main class="content">
       <section class="animation">
-        <div><img src="../../../res/images/339.svg" alt=""></div>
-        <div><img src="../../../res/images/339.svg" alt=""></div>
-        <div><img src="../../../res/images/339.svg" alt=""></div>
+        <div><img src="/res/images/339.svg" alt=""></div>
+        <div><img src="/res/images/339.svg" alt=""></div>
+        <div><img src="/res/images/339.svg" alt=""></div>
       </section>
 
       <section class="form">

@@ -79,8 +79,8 @@
     </nav>
 
     <section class="decoration">
-      <img class="sparkle" src="../../../res/images/miss-decorations/sparkle.png" alt="">
-      <img class="sparkle" src="../../../res/images/miss-decorations/sparkle.png" alt="">
+      <img class="sparkle" src="/res/images/miss-decorations/sparkle.png" alt="">
+      <img class="sparkle" src="/res/images/miss-decorations/sparkle.png" alt="">
     </section>
   </header>
 </template>

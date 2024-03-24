@@ -29,7 +29,7 @@
 <template>
   <header class="root-header">
     <div class="background-container">
-      <img class="background" src="../../../res/images/header-image.jpg" alt=""/>
+      <img class="background" src="/res/images/header-image.jpg" alt=""/>
     </div>
     <DaysPreview class="days-preview"></DaysPreview>
   </header>

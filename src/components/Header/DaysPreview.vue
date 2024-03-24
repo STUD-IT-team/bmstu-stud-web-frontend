@@ -91,7 +91,7 @@
 
 <template>
   <div class="root-3-days-preview">
-    <button class="left-arrow" @click="changeDateFrom(-1)"><img src="../../../res/icons/arrow-left.svg" alt="arrow-left"></button>
+    <button class="left-arrow" @click="changeDateFrom(-1)"><img src="/res/icons/arrow-left.svg" alt="arrow-left"></button>
     <div class="week-info-block">
       <div class="evenness">ЧС</div>
       <div class="week-number">17 нед</div>
@@ -106,7 +106,7 @@
         ></OneDay>
       </transition-group>
     </div>
-    <button class="right-arrow" @click="changeDateFrom(+1)"><img src="../../../res/icons/arrow-right.svg" alt="arrow-left"></button>
+    <button class="right-arrow" @click="changeDateFrom(+1)"><img src="/res/icons/arrow-right.svg" alt="arrow-left"></button>
   </div>
 </template>
 
