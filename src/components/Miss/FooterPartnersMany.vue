@@ -53,7 +53,7 @@
         </div>
         <div class="footer-bottom">
         <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024
-            <img class="footer-logo" src="../../../res/images/logoStudMiss.png" alt="stud-miss-logo"/>
+            <img class="footer-logo" src="/res/icons/logoBaumStudMiss.svg" alt="stud-miss-logo"/>
         </div>
         </div>
     </footer>
