@@ -29,11 +29,16 @@
       <div class="info">Запрошенной страницы не существует</div>
       <router-link :to="{name: 'default'}"></router-link>
     </div>
+
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
+import Footer from "~/components/Footer.vue";
+
 export default {
+  components: {Footer}
 }
 </script>
 

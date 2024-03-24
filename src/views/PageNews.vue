@@ -62,18 +62,18 @@ padding-sides = 20px
       </nav>
 
       <section class="news-blocks-section-container">
-        <ul class="news-container">
-          <li><New v-for="(oneNew, idx) in news"
-               :id="oneNew.id"
-               :title="oneNew.title"
-               :text="oneNew.description"
-               organization-name="Студнческий совет МГТУ им. Н.Э. Баумана"
-               :organization-logo="StudLogo"
-               :images-src="[Picture]"
-               :time-published="oneNew.created_at"
-               @delete="news.splice(idx, 1)"
-          ></New></li>
-        </ul>
+        <div class="news-container">
+          <New v-for="(oneNew, idx) in news"
+             :id="oneNew.id"
+             :title="oneNew.title"
+             :text="oneNew.description"
+             organization-name="Студнческий совет МГТУ им. Н.Э. Баумана"
+             :organization-logo="StudLogo"
+             :images-src="[Picture]"
+             :time-published="oneNew.created_at"
+             @delete="news.splice(idx, 1)"
+          ></New>
+        </div>
         <div class="side-blocks-container">
           <ListingBlock title="Поздравляем!"
                         :text-rows="[
@@ -108,10 +108,11 @@ import New from "~/components/New.vue";
 import StudLogo from "#~/images/stud-logo-circle.svg";
 import Picture from "#~/images/stud-logo-circle.svg";
 import ListingBlock from "~/components/ListingBlock.vue";
+import Footer from "~/components/Footer.vue";
 
 
 export default {
-  components: {ListingBlock, New, Header},
+  components: {Footer, ListingBlock, New, Header},
 
   data() {
     return {

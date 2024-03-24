@@ -30,6 +30,8 @@
                       :events="dayEvents.events"
       ></CalendarOneDay>
     </ul>
+
+    <Footer></Footer>
   </div>
 </template>
 
@@ -37,10 +39,11 @@
 <script>
 import {addDaysToDate, compressEventsByDays, getDateDayEnd, getDateDayStart} from "~/utils/utils";
 import CalendarOneDay from "~/components/CalendarOneDay.vue";
+import Footer from "~/components/Footer.vue";
 
 
 export default {
-  components: {CalendarOneDay},
+  components: {Footer, CalendarOneDay},
   props: {
     fromDate: Date,
     daysPeriod: {

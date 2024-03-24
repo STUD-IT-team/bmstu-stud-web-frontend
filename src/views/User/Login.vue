@@ -98,7 +98,6 @@
         ></FormWithErrors>
       </section>
     </main>
-    <Footer></Footer>
   </div>
 </template>
 
@@ -107,11 +106,10 @@ import FormWithErrors from "~/components/FormWithErrors.vue";
 import {detectBrowser, detectOS} from "~/utils/utils";
 import CircleLoading from "~/components/CircleLoading.vue";
 import {Validators} from "~/utils/validators";
-import Footer from "~/components/Footer.vue";
 
 
 export default {
-  components: {CircleLoading, FormWithErrors, Footer},
+  components: {CircleLoading, FormWithErrors},
   data() {
     return {
       fields: {
