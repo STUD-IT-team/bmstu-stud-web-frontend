@@ -9,6 +9,7 @@
   text-align center
   padding 25px 0
   .footer-logo
+    width 25%
     margin-bottom 25px
   .footer-text
     font-medium()
@@ -16,7 +17,7 @@
 
 <template>
   <footer class="footer-container">
-    <img class="footer-logo" src="/res/images/logoStudMiss.png" alt="miss-photo"/>
+    <img class="footer-logo" src="/res/icons/logoBaumStudMiss.svg" alt="miss-photo"/>
     <div class="footer-text">Студенческий совет МГТУ им. Н.Э. Баумана 2024</div>
   </footer>
 </template>
