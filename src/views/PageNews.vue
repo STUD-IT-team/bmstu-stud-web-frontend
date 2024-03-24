@@ -63,7 +63,7 @@ padding-sides = 20px
 
       <section class="news-blocks-section-container">
         <ul class="news-container">
-          <New v-for="(oneNew, idx) in news"
+          <li><New v-for="(oneNew, idx) in news"
                :id="oneNew.id"
                :title="oneNew.title"
                :text="oneNew.description"
@@ -72,7 +72,7 @@ padding-sides = 20px
                :images-src="[Picture]"
                :time-published="oneNew.created_at"
                @delete="news.splice(idx, 1)"
-          ></New>
+          ></New></li>
         </ul>
         <div class="side-blocks-container">
           <ListingBlock title="Поздравляем!"
