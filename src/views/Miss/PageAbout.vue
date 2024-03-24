@@ -48,6 +48,9 @@
 
     .image-full-size
       width 100%
+      min-height 500px
+      @media ({mobile})
+        min-height 300px
       border-radius borderRadiusM
       overflow hidden
     .horizontal-scroll-container
@@ -88,7 +91,8 @@
       </ul>
       <p>После проведения всех этапов <mark>подводятся итоги</mark> и, конечно же, <mark>проходит награждение</mark> всех финалисток.</p>
       <header class="header-colored">КАК ЭТО БЫЛО</header>
-      <img class="image-full-size" src="/res/images/missAwarding.png" alt="photo from awarding">
+<!--      <img class="image-full-size" src="/res/images/missAwarding.png" alt="photo from awarding">-->
+      <iframe class="image-full-size" src="https://vk.com/video_ext.php?oid=-26724538&id=456239353&hd=3&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
     </section>
 
     <header class="header">ЖЮРИ</header>
