@@ -108,7 +108,7 @@
 
 <script>
 import Header from "~/components/Miss/Header.vue";
-import Footer from "~/components/Miss/FooterPartners.vue";
+import Footer from "~/components/Miss/FooterPartnersMany.vue";
 
 export default {
   components: {Header, Footer},
