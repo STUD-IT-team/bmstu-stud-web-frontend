@@ -23,6 +23,8 @@
     .contact:not(:last-child)
       display block
       margin-bottom 15px
+    .contact
+      hover-effect()
 
   .organizers-container
     display flex
@@ -39,9 +41,9 @@
     <header class="header">КОНТАКТЫ</header>
     <section class="contacts">
       <label>Адрес</label>
-      <div class="contact">2-я Бауманская ул., д.5, Главный учебный корпус, ауд. 339ю</div>
+      <a class="contact" href="https://yandex.ru/maps/-/CDRYrHYz">г.Москва, 2-я Бауманская улица, 5с4, южное крыло, ауд. 339ю</a>
       <label>Телефон</label>
-      <div class="contact">+7 (499) 263-68-55</div>
+      <a class="contact" href="tel:+74952636855">+7 (495) 263-68-55</a>
       <label>Группа VK</label>
       <a class="contact" href="https://vk.com/miss_bmstu" target="_blank">vk.com/miss_bmstu</a>
       <label>E-mail</label>
@@ -59,15 +61,15 @@
       <OrganizerCard class="organizer-card"
                      :image="ImageTamaraSergeeva"
                      name="Тамара Сергеева"
-                     phone="+7 (964) 998-35-65"
-                     mail="mescheryakova@bmstu.ru"
+                     phone="+7 (916) 881-04-73"
+                     mail="keylabupsi@gmail.com"
                      title="Главный организатор конкурса"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
                      :image="ImageGeorgiyAvdeev"
                      name="Георгий Авдеев"
-                     phone="+7 (968) 094-28-12"
-                     mail="partners.studsovet@gmail.com"
+                     phone="+7 (985) 436-58-91"
+                     mail="geor.avdeeff@yandex.ru"
                      title="Работа с партнерами"
       ></OrganizerCard>
     </ul>
