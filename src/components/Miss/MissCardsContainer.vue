@@ -20,7 +20,7 @@
 
 <template>
   <ul class="root-miss-cards-container">
-    <MissCard v-for="(miss, idx) in missList"
+    <MissCard v-for="(miss, idx) in resultMissList"
               class="card"
               :group="miss.group"
               :name="miss.name"
@@ -43,9 +43,17 @@ export default {
 
   props: {
     showVotes: Boolean,
+
+    showFromIndex: {
+      type: Number,
+      default: 0,
+    }
   },
 
   computed: {
+    resultMissList() {
+      return missList.slice(this.showFromIndex, this.missList.lehgth);
+    },
     maxVotesCount() {
       return this.missList.reduce((maxVotes, miss) => Math.max(maxVotes, miss.votesCount), -Infinity);
     },

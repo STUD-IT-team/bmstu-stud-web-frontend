@@ -40,22 +40,22 @@
     </div>
     <ul class="cards-container-final">
       <MissCardFinal class="card"
-                     group="miss.group"
-                     name="miss.name"
+                     :group="missList[0].group"
+                     :name="missList[0].name"
                      :position="1"
-                     image="miss.image"
+                     :image="missList[0].image"
                      title="МИСС ОЧАРОВАНИЕ"
       ></MissCardFinal>
       <MissCardFinal class="card"
-                     group="miss.group"
-                     name="miss.name"
-                     :position="2"
-                     image="miss.image"
+                     :group="missList[1].group"
+                     :name="missList[1].name"
+                     :position="1"
+                     :image="missList[1].image"
                      title="ВИЦЕ-МИСС"
                      light
       ></MissCardFinal>
     </ul>
-    <MissCardsContainer></MissCardsContainer>
+    <MissCardsContainer :show-from-index="2"></MissCardsContainer>
   </div>
 </template>
 
@@ -64,12 +64,14 @@
 import MissCardsContainer from "~/components/Miss/MissCardsContainer.vue";
 import FooterFivePartners from "~/components/Miss/FooterFivePartners.vue";
 import MissCardFinal from "~/components/Miss/MissCardFinal.vue";
+import {missList} from "~/utils/constants";
 
 export default {
   components: {MissCardsContainer, FooterFivePartners, MissCardFinal},
 
   data() {
     return {
+      missList,
     }
   },
 

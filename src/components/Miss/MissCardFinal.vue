@@ -24,9 +24,13 @@
     display inline
     width auto
     height 195px
+    width 100%
+    position relative
     circle-size = 30px
     .circle-name-container
-      vertical-align middle
+      display flex
+      align-items center
+      gap 10px
       .circle-position
         font-medium()
         color colorMiss1
@@ -43,10 +47,6 @@
         display inline
         color colorMiss2
         line-height circle-size
-        &.too-long
-          letter-spacing -.3px
-          font-small-extra()
-          line-height circle-size
     .group
       font-small()
       color white
@@ -55,10 +55,12 @@
       font-large-extra()
       font-bold()
       color white
-    .card-crown-container
-      text-align right
-      .card-crown
-        width 20%
+
+    .card-crown
+      width 20%
+      position absolute
+      bottom 15px
+      right 20px
   &.light
     .card-final-form
       background white
@@ -80,14 +82,14 @@
     <div class="card-final-form">
       <div class="circle-name-container">
         <div class="circle-position">{{ position }}</div>
-        <div class="name" :class="{'too-long': name.length >= 20}">{{ name }}<br></div>
+        <div class="name">{{ name }}<br></div>
       </div>
       <div class="group">Группа: {{ group }}<br></div>
       <span class="title">{{ title }}</span>
-      <div class="card-crown-container">
-        <img v-if="light" class="card-crown" src="../../../res/icons/crownLilac.svg" alt="crownLilac"/>
-        <img v-else class="card-crown" src="../../../res/icons/crownWhite.svg" alt="crownWhite"/>
-      </div>
+
+      
+      <img v-if="light" class="card-crown" src="../../../res/icons/crownLilac.svg" alt="crownLilac"/>
+      <img v-else class="card-crown" src="../../../res/icons/crownWhite.svg" alt="crownWhite"/>
     </div>
   </li>
 </template>
