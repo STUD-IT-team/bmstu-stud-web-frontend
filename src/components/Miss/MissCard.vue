@@ -15,11 +15,12 @@
       opacity 0.9
       width 120%
       margin-left -10%
+      transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
   img.photo
     width 100%
     height 210px
     object-fit cover
-    transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
+    transition all 0.4s ease-in-out
 
   .section-info
     margin-bottom 10px

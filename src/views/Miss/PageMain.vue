@@ -10,14 +10,14 @@
   position relative
   overflow hidden
   .main
-    padding 40px 120px
-    @media ({mobile})
-      padding-left 20px
-      padding-right 20px
+    padding-sides = 120px
+    padding 40px padding-sides
     trans()
     max-height 0
     overflow hidden
     animation main-roll-down 2s ease forwards
+    centered-margin()
+    max-width (1140px + padding-sides * 2)
     @keyframes main-roll-down
       0%
         opacity 0
@@ -132,7 +132,7 @@ export default {
       console.log(from.path, 'TO', to.path)
     },
   },
-  
+
   mounted() {
     window.addEventListener('scroll', this.onScroll, {passive: true});
   },
