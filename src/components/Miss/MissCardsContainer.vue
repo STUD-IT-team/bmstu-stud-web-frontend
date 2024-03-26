@@ -14,8 +14,9 @@
     justify-content center
   gap 20px
   .card
-    width 100%
+    width 45%
     max-width 190px
+    min-width 130px
     opacity 0
     animation card-in 0.5s ease forwards
     animation-delay calc(var(--index) * 0.05s)

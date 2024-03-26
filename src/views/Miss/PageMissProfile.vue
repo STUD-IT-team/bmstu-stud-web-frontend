@@ -146,7 +146,7 @@
     <section class="profile-container">
       <div class="c1">
         <div class="sticky-photo-container">
-          <img class="profile-photo" src="/res/images/imageMisska0.png" alt="photo">
+          <img class="profile-photo" :src="miss.image" alt="photo">
         </div>
       </div>
       <div class="right-column">
@@ -179,12 +179,7 @@
     </section>
 
     <ul class="images-container">
-      <li class="image"><img src="/res/images/imageMisska0.png" alt="photo"></li>
-      <li class="image"><img src="/res/images/imageMisska0.png" alt="photo"></li>
-      <li class="image"><img src="/res/images/imageMisska0.png" alt="photo"></li>
-      <li class="image"><img src="/res/images/imageMisska0.png" alt="photo"></li>
-      <li class="image"><img src="/res/images/imageMisska0.png" alt="photo"></li>
-      <li class="image"><img src="/res/images/imageMisska0.png" alt="photo"></li>
+      <li class="image" v-for="image in miss.bioImages"><img :src="image" alt="photo"></li>
     </ul>
   </div>
 </template>
@@ -203,10 +198,9 @@ export default {
     }
   },
 
-  async mounted() {
+  mounted() {
     this.updateMiss(this.missId);
 
-    await nextTick();
     window.scrollTo({top: 0, behavior: "smooth"});
   },
 
@@ -214,17 +208,22 @@ export default {
     goToDifferentMiss(incrementValueIdx) {
       const newId = missList[this.miss.idx + incrementValueIdx].id;
       this.$router.push({name: 'missProfile', params: {missId: newId}})
-      this.updateMiss(newId);
     },
     updateMiss(newMissId) {
       this.missId = newMissId;
       const foundMissIdx = missList.findIndex(miss => miss.id === this.missId);
       if (foundMissIdx === -1) {
-        this.$popups.error('Ошибка', `Участница с номером ${this.missId} не найдена`);
-        this.$router.push({name: 'miss'});
+        // this.$popups.error('Ошибка', `Участница с номером ${this.missId} не найдена`);
+        // this.$router.push({name: 'miss'});
         return;
       }
       this.miss = Object.assign({idx: foundMissIdx}, missList[foundMissIdx]);
+    }
+  },
+
+  watch: {
+    '$route.params.missId'(to) {
+      this.updateMiss(Number(to));
     }
   }
 }

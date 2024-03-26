@@ -25,6 +25,9 @@
         letter-spacing 0
     .special
       font-special()
+      font-size 50px
+      @media ({mobile})
+        transform translateY(-70px) // WTF? Шрифт отображается ниже, чем нужно, только на настоящих мобилках, а не на компах с экраном в 300px
     .normal
       font-large-x()
       margin-top -25px
