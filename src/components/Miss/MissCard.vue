@@ -10,6 +10,8 @@
   overflow hidden
   background white
   border 2px solid colorMiss1
+  display flex
+  flex-direction column
   &:hover
     img.photo
       opacity 0.9
@@ -21,6 +23,7 @@
     height 210px
     object-fit cover
     transition all 0.4s ease-in-out
+    margin-bottom 3px
 
   .section-info
     margin-bottom 10px
@@ -31,6 +34,8 @@
     .circle-position
       font-medium()
       color white
+      min-width circle-size
+      min-height circle-size
       width circle-size
       height circle-size
       line-height circle-size
@@ -44,14 +49,13 @@
         color colorMiss2
         line-height circle-size
         &.too-long
-          letter-spacing -0.3px
-          font-small-x()
-          line-height circle-size
+          line-height 1.2
       .group
         font-small-x()
         color colorMiss2
 
   .section-voting
+    margin-top auto
     padding-bottom 7px
     .info
       font-small-x()
