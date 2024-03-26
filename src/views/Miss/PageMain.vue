@@ -12,6 +12,9 @@
   .main
     padding-sides = 120px
     padding 40px padding-sides
+    @media ({mobile})
+      padding-sides = 20px
+      padding 40px padding-sides
     trans()
     max-height 0
     overflow hidden
