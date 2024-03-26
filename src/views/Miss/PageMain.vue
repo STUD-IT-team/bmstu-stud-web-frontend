@@ -87,7 +87,7 @@
 
     <main class="main">
       <router-view v-slot="{ Component }">
-        <transition name="scale-in" mode="out-in">
+        <transition :name="transitionName" mode="out-in">
           <component :is="Component"/>
         </transition>
       </router-view>
@@ -108,7 +108,7 @@
 
 <script>
 import Header from "~/components/Miss/Header.vue";
-import Footer from "~/components/Miss/FooterPartnersMany.vue";
+import Footer from "~/components/Miss/FooterPartnersTooMany.vue";
 
 export default {
   components: {Header, Footer},
@@ -116,9 +116,23 @@ export default {
   data() {
     return {
       scrollTop: 0,
+
+      transitionName: "scale-in",
     }
   },
 
+  watch: {
+    $route(to, from) {
+      this.transitionName = 'scale-in';
+      const isMissProfile = (path) => /^\/miss\/profile/.test(path);
+      if (isMissProfile(to.path) && isMissProfile(from.path)) {
+        this.transitionName = 'opacity';
+      }
+
+      console.log(from.path, 'TO', to.path)
+    },
+  },
+  
   mounted() {
     window.addEventListener('scroll', this.onScroll, {passive: true});
   },
