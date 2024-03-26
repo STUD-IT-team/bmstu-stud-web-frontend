@@ -36,16 +36,22 @@
     .partner-container
       margin-bottom 10px
       display flex
-      gap 20px
       overflow hidden
+      @media ({mobile})
+        flex-direction column
+        align-items center
+        gap 10px
       img
-        height 300px
-        width 300px
+        flex 1
+        height 100%
+        width 100%
+        min-width 200px
+        max-width 350px
         background white
         border-radius borderRadiusL
       .info-container
+        flex 2
         padding 20px
-        padding-left 0
         .title
           font-large()
           margin-bottom 10px
