@@ -36,23 +36,23 @@
     @media ({mobile})
       flex-direction column
       align-items center
-    .c1
+    .photo-container
       flex 1
-    .sticky-photo-container
-      flex 1
-      position sticky
-      top 15px
+      photo-max-size = 445px
+      photo-min-size = 200px
+      min-width photo-min-size
+      min-height photo-min-size
+      max-width photo-max-size
+      max-height photo-max-size
+      width 100%
+      height 100%
+      aspect-ratio 1 / 1
+      border 2px solid colorMiss1
+      border-radius borderRadiusMax
+      overflow hidden
       .profile-photo
-        photo-max-size = 445px
-        photo-min-size = 200px
-        min-width photo-min-size
-        min-height photo-min-size
-        max-width photo-max-size
-        width 100%
+        margin-top -20px
         background white
-        border 2px solid colorMiss1
-        border-radius borderRadiusMax
-        overflow hidden
     .right-column
       flex 2
       .age-height-group-container
@@ -144,10 +144,8 @@
     </header>
 
     <section class="profile-container">
-      <div class="c1">
-        <div class="sticky-photo-container">
-          <img class="profile-photo" :src="miss.image" alt="photo">
-        </div>
+      <div class="photo-container">
+        <ImageWebpJpg class="profile-photo" :src-jpg="miss.imageJpg" :src-webp="miss.imageWebp" alt="photo"></ImageWebpJpg>
       </div>
       <div class="right-column">
         <section class="age-height-group-container">
@@ -186,9 +184,11 @@
 
 <script>
 import {missList} from "~/utils/constants";
+import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
 
 
 export default {
+  components: {ImageWebpJpg},
   data() {
     return {
       missId: Number(this.$route.params.missId),

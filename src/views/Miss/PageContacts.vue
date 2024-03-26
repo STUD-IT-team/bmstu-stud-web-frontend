@@ -52,21 +52,24 @@
 
     <ul class="organizers-container">
       <OrganizerCard class="organizer-card"
-                     :image="ImagePavelOrlov"
+                     :image-webp="ImagePavelOrlovWebp"
+                     :image-jpg="ImagePavelOrlovJpg"
                      name="Павел Орлов"
                      phone="+7 (915) 720-89-11"
                      mail="orlov@bmstu.ru"
                      title="Председатель Студенческого Совета"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
-                     :image="ImageTamaraSergeeva"
+                     :image-webp="ImageTamaraSergeevaWebp"
+                     :image-jpg="ImageTamaraSergeevaJpg"
                      name="Тамара Сергеева"
                      phone="+7 (916) 881-04-73"
                      mail="keylabupsi@gmail.com"
                      title="Главный организатор конкурса"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
-                     :image="ImageGeorgiyAvdeev"
+                     :image-webp="ImageGeorgiyAvdeevWebp"
+                     :image-jpg="ImageGeorgiyAvdeevJpg"
                      name="Георгий Авдеев"
                      phone="+7 (985) 436-58-91"
                      mail="geor.avdeeff@yandex.ru"
@@ -78,18 +81,24 @@
 
 <script>
 import OrganizerCard from "~/components/Miss/OrganizerCard.vue";
-import ImagePavelOrlov from '#~/images/miss-organizers/PavelOrlov.png';
-import ImageTamaraSergeeva from '#~/images/miss-organizers/TamaraSergeeva.png';
-import ImageGeorgiyAvdeev from '#~/images/miss-organizers/GeorgiyAvdeev.png';
+import ImagePavelOrlovWebp from '#~/images/miss-organizers/webp-266/PavelOrlov.webp';
+import ImageTamaraSergeevaWebp from '#~/images/miss-organizers/webp-266/TamaraSergeeva.webp';
+import ImageGeorgiyAvdeevWebp from '#~/images/miss-organizers/webp-266/GeorgiyAvdeev.webp';
+import ImagePavelOrlovJpg from '#~/images/miss-organizers/jpg-266/PavelOrlov.jpg';
+import ImageTamaraSergeevaJpg from '#~/images/miss-organizers/jpg-266/TamaraSergeeva.jpg';
+import ImageGeorgiyAvdeevJpg from '#~/images/miss-organizers/jpg-266/GeorgiyAvdeev.jpg';
 
 export default {
   components: {OrganizerCard},
 
   data() {
     return {
-      ImagePavelOrlov,
-      ImageTamaraSergeeva,
-      ImageGeorgiyAvdeev,
+      ImagePavelOrlovWebp,
+      ImageTamaraSergeevaWebp,
+      ImageGeorgiyAvdeevWebp,
+      ImagePavelOrlovJpg,
+      ImageTamaraSergeevaJpg,
+      ImageGeorgiyAvdeevJpg,
     }
   }
 }

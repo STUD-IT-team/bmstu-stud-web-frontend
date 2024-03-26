@@ -32,7 +32,7 @@
 
 <template>
   <li class="root-organizer-card">
-    <img class="photo" :src="image" alt="photo"/>
+    <ImageWebpJpg class="photo" :src-jpg="imageJpg" :src-webp="imageWebp"></ImageWebpJpg>
     <section class="section-info">
       <header class="name">{{ name }}</header>
 
@@ -44,9 +44,16 @@
 </template>
 
 <script>
+import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
+
 export default {
+  components: {ImageWebpJpg},
   props: {
-    image: {
+    imageWebp: {
+      type: String,
+      required: true,
+    },
+    imageJpg: {
       type: String,
       required: true,
     },

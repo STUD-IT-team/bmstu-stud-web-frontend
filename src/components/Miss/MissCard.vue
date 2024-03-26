@@ -13,17 +13,20 @@
   display flex
   flex-direction column
   &:hover
-    img.photo
-      opacity 0.9
-      width 120%
-      margin-left -10%
-      transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
-  img.photo
-    width 100%
+    .photo-container
+      .photo
+        filter brightness(1.2)
+        transform scale(1.1)
+        transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
+  .photo-container
     height 210px
-    object-fit cover
-    transition all 0.4s ease-in-out
+    overflow hidden
     margin-bottom 3px
+    .photo
+      width 100%
+      //height 100%
+      height 270px
+      transition all 0.4s ease-in-out
 
   .section-info
     margin-bottom 10px
@@ -89,7 +92,9 @@
 
 <template>
   <router-link :to="{name: 'missProfile', params: {missId: id}}" class="root-miss-card">
-    <img class="photo" :src="image" alt="photo"/>
+    <div class="photo-container">
+      <ImageWebpJpg class="photo" :src-webp="imageWebp" :src-jpg="imageJpg" alt="photo"/>
+    </div>
     <section class="section-info">
       <div class="circle-position">{{ id }}</div>
       <div class="name-group-container">
@@ -107,10 +112,16 @@
 
 <script>
 import {phoneNumberToVoting} from "~/utils/constants";
+import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
 
 export default {
+  components: {ImageWebpJpg},
   props: {
-    image: {
+    imageWebp: {
+      type: String,
+      required: true,
+    },
+    imageJpg: {
       type: String,
       required: true,
     },
