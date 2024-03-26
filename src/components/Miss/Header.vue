@@ -56,10 +56,36 @@
     pointer-events none
     .sparkle
       position absolute
+      animation sparkle-flick 3s cubic-bezier(0.06, 0.42, 0.78, 1.34) infinite
+      @keyframes sparkle-flick
+        0%
+          opacity 75%
+        8%
+          opacity 85%
+        28%
+          opacity 75%
+        30%
+          opacity 100%
+        46%
+          opacity 80%
+        52%
+          opacity 90%
+        69%
+          opacity 75%
+        73%
+          opacity 90%
+        80%
+          opacity 70%
+        86%
+          opacity 100%
+        100%
+          opacity 70%
+
       &:nth-child(1)
         top 30%
         left calc(10% - 120px)
       &:nth-child(2)
+        animation-delay 1.5s
         top 10%
         right calc(20% - 240px)
 </style>
