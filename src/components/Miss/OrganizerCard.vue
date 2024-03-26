@@ -25,6 +25,7 @@
       line-height 1.5
     .name
       font-medium()
+      font-bold()
       color colorMiss2
       margin-bottom 3px
 </style>
