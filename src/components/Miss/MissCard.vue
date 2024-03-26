@@ -10,10 +10,16 @@
   overflow hidden
   background white
   border 2px solid colorMiss1
+  &:hover
+    img.photo
+      opacity 0.9
+      width 120%
+      margin-left -10%
   img.photo
     width 100%
     height 210px
     object-fit cover
+    transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
 
   .section-info
     margin-bottom 10px
@@ -77,7 +83,7 @@
 </style>
 
 <template>
-  <li class="root-miss-card">
+  <router-link :to="{name: 'missProfile', params: {missId: id}}" class="root-miss-card">
     <img class="photo" :src="image" alt="photo"/>
     <section class="section-info">
       <div class="circle-position">{{ id }}</div>
@@ -91,7 +97,7 @@
       <div class="slider" :style="{'--progress': progressToMax}">{{ Math.ceil(progressTotal * 100 * 100 / 100) }}%</div>
       <div class="votes-count">Количество голосов: {{ votesCount }}</div>
     </section>
-  </li>
+  </router-link>
 </template>
 
 <script>

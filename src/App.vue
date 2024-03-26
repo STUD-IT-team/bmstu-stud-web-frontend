@@ -88,6 +88,29 @@
 }
 </style>
 
+<style>
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+    /* opacity: 0; */
+    position: absolute;
+  }
+  100% {
+    transform: translateX(0);
+    /* opacity: 1; */
+    position: absolute;
+  }
+}
+.slide-left-enter-active {
+  overflow: hidden;
+  animation: slide-left .2s ease;
+}
+.slide-left-leave-active {
+  overflow: hidden;
+  animation: slide-left .2s ease reverse forwards;
+}
+</style>
+
 <script>
 import {getCurrentInstance} from "vue";
 import {Modals, Popups} from "@sergtyapkin/modals-popups";

@@ -15,6 +15,7 @@ import PageMain from "~/views/Miss/PageMain.vue";
 import PageAbout from "~/views/Miss/PageAbout.vue";
 import PageContacts from "~/views/Miss/PageContacts.vue";
 import pagePartners from "~/views/Miss/PagePartners.vue";
+import PageMissProfile from "~/views/Miss/PageMissProfile.vue";
 
 export default function createVueRouter(Store) {
     const routes = [
@@ -38,6 +39,7 @@ export default function createVueRouter(Store) {
             {path: '/miss/partners', name: 'missPartners', component: pagePartners, meta: {}},
             {path: '/miss/about', name: 'missAbout', component: PageAbout, meta: {}},
             {path: '/miss/contacts', name: 'missContacts', component: PageContacts, meta: {}},
+            {path: '/miss/profile/:missId', name: 'missProfile', component: PageMissProfile, meta: {}},
         ]},
 
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
