@@ -11,6 +11,7 @@
     display flex
     justify-content space-between
     align-items center
+    gap 10px
     border 2px solid colorMiss1
     padding 10px 15px
     margin-bottom 40px
@@ -30,9 +31,11 @@
   .profile-container
     margin-bottom 40px
     display flex
+    justify-content center
     gap 20px
-    circle-max-size = 445px
-    circle-min-size = 200px
+    @media ({mobile})
+      flex-direction column
+      align-items center
     .c1
       flex 1
     .sticky-photo-container
@@ -40,9 +43,11 @@
       position sticky
       top 15px
       .profile-photo
-        min-width circle-min-size
-        min-height circle-min-size
-        max-width circle-max-size
+        photo-max-size = 445px
+        photo-min-size = 200px
+        min-width photo-min-size
+        min-height photo-min-size
+        max-width photo-max-size
         width 100%
         background white
         border 2px solid colorMiss1
@@ -55,8 +60,8 @@
         display flex
         flex-wrap wrap
         align-items flex-start
-        justify-content space-between
-        gap 20px
+        justify-content flex-start
+        gap 30px
         height min-content
         margin-bottom 20px
         .info-block
@@ -70,7 +75,7 @@
             padding 5px 10px
           .info
             display inline-block
-      
+
       .questions-answers-container
         .answer-container
           font-small()
@@ -111,7 +116,7 @@
             overflow hidden
             transition all 0.4s ease
             line-height 1.5
-    
+
   .images-container
     display flex
     flex-wrap wrap
@@ -137,7 +142,7 @@
       <div class="info">№{{ miss.id }} {{ miss.name }}</div>
       <img class="arrow-right" :class="{'hidden': miss.idx === (missList.length - 1)}" @click="goToDifferentMiss(+1)" src="/res/icons/arrow-right-card.svg" alt="">
     </header>
-    
+
     <section class="profile-container">
       <div class="c1">
         <div class="sticky-photo-container">
@@ -148,11 +153,11 @@
         <section class="age-height-group-container">
           <div class="info-block">
             <div class="info-title">Возраст</div>
-            <span class="info">{{ miss.age }}</span>
+            <span class="info">{{ miss.age }} лет</span>
           </div>
           <div class="info-block">
             <div class="info-title">Рост</div>
-            <span class="info">{{ miss.height }}</span>
+            <span class="info">{{ miss.height }} см</span>
           </div>
           <div class="info-block">
             <div class="info-title">Группа</div>
@@ -202,7 +207,7 @@ export default {
     this.updateMiss(this.missId);
 
     await nextTick();
-    window.scrollTo({top: 0, behavior: "smooth"});  
+    window.scrollTo({top: 0, behavior: "smooth"});
   },
 
   methods: {

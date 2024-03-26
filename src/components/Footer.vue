@@ -66,7 +66,7 @@
       <div class="contacts">
         <header class="header">Контакты</header>
         <a class="address" href="https://yandex.ru/maps/-/CDRYrHYz">г.Москва, 2-я Бауманская улица, 5с4, южное крыло, ауд. 339ю</a>
-        <a class="phone" href="tel:+74952636855">+7 (495) 263 68-55</a>
+        <a class="phone" href="tel:+74952636855">+7 (495) 263-68-55</a>
         <div class="messengers">
           <a href="https://vk.com/studsovet_bmstu"><img src="/res/icons/vk.svg" alt="vk"></a>
           <a href="https://t.me/studsovet_bmstu"><img src="/res/icons/telegram.svg" alt="tg"></a>
