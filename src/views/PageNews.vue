@@ -37,6 +37,8 @@ padding-sides = 20px
     .news-blocks-section-container
       display flex
       gap between-columns-gap
+      @media ({mobile})
+        flex-direction column-reverse
       .news-container
         width 100%
         display flex
@@ -47,7 +49,8 @@ padding-sides = 20px
         flex-direction column
         gap between-news-gap
         > *
-          width 360px
+          @media ({desktop})
+            width 360px
 </style>
 
 <template>

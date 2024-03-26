@@ -64,8 +64,9 @@ text-section-max-height = 265px
   .images-section
     border-radius borderRadiusL
     overflow hidden
-    width images-section-width
-    min-width images-section-width
+    @media ({desktop})
+      width images-section-width
+      min-width images-section-width
     display flex
     flex-wrap wrap
     img
@@ -93,7 +94,8 @@ text-section-max-height = 265px
       hover-effect()
 
   &.collapsed
-    flex-direction row
+    @media ({desktop})
+      flex-direction row
     .text-section
       transition max-height .5s
       .description
