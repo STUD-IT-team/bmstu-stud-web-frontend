@@ -57,7 +57,10 @@ export default {
   props: {
     showVotes: Boolean,
 
-    excludedIds: [],
+    excludedIds: {
+      type: Array,
+      default: [],
+    },
   },
 
   computed: {
