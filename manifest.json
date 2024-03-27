@@ -8,6 +8,12 @@
       "type": "image/svg+xml",
       "sizes": "512x512",
       "purpose": "maskable"
+    },
+    {
+      "src": "/res/favicon-dark.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ],
   "id": "/?source=pwa",
@@ -16,6 +22,7 @@
   "display": "standalone",
   "scope": "/",
   "theme_color": "#1A1A1A",
+  "prefer_related_applications": false,
   "shortcuts": [
     {
       "name": "Мероприятия",
