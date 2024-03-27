@@ -107,30 +107,30 @@
       <iframe class="image-full-size" src="https://vk.com/video_ext.php?oid=-26724538&id=456239353&hd=3&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
     </section>
 
-    <header class="header">ЖЮРИ</header>
-    <section class="section-text">
-      <p>В состав членов жюри конкурса входит администрация Университета и партнеры нашего мероприятия. Возглавляет коллегию президент МГТУ им. Н.Э. Баумана, доктор технических наук, А.А. Александров.</p>
-      <p>В разные годы проведения конкурса в состав жюри входили следующие известные личности:</p>
-      <ul class="listing">
-        <li>Российский космонавт-испытатель, герой России — Олег Германович Артемьев;</li>
-        <li>Исполнительный директор Госкорпорации «Ростех» — Олег Николаевич Евтушенко</li>
-        <li>Генеральный директор АО «Объединенная приборостроительная корпорация» — Сергей Степанович Сахненко;</li>
-        <li>Председатель Правления акционерного общества «Роснано», выпускник МГТУ им. Н.Э. Баумана — Сергей Александрович Куликов;</li>
-        <li>Российская актриса и телеведущая — Юлия Михалкова.</li>
-      </ul>
-      <ul class="horizontal-scroll-container" ref="juryScrollerContainer">
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-      </ul>
-    </section>
+<!--    <header class="header">ЖЮРИ</header>-->
+<!--    <section class="section-text">-->
+<!--      <p>В состав членов жюри конкурса входит администрация Университета и партнеры нашего мероприятия. Возглавляет коллегию президент МГТУ им. Н.Э. Баумана, доктор технических наук, А.А. Александров.</p>-->
+<!--      <p>В разные годы проведения конкурса в состав жюри входили следующие известные личности:</p>-->
+<!--      <ul class="listing">-->
+<!--        <li>Российский космонавт-испытатель, герой России — Олег Германович Артемьев;</li>-->
+<!--        <li>Исполнительный директор Госкорпорации «Ростех» — Олег Николаевич Евтушенко</li>-->
+<!--        <li>Генеральный директор АО «Объединенная приборостроительная корпорация» — Сергей Степанович Сахненко;</li>-->
+<!--        <li>Председатель Правления акционерного общества «Роснано», выпускник МГТУ им. Н.Э. Баумана — Сергей Александрович Куликов;</li>-->
+<!--        <li>Российская актриса и телеведущая — Юлия Михалкова.</li>-->
+<!--      </ul>-->
+<!--      <ul class="horizontal-scroll-container" ref="juryScrollerContainer">-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>-->
+<!--      </ul>-->
+<!--    </section>-->
 
     <header class="header">НОМИНАЦИИ</header>
     <section class="section-text">
@@ -170,9 +170,9 @@ export default {
 
 
   mounted() {
-    this.juryScrollingTimer = setInterval(() => {
-      this.$refs.juryScrollerContainer.scrollBy({left: 1});
-    }, 50);
+    // this.juryScrollingTimer = setInterval(() => {
+    //   this.$refs.juryScrollerContainer.scrollBy({left: 1});
+    // }, 50);
   },
   unmounted() {
     clearInterval(this.juryScrollingTimer);
