@@ -7,17 +7,24 @@
 
 .root-calendar-one-day
   block(#F9E59A)
+  padding 2.5%
   .date
     text-transform capitalize
+    color #F9E59A
+
   .events-container
-    //block()
+    display flex
+    flex-direction column
+    width 250px
     .event
-      .title
-        color #F9E59A
-        font-medium()
-        margin-right 20px
-      .date
+      display flex
+      align-items center
+      flex-direction row
+      justify-content space-between
+      .time
         font-small()
+      .title
+        font-medium()
 
 </style>
 
@@ -26,8 +33,8 @@
     <div class="date">{{ datePrettified }}</div>
     <ul class="events-container">
       <li v-for="event in events" class="event">
-        <span class="title">{{ event.description }}</span>
-        <span class="date">{{ event.date.toLocaleTimeString('ru-RU', { hour: "numeric", minute: "2-digit" }) }}</span>
+        <div class="title">{{ event.description }}</div>
+        <div class="time">{{ event.date.toLocaleTimeString('ru-RU', {hour: "numeric", minute: "2-digit"}) }}</div>
       </li>
     </ul>
   </div>
@@ -55,13 +62,36 @@ export default {
 
   data() {
     return {
+      date: new Date(),
+      dateFormat: "long",
+      events: [
+        {
+          id: 1,
+          description: 'Event 1 description',
+          date: new Date('2024-03-27T18:00:00.000Z'),
+          approved: true,
+          created_at: new Date('2023-03-27T18:00:00.000Z'),
+          reg_url: 'https://example.com/reg1',
+          reg_open_date: new Date('2024-03-01T00:00:00.000Z'),
+          feedback_url: 'https://example.com/feedback1'
+        },
+
+        {
+          id: 2,
+          description: 'Event 2 description',
+          date: new Date('2024-03-28T19:00:00.000Z'),
+          approved: false,
+          created_at: new Date('2023-03-28T18:00:00.000Z'),
+          reg_url: 'https://example.com/reg2',
+          feedback_url: 'https://example.com/feedback2'
+        },
+      ]
     }
   },
 
   mounted() {
   },
 
-  methods: {
-  }
+  methods: {}
 };
 </script>
