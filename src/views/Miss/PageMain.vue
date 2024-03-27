@@ -96,6 +96,7 @@
     <ImageWebpJpg
       :src-jpg="`${ImageBackgroundLarge400Jpg} 400w, ${ImageBackgroundLarge800Jpg} 800w, ${ImageBackgroundLarge1440Jpg} 1440w`"
       :src-webp="`${ImageBackgroundLarge400Webp} 400w, ${ImageBackgroundLarge800Webp} 800w, ${ImageBackgroundLarge1440Webp} 1440w`"
+      sizes="100vw"
       class="background"
     ></ImageWebpJpg>
     <Header></Header>

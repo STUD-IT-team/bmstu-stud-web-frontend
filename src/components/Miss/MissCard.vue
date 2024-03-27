@@ -93,7 +93,7 @@
 <template>
   <router-link :to="{name: 'missProfile', params: {missId: id}}" class="root-miss-card">
     <div class="photo-container">
-      <ImageWebpJpg class="photo" :src-webp="imageWebp" :src-jpg="imageJpg" alt="photo"/>
+      <ImageWebpJpg class="photo" :src-webp="imageWebp" :src-jpg="imageJpg" sizes="200px" alt="photo"/>
     </div>
     <section class="section-info">
       <div class="circle-position">{{ id }}</div>

@@ -145,7 +145,7 @@
 
     <section class="profile-container">
       <div class="photo-container">
-        <ImageWebpJpg class="profile-photo" :src-jpg="miss.imageJpg" :src-webp="miss.imageWebp" alt="photo"></ImageWebpJpg>
+        <ImageWebpJpg class="profile-photo" :src-jpg="miss.imageJpg" :src-webp="miss.imageWebp" sizes="445px" alt="photo"></ImageWebpJpg>
       </div>
       <div class="right-column">
         <section class="age-height-group-container">

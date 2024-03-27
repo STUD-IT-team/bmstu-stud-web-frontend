@@ -78,7 +78,7 @@
 
 <template>
   <router-link :to="{name: 'missProfile', params: {missId: id}}" class="root-card-final" :class="{'light': light}">
-    <ImageWebpJpg class="miss-final-photo" :src-jpg="imageJpg" :src-webp="imageWebp" alt="miss-photo"></ImageWebpJpg>
+    <ImageWebpJpg class="miss-final-photo" :src-jpg="imageJpg" :src-webp="imageWebp" sizes="200px" alt="miss-photo"></ImageWebpJpg>
     <div class="card-final-form">
       <div class="circle-name-container">
         <div class="circle-position">{{ id }}</div>

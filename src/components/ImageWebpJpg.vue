@@ -10,9 +10,9 @@
 
 <template>
   <picture :class="class" class="root-picture">
-    <source type="image/webp" :srcset="srcWebp">
-    <source type="image/jpeg" :srcset="srcJpg">
-    <img :src="simpleSrc" :srcset="srcJpg" :alt="alt"/>
+    <source type="image/webp" :srcset="srcWebp" :sizes="sizes">
+    <source type="image/jpeg" :srcset="srcJpg" :sizes="sizes">
+    <img :src="simpleSrc" :srcset="srcJpg" :sizes="sizes" :alt="alt"/>
   </picture>
 </template>
 
@@ -21,6 +21,10 @@ export default {
   props: {
     class: String,
     alt: {
+      type: String,
+      default: '',
+    },
+    sizes: {
       type: String,
       default: '',
     },

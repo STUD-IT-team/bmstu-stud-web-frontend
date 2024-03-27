@@ -32,7 +32,7 @@
 
 <template>
   <li class="root-organizer-card">
-    <ImageWebpJpg class="photo" :src-jpg="imageJpg" :src-webp="imageWebp"></ImageWebpJpg>
+    <ImageWebpJpg class="photo" :src-jpg="imageJpg" :src-webp="imageWebp" sizes="400px"></ImageWebpJpg>
     <section class="section-info">
       <header class="name">{{ name }}</header>
 
