@@ -7,7 +7,6 @@ Allow: /miss
 Allow: /miss/partners
 Allow: /miss/about
 Allow: /miss/contacts
-# Allow: /miss/profile/
 Disallow: /miss
 Disallow: /miss/start
 Disallow: /miss/vote
