@@ -14,7 +14,7 @@
       margin-bottom 15px
       .footer-logo-left
         height 100px
-        margin-left 5%
+        margin-left 4.5%
         @media ({mobile})
           height 50px
       .footer-logo-center
@@ -40,12 +40,14 @@
       gap 10px 5px
       max-width 500px
       margin 0 auto
-      padding 0 40px
+      padding 0 120px
+      @media ({mobile})
+        padding 0 40px
       .partner
         flex 1
         min-width 40px
         max-width 80px
-      
+
   .footer-bottom-title
     font-medium()
     @media ({mobile})
