@@ -8,6 +8,7 @@
 .root-calendar-one-day
   block(#F9E59A)
   padding 2.5%
+  margin 0.5em
   .date
     text-transform capitalize
     color #F9E59A
