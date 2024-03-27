@@ -21,6 +21,7 @@ export default function createVueRouter(Store) {
     const routes = [
         {path: '/', name: 'default', component: PageNews, meta: {}},
         {path: '/news', name: 'news', component: PageNews, meta: {}},
+        {path: '/events', name: 'events', component: PageCalendar, meta: {}},
         {path: '/calendar', name: 'calendar', component: PageCalendar, meta: {}},
 
         {path: '/register', name: 'register', component: Registration, meta: {noLoginRequired: true}},

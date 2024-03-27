@@ -29,5 +29,9 @@ RUN export DOMAIN_URL=${DOMAIN_URL} && \
 # Finally - get only needed files from previous build stage. Static files + config
 FROM nginx:${NGINX_RELEASE:-1.23}
 COPY --from=build /home/node/front/dist /frontend-dist
+COPY --from=build /home/node/front/manifest.webmanifest /frontend-dist
+COPY --from=build /home/node/front/sitemap.xml /frontend-dist
+COPY --from=build /home/node/front/static /frontend-dist/static
+
 COPY --from=build /home/node/front/docker-deploy/nginx/nginx.conf /etc/nginx/nginx-not-substituted.conf
 COPY --from=build /home/node/front/docker-deploy/nginx/_nginx-substituted.conf /etc/nginx/nginx.conf
