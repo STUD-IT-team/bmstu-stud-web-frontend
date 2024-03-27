@@ -5,74 +5,69 @@
 @require '../../styles/components.styl'
 
 .root-footer-fiveteen-partners
-  border-top 1px solid colorMiss1
   text-align center
-  margin-bottom 10px
-  padding-top 25px
   .footer-top
-    padding-bottom 25px
+    border-top 1px solid colorMiss1
+    padding 25px 0
+    text-align center
+    .footer-logos
+      margin-bottom 15px
+      .footer-logo-left
+        height 100px
+        margin-left 5%
+        @media ({mobile})
+          height 50px
+      .footer-logo-center
+        height 100px
+        margin 0 10px 0 15px
+        @media ({mobile})
+          height 50px
+      .footer-logo-right
+        height 90px
+        @media ({mobile})
+          height 40px
+
     .footer-title
       font-large()
       font-normal()
       color colorMiss1
-    .partners-conteiner-mini
-      height auto
-      width 800px
-      display inline-grid
-      grid-template-columns repeat(10, 1fr)
-      grid-template-rows repeat(1, 1fr)
-      grid-column-gap 10px
-      grid-row-gap 10px
-      padding-left 60px
-      padding-right 60px
-      margin-top 15px
-      text-align center
-      .partner-mini
-        width 100%
-        margin 4px
-    .partners-conteiner
-      height auto
-      width 800px
-      display inline-grid
-      grid-template-columns repeat(5, 2fr)
-      grid-template-rows repeat(1, 2fr)
-      grid-column-gap 10px
-      grid-row-gap 10px
-      padding-left 60px
-      padding-right 60px
-      text-align center
+      margin-bottom 15px
+    .partners-container
+      width 100%
+      display flex
+      flex-wrap wrap
+      justify-content center
+      gap 10px 5px
+      max-width 500px
+      margin 0 auto
+      padding 0 40px
       .partner
-        width 100%
-        margin 4px
-  .footer-bottom
+        flex 1
+        min-width 40px
+        max-width 80px
+      
+  .footer-bottom-title
+    font-medium()
+    @media ({mobile})
+      font-small()
     border-top 1px solid colorMiss1
-    padding-top 20px
-    .footer-bottom-title
-      font-medium()
-      display inline-block
-      .footer-logo
-        width 60px
-        height 23px
-        display inline
-        vertical-align bottom
+    padding 10px 0
 </style>
 
 <template>
     <footer class="root-footer-fiveteen-partners">
       <div class="footer-top">
-        <span class="footer-title">ПАРТНЁРЫ КОНКУРСА<br></span>
-        <div class="partners-conteiner-mini">
-          <div v-for="_ in 10"><img class="partner-mini" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/></div>
+        <div class="footer-logos">
+          <a href="https://bmstu.ru" target="_blank"><img class="footer-logo-left" src="/res/icons/bmstu-logo.svg" alt="bmstu-logo"/></a>
+          <router-link :to="{name: 'default'}"><img class="footer-logo-center" src="/res/icons/stud-logo.svg" alt="stud-logo"/></router-link>
+          <router-link :to="{name: 'miss'}"><img class="footer-logo-right" src="/res/icons/crown-logo.svg" alt="crown-logo"/></router-link>
         </div>
-        <div class="partners-conteiner">
-          <div v-for="_ in 5"><img class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/></div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024
-          <img class="footer-logo" src="/res/icons/logoBaumStudMiss.svg" alt="stud-miss-logo"/>
+        <div class="footer-title">ПАРТНЁРЫ КОНКУРСА</div>
+        <div class="partners-container">
+          <img v-for="_ in 15" class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
         </div>
       </div>
+      <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024</div>
     </footer>
 </template>
 
