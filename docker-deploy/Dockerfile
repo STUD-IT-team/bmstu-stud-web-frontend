@@ -31,7 +31,7 @@ FROM nginx:${NGINX_RELEASE:-1.23}
 # Copy all builded bundle
 COPY --from=build /home/node/front/dist /frontend-dist
 # Copy SEO-files
-COPY --from=build /home/node/front/manifest.webmanifest /frontend-dist
+COPY --from=build /home/node/front/manifest.json /frontend-dist
 COPY --from=build /home/node/front/robots.txt /frontend-dist
 COPY --from=build /home/node/front/sitemap.xml /frontend-dist
 # Copy images with static url's
