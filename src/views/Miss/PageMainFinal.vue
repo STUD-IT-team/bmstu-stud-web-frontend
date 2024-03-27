@@ -3,6 +3,7 @@
 @require '../../styles/buttons.styl'
 @require '../../styles/fonts.styl'
 @require '../../styles/components.styl'
+
 .root-page-final
   .header
     font-large-x()
@@ -45,7 +46,7 @@
       <MissCardFinal class="card"
                      :group="missList[0].group"
                      :name="missList[0].name"
-                     :position="missList[0].id"
+                     :id="missList[0].id"
                      :image-jpg="missList[0].imageJpg"
                      :image-webp="missList[0].imageWebp"
                      title="МИСС ОЧАРОВАНИЕ"
@@ -53,7 +54,7 @@
       <MissCardFinal class="card"
                      :group="missList[1].group"
                      :name="missList[1].name"
-                     :position="missList[1].id"
+                     :id="missList[1].id"
                      :image-jpg="missList[1].imageJpg"
                      :image-webp="missList[1].imageWebp"
                      title="ВИЦЕ-МИСС"

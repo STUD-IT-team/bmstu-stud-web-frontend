@@ -12,12 +12,17 @@
   display flex
   width 600px
   height 195px
+  &:hover
+    .miss-final-photo
+      filter brightness(1.2)
+      transform scale(1.1)
+      transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
   .miss-final-photo
-    border-right 2px solid colorMiss1
     width 190px
     height 195px
     object-fit cover
     display inline-block
+    transition all 0.4s ease-in-out
   .card-final-form
     background colorMiss1
     padding 15px
@@ -72,11 +77,11 @@
 </style>
 
 <template>
-  <li class="root-card-final" :class="{'light': light}">
+  <router-link :to="{name: 'missProfile', params: {missId: id}}" class="root-card-final" :class="{'light': light}">
     <ImageWebpJpg class="miss-final-photo" :src-jpg="imageJpg" :src-webp="imageWebp" alt="miss-photo"></ImageWebpJpg>
     <div class="card-final-form">
       <div class="circle-name-container">
-        <div class="circle-position">{{ position }}</div>
+        <div class="circle-position">{{ id }}</div>
         <div class="name">{{ name }}<br></div>
       </div>
       <div class="group">Группа: {{ group }}<br></div>
@@ -86,7 +91,7 @@
       <img v-if="light" class="card-crown" src="../../../res/icons/crownLilac.svg" alt="crownLilac"/>
       <img v-else class="card-crown" src="../../../res/icons/crownWhite.svg" alt="crownWhite"/>
     </div>
-  </li>
+  </router-link>
 </template>
 
 
@@ -104,7 +109,7 @@ export default {
       type: String,
       required: true,
     },
-    position: {
+    id: {
       type: Number,
       required: true,
     },
