@@ -119,16 +119,16 @@
         <li>Российская актриса и телеведущая — Юлия Михалкова.</li>
       </ul>
       <ul class="horizontal-scroll-container" ref="juryScrollerContainer">
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
-        <li class="jury-container"><img class="image-jury-photo" src="/res/images/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
+        <li class="jury-container"><img class="image-jury-photo" src="/res/images/miss/imageMisska0.png" alt=""><span class="name">Антон Успенский</span></li>
       </ul>
     </section>
 

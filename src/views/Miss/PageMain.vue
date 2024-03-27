@@ -5,10 +5,18 @@
 @require '../../styles/components.styl'
 
 .root-page-main
-  background-image url("/res/images/backgroundLarge.png")
-  background-size cover
   position relative
   overflow hidden
+  //background-image url(/res/images/backgroundLarge.png)
+  //background-size cover
+  .background
+    position absolute
+    min-height 100%
+    top 0
+    left 0
+    width 100%
+    z-index -1
+
   .main
     padding-sides = 120px
     padding 40px padding-sides
@@ -81,11 +89,15 @@
         @media ({mobile})
           right -70px
           width 140px
-
 </style>
 
 <template>
   <div class="root-page-main">
+    <ImageWebpJpg
+      :src-jpg="`${ImageBackgroundLarge400Jpg} 400w, ${ImageBackgroundLarge800Jpg} 800w, ${ImageBackgroundLarge1440Jpg} 1440w`"
+      :src-webp="`${ImageBackgroundLarge400Webp} 400w, ${ImageBackgroundLarge800Webp} 800w, ${ImageBackgroundLarge1440Webp} 1440w`"
+      class="background"
+    ></ImageWebpJpg>
     <Header></Header>
 
     <main class="main">
@@ -112,15 +124,29 @@
 <script>
 import Header from "~/components/Miss/Header.vue";
 import Footer from "~/components/Miss/FooterPartnersTooMany.vue";
+import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
+import ImageBackgroundLarge400Jpg from "#~/images/miss/background/backgroundLarge400.jpg"
+import ImageBackgroundLarge800Jpg from "#~/images/miss/background/backgroundLarge800.jpg"
+import ImageBackgroundLarge1440Jpg from "#~/images/miss/background/backgroundLarge1440.jpg"
+import ImageBackgroundLarge400Webp from "#~/images/miss/background/backgroundLarge400.webp"
+import ImageBackgroundLarge800Webp from "#~/images/miss/background/backgroundLarge800.webp"
+import ImageBackgroundLarge1440Webp from "#~/images/miss/background/backgroundLarge1440.webp"
 
 export default {
-  components: {Header, Footer},
+  components: {ImageWebpJpg, Header, Footer},
 
   data() {
     return {
       scrollTop: 0,
 
       transitionName: "scale-in",
+
+      ImageBackgroundLarge400Jpg,
+      ImageBackgroundLarge800Jpg,
+      ImageBackgroundLarge1440Jpg,
+      ImageBackgroundLarge400Webp,
+      ImageBackgroundLarge800Webp,
+      ImageBackgroundLarge1440Webp,
     }
   },
 

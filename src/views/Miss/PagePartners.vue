@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import ImagePartner1 from '#~/images/imageMisska0.png';
+import ImagePartner1 from '#~/images/miss/imageMisska0.png';
 
 export default {
   data() {
