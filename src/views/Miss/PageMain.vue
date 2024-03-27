@@ -123,7 +123,7 @@
 
 <script>
 import Header from "~/components/Miss/Header.vue";
-import Footer from "~/components/Miss/FooterPartnersTooMany.vue";
+import Footer from "~/components/Miss/Footer.vue";
 import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
 import ImageBackgroundLarge400Jpg from "#~/images/miss/background/backgroundLarge400.jpg"
 import ImageBackgroundLarge800Jpg from "#~/images/miss/background/backgroundLarge800.jpg"
