@@ -57,15 +57,12 @@ export default {
   props: {
     showVotes: Boolean,
 
-    showFromIndex: {
-      type: Number,
-      default: 0,
-    }
+    excludedIds: [],
   },
 
   computed: {
     resultMissList() {
-      return missList.slice(this.showFromIndex, this.missList.lehgth);
+      return missList.filter(miss => !this.excludedIds.includes(miss.id));
     },
     maxVotesCount() {
       return this.missList.reduce((maxVotes, miss) => Math.max(maxVotes, miss.votesCount), -Infinity);

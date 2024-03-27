@@ -28,7 +28,9 @@
     gap 20px
     align-items center
     margin-bottom 20px
-
+  .cards-container-all
+    max-width 900px
+    centered-margin()
 </style>
 
 <template>
@@ -43,7 +45,7 @@
       <MissCardFinal class="card"
                      :group="missList[0].group"
                      :name="missList[0].name"
-                     :position="1"
+                     :position="missList[0].id"
                      :image-jpg="missList[0].imageJpg"
                      :image-webp="missList[0].imageWebp"
                      title="МИСС ОЧАРОВАНИЕ"
@@ -51,14 +53,14 @@
       <MissCardFinal class="card"
                      :group="missList[1].group"
                      :name="missList[1].name"
-                     :position="1"
+                     :position="missList[1].id"
                      :image-jpg="missList[1].imageJpg"
                      :image-webp="missList[1].imageWebp"
                      title="ВИЦЕ-МИСС"
                      light
       ></MissCardFinal>
     </ul>
-    <MissCardsContainer :show-from-index="2"></MissCardsContainer>
+    <MissCardsContainer class="cards-container-all" :excluded-ids="[1, 2]"></MissCardsContainer>
   </div>
 </template>
 
@@ -85,11 +87,3 @@ export default {
   }
 }
 </script>
-
-
-25 апреля в Большом зале Центра креативных индустрий прошел
-финал конкурса «МиСС Очарование  — 2024». В этом году конкурс прошел
-в двадцать третий раз. На бауманской сцене выступили 10 финалисток,
-которые раскрыли свой талант и показали свою уникальность.
-Ниже представлены результаты конкурса.
-

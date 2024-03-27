@@ -13,6 +13,10 @@
     .footer-logos
       margin-bottom 15px
       .footer-logo-left
+      .footer-logo-center
+      .footer-logo-right
+        hover-effect()
+      .footer-logo-left
         height 100px
         margin-left 4.5%
         @media ({mobile})
@@ -46,6 +50,7 @@
         flex 1
         min-width 40px
         max-width 80px
+        hover-effect()
 
   .footer-bottom-title
     font-medium()
