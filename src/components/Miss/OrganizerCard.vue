@@ -31,7 +31,7 @@
 </style>
 
 <template>
-  <li class="root-organizer-card">
+  <div class="root-organizer-card">
     <ImageWebpJpg class="photo" :src-jpg="imageJpg" :src-webp="imageWebp" sizes="400px"></ImageWebpJpg>
     <section class="section-info">
       <header class="name">{{ name }}</header>
@@ -40,7 +40,7 @@
       <div class="mail">{{ mail }}</div>
       <div class="title">{{ title }}</div>
     </section>
-  </li>
+  </div>
 </template>
 
 <script>

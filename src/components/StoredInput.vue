@@ -5,7 +5,7 @@
 </style>
 
 <template>
-  <input v-model="modelValue" @input="onInput"/>
+  <input v-model="modelValue" @input="onInput" :id="id"/>
 </template>
 
 <script>
@@ -17,6 +17,10 @@ export default {
     uniqueName: {
       type: String,
       required: true,
+    },
+    id: {
+      type: String,
+      default: '',
     }
   },
 

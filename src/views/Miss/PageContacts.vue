@@ -50,7 +50,7 @@
       <a class="contact" href="mailto:miss.bmstu@gmail.com" target="_blank">miss.bmstu@gmail.com</a>
     </section>
 
-    <ul class="organizers-container">
+    <section class="organizers-container">
       <OrganizerCard class="organizer-card"
                      :image-webp="ImagePavelOrlovWebp"
                      :image-jpg="ImagePavelOrlovJpg"
@@ -75,7 +75,7 @@
                      mail="geor.avdeeff@yandex.ru"
                      title="Работа с партнерами"
       ></OrganizerCard>
-    </ul>
+    </section>
   </div>
 </template>
 

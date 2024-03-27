@@ -37,12 +37,14 @@
 <template>
   <div class="root-page-final">
     <header class="header">РЕЗУЛЬТАТЫ КОНКУРСА<br>«МИСС ОЧАРОВАНИЕ – 2024»</header>
+
     <section class="main-text">
       <p><mark>25 апреля</mark>в Большом зале Центра креативных индустрий прошел финал конкурса<br><mark>«МиСС Очарование  — 2024».</mark></p>
       <p>В этом году конкурс прошел в двадцать третий раз. На бауманской сцене выступили <mark>10 финалисток</mark>, которые раскрыли свой талант и показали свою уникальность.</p>
       <p>Ниже представлены результаты конкурса.</p>
     </section>
-    <ul class="cards-container-final">
+
+    <section class="cards-container-final">
       <MissCardFinal class="card"
                      :group="missList[0].group"
                      :name="missList[0].name"
@@ -60,7 +62,7 @@
                      title="ВИЦЕ-МИСС"
                      light
       ></MissCardFinal>
-    </ul>
+    </section>
     <MissCardsContainer class="cards-container-all" :excluded-ids="[1, 2]"></MissCardsContainer>
   </div>
 </template>

@@ -30,7 +30,7 @@
 </style>
 
 <template>
-  <ul class="root-miss-cards-container">
+  <div class="root-miss-cards-container">
     <MissCard v-for="(miss, idx) in resultMissList"
               :style="{'--index': idx}"
               class="card"
@@ -44,7 +44,7 @@
               :max-votes-count="maxVotesCount"
               :total-votes-count="totalVotesCount"
     ></MissCard>
-  </ul>
+  </div>
 </template>
 
 <script>
