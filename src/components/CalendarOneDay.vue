@@ -9,6 +9,18 @@
   block(#F9E59A)
   padding 2.5%
   margin 0.5em
+  position relative
+
+  .pic-container
+    position absolute
+    top 0
+    right 0
+    padding 15px
+    img
+      width 100%
+      height auto
+
+
   .date
     text-transform capitalize
     color #F9E59A
@@ -17,13 +29,16 @@
     display flex
     flex-direction column
     width 250px
+
     .event
       display flex
       align-items center
       flex-direction row
       justify-content space-between
+
       .time
         font-small()
+
       .title
         font-medium()
 
@@ -32,6 +47,9 @@
 <template>
   <div class="root-calendar-one-day">
     <div class="date">{{ datePrettified }}</div>
+    <div class="pic-container">
+      <img src="../../res/images/clock.png" alt="clock">
+    </div>
     <ul class="events-container">
       <li v-for="event in events" class="event">
         <div class="title">{{ event.description }}</div>
@@ -63,7 +81,6 @@ export default {
 
   data() {
     return {
-      date: new Date(),
       dateFormat: "long",
       events: [
         {
