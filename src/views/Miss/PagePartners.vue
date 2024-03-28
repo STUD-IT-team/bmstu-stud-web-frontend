@@ -20,7 +20,7 @@
   .partners-icons-container
     display flex
     gap 15px
-    margin-bottom 30px
+    margin-bottom 50px
     padding 10px 20px
     scrollable()
     .partner-icon
@@ -34,7 +34,7 @@
   .partners-descriptions-container
     margin-bottom 60px
     .partner-container
-      margin-bottom 10px
+      margin-bottom 30px
       display flex
       overflow hidden
       @media ({mobile})

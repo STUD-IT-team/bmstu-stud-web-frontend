@@ -25,7 +25,6 @@
     font-medium()
     border-radius borderRadiusL
     border 2px solid colorMiss1
-    text-align justify
     padding 18px 30px
     margin-bottom 50px
     @media ({mobile})

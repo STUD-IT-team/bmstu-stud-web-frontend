@@ -33,9 +33,13 @@
       margin-top -25px
   .navbar-container
     font-medium()
+    max-width 1180px
+    centered-margin()
     width 100%
     display flex
-    justify-content space-evenly
+    justify-content space-between
+    @media ({mobile})
+      justify-content space-evenly
     align-items center
     flex-wrap wrap
     gap 5px 20px

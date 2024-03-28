@@ -114,7 +114,7 @@
             padding 0 10px
             opacity 0
             overflow hidden
-            trans(.4s) all 0.4s ease
+            trans(.4s)
             line-height 1.5
 
   .images-container

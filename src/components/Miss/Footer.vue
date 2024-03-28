@@ -18,9 +18,10 @@
         hover-effect()
       .footer-logo-left
         height 100px
-        margin-left 4.5%
+        margin-left 45px
         @media ({mobile})
           height 50px
+          margin-left 15px
       .footer-logo-center
         height 100px
         margin 0 10px 0 15px

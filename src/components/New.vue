@@ -4,6 +4,7 @@
 @require '../styles/utils.styl'
 @require '../styles/buttons.styl'
 @require '../styles/components.styl'
+@require '../styles/animations.styl'
 
 block-bg-color = colorBg2
 images-section-width = 250px
@@ -53,7 +54,7 @@ text-section-max-height = 265px
         right 0
         height 80px
         background linear-gradient(to top, block-bg-color, transparent);
-        trans(1s) all 1s ease
+        trans(1s)
     .button-show-more
       button-no-styles()
       hover-effect()
@@ -97,13 +98,12 @@ text-section-max-height = 265px
     @media ({desktop})
       flex-direction row
     .text-section
-      transition max-height .5s
       .description
         &::after
-          trans(.5s) all .5s
+          trans(.2s)
   &:not(.collapsed)
     .text-section
-      max-height 3000px
+      animation-roll-down(text-section-max-height)
       &::before
         z-index 1
         pointer-events none
@@ -126,12 +126,6 @@ text-section-max-height = 265px
           opacity 0
     .images-section
       width 100%
-      animation open-roll-down 1s ease
-      @keyframes open-roll-down
-        from
-          max-height 0
-        to
-          max-height 999px
 </style>
 
 <template>
@@ -146,7 +140,7 @@ text-section-max-height = 265px
       </header>
       <header v-if="title" class="title">{{ title }}</header>
       <article class="description">{{ text }}</article>
-      <transition name="scale-out">
+      <transition name="opacity" mode="out-in" duration="0.5s">
         <button v-if="isCollapsed" class="button-show-more" @click="isCollapsed = false">Показать еще...</button>
         <button v-else class="button-show-more" @click="isCollapsed = true">Свернуть</button>
       </transition>

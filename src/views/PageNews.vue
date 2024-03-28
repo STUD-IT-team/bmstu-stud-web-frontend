@@ -32,7 +32,7 @@ padding-sides = 20px
       .organization-button
         padding 5px 3px
         font-medium()
-        trans() all .2s
+        trans()
         hover-effect-underline()
     .news-blocks-section-container
       display flex

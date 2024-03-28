@@ -17,7 +17,7 @@
     background none
     border none
     outline none
-    trans() all 0.2s ease
+    trans()
     hover-effect()
     img
       width 20px
@@ -55,6 +55,12 @@
 </style>
 
 <style lang="stylus" scoped>
+@require '../../styles/constants.styl'
+@require '../../styles/fonts.styl'
+@require '../../styles/utils.styl'
+@require '../../styles/buttons.styl'
+@require '../../styles/components.styl'
+
 .list-flip-enter-from
   transform scale(0.9) !important
   max-width 0 !important
@@ -67,7 +73,7 @@
   transform scale(0.9)
   overflow hidden
 .list-flip-enter-to
-  trans(.3s) all 0.3s ease
+  trans(0.3s)
   opacity 1
   transform scale(1)
 
@@ -84,9 +90,9 @@
   opacity 0 !important
   transform scale(0.9, 0) !important
   overflow hidden !important
-  trans() all 0.2s ease
+  trans()
 .list-flip-move
-  trans() all 0.2s
+  trans()
 </style>
 
 <template>
