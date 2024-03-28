@@ -7,13 +7,13 @@
 
 .root-miss-header
   border-bottom 1px solid colorMiss1
-  padding-top 60px
+  padding-top 20px
   padding-bottom 12px
   position relative
   .title
     width 100%
     text-align center
-    margin-bottom 60px
+    margin-bottom 10px
     user-select none
     animation header-in 1s ease forwards
     @keyframes header-in
@@ -23,14 +23,9 @@
       to
         opacity 1
         letter-spacing 0
-    .special
-      font-special()
-      font-size 50px
-      @media ({mobile})
-        transform translateY(-70px) // WTF? Шрифт отображается ниже, чем нужно, только на настоящих мобилках, а не на компах с экраном в 300px
-    .normal
-      font-large-x()
-      margin-top -25px
+    .logo
+      width 40vw
+      max-width 250px
   .navbar-container
     font-medium()
     max-width 1180px
@@ -100,8 +95,7 @@
 <template>
   <header class="root-miss-header">
     <header class="title">
-      <div class="special">Мисс</div>
-      <div class="normal">ОЧАРОВАНИЕ</div>
+      <img class="logo" src="/res/images/miss/headerLogo.svg" alt="logo">
     </header>
     <nav class="navbar-container">
       <router-link :to="{name: 'missMainVote'}" style="--animation-index: 0" class="button">ГЛАВНАЯ</router-link>

@@ -81,24 +81,30 @@
 
 <script>
 import OrganizerCard from "~/components/Miss/OrganizerCard.vue";
-import ImagePavelOrlovWebp from '#~/images/miss-organizers/webp-266/PavelOrlov.webp';
-import ImageTamaraSergeevaWebp from '#~/images/miss-organizers/webp-266/TamaraSergeeva.webp';
-import ImageGeorgiyAvdeevWebp from '#~/images/miss-organizers/webp-266/GeorgiyAvdeev.webp';
-import ImagePavelOrlovJpg from '#~/images/miss-organizers/jpg-266/PavelOrlov.jpg';
-import ImageTamaraSergeevaJpg from '#~/images/miss-organizers/jpg-266/TamaraSergeeva.jpg';
-import ImageGeorgiyAvdeevJpg from '#~/images/miss-organizers/jpg-266/GeorgiyAvdeev.jpg';
+import ImagePavelOrlovWebp200 from '#~/images/miss-organizers/webp-266/PavelOrlov.webp';
+import ImageTamaraSergeevaWebp200 from '#~/images/miss-organizers/webp-266/TamaraSergeeva.webp';
+import ImageGeorgiyAvdeevWebp200 from '#~/images/miss-organizers/webp-266/GeorgiyAvdeev.webp';
+import ImagePavelOrlovJpg200 from '#~/images/miss-organizers/jpg-266/PavelOrlov.jpg';
+import ImageTamaraSergeevaJpg200 from '#~/images/miss-organizers/jpg-266/TamaraSergeeva.jpg';
+import ImageGeorgiyAvdeevJpg200 from '#~/images/miss-organizers/jpg-266/GeorgiyAvdeev.jpg';
+import ImagePavelOrlovWebp400 from '#~/images/miss-organizers/webp-400/PavelOrlov.webp';
+import ImageTamaraSergeevaWebp400 from '#~/images/miss-organizers/webp-400/TamaraSergeeva.webp';
+import ImageGeorgiyAvdeevWebp400 from '#~/images/miss-organizers/webp-400/GeorgiyAvdeev.webp';
+import ImagePavelOrlovJpg400 from '#~/images/miss-organizers/jpg-400/PavelOrlov.jpg';
+import ImageTamaraSergeevaJpg400 from '#~/images/miss-organizers/jpg-400/TamaraSergeeva.jpg';
+import ImageGeorgiyAvdeevJpg400 from '#~/images/miss-organizers/jpg-400/GeorgiyAvdeev.jpg';
 
 export default {
   components: {OrganizerCard},
 
   data() {
     return {
-      ImagePavelOrlovWebp,
-      ImageTamaraSergeevaWebp,
-      ImageGeorgiyAvdeevWebp,
-      ImagePavelOrlovJpg,
-      ImageTamaraSergeevaJpg,
-      ImageGeorgiyAvdeevJpg,
+      ImagePavelOrlovWebp: `${ImagePavelOrlovWebp200} 200w, ${ImagePavelOrlovWebp400} 400w`,
+      ImageTamaraSergeevaWebp: `${ImageTamaraSergeevaWebp200} 200w, ${ImageTamaraSergeevaWebp400} 400w`,
+      ImageGeorgiyAvdeevWebp: `${ImageGeorgiyAvdeevWebp200} 200w, ${ImageGeorgiyAvdeevWebp400} 400w`,
+      ImagePavelOrlovJpg: `${ImagePavelOrlovJpg200} 200w, ${ImagePavelOrlovJpg400} 400w`,
+      ImageTamaraSergeevaJpg: `${ImageTamaraSergeevaJpg200} 200w, ${ImageTamaraSergeevaJpg400} 400w`,
+      ImageGeorgiyAvdeevJpg: `${ImageGeorgiyAvdeevJpg200} 200w, ${ImageGeorgiyAvdeevJpg400} 400w`,
     }
   }
 }
