@@ -53,7 +53,7 @@ text-section-max-height = 265px
         right 0
         height 80px
         background linear-gradient(to top, block-bg-color, transparent);
-        transition all 1s ease
+        trans(1s) all 1s ease
     .button-show-more
       button-no-styles()
       hover-effect()
@@ -100,7 +100,7 @@ text-section-max-height = 265px
       transition max-height .5s
       .description
         &::after
-          transition all .5s
+          trans(.5s) all .5s
   &:not(.collapsed)
     .text-section
       max-height 3000px

@@ -26,7 +26,7 @@ input-border = 1px solid border-color
       padding-left 10px
       font-medium()
       opacity 0.1
-      transition all 0.2s ease
+      trans() all 0.2s ease
       pointer-events none
       user-select none
     label
@@ -79,7 +79,7 @@ input-border = 1px solid border-color
       right 20px
       font-small-x()
       opacity 0
-      transition opacity 0.2s ease
+      trans() opacity 0.2s ease
       pointer-events none
       user-select none
       &.hidden

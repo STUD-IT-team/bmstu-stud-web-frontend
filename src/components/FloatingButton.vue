@@ -29,14 +29,14 @@ padding = 5px
     text-align center
     flex-direction row
     justify-content flex-end
-    transition all 0.2s ease
+    trans() all 0.2s ease
     .image
-      transition all 0.2s ease
+      trans() all 0.2s ease
       width image-width
       height image-width
       opacity 0.8
     .hover-text
-      transition all 0.2s ease
+      trans() all 0.2s ease
       overflow hidden
       width 0
       pointer-events none

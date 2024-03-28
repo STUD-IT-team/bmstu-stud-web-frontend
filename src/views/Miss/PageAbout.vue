@@ -53,6 +53,10 @@
         min-height 300px
       border-radius borderRadiusM
       overflow hidden
+      trans(1s)
+      &.hidden
+        opacity 0
+        transform translateX(-10px)
     .horizontal-scroll-container
       display flex
       gap 10px
@@ -75,14 +79,20 @@
           background mix(white, transparent, 70%)
         .name
           font-medium()
-    .nomination-header
-      font-large-x()
-      text-align center
-      padding 3px
-      margin-bottom 22px
-      border-bottom 2px solid colorMiss1
+    .nomination-container
+      trans(1s)
+      .nomination-header
+        font-large-x()
+        text-align center
+        padding 3px
+        margin-bottom 22px
+        border-bottom 2px solid colorMiss1
+        opacity 1
       &:not(:first-child)
         margin-top 60px
+      &.hidden
+        opacity 0
+        transform translateX(-10px)
 </style>
 
 <template>
@@ -104,7 +114,8 @@
       <p>После проведения всех этапов <mark>подводятся итоги</mark> и, конечно же, <mark>проходит награждение</mark> всех финалисток.</p>
       <header class="header-colored">КАК ЭТО БЫЛО</header>
 <!--      <img class="image-full-size" src="/res/images/missAwarding.png" alt="photo from awarding">-->
-      <iframe class="image-full-size" src="https://vk.com/video_ext.php?oid=-26724538&id=456239353&hd=3&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
+<!--      <iframe class="image-full-size" src="https://vk.com/video_ext.php?oid=-26724538&id=456239353&hd=3&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>-->
+      <ViewPortWatcher @show="playVideo" on-ref="rutubeIframePlayer" v-model="nominationsVisible[0]" :bottom-offset="100"><iframe ref="rutubeIframePlayer" class="image-full-size" :class="{'hidden': !nominationsVisible[0]}" src="https://rutube.ru/play/embed/1ec8f8e6eacac206b62c115630e33066" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></ViewPortWatcher>
     </section>
 
 <!--    <header class="header">ЖЮРИ</header>-->
@@ -134,37 +145,54 @@
 
     <header class="header">НОМИНАЦИИ</header>
     <section class="section-text">
-      <header class="nomination-header">МИСС ОЧАРОВАНИЕ</header>
-      <p>Главная номинация присуждается победительнице конкурса. Она определяется суммарным голосованием жюри по всем пяти турам мероприятия финала конкурса.</p>
-      <p>Каждый член жюри индивидуально ставит участнице оценку за каждый этап в бланк. Таблица результатов выводится на большой экран сцены после каждого этапа. Члены жюри не имеют права договариваться о совместном лоббировании тех или иных кандидаток.</p>
-      <p>Результат вычисляется простым суммированием оценок, выставленных всеми членами жюри за все туры.</p>
+      <ViewPortWatcher on-ref="nomination-1" v-model="nominationsVisible[1]" :bottom-offset="100"><div ref="nomination-1" class="nomination-container" :class="{'hidden': !nominationsVisible[1]}">
+        <header class="nomination-header">МИСС ОЧАРОВАНИЕ</header>
+        <p>Главная номинация присуждается победительнице конкурса. Она определяется суммарным голосованием жюри по всем пяти турам мероприятия финала конкурса.</p>
+        <p>Каждый член жюри индивидуально ставит участнице оценку за каждый этап в бланк. Таблица результатов выводится на большой экран сцены после каждого этапа. Члены жюри не имеют права договариваться о совместном лоббировании тех или иных кандидаток.</p>
+        <p>Результат вычисляется простым суммированием оценок, выставленных всеми членами жюри за все туры.</p>
 
-      <p>Участница, набравшая наибольший суммарный балл, становится победительницей конкурса.</p>
-      <p>Участница, занявшая второе место по результатам голосования жюри, получает титул «Вице-мисс».</p>
+        <p>Участница, набравшая наибольший суммарный балл, становится победительницей конкурса.</p>
+        <p>Участница, занявшая второе место по результатам голосования жюри, получает титул «Вице-мисс».</p>
+      </div></ViewPortWatcher>
 
-      <header class="nomination-header">МИСС ОВАЦИЯ</header>
-      <p>Победительница в данной номинации определяется очным голосованием зрительного зала. Каждый человек, который присутствует на финальном шоу, может отдать голос за понравившуюся ему участницу.</p>
+      <ViewPortWatcher on-ref="nomination-2" v-model="nominationsVisible[2]" :bottom-offset="100"><div ref="nomination-2" class="nomination-container" :class="{'hidden': !nominationsVisible[2]}">
+        <header class="nomination-header">МИСС ОВАЦИЯ</header>
+        <p>Победительница в данной номинации определяется очным голосованием зрительного зала. Каждый человек, который присутствует на финальном шоу, может отдать голос за понравившуюся ему участницу.</p>
+      </div></ViewPortWatcher>
 
-      <header class="nomination-header">МИСС ОНЛАЙН</header>
-      <p>Данная номинация определяется sms-голосованием, которое проходит во время подготовки к конкурсу. Результат автоматически появляется на сайте, а самый активный участник (обладатель номера, с которого отправили наибольшее количество sms-сообщений) сможет выйти на сцену во время награждения и вручить приз победительнице в этой номинации.</p>
+      <ViewPortWatcher on-ref="nomination-3" v-model="nominationsVisible[3]" :bottom-offset="100"><div ref="nomination-3" class="nomination-container" :class="{'hidden': !nominationsVisible[3]}">
+        <header class="nomination-header">МИСС ОНЛАЙН</header>
+        <p>Данная номинация определяется sms-голосованием, которое проходит во время подготовки к конкурсу. Результат автоматически появляется на сайте, а самый активный участник (обладатель номера, с которого отправили наибольшее количество sms-сообщений) сможет выйти на сцену во время награждения и вручить приз победительнице в этой номинации.</p>
+      </div></ViewPortWatcher>
 
-      <header class="nomination-header">МИСС ДРУЖБА</header>
-      <p>Мисс Дружба — единственная номинация, победительницу в которой выбирают сами участницы конкурса путем тайного голосования, проходящего за день до финального мероприятия. На протяжении всей подготовки к финалу девушки становятся настоящими подруга, а титул «Мисс Дружба» получает та девушка, которая стала душой прекрасного коллектива.</p>
+      <ViewPortWatcher on-ref="nomination-4" v-model="nominationsVisible[4]" :bottom-offset="100"><div ref="nomination-4" class="nomination-container" :class="{'hidden': !nominationsVisible[4]}">
+        <header class="nomination-header">МИСС ДРУЖБА</header>
+        <p>Мисс Дружба — единственная номинация, победительницу в которой выбирают сами участницы конкурса путем тайного голосования, проходящего за день до финального мероприятия. На протяжении всей подготовки к финалу девушки становятся настоящими подруга, а титул «Мисс Дружба» получает та девушка, которая стала душой прекрасного коллектива.</p>
+      </div></ViewPortWatcher>
 
-      <header class="nomination-header">МИСС ЦЕЛЕУСТРЕМЛЕННОСТЬ</header>
-      <p>Мисс Целеустремленность — номинация, присуждаемая оргкомитетом конкурса. Во время подготовки с финалистками работают профессионалы разных профилей: хореограф, преподаватель дефиле, режиссеры-постановщики, стилисты, фотографы и операторы. Для определения данной номинации организационный комитет оценивает самоорганизацию участниц и независимо друг от друга путем тайного голосования выбирает конкурсантку, которая больше всех сделала для желаемой победы.</p>
+      <ViewPortWatcher on-ref="nomination-5" v-model="nominationsVisible[5]" :bottom-offset="100"><div ref="nomination-5" class="nomination-container" :class="{'hidden': !nominationsVisible[5]}">
+        <header class="nomination-header">МИСС ЦЕЛЕУСТРЕМЛЕННОСТЬ</header>
+        <p>Мисс Целеустремленность — номинация, присуждаемая оргкомитетом конкурса. Во время подготовки с финалистками работают профессионалы разных профилей: хореограф, преподаватель дефиле, режиссеры-постановщики, стилисты, фотографы и операторы. Для определения данной номинации организационный комитет оценивает самоорганизацию участниц и независимо друг от друга путем тайного голосования выбирает конкурсантку, которая больше всех сделала для желаемой победы.</p>
+      </div></ViewPortWatcher>
 
-      <header class="nomination-header">НОМИНАЦИЯ ОТ ПАРТНЁРОВ КОНКУРСА</header>
-      <p>Партнёрам мероприятия по согласованию с оргкомитетом предоставляется право учредить собственную номинацию и наградить ею любую понравившуюся участницу.</p>
+      <ViewPortWatcher on-ref="nomination-6" v-model="nominationsVisible[6]" :bottom-offset="100"><div ref="nomination-6" class="nomination-container" :class="{'hidden': !nominationsVisible[6]}">
+        <header class="nomination-header">НОМИНАЦИЯ ОТ ПАРТНЁРОВ КОНКУРСА</header>
+        <p>Партнёрам мероприятия по согласованию с оргкомитетом предоставляется право учредить собственную номинацию и наградить ею любую понравившуюся участницу.</p>
+      </div></ViewPortWatcher>
     </section>
   </div>
 </template>
 
 <script>
+import ViewPortWatcher from "~/components/ViewPortWatcher.vue";
+
 export default {
+  components: {ViewPortWatcher},
   data() {
     return {
       juryScrollingTimer: undefined,
+
+      nominationsVisible: {},
     }
   },
 
@@ -177,5 +205,14 @@ export default {
   unmounted() {
     clearInterval(this.juryScrollingTimer);
   },
+
+  methods: {
+    playVideo() {
+      this.$refs.rutubeIframePlayer.contentWindow.postMessage(JSON.stringify({
+        type: 'player:play',
+        data: {}
+      }), '*');
+    }
+  }
 }
 </script>

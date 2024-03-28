@@ -17,7 +17,7 @@
     background none
     border none
     outline none
-    transition all 0.2s ease
+    trans() all 0.2s ease
     hover-effect()
     img
       width 20px
@@ -67,7 +67,7 @@
   transform scale(0.9)
   overflow hidden
 .list-flip-enter-to
-  transition all 0.3s ease
+  trans(.3s) all 0.3s ease
   opacity 1
   transform scale(1)
 
@@ -84,9 +84,9 @@
   opacity 0 !important
   transform scale(0.9, 0) !important
   overflow hidden !important
-  transition all 0.2s ease
+  trans() all 0.2s ease
 .list-flip-move
-  transition all 0.2s
+  trans() all 0.2s
 </style>
 
 <template>
