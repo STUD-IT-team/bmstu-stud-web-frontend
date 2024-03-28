@@ -4,7 +4,8 @@
 @require '../../styles/fonts.styl'
 @require '../../styles/components.styl'
 
-.root-footer-fiveteen-partners
+.root-footer
+  margin-top auto
   text-align center
   .footer-top
     border-top 1px solid colorMiss1
@@ -62,7 +63,7 @@
 </style>
 
 <template>
-  <footer class="root-footer-fiveteen-partners">
+  <footer class="root-footer">
     <div class="footer-top">
       <div class="footer-logos">
         <a href="https://bmstu.ru" target="_blank"><img class="footer-logo-left" src="/res/icons/bmstu-logo.svg" alt="bmstu-logo"/></a>

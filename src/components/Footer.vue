@@ -7,7 +7,8 @@
 
 .root-footer
   width 100%
-  margin-top 300px
+  margin-top auto
+  padding-top 300px
 
   .main-part
     display flex
