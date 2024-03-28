@@ -114,7 +114,7 @@
       <header class="header-colored">КАК ЭТО БЫЛО</header>
 <!--      <img class="image-full-size" src="/res/images/missAwarding.png" alt="photo from awarding">-->
 <!--      <iframe class="image-full-size" src="https://vk.com/video_ext.php?oid=-26724538&id=456239353&hd=3&autoplay=1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>-->
-      <ViewPortWatcher @show="playVideo" on-ref="rutubeIframePlayer" v-model="nominationsVisible[0]" :bottom-offset="100"><iframe ref="rutubeIframePlayer" class="image-full-size" :class="{'hidden': !nominationsVisible[0]}" src="https://rutube.ru/play/embed/1ec8f8e6eacac206b62c115630e33066" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></ViewPortWatcher>
+      <ViewPortWatcher on-ref="rutubeIframePlayer" v-model="nominationsVisible[0]" :bottom-offset="100"><iframe ref="rutubeIframePlayer" class="image-full-size" :class="{'hidden': !nominationsVisible[0]}" src="https://rutube.ru/play/embed/1ec8f8e6eacac206b62c115630e33066" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></ViewPortWatcher>
     </section>
 
 <!--    <header class="header">ЖЮРИ</header>-->
@@ -200,12 +200,26 @@ export default {
     // this.juryScrollingTimer = setInterval(() => {
     //   this.$refs.juryScrollerContainer.scrollBy({left: 1});
     // }, 50);
+    window.addEventListener('message', this.listenWindowMessages);
   },
   unmounted() {
     clearInterval(this.juryScrollingTimer);
+    window.removeEventListener('message', this.listenWindowMessages);
   },
 
   methods: {
+    listenWindowMessages(event) {
+      const message = JSON.parse(event.data);
+      console.log(message.type); // some type
+      switch (message.type) {
+        case 'player:changeState':
+          console.log("PLAYER STATE CHANGED:", message.data.state); // текущее состояние плеера
+          break;
+        case 'player:ready':
+          this.playVideo();
+          break;
+      }
+    },
     playVideo() {
       this.$refs.rutubeIframePlayer.contentWindow.postMessage(JSON.stringify({
         type: 'player:play',
