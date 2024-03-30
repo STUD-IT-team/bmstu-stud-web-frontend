@@ -19,13 +19,13 @@
         transform scale(1.1)
         transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
   .photo-container
-    height 210px
+    height 220px
     overflow hidden
     margin-bottom 3px
     .photo
       width 100%
       //height 100%
-      height 270px
+      height 310px
       transition all 0.4s ease-in-out
 
   .section-info
@@ -46,6 +46,7 @@
       background colorMiss1
       border-radius borderRadiusMax
       overflow hidden
+      padding-top 1px
     .name-group-container
       .name
         font-small()
@@ -69,20 +70,30 @@
       .text-colored
         color colorMiss2
 
-    .slider
-      slider-height = 10px
+    .slider-container
       margin-sides = 10px
-      font-small-xxx()
-      background colorMiss1
-      width 'calc(var(--progress) * 100% - %s)' % (margin-sides * 2)
+      position relative
+      width 'calc(100% - %s)' % (margin-sides * 2)
       margin 0 margin-sides
-      padding 0 15px 0 10px
-      height slider-height
-      line-height slider-height
-      border-radius borderRadiusMax
-      margin-bottom 5px
-      trans()
-
+      .slider
+        slider-height = 10px
+        font-small-xxx()
+        background colorMiss1
+        width calc(var(--progress) * 100%)
+        padding 0 15px 0 10px
+        height slider-height
+        line-height slider-height
+        border-radius borderRadiusMax
+        margin-bottom 5px
+        padding-top 1px
+        trans()
+        &::after
+          content ""
+          position absolute
+          inset 0
+          border 2px solid colorMiss1
+          border-radius borderRadiusMax
+          z-index -1
     .votes-count
       font-small-xx()
       color colorMiss2
@@ -93,7 +104,7 @@
 <template>
   <router-link :to="{name: 'missProfile', params: {missId: id}}" class="root-miss-card">
     <div class="photo-container">
-      <ImageWebpJpg class="photo" :src-webp="imageWebp" :src-jpg="imageJpg" sizes="200px" alt="photo"/>
+      <ImageWebpJpg class="photo" :src-webp="imageWebp" :src-jpg="imageJpg" sizes="240px" alt="photo"/>
     </div>
     <section class="section-info">
       <div class="circle-position">{{ id }}</div>
@@ -104,7 +115,9 @@
     </section>
     <section v-if="showVotes" class="section-voting">
       <div class="info">Для голосования отправить SMS на номер <span class="text-colored">{{ phoneNumberToVoting }} </span> с кодом <span class="text-colored">СТУД {{ id }}</span></div>
-      <div class="slider" :style="{'--progress': progressToMax}">{{ Math.ceil(progressTotal * 100 * 100 / 100) }}%</div>
+      <div class="slider-container">
+        <div class="slider" :style="{'--progress': progressToMax}">{{ Math.ceil(progressTotal * 100 * 100 / 100) }}%</div>
+      </div>
       <div class="votes-count">Количество голосов: {{ votesCount }}</div>
     </section>
   </router-link>

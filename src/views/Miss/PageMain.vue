@@ -18,6 +18,7 @@
     z-index -1
 
   .main
+    max-width = 1260px
     padding-sides = 120px
     padding 40px padding-sides
     @media ({mobile})
@@ -28,7 +29,7 @@
     overflow hidden
     animation main-roll-down 2s ease forwards
     centered-margin()
-    max-width (1140px + padding-sides * 2)
+    max-width (max-width + padding-sides * 2)
     @keyframes main-roll-down
       0%
         opacity 0

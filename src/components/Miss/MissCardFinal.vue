@@ -46,6 +46,7 @@
         background white
         border-radius borderRadiusMax
         overflow hidden
+        padding-top 1px
       .name
         font-large()
         display inline

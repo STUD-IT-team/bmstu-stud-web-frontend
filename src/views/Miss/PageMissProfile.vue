@@ -114,6 +114,7 @@
             padding 0 10px
             opacity 0
             overflow hidden
+            white-space pre-line
             trans(.4s)
             line-height 1.5
 

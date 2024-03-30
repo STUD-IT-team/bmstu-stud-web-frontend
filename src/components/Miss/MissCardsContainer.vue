@@ -9,13 +9,11 @@
   list-style none
   display flex
   flex-wrap wrap
-  justify-content space-between
-  @media ({mobile})
-    justify-content center
+  justify-content center
   gap 20px
   .card
     width 45%
-    max-width 190px
+    max-width 235px
     min-width 130px
     opacity 0
     animation card-in 0.5s ease forwards
