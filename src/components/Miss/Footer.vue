@@ -75,7 +75,7 @@
 <!--        <img v-for="_ in 15" class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>-->
 <!--      </div>-->
     </div>
-    <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024</div>
+    <div class="footer-bottom-title">Сайт разработан Студенческим советом МГТУ им. Н.Э. Баумана 2024</div>
   </footer>
 </template>
 

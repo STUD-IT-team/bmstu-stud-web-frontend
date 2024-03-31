@@ -13,7 +13,7 @@
   gap 20px
   .card
     width 45%
-    max-width 235px
+    max-width 215px
     min-width 130px
     opacity 0
     animation card-in 0.5s ease forwards

@@ -19,7 +19,7 @@ import PageMissProfile from "~/views/Miss/PageMissProfile.vue";
 
 export default function createVueRouter(Store) {
     const routes = [
-        {path: '/', name: 'default', component: PageNews, meta: {}},
+        {path: '/', name: 'default', redirect: '/news'},
         {path: '/news', name: 'news', component: PageNews, meta: {}},
         {path: '/events', name: 'events', component: PageCalendar, meta: {}},
         {path: '/calendar', name: 'calendar', component: PageCalendar, meta: {}},
@@ -33,7 +33,7 @@ export default function createVueRouter(Store) {
         // {path: '/admin', name: 'admin', component: Admin, meta: {adminRequired: true}},
 
         {path: '/miss', component: PageMain, meta: {}, children: [
-            {path: '/miss/start', name: 'miss', component: PageMainStart, meta: {}},
+            {path: '/miss', name: 'miss', component: PageMainStart, meta: {}},
             {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
             {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
             {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},

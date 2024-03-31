@@ -25,7 +25,7 @@
     .photo
       width 100%
       //height 100%
-      height 310px
+      height 350px
       transition all 0.4s ease-in-out
 
   .section-info
@@ -53,7 +53,8 @@
         color colorMiss2
         line-height circle-size
         &.too-long
-          line-height 1.2
+          letter-spacing -1px
+          //line-height 1.2
       .group
         font-small-x()
         color colorMiss2

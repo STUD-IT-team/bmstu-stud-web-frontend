@@ -41,7 +41,7 @@
     <header class="header">КОНТАКТЫ</header>
     <section class="contacts">
       <label>Адрес</label>
-      <a class="contact" href="https://yandex.ru/maps/-/CDRYrHYz">г.Москва, 2-я Бауманская улица, 5с4, южное крыло, ауд. 339ю</a>
+      <a class="contact" href="https://yandex.ru/maps/-/CDRYrHYz">г. Москва, 2-я Бауманская улица, 5с4, южное крыло, ауд. 339ю</a>
       <label>Телефон</label>
       <a class="contact" href="tel:+74952636855">+7 (495) 263-68-55</a>
       <label>Группа VK</label>

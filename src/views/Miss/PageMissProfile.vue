@@ -51,7 +51,6 @@
       border-radius borderRadiusMax
       overflow hidden
       .profile-photo
-        margin-top -20px
         background white
     .right-column
       flex 2
