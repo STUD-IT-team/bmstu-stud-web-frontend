@@ -58,8 +58,8 @@
     font-medium()
     @media ({mobile})
       font-small()
-    border-top 1px solid colorMiss1
-    padding 10px 0
+    //border-top 1px solid colorMiss1
+    padding 0 0 10px 0
 </style>
 
 <template>
@@ -70,10 +70,10 @@
         <router-link :to="{name: 'default'}"><img class="footer-logo-center" src="/res/icons/stud-logo.svg" alt="stud-logo"/></router-link>
         <router-link :to="{name: 'miss'}"><img class="footer-logo-right" src="/res/icons/crown-logo.svg" alt="crown-logo"/></router-link>
       </div>
-      <div class="footer-title">ПАРТНЁРЫ КОНКУРСА</div>
-      <div class="partners-container">
-        <img v-for="_ in 15" class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>
-      </div>
+<!--      <div class="footer-title">ПАРТНЁРЫ КОНКУРСА</div>-->
+<!--      <div class="partners-container">-->
+<!--        <img v-for="_ in 15" class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>-->
+<!--      </div>-->
     </div>
     <div class="footer-bottom-title">Сайт разработан в Студенческом совете МГТУ им. Н.Э. Баумана 2024</div>
   </footer>

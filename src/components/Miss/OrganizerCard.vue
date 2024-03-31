@@ -28,6 +28,9 @@
       font-bold()
       color colorMiss2
       margin-bottom 3px
+    .contact
+      display block
+      hover-effect()
 </style>
 
 <template>
@@ -36,8 +39,9 @@
     <section class="section-info">
       <header class="name">{{ name }}</header>
 
-      <div class="phone-number">{{ phone }}</div>
-      <div class="mail">{{ mail }}</div>
+      <a :href="`tel:${phone}`" class="contact">{{ phone }}</a>
+      <a :href="`mailto:${mail}`" class="contact">{{ mail }}</a>
+      <a :href="`https://${telegram}`" class="contact">{{ telegram }}</a>
       <div class="title">{{ title }}</div>
     </section>
   </div>
@@ -66,6 +70,10 @@ export default {
       required: true,
     },
     mail: {
+      type: String,
+      required: true,
+    },
+    telegram: {
       type: String,
       required: true,
     },

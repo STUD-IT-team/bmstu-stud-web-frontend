@@ -46,6 +46,8 @@
       <a class="contact" href="tel:+74952636855">+7 (495) 263-68-55</a>
       <label>Группа VK</label>
       <a class="contact" href="https://vk.com/miss_bmstu" target="_blank">vk.com/miss_bmstu</a>
+      <label>Канал TG</label>
+      <a class="contact" href="https://t.me/miss_bmstu" target="_blank">t.me/miss_bmstu</a>
       <label>E-mail</label>
       <a class="contact" href="mailto:miss.bmstu@gmail.com" target="_blank">miss.bmstu@gmail.com</a>
     </section>
@@ -57,6 +59,7 @@
                      name="Павел Орлов"
                      phone="+7 (915) 720-89-11"
                      mail="orlov@bmstu.ru"
+                     telegram="t.me/Pavel_BMSTU"
                      title="Председатель Студенческого Совета"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
@@ -65,6 +68,7 @@
                      name="Тамара Сергеева"
                      phone="+7 (916) 881-04-73"
                      mail="keylabupsi@gmail.com"
+                     telegram="t.me/Wiltyan_li"
                      title="Главный организатор конкурса"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
@@ -73,6 +77,7 @@
                      name="Георгий Авдеев"
                      phone="+7 (985) 436-58-91"
                      mail="geor.avdeeff@yandex.ru"
+                     telegram="t.me/GeorgeAvdeev"
                      title="Работа с партнерами"
       ></OrganizerCard>
     </section>

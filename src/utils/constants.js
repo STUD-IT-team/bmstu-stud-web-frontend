@@ -482,4 +482,4 @@ export const missList = [
     ]
   },
 ];
-export const phoneNumberToVoting = '8-800-555-35-35';
+export const phoneNumberToVoting = '5533';
