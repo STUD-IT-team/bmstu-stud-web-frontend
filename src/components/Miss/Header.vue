@@ -28,7 +28,6 @@
       max-width 250px
   .navbar-container
     font-medium()
-    max-width 1180px
     centered-margin()
     width 100%
     display flex
@@ -38,7 +37,11 @@
     align-items center
     flex-wrap wrap
     gap 5px 20px
-    padding 0 20px
+    padding-sides = 120px
+    padding 0 120px
+    max-width (1140px + padding-sides * 2)
+    @media ({mobile})
+      padding 0 20px
     .button
       white-space nowrap
       hover-effect-underline()
@@ -52,6 +55,8 @@
         to
           opacity 1
           transform translateY(0)
+      &.router-link-exact-active
+        background-size 100% 1px
   .decoration
     position absolute
     inset 0
@@ -98,7 +103,7 @@
       <img class="logo" src="/res/images/miss/headerLogo.svg" alt="logo">
     </header>
     <nav class="navbar-container">
-      <router-link :to="{name: 'missMainVote'}" style="--animation-index: 0" class="button">ГЛАВНАЯ</router-link>
+      <router-link :to="{name: 'miss'}" style="--animation-index: 0" class="button">ГЛАВНАЯ</router-link>
       <router-link :to="{name: 'missAbout'}" style="--animation-index: 1" class="button">О КОНКУРСЕ</router-link>
 <!--      <router-link :to="{name: 'missPartners'}" style="&#45;&#45;animation-index: 2" class="button">ПАРТНЁРЫ</router-link>-->
       <router-link :to="{name: 'missContacts'}" style="--animation-index: 3" class="button">КОНТАКТЫ</router-link>

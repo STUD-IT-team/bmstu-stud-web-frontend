@@ -36,22 +36,25 @@
     @media ({mobile})
       flex-direction column
       align-items center
-    .photo-container
+    .sticky-container
       flex 1
       photo-max-size = 445px
       photo-min-size = 200px
       min-width photo-min-size
-      min-height photo-min-size
       max-width photo-max-size
-      max-height photo-max-size
-      width 100%
-      height 100%
-      aspect-ratio 1 / 1
-      border 2px solid colorMiss1
-      border-radius borderRadiusMax
-      overflow hidden
-      .profile-photo
-        background white
+      .photo-container
+        @media ({desktop})
+          transform translateY(unquote('clamp(0px, calc((var(--scroll) - var(--start-top)) * 1px), 400px)'))
+        transition all 0.5s cubic-bezier(0.02, 0.52, 0.2, 1)
+        min-height photo-min-size
+        max-height photo-max-size
+        width 100%
+        aspect-ratio 1 / 1
+        border 2px solid colorMiss1
+        border-radius borderRadiusMax
+        overflow hidden
+        .profile-photo
+          background white
     .right-column
       flex 2
       .age-height-group-container
@@ -144,8 +147,10 @@
     </header>
 
     <section class="profile-container">
-      <div class="photo-container">
-        <ImageWebpJpg class="profile-photo" :src-jpg="miss.imageJpg" :src-webp="miss.imageWebp" sizes="445px" alt="photo"></ImageWebpJpg>
+      <div class="sticky-container" ref="stickyContainer" :style="{'--start-top': $refs?.stickyContainer?.offsetTop}">
+        <div class="photo-container">
+          <ImageWebpJpg class="profile-photo" :src-jpg="miss.imageJpg" :src-webp="miss.imageWebp" sizes="445px" alt="photo"></ImageWebpJpg>
+        </div>
       </div>
       <div class="right-column">
         <section class="age-height-group-container">

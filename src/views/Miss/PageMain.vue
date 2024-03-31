@@ -11,6 +11,7 @@
   //background-size cover
   .background
     position absolute
+    height 100%
     min-height 100%
     top 0
     left 0
@@ -57,10 +58,10 @@
         transition all 0.5s cubic-bezier(0.02, 0.52, 0.2, 1)
       .spiral
       .sphere-left
-        transform translateY(calc(var(--scroll-value) * -0.5px))
+        transform translateY(calc(var(--scroll) * -0.5px))
       .ring
       .sphere-right
-        transform translateY(calc(var(--scroll-value) * -1px))
+        transform translateY(calc(var(--scroll) * -1px))
 
       .spiral
         left -210px
@@ -93,7 +94,7 @@
 </style>
 
 <template>
-  <div class="root-page-main">
+  <div class="root-page-main" :style="{'--scroll': scrollTop}">
     <ImageWebpJpg
       :src-jpg="`${ImageBackgroundLarge400Jpg} 400w, ${ImageBackgroundLarge800Jpg} 800w, ${ImageBackgroundLarge1440Jpg} 1440w`"
       :src-webp="`${ImageBackgroundLarge400Webp} 400w, ${ImageBackgroundLarge800Webp} 800w, ${ImageBackgroundLarge1440Webp} 1440w`"
@@ -112,7 +113,7 @@
 
     <Footer></Footer>
 
-    <section class="decoration" :style="{'--scroll-value': scrollTop}">
+    <section class="decoration">
       <div v-for="i in 3" :style="{'--repeat-number': i - 1}" class="group">
         <img class="spiral" src="/res/images/miss-decorations/side-spiral.png" alt="">
         <img class="sphere-left" src="/res/images/miss-decorations/side-sphere.png" alt="">

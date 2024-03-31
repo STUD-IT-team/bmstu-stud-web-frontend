@@ -23,6 +23,8 @@
     object-fit cover
     display inline-block
     transition all 0.4s ease-in-out
+    //.photo
+    //  height 280px
   .card-final-form
     background colorMiss1
     padding 15px
@@ -79,7 +81,9 @@
 
 <template>
   <router-link :to="{name: 'missProfile', params: {missId: id}}" class="root-card-final" :class="{'light': light}">
-    <ImageWebpJpg class="miss-final-photo" :src-jpg="imageJpg" :src-webp="imageWebp" sizes="200px" alt="miss-photo"></ImageWebpJpg>
+    <div class="miss-final-photo">
+      <ImageWebpJpg class="photo" :src-jpg="imageJpg" :src-webp="imageWebp" sizes="200px" alt="miss-photo"></ImageWebpJpg>
+    </div>
     <div class="card-final-form">
       <div class="circle-name-container">
         <div class="circle-position">{{ id }}</div>

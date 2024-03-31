@@ -53,9 +53,12 @@
         font-small()
         color colorMiss2
         line-height circle-size
+        @media (max-width: 400px)
+          line-height 1.2
         &.too-long
           letter-spacing -1px
-          //line-height 1.2
+          @media({mobile})
+            line-height 1.2
       .group
         font-small-x()
         color colorMiss2
