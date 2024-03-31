@@ -36,6 +36,7 @@
     circle-size = 26px
     .circle-position
       font-medium()
+      font-size (circle-size - 8px)
       color white
       min-width circle-size
       min-height circle-size
