@@ -17,13 +17,14 @@
       .photo
         filter brightness(1.2)
         transform scale(1.1)
-        transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
+        transition all 0.4s ease-out-fast
   .photo-container
     height 220px
     overflow hidden
     margin-bottom 3px
     .photo
-      width 100%
+      margin-left -5px
+      width calc(100% + 10px)
       //height 100%
       height 350px
       transition all 0.4s ease-in-out

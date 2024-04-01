@@ -55,7 +55,7 @@
       top calc(var(--repeat-number) * 2000px)
       > *
         position absolute
-        transition all 0.5s cubic-bezier(0.02, 0.52, 0.2, 1)
+        transition all 0.5s ease-out-slow
       .spiral
       .sphere-left
         transform translateY(calc(var(--scroll) * -0.5px))

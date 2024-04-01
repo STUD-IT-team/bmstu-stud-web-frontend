@@ -16,7 +16,7 @@
     .miss-final-photo
       filter brightness(1.2)
       transform scale(1.1)
-      transition all 0.4s cubic-bezier(.04,.74,.15,1.02)
+      transition all 0.4s ease-out-fast
   .miss-final-photo
     width 190px
     height 195px

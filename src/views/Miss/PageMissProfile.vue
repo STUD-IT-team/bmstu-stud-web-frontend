@@ -43,9 +43,7 @@
       min-width photo-min-size
       max-width photo-max-size
       .photo-container
-        @media ({desktop})
-          transform translateY(unquote('clamp(0px, calc((var(--scroll) - var(--start-top)) * 1px), 400px)'))
-        transition all 0.5s cubic-bezier(0.02, 0.52, 0.2, 1)
+        background white
         min-height photo-min-size
         max-height photo-max-size
         width 100%
@@ -53,8 +51,9 @@
         border 2px solid colorMiss1
         border-radius borderRadiusMax
         overflow hidden
-        .profile-photo
-          background white
+        @media ({desktop})
+          transform translateY(unquote('clamp(0px, calc((var(--scroll) - var(--start-top)) * 1px), calc((var(--block-height) - var(--photo-height)) * 1px))'))
+        transition all 0.5s ease-out-slow
     .right-column
       flex 2
       .age-height-group-container
@@ -147,8 +146,8 @@
     </header>
 
     <section class="profile-container">
-      <div class="sticky-container" ref="stickyContainer" :style="{'--start-top': $refs?.stickyContainer?.offsetTop}">
-        <div class="photo-container">
+      <div class="sticky-container" ref="stickyContainer" :style="{'--start-top': stickyStartTop, '--block-height': stickyBlockHeight, '--photo-height': stickyPhotoHeight}">
+        <div class="photo-container" ref="photoContainer">
           <ImageWebpJpg class="profile-photo" :src-jpg="miss.imageJpg" :src-webp="miss.imageWebp" sizes="445px" alt="photo"></ImageWebpJpg>
         </div>
       </div>
@@ -190,6 +189,7 @@
 <script>
 import {missList} from "~/utils/constants";
 import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
+import {nextTick} from "vue";
 
 
 export default {
@@ -198,13 +198,21 @@ export default {
     return {
       missId: Number(this.$route.params.missId),
       miss: {},
+      stickyStartTop: 0,
+      stickyPhotoHeight: 0,
+      stickyBlockHeight: 0,
 
       missList,
     }
   },
 
-  mounted() {
+  async mounted() {
     this.updateMiss(this.missId);
+
+    await nextTick();
+    this.stickyStartTop = this.$refs.stickyContainer.offsetTop;
+    this.stickyBlockHeight = this.$refs.stickyContainer.clientHeight;
+    this.stickyPhotoHeight = this.$refs.photoContainer.offsetHeight;
 
     window.scrollTo({top: 0, behavior: "smooth"});
   },
@@ -229,7 +237,7 @@ export default {
   watch: {
     '$route.params.missId'(to) {
       this.updateMiss(Number(to));
-    }
+    },
   }
 }
 </script>
