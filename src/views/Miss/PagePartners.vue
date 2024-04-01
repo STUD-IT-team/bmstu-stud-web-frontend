@@ -41,14 +41,20 @@
         flex-direction column
         align-items center
         gap 10px
-      img
+      a
         flex 1
         height 100%
         width 100%
         min-width 200px
         max-width 350px
-        background white
-        border-radius borderRadiusL
+        img
+          height 100%
+          width 100%
+          background white
+          border-radius borderRadiusL
+      .link
+        hover-effect()
+        text-decoration underline
       .info-container
         flex 2
         padding 20px
@@ -69,9 +75,9 @@
 
     <ul class="partners-descriptions-container">
       <li v-for="(partner, idx) in partnersList" :ref="`anchor-${idx}`" class="partner-container">
-        <img :src="partner.logo" alt="logo">
+        <a :href="partner.href" target="_blank" class="link"><img :src="partner.logo" alt="logo"></a>
         <div class="info-container">
-          <header class="title">{{ partner.title }}</header>
+          <a :href="partner.href" target="_blank" class="link"><header class="title">{{ partner.title }}</header></a>
           <div class="description">{{ partner.description }}</div>
         </div>
       </li>
