@@ -198,9 +198,11 @@ export default {
     return {
       missId: Number(this.$route.params.missId),
       miss: {},
-      stickyStartTop: 0,
+      stickyStartTop: 150,
       stickyPhotoHeight: 0,
       stickyBlockHeight: 0,
+
+      resizeObserver: new ResizeObserver(this.updateHeights),
 
       missList,
     }
@@ -210,11 +212,13 @@ export default {
     this.updateMiss(this.missId);
 
     await nextTick();
-    this.stickyStartTop = this.$refs.stickyContainer.offsetTop;
-    this.stickyBlockHeight = this.$refs.stickyContainer.clientHeight;
-    this.stickyPhotoHeight = this.$refs.photoContainer.offsetHeight;
+    this.updateHeights();
 
+    this.resizeObserver.observe(document.body);
     window.scrollTo({top: 0, behavior: "smooth"});
+  },
+  unmounted() {
+    this.resizeObserver.unobserve(document.body);
   },
 
   methods: {
@@ -231,7 +235,12 @@ export default {
         return;
       }
       this.miss = Object.assign({idx: foundMissIdx}, missList[foundMissIdx]);
-    }
+    },
+    updateHeights() {
+      // this.stickyStartTop = this.$refs.stickyContainer.offsetTop;
+      this.stickyBlockHeight = this.$refs.stickyContainer.clientHeight;
+      this.stickyPhotoHeight = this.$refs.photoContainer.offsetHeight;
+    },
   },
 
   watch: {
