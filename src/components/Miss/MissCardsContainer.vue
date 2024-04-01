@@ -11,6 +11,7 @@
   flex-wrap wrap
   justify-content center
   gap 20px
+  position relative
   .card
     width 45%
     max-width 215px
@@ -25,6 +26,11 @@
       to
         opacity 1
         transform translateY(0)
+  .loading
+    position absolute
+    left 50%
+    top -30px
+    transform translateX(-50%)
 </style>
 
 <template>
@@ -42,15 +48,20 @@
               :max-votes-count="maxVotesCount"
               :total-votes-count="totalVotesCount"
     ></MissCard>
+    <transition name="opacity">
+      <CircleLoading v-if="loading" class="loading" size="30px"></CircleLoading>
+    </transition>
   </div>
 </template>
 
 <script>
 import MissCard from "~/components/Miss/MissCard.vue";
 import {missList} from "~/utils/constantsMiss";
+import REST_API from "@sergtyapkin/rest-api";
+import CircleLoading from "~/components/CircleLoading.vue";
 
 export default {
-  components: {MissCard},
+  components: {CircleLoading, MissCard},
 
   props: {
     showVotes: Boolean,
@@ -63,7 +74,7 @@ export default {
 
   computed: {
     resultMissList() {
-      return missList.filter(miss => !this.excludedIds.includes(miss.id));
+      return this.missList.filter(miss => !this.excludedIds.includes(miss.id));
     },
     maxVotesCount() {
       return this.missList.reduce((maxVotes, miss) => Math.max(maxVotes, miss.votesCount), -Infinity);
@@ -75,14 +86,31 @@ export default {
 
   data() {
     return {
+      loading: false,
+
+      votesApi: new REST_API('/api/miss'),
+
       missList,
     }
   },
 
   async mounted() {
+    if (this.showVotes) {
+      await this.getVotesCounts();
+    }
   },
 
   methods: {
+    async getVotesCounts() {
+      this.loading = true;
+      const {ok, status, data} = await this.votesApi.get('/votes');
+      this.loading = false;
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить данные о голосах');
+        return;
+      }
+      Object.entries(data).forEach(([id, votesData]) => this.missList.find(miss => miss.id === Number(id)).votesCount = votesData.count);
+    }
   }
 }
 </script>

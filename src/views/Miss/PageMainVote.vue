@@ -60,6 +60,12 @@ export default {
     return {
       phoneNumberToVoting,
     }
+  },
+
+  mounted() {
+  },
+
+  methods: {
   }
 }
 </script>

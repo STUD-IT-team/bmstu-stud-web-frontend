@@ -33,6 +33,11 @@ export default defineConfig({
       //   ws: true,
       //   changeOrigin: true,
       // },
+      '/api/miss/votes': {
+        target: 'https://clients.e-vostok.ru/mvote/json.php?service=26105',
+        secure: true,
+        changeOrigin: true,
+      },
       '/api': {
         target: `http://127.0.0.1:9000`,
         secure: false,
