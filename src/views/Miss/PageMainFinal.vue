@@ -71,7 +71,7 @@
 <script>
 import MissCardsContainer from "~/components/Miss/MissCardsContainer.vue";
 import MissCardFinal from "~/components/Miss/MissCardFinal.vue";
-import {missList} from "~/utils/constants";
+import {missList} from "~/utils/constantsMiss";
 
 export default {
   components: {MissCardsContainer, MissCardFinal},

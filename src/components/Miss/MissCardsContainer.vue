@@ -47,7 +47,7 @@
 
 <script>
 import MissCard from "~/components/Miss/MissCard.vue";
-import {missList} from "~/utils/constants";
+import {missList} from "~/utils/constantsMiss";
 
 export default {
   components: {MissCard},

@@ -187,7 +187,7 @@
 </template>
 
 <script>
-import {missList} from "~/utils/constants";
+import {missList} from "~/utils/constantsMiss";
 import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
 import {nextTick} from "vue";
 import TouchSweep from "touchsweep";

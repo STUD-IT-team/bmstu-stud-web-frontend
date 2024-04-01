@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import {phoneNumberToVoting} from "~/utils/constants";
+import {phoneNumberToVoting} from "~/utils/constantsMiss";
 import MissCardsContainer from "~/components/Miss/MissCardsContainer.vue";
 
 export default {

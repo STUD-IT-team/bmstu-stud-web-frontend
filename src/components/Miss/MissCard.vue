@@ -130,7 +130,7 @@
 </template>
 
 <script>
-import {phoneNumberToVoting} from "~/utils/constants";
+import {phoneNumberToVoting} from "~/utils/constantsMiss";
 import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
 
 export default {

@@ -9,7 +9,7 @@
   text-align center
   .footer-top
     border-top 1px solid colorMiss1
-    padding 25px 0
+    padding 25px 0 0 0
     text-align center
     .footer-logos
       margin-bottom 15px
@@ -45,7 +45,8 @@
       justify-content center
       gap 10px 5px
       margin 0 auto
-      padding 0 120px
+      padding 0 120px 25px
+      border-bottom 1px solid colorMiss1
       @media ({mobile})
         padding 0 40px
       .partner
@@ -58,8 +59,7 @@
     font-medium()
     @media ({mobile})
       font-small()
-    //border-top 1px solid colorMiss1
-    padding 0 0 10px 0
+    padding 10px 0
 </style>
 
 <template>
@@ -70,15 +70,23 @@
         <router-link :to="{name: 'default'}"><img class="footer-logo-center" src="/res/icons/stud-logo.svg" alt="stud-logo"/></router-link>
         <router-link :to="{name: 'miss'}"><img class="footer-logo-right" src="/res/icons/crown-logo.svg" alt="crown-logo"/></router-link>
       </div>
-<!--      <div class="footer-title">ПАРТНЁРЫ КОНКУРСА</div>-->
-<!--      <div class="partners-container">-->
-<!--        <img v-for="_ in 15" class="partner" src="../../../res/icons/stud-logo.svg" alt="partner-logo"/>-->
-<!--      </div>-->
+      <div class="footer-title" v-if="partnersList.length">ПАРТНЁРЫ КОНКУРСА</div>
+      <router-link :to="{name: 'missPartners'}" class="partners-container" v-if="partnersList.length">
+        <img v-for="partner in partnersList" class="partner" :src="partner.logo" alt="partner-logo"/>
+      </router-link>
     </div>
     <div class="footer-bottom-title">Сайт разработан Студенческим советом МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана, 2024&nbsp;г.</div>
   </footer>
 </template>
 
 <script>
-export default {}
+import {partnersList} from "~/utils/constantsMiss";
+
+export default {
+  data() {
+    return {
+      partnersList,
+    }
+  }
+}
 </script>
