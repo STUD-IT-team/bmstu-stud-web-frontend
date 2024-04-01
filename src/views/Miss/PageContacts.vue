@@ -49,7 +49,7 @@
       <label>Канал TG</label>
       <a class="contact" href="https://t.me/miss_bmstu" target="_blank">t.me/miss_bmstu</a>
       <label>E-mail</label>
-      <a class="contact" href="mailto:miss.bmstu@gmail.com" target="_blank">miss.bmstu@gmail.com</a>
+      <a class="contact" href="mailto:miss.bmstu@yandex.ru" target="_blank">miss.bmstu@yandex.ru</a>
     </section>
 
     <section class="organizers-container">
@@ -67,7 +67,7 @@
                      :image-jpg="ImageTamaraSergeevaJpg"
                      name="Тамара Сергеева"
                      phone="+7 (916) 881-04-73"
-                     mail="keylabupsi@gmail.com"
+                     mail="sergeevatb@student.bmstu.ru"
                      telegram="Wiltyan_li"
                      title="Главный организатор конкурса"
       ></OrganizerCard>

@@ -35,8 +35,8 @@ export default function createVueRouter(Store) {
         {path: '/miss', component: PageMain, meta: {}, children: [
             {path: '/miss', name: 'miss', component: PageMainStart, meta: {}},
             {path: '/miss/start', name: 'missMainStart', component: PageMainStart, meta: {}},
-            {path: '/miss/vote', name: 'missMainVote', component: PageMainVote, meta: {}},
-            {path: '/miss/final', name: 'missMainFinal', component: PageMainFinal, meta: {}},
+            {path: '/miss/vote_test_page_f5bc4eb5-e07c-4988-ba79-e6a17b35a7cd', name: 'missMainVote', component: PageMainVote, meta: {}},
+            {path: '/miss/final_test_page_ab85cf1f-1f58-4c13-9315-7db30f6207df', name: 'missMainFinal', component: PageMainFinal, meta: {}},
             {path: '/miss/partners', name: 'missPartners', component: pagePartners, meta: {}},
             {path: '/miss/about', name: 'missAbout', component: PageAbout, meta: {}},
             {path: '/miss/contacts', name: 'missContacts', component: PageContacts, meta: {}},
