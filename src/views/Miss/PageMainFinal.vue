@@ -39,8 +39,8 @@
     <header class="header">РЕЗУЛЬТАТЫ КОНКУРСА<br>«МИСС ОЧАРОВАНИЕ – 2024»</header>
 
     <section class="main-text">
-      <p><mark>25 апреля</mark> в Большом зале Центра креативных индустрий прошел финал конкурса<br><mark>«МиСС Очарование  — 2024».</mark></p>
-      <p>В этом году конкурс прошел в двадцать третий раз. На бауманской сцене выступили <mark>10 финалисток</mark>, которые раскрыли свой талант и показали свою уникальность.</p>
+      <p><mark>25&nbsp;апреля</mark> в&nbsp;Большом зале Центра креативных индустрий прошел финал конкурса<br><mark>«МиСС Очарование  — 2024».</mark></p>
+      <p>В этом году конкурс прошел в&nbsp;двадцать третий раз. На&nbsp;бауманской сцене выступили <mark>10&nbsp;финалисток</mark>, которые раскрыли свой талант и&nbsp;показали свою уникальность.</p>
       <p>Ниже представлены результаты конкурса.</p>
     </section>
 
@@ -70,12 +70,11 @@
 
 <script>
 import MissCardsContainer from "~/components/Miss/MissCardsContainer.vue";
-import FooterFivePartners from "~/components/Miss/FooterFivePartners.vue";
 import MissCardFinal from "~/components/Miss/MissCardFinal.vue";
 import {missList} from "~/utils/constants";
 
 export default {
-  components: {MissCardsContainer, FooterFivePartners, MissCardFinal},
+  components: {MissCardsContainer, MissCardFinal},
 
   data() {
     return {

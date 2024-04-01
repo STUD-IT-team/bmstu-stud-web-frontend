@@ -70,7 +70,7 @@ padding-sides = 20px
              :id="oneNew.id"
              :title="oneNew.title"
              :text="oneNew.description"
-             organization-name="Студнческий совет МГТУ им. Н.Э. Баумана"
+             organization-name="Студнческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана"
              :organization-logo="StudLogo"
              :images-src="[Picture]"
              :time-published="oneNew.created_at"
@@ -83,7 +83,7 @@ padding-sides = 20px
                         'Поздравляем Антона Павленко с ДР!!!',
                         'Поздравляем Антона Успенского со званием мисс',
                         'А вас не бесит it отдел?',
-                        'Это студенческий совет МГТУ им. Н.Э. Баумана',
+                        'Это студенческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана',
                       ]">
           </ListingBlock>
           <ListingBlock title="Горячие новости"

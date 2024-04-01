@@ -41,9 +41,9 @@
     <header class="header">КОНТАКТЫ</header>
     <section class="contacts">
       <label>Адрес</label>
-      <a class="contact" href="https://yandex.ru/maps/-/CDRYrHYz">г. Москва, 2-я Бауманская улица, 5с4, южное крыло, ауд. 339ю</a>
+      <a class="contact" href="https://yandex.ru/maps/-/CDRYrHYz" target="_blank">г. Москва, 2-я Бауманская улица, 5с4, южное крыло, ауд. 339ю</a>
       <label>Телефон</label>
-      <a class="contact" href="tel:+74952636855">+7 (495) 263-68-55</a>
+      <a class="contact" href="tel:+74952636855" target="_blank">+7 (495) 263-68-55</a>
       <label>Группа VK</label>
       <a class="contact" href="https://vk.com/miss_bmstu" target="_blank">vk.com/miss_bmstu</a>
       <label>Канал TG</label>
@@ -59,7 +59,7 @@
                      name="Павел Орлов"
                      phone="+7 (915) 720-89-11"
                      mail="orlov@bmstu.ru"
-                     telegram="t.me/Pavel_BMSTU"
+                     telegram="Pavel_BMSTU"
                      title="Председатель Студенческого Совета"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
@@ -68,7 +68,7 @@
                      name="Тамара Сергеева"
                      phone="+7 (916) 881-04-73"
                      mail="keylabupsi@gmail.com"
-                     telegram="t.me/Wiltyan_li"
+                     telegram="Wiltyan_li"
                      title="Главный организатор конкурса"
       ></OrganizerCard>
       <OrganizerCard class="organizer-card"
@@ -77,8 +77,8 @@
                      name="Георгий Авдеев"
                      phone="+7 (985) 436-58-91"
                      mail="geor.avdeeff@yandex.ru"
-                     telegram="t.me/GeorgeAvdeev"
-                     title="Работа с партнерами"
+                     telegram="GeorgeAvdeev"
+                     title="Ответственный за работу с партнерами"
       ></OrganizerCard>
     </section>
   </div>

@@ -78,7 +78,7 @@
       </div>
     </div>
     <div class="bottom-part">
-      <span class="footer-label">Студенческий совет МГТУ им. Н.Э. Баумана 2024</span>
+      <span class="footer-label">Студенческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана, 2024 г.</span>
       <img src="/res/icons/stud-logo.svg" alt="logo">
     </div>
   </footer>

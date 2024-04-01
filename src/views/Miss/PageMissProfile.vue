@@ -138,7 +138,7 @@
 </style>
 
 <template>
-  <div class="root-page-miss-card" :key="missId">
+  <div class="root-page-miss-card" :key="missId" @swipeleft="$isMobile ? goToDifferentMiss(+1) : null" @swiperight="$isMobile ? goToDifferentMiss(-1) : null">
     <header class="header">
       <img class="arrow-left" :class="{'hidden': miss.idx === 0}" @click="goToDifferentMiss(-1)" src="/res/icons/arrow-left-card.svg" alt="">
       <div class="info">№{{ miss.id }} {{ miss.name }}</div>
@@ -171,10 +171,10 @@
           <div v-for="(QAtext, idx) in miss.QAtexts" class="answer-container">
             <input type="checkbox" :id="`question-${idx}`" :checked="idx === 0"/>
             <label class="question" :for="`question-${idx}`">
-              <span>{{ QAtext.question }}</span>
+              <span v-html="QAtext.question"></span>
               <img class="arrow" src="/res/icons/arrow-right-small.svg" alt="">
             </label>
-            <div class="answer">{{ QAtext.answer }}</div>
+            <div class="answer" v-html="QAtext.answer"></div>
           </div>
         </section>
       </div>
@@ -190,6 +190,7 @@
 import {missList} from "~/utils/constants";
 import ImageWebpJpg from "~/components/ImageWebpJpg.vue";
 import {nextTick} from "vue";
+import TouchSweep from "touchsweep";
 
 
 export default {
@@ -215,6 +216,7 @@ export default {
     this.updateHeights();
 
     this.resizeObserver.observe(document.body);
+
     window.scrollTo({top: 0, behavior: "smooth"});
   },
   unmounted() {
@@ -223,10 +225,13 @@ export default {
 
   methods: {
     goToDifferentMiss(incrementValueIdx) {
-      const newId = missList[this.miss.idx + incrementValueIdx].id;
+      const newId = missList[this.miss.idx + incrementValueIdx]?.id;
+      if (newId === undefined) {
+        return;
+      }
       this.$router.push({name: 'missProfile', params: {missId: newId}})
     },
-    updateMiss(newMissId) {
+    async updateMiss(newMissId) {
       this.missId = newMissId;
       const foundMissIdx = missList.findIndex(miss => miss.id === this.missId);
       if (foundMissIdx === -1) {
@@ -235,6 +240,9 @@ export default {
         return;
       }
       this.miss = Object.assign({idx: foundMissIdx}, missList[foundMissIdx]);
+
+      await nextTick();
+      new TouchSweep(this.$el, {value: 1}, 20)
     },
     updateHeights() {
       // this.stickyStartTop = this.$refs.stickyContainer.offsetTop;

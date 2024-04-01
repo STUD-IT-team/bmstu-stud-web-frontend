@@ -25,7 +25,7 @@
   <div class="root-listing-block">
     <header class="header">{{ title }}</header>
     <ul class="rows">
-      <li v-for="row in textRows" class="row">{{ row }}</li>
+      <li v-for="row in textRows" class="row" v-html="row"></li>
     </ul>
   </div>
 </template>

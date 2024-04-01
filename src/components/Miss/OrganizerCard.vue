@@ -31,6 +31,8 @@
     .contact
       display block
       hover-effect()
+    .title
+      color colorMiss2
 </style>
 
 <template>
@@ -41,7 +43,7 @@
 
       <a :href="`tel:${phone}`" class="contact">{{ phone }}</a>
       <a :href="`mailto:${mail}`" class="contact">{{ mail }}</a>
-      <a :href="`https://${telegram}`" class="contact">{{ telegram }}</a>
+      <a :href="`https://t.me/${telegram}`" class="contact">@{{ telegram }}</a>
       <div class="title">{{ title }}</div>
     </section>
   </div>
