@@ -32,7 +32,7 @@
     <header class="header">ФИНАЛИСТКИ 2024</header>
     <section class="main-text">
       <p>
-        Для&nbsp;того чтобы отдать голос за&nbsp;фаворитку, необходимо <mark>отправить SMS</mark> в&nbsp;формате:<br>
+        Для&nbsp;того, чтобы отдать голос за&nbsp;фаворитку, необходимо <mark>отправить SMS</mark> в&nbsp;формате:<br>
         «СТУД» и&nbsp;номер участницы на&nbsp;короткий номер {{ phoneNumberToVoting }}.
       </p>
       <p>
