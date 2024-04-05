@@ -53,7 +53,7 @@
         overflow hidden
         @media ({desktop})
           transform translateY(unquote('clamp(0px, calc((var(--scroll) - var(--start-top)) * 1px), calc((var(--block-height) - var(--photo-height)) * 1px))'))
-        transition all 0.5s ease-out-slow
+        //transition all 0.5s ease-out-slow
     .right-column
       flex 2
       .age-height-group-container
