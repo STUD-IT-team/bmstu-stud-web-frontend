@@ -107,7 +107,7 @@
       <router-link :to="{name: 'missAbout'}" style="--animation-index: 1" class="button">О КОНКУРСЕ</router-link>
       <router-link v-if="partnersList.length" :to="{name: 'missPartners'}" style="--animation-index: 2" class="button">ПАРТНЁРЫ</router-link>
       <router-link :to="{name: 'missContacts'}" style="--animation-index: 3" class="button">КОНТАКТЫ</router-link>
-      <router-link :to="{name: 'default'}" style="--animation-index: 4" class="button">СТУДЕНЧЕСКИЙ СОВЕТ</router-link>
+<!--      <router-link :to="{name: 'default'}" style="&#45;&#45;animation-index: 4" class="button">СТУДЕНЧЕСКИЙ СОВЕТ</router-link>-->
     </nav>
 
     <section class="decoration">

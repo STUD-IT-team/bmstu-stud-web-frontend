@@ -67,8 +67,8 @@
     <div class="footer-top">
       <div class="footer-logos">
         <a href="https://bmstu.ru" target="_blank"><img class="footer-logo-left" src="/res/icons/bmstu-logo.svg" alt="bmstu-logo"/></a>
-        <router-link :to="{name: 'default'}"><img class="footer-logo-center" src="/res/icons/stud-logo.svg" alt="stud-logo"/></router-link>
-        <router-link :to="{name: 'miss'}"><img class="footer-logo-right" src="/res/icons/crown-logo.svg" alt="crown-logo"/></router-link>
+        <a href="https://vk.com/studsovet_bmstu" target="_blank"><img class="footer-logo-center" src="/res/icons/stud-logo.svg" alt="stud-logo"/></a>
+        <a href="https://vk.com/miss_bmstu" target="_blank"><img class="footer-logo-right" src="/res/icons/crown-logo.svg" alt="crown-logo"/></a>
       </div>
       <div class="footer-title" v-if="partnersList.length">ПАРТНЁРЫ КОНКУРСА</div>
       <router-link :to="{name: 'missPartners'}" class="partners-container" v-if="partnersList.length">
