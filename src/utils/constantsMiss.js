@@ -62,7 +62,7 @@ import ImageMiss10Webp800 from "#~/images/miss-photos/webp-800/10.webp";
 
 export const missList = [
   {
-    id: 1, name: 'Антонина Ивченко', age: 19, group: 'Э10-42Б', height: 169,
+    id: 1, name: 'Антонина Ивченко', age: '19 лет', group: 'Э10-42Б', height: 169,
     imageWebp: `${ImageMiss1Webp200} 200w, ${ImageMiss1Webp400} 400w,  ${ImageMiss1Webp800} 800w`,
     imageJpg: `${ImageMiss1Jpg200} 200w, ${ImageMiss1Jpg400} 400w,  ${ImageMiss1Jpg800} 800w`,
     bioImages: [],
@@ -105,7 +105,7 @@ export const missList = [
     ]
   },
   {
-    id: 2, name: 'Александра Хабидулина', age: 22, group: 'БМТ1-43Б', height: 159,
+    id: 2, name: 'Александра Хабидулина', age: '22 года', group: 'БМТ1-43Б', height: 159,
     imageWebp: `${ImageMiss2Webp200} 200w, ${ImageMiss2Webp400} 400w,  ${ImageMiss2Webp800} 800w`,
     imageJpg: `${ImageMiss2Jpg200} 200w, ${ImageMiss2Jpg400} 400w,  ${ImageMiss2Jpg800} 800w`,
     bioImages: [],
@@ -146,7 +146,7 @@ export const missList = [
     ]
   },
   {
-    id: 3, name: 'Дарья Марченко', age: 21, group: 'ИБМ6-21Б', height: 159,
+    id: 3, name: 'Дарья Марченко', age: '21 год', group: 'ИБМ6-21Б', height: 159,
     bioImages: [],
     imageWebp: `${ImageMiss3Webp200} 200w, ${ImageMiss3Webp400} 400w,  ${ImageMiss3Webp800} 800w`,
     imageJpg: `${ImageMiss3Jpg200} 200w, ${ImageMiss3Jpg400} 400w,  ${ImageMiss3Jpg800} 800w`,
@@ -187,7 +187,7 @@ export const missList = [
     ]
   },
   {
-    id: 4, name: 'Елена Вершинина', age: 18, group: 'МТ4-21Б', height: 176,
+    id: 4, name: 'Елена Вершинина', age: '18 лет', group: 'МТ4-21Б', height: 176,
     bioImages: [],
     imageWebp: `${ImageMiss4Webp200} 200w, ${ImageMiss4Webp400} 400w,  ${ImageMiss4Webp800} 800w`,
     imageJpg: `${ImageMiss4Jpg200} 200w, ${ImageMiss4Jpg400} 400w,  ${ImageMiss4Jpg800} 800w`,
@@ -229,7 +229,7 @@ export const missList = [
     ]
   },
   {
-    id: 5, name: 'София Сахно', age: 20, group: 'СМ7-61Б', height: 164,
+    id: 5, name: 'София Сахно', age: '20 лет', group: 'СМ7-61Б', height: 164,
     bioImages: [],
     imageWebp: `${ImageMiss5Webp200} 200w, ${ImageMiss5Webp400} 400w,  ${ImageMiss5Webp800} 800w`,
     imageJpg: `${ImageMiss5Jpg200} 200w, ${ImageMiss5Jpg400} 400w,  ${ImageMiss5Jpg800} 800w`,
@@ -271,7 +271,7 @@ export const missList = [
     ]
   },
   {
-    id: 6, name: 'Юлия Тузкова', age: 18, group: 'РК6-21Б', height: 164,
+    id: 6, name: 'Юлия Тузкова', age: '18 лет', group: 'РК6-21Б', height: 164,
     bioImages: [],
     imageWebp: `${ImageMiss6Webp200} 200w, ${ImageMiss6Webp400} 400w,  ${ImageMiss6Webp800} 800w`,
     imageJpg: `${ImageMiss6Jpg200} 200w, ${ImageMiss6Jpg400} 400w,  ${ImageMiss6Jpg800} 800w`,
@@ -315,7 +315,7 @@ export const missList = [
     ]
   },
   {
-    id: 7, name: 'Дарья Федоренко', age: 22, group: 'ИУ1-103', height: 163,
+    id: 7, name: 'Дарья Федоренко', age: '22 года', group: 'ИУ1-103', height: 163,
     bioImages: [],
     imageWebp: `${ImageMiss7Webp200} 200w, ${ImageMiss7Webp400} 400w,  ${ImageMiss7Webp800} 800w`,
     imageJpg: `${ImageMiss7Jpg200} 200w, ${ImageMiss7Jpg400} 400w,  ${ImageMiss7Jpg800} 800w`,
@@ -361,7 +361,7 @@ export const missList = [
     ]
   },
   {
-    id: 8, name: 'Полина Мрыхина', age: 18, group: 'ЛТ6-25Б', height: 168,
+    id: 8, name: 'Полина Мрыхина', age: '18 лет', group: 'ЛТ6-25Б', height: 168,
     bioImages: [],
     imageWebp: `${ImageMiss8Webp200} 200w, ${ImageMiss8Webp400} 400w,  ${ImageMiss8Webp800} 800w`,
     imageJpg: `${ImageMiss8Jpg200} 200w, ${ImageMiss8Jpg400} 400w,  ${ImageMiss8Jpg800} 800w`,
@@ -401,7 +401,7 @@ export const missList = [
     ]
   },
   {
-    id: 9, name: 'Елизавета Дубовицкая', age: 20, group: 'ЮР-46', height: 161,
+    id: 9, name: 'Елизавета Дубовицкая', age: '20 лет', group: 'ЮР-46', height: 161,
     bioImages: [],
     imageWebp: `${ImageMiss9Webp200} 200w, ${ImageMiss9Webp400} 400w,  ${ImageMiss9Webp800} 800w`,
     imageJpg: `${ImageMiss9Jpg200} 200w, ${ImageMiss9Jpg400} 400w,  ${ImageMiss9Jpg800} 800w`,
@@ -441,7 +441,7 @@ export const missList = [
     ]
   },
   {
-    id: 10, name: 'Дарья Фёдорова', age: 19, group: 'ФН2-42Б', height: 174,
+    id: 10, name: 'Дарья Федорова', age: '18 лет', group: 'ФН2-42Б', height: 174,
     bioImages: [],
     imageWebp: `${ImageMiss10Webp200} 200w, ${ImageMiss10Webp400} 400w,  ${ImageMiss10Webp800} 800w`,
     imageJpg: `${ImageMiss10Jpg200} 200w, ${ImageMiss10Jpg400} 400w,  ${ImageMiss10Jpg800} 800w`,

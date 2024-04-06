@@ -155,7 +155,7 @@
         <section class="age-height-group-container">
           <div class="info-block">
             <div class="info-title">Возраст</div>
-            <span class="info">{{ miss.age }} лет</span>
+            <span class="info">{{ miss.age }}</span>
           </div>
           <div class="info-block">
             <div class="info-title">Рост</div>
