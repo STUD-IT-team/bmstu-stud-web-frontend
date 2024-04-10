@@ -4,6 +4,7 @@
 @require '../styles/utils.styl'
 @require '../styles/buttons.styl'
 @require '../styles/components.styl'
+@require '../styles/animations.styl'
 
 max-main-part-width = 1150px
 
@@ -84,16 +85,8 @@ max-main-part-width = 1150px
     .nav-buttons-container
     .right-container
       & > *
-        opacity 0
-        animation button-in 0.5s ease forwards
-        animation-delay calc(var(--animation-index) * 0.05s)
-        @keyframes button-in
-          from
-            opacity 0
-            transform translateY(-20px)
-          to
-            opacity 1
-            transform translateY(0)
+        animation-float(0.5s, 0, -20px)
+        animation-index-delay(0.05s)
   &.with-bg
     block-bg()
     display flex

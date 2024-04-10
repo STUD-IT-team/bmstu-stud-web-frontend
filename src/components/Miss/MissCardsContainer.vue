@@ -4,6 +4,7 @@
 @require '../../styles/utils.styl'
 @require '../../styles/buttons.styl'
 @require '../../styles/components.styl'
+@require '../../styles/animations.styl'
 
 .root-miss-cards-container
   list-style none
@@ -16,16 +17,8 @@
     width 45%
     max-width 215px
     min-width 130px
-    opacity 0
-    animation card-in 0.5s ease forwards
-    animation-delay calc(var(--index) * 0.05s)
-    @keyframes card-in
-      from
-        opacity 0
-        transform translateY(-20px)
-      to
-        opacity 1
-        transform translateY(0)
+    animation-float(0.5s, 0, -20px)
+    animation-index-delay(0.05s)
   .loading
     position absolute
     left 50%
@@ -36,7 +29,7 @@
 <template>
   <div class="root-miss-cards-container">
     <MissCard v-for="(miss, idx) in resultMissList"
-              :style="{'--index': idx}"
+              :style="{'--animation-index': idx}"
               class="card"
               :group="miss.group"
               :name="miss.name"

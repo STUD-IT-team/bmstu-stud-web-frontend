@@ -3,6 +3,7 @@
 @require '../../styles/buttons.styl'
 @require '../../styles/fonts.styl'
 @require '../../styles/components.styl'
+@require '../../styles/animations.styl'
 
 .root-page-miss-card
   .header
@@ -122,19 +123,30 @@
   .images-container
     display flex
     flex-wrap wrap
+    justify-content center
+    align-items center
     gap 10px
-    .image
-      flex 1 1 auto /* or flex: auto; */
-      height 200px
-      cursor pointer
+    .image-container
+      flex 0 auto
       position relative
-      img
-        background white
-        object-fit cover
-        width 100%
-        height 100%
-        vertical-align middle
-        border-radius 5px
+      border-radius borderRadiusS
+      overflow hidden
+      .image
+        cursor pointer
+        position relative
+        max-height 600px
+        max-width 400px
+        @media({mobile})
+          height 260px
+        animation-float(0.5s, -20px, 0)
+        animation-index-delay(0.1s)
+        img
+          //background white
+          object-fit contain
+          width 100%
+          height 100%
+          vertical-align middle
+          border-radius borderRadiusS
 </style>
 
 <template>
@@ -181,7 +193,9 @@
     </section>
 
     <ul class="images-container">
-      <li class="image" v-for="image in miss.bioImages"><img :src="image" alt="photo"></li>
+      <li v-for="(image, i) in miss.bioImages" class="image-container">
+        <ImageWebpJpg :src-jpg="image.jpg" :src-webp="image.webp" alt="photo" class="image" :style="{'--animation-index': i}"></ImageWebpJpg>
+      </li>
     </ul>
   </div>
 </template>
@@ -242,7 +256,7 @@ export default {
       this.miss = Object.assign({idx: foundMissIdx}, missList[foundMissIdx]);
 
       await nextTick();
-      new TouchSweep(this.$el, {value: 1}, 20)
+      new TouchSweep(this.$el, {value: 1}, 30)
     },
     updateHeights() {
       // this.stickyStartTop = this.$refs.stickyContainer.offsetTop;
