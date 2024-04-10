@@ -1,71 +1,171 @@
-import ImageMiss1Jpg200 from "#~/images/miss-photos/jpg-200/1.jpg";
-import ImageMiss2Jpg200 from "#~/images/miss-photos/jpg-200/2.jpg";
-import ImageMiss3Jpg200 from "#~/images/miss-photos/jpg-200/3.jpg";
-import ImageMiss4Jpg200 from "#~/images/miss-photos/jpg-200/4.jpg";
-import ImageMiss5Jpg200 from "#~/images/miss-photos/jpg-200/5.jpg";
-import ImageMiss6Jpg200 from "#~/images/miss-photos/jpg-200/6.jpg";
-import ImageMiss7Jpg200 from "#~/images/miss-photos/jpg-200/7.jpg";
-import ImageMiss8Jpg200 from "#~/images/miss-photos/jpg-200/8.jpg";
-import ImageMiss9Jpg200 from "#~/images/miss-photos/jpg-200/9.jpg";
-import ImageMiss10Jpg200 from "#~/images/miss-photos/jpg-200/10.jpg";
-import ImageMiss1Jpg400 from "#~/images/miss-photos/jpg-400/1.jpg";
-import ImageMiss2Jpg400 from "#~/images/miss-photos/jpg-400/2.jpg";
-import ImageMiss3Jpg400 from "#~/images/miss-photos/jpg-400/3.jpg";
-import ImageMiss4Jpg400 from "#~/images/miss-photos/jpg-400/4.jpg";
-import ImageMiss5Jpg400 from "#~/images/miss-photos/jpg-400/5.jpg";
-import ImageMiss6Jpg400 from "#~/images/miss-photos/jpg-400/6.jpg";
-import ImageMiss7Jpg400 from "#~/images/miss-photos/jpg-400/7.jpg";
-import ImageMiss8Jpg400 from "#~/images/miss-photos/jpg-400/8.jpg";
-import ImageMiss9Jpg400 from "#~/images/miss-photos/jpg-400/9.jpg";
-import ImageMiss10Jpg400 from "#~/images/miss-photos/jpg-400/10.jpg";
-import ImageMiss1Jpg800 from "#~/images/miss-photos/jpg-800/1.jpg";
-import ImageMiss2Jpg800 from "#~/images/miss-photos/jpg-800/2.jpg";
-import ImageMiss3Jpg800 from "#~/images/miss-photos/jpg-800/3.jpg";
-import ImageMiss4Jpg800 from "#~/images/miss-photos/jpg-800/4.jpg";
-import ImageMiss5Jpg800 from "#~/images/miss-photos/jpg-800/5.jpg";
-import ImageMiss6Jpg800 from "#~/images/miss-photos/jpg-800/6.jpg";
-import ImageMiss7Jpg800 from "#~/images/miss-photos/jpg-800/7.jpg";
-import ImageMiss8Jpg800 from "#~/images/miss-photos/jpg-800/8.jpg";
-import ImageMiss9Jpg800 from "#~/images/miss-photos/jpg-800/9.jpg";
-import ImageMiss10Jpg800 from "#~/images/miss-photos/jpg-800/10.jpg";
+import ImageMiss1Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/1.jpg";
+import ImageMiss2Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/2.jpg";
+import ImageMiss3Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/3.jpg";
+import ImageMiss4Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/4.jpg";
+import ImageMiss5Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/5.jpg";
+import ImageMiss6Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/6.jpg";
+import ImageMiss7Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/7.jpg";
+import ImageMiss8Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/8.jpg";
+import ImageMiss9Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/9.jpg";
+import ImageMiss10Jpg200 from "#~/images/miss-photos/avatar-photos/jpg-200/10.jpg";
+import ImageMiss1Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/1.jpg";
+import ImageMiss2Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/2.jpg";
+import ImageMiss3Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/3.jpg";
+import ImageMiss4Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/4.jpg";
+import ImageMiss5Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/5.jpg";
+import ImageMiss6Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/6.jpg";
+import ImageMiss7Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/7.jpg";
+import ImageMiss8Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/8.jpg";
+import ImageMiss9Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/9.jpg";
+import ImageMiss10Jpg400 from "#~/images/miss-photos/avatar-photos/jpg-400/10.jpg";
+import ImageMiss1Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/1.jpg";
+import ImageMiss2Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/2.jpg";
+import ImageMiss3Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/3.jpg";
+import ImageMiss4Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/4.jpg";
+import ImageMiss5Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/5.jpg";
+import ImageMiss6Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/6.jpg";
+import ImageMiss7Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/7.jpg";
+import ImageMiss8Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/8.jpg";
+import ImageMiss9Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/9.jpg";
+import ImageMiss10Jpg800 from "#~/images/miss-photos/avatar-photos/jpg-800/10.jpg";
 
-import ImageMiss1Webp200 from "#~/images/miss-photos/webp-200/1.webp";
-import ImageMiss2Webp200 from "#~/images/miss-photos/webp-200/2.webp";
-import ImageMiss3Webp200 from "#~/images/miss-photos/webp-200/3.webp";
-import ImageMiss4Webp200 from "#~/images/miss-photos/webp-200/4.webp";
-import ImageMiss5Webp200 from "#~/images/miss-photos/webp-200/5.webp";
-import ImageMiss6Webp200 from "#~/images/miss-photos/webp-200/6.webp";
-import ImageMiss7Webp200 from "#~/images/miss-photos/webp-200/7.webp";
-import ImageMiss8Webp200 from "#~/images/miss-photos/webp-200/8.webp";
-import ImageMiss9Webp200 from "#~/images/miss-photos/webp-200/9.webp";
-import ImageMiss10Webp200 from "#~/images/miss-photos/webp-200/10.webp";
-import ImageMiss1Webp400 from "#~/images/miss-photos/webp-400/1.webp";
-import ImageMiss2Webp400 from "#~/images/miss-photos/webp-400/2.webp";
-import ImageMiss3Webp400 from "#~/images/miss-photos/webp-400/3.webp";
-import ImageMiss4Webp400 from "#~/images/miss-photos/webp-400/4.webp";
-import ImageMiss5Webp400 from "#~/images/miss-photos/webp-400/5.webp";
-import ImageMiss6Webp400 from "#~/images/miss-photos/webp-400/6.webp";
-import ImageMiss7Webp400 from "#~/images/miss-photos/webp-400/7.webp";
-import ImageMiss8Webp400 from "#~/images/miss-photos/webp-400/8.webp";
-import ImageMiss9Webp400 from "#~/images/miss-photos/webp-400/9.webp";
-import ImageMiss10Webp400 from "#~/images/miss-photos/webp-400/10.webp";
-import ImageMiss1Webp800 from "#~/images/miss-photos/webp-800/1.webp";
-import ImageMiss2Webp800 from "#~/images/miss-photos/webp-800/2.webp";
-import ImageMiss3Webp800 from "#~/images/miss-photos/webp-800/3.webp";
-import ImageMiss4Webp800 from "#~/images/miss-photos/webp-800/4.webp";
-import ImageMiss5Webp800 from "#~/images/miss-photos/webp-800/5.webp";
-import ImageMiss6Webp800 from "#~/images/miss-photos/webp-800/6.webp";
-import ImageMiss7Webp800 from "#~/images/miss-photos/webp-800/7.webp";
-import ImageMiss8Webp800 from "#~/images/miss-photos/webp-800/8.webp";
-import ImageMiss9Webp800 from "#~/images/miss-photos/webp-800/9.webp";
-import ImageMiss10Webp800 from "#~/images/miss-photos/webp-800/10.webp";
+import ImageMiss1Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/1.webp";
+import ImageMiss2Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/2.webp";
+import ImageMiss3Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/3.webp";
+import ImageMiss4Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/4.webp";
+import ImageMiss5Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/5.webp";
+import ImageMiss6Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/6.webp";
+import ImageMiss7Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/7.webp";
+import ImageMiss8Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/8.webp";
+import ImageMiss9Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/9.webp";
+import ImageMiss10Webp200 from "#~/images/miss-photos/avatar-photos/webp-200/10.webp";
+import ImageMiss1Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/1.webp";
+import ImageMiss2Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/2.webp";
+import ImageMiss3Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/3.webp";
+import ImageMiss4Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/4.webp";
+import ImageMiss5Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/5.webp";
+import ImageMiss6Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/6.webp";
+import ImageMiss7Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/7.webp";
+import ImageMiss8Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/8.webp";
+import ImageMiss9Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/9.webp";
+import ImageMiss10Webp400 from "#~/images/miss-photos/avatar-photos/webp-400/10.webp";
+import ImageMiss1Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/1.webp";
+import ImageMiss2Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/2.webp";
+import ImageMiss3Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/3.webp";
+import ImageMiss4Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/4.webp";
+import ImageMiss5Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/5.webp";
+import ImageMiss6Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/6.webp";
+import ImageMiss7Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/7.webp";
+import ImageMiss8Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/8.webp";
+import ImageMiss9Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/9.webp";
+import ImageMiss10Webp800 from "#~/images/miss-photos/avatar-photos/webp-800/10.webp";
+
+
+import imageMiss1Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/1/1.jpg"
+import imageMiss1Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/1/2.jpg"
+import imageMiss1Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/1/3.jpg"
+import imageMiss1Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/1/4.jpg"
+import imageMiss1Profile5Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/1/5.jpg"
+import imageMiss2Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/2/1.jpg"
+import imageMiss2Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/2/2.jpg"
+import imageMiss2Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/2/3.jpg"
+import imageMiss2Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/2/4.jpg"
+import imageMiss2Profile5Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/2/5.jpg"
+import imageMiss2Profile6Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/2/6.jpg"
+import imageMiss3Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/3/1.jpg"
+import imageMiss3Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/3/2.jpg"
+import imageMiss3Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/3/3.jpg"
+import imageMiss3Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/3/4.jpg"
+import imageMiss3Profile5Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/3/5.jpg"
+import imageMiss3Profile6Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/3/6.jpg"
+import imageMiss4Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/4/1.jpg"
+import imageMiss4Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/4/2.jpg"
+import imageMiss4Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/4/3.jpg"
+import imageMiss4Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/4/4.jpg"
+import imageMiss5Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/5/1.jpg"
+import imageMiss5Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/5/2.jpg"
+import imageMiss5Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/5/3.jpg"
+import imageMiss5Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/5/4.jpg"
+import imageMiss5Profile5Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/5/5.jpg"
+import imageMiss6Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/6/1.jpg"
+import imageMiss6Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/6/2.jpg"
+import imageMiss6Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/6/3.jpg"
+import imageMiss6Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/6/4.jpg"
+import imageMiss7Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/7/1.jpg"
+import imageMiss7Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/7/2.jpg"
+import imageMiss7Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/7/3.jpg"
+import imageMiss7Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/7/4.jpg"
+import imageMiss8Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/8/1.jpg"
+import imageMiss8Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/8/2.jpg"
+import imageMiss8Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/8/3.jpg"
+import imageMiss8Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/8/4.jpg"
+import imageMiss9Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/9/1.jpg"
+import imageMiss9Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/9/2.jpg"
+import imageMiss9Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/9/3.jpg"
+import imageMiss9Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/9/4.jpg"
+import imageMiss10Profile1Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/10/1.jpg"
+import imageMiss10Profile2Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/10/2.jpg"
+import imageMiss10Profile3Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/10/3.jpg"
+import imageMiss10Profile4Jpg600 from "#~/images/miss-photos/profile-photos/jpg-600/10/4.jpg"
+import imageMiss1Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/1/1.webp"
+import imageMiss1Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/1/2.webp"
+import imageMiss1Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/1/3.webp"
+import imageMiss1Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/1/4.webp"
+import imageMiss1Profile5Webp600 from "#~/images/miss-photos/profile-photos/webp-600/1/5.webp"
+import imageMiss2Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/2/1.webp"
+import imageMiss2Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/2/2.webp"
+import imageMiss2Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/2/3.webp"
+import imageMiss2Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/2/4.webp"
+import imageMiss2Profile5Webp600 from "#~/images/miss-photos/profile-photos/webp-600/2/5.webp"
+import imageMiss2Profile6Webp600 from "#~/images/miss-photos/profile-photos/webp-600/2/6.webp"
+import imageMiss3Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/3/1.webp"
+import imageMiss3Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/3/2.webp"
+import imageMiss3Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/3/3.webp"
+import imageMiss3Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/3/4.webp"
+import imageMiss3Profile5Webp600 from "#~/images/miss-photos/profile-photos/webp-600/3/5.webp"
+import imageMiss3Profile6Webp600 from "#~/images/miss-photos/profile-photos/webp-600/3/6.webp"
+import imageMiss4Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/4/1.webp"
+import imageMiss4Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/4/2.webp"
+import imageMiss4Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/4/3.webp"
+import imageMiss4Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/4/4.webp"
+import imageMiss5Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/5/1.webp"
+import imageMiss5Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/5/2.webp"
+import imageMiss5Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/5/3.webp"
+import imageMiss5Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/5/4.webp"
+import imageMiss5Profile5Webp600 from "#~/images/miss-photos/profile-photos/webp-600/5/5.webp"
+import imageMiss6Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/6/1.webp"
+import imageMiss6Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/6/2.webp"
+import imageMiss6Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/6/3.webp"
+import imageMiss6Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/6/4.webp"
+import imageMiss7Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/7/1.webp"
+import imageMiss7Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/7/2.webp"
+import imageMiss7Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/7/3.webp"
+import imageMiss7Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/7/4.webp"
+import imageMiss8Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/8/1.webp"
+import imageMiss8Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/8/2.webp"
+import imageMiss8Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/8/3.webp"
+import imageMiss8Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/8/4.webp"
+import imageMiss9Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/9/1.webp"
+import imageMiss9Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/9/2.webp"
+import imageMiss9Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/9/3.webp"
+import imageMiss9Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/9/4.webp"
+import imageMiss10Profile1Webp600 from "#~/images/miss-photos/profile-photos/webp-600/10/1.webp"
+import imageMiss10Profile2Webp600 from "#~/images/miss-photos/profile-photos/webp-600/10/2.webp"
+import imageMiss10Profile3Webp600 from "#~/images/miss-photos/profile-photos/webp-600/10/3.webp"
+import imageMiss10Profile4Webp600 from "#~/images/miss-photos/profile-photos/webp-600/10/4.webp"
 
 export const missList = [
   {
     id: 1, name: 'Антонина Ивченко', age: '19 лет', group: 'Э10-42Б', height: 169,
     imageWebp: `${ImageMiss1Webp200} 200w, ${ImageMiss1Webp400} 400w,  ${ImageMiss1Webp800} 800w`,
     imageJpg: `${ImageMiss1Jpg200} 200w, ${ImageMiss1Jpg400} 400w,  ${ImageMiss1Jpg800} 800w`,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss1Profile1Jpg600, webp: imageMiss1Profile1Webp600},
+      {jpg: imageMiss1Profile2Jpg600, webp: imageMiss1Profile2Webp600},
+      {jpg: imageMiss1Profile3Jpg600, webp: imageMiss1Profile3Webp600},
+      {jpg: imageMiss1Profile4Jpg600, webp: imageMiss1Profile4Webp600},
+      {jpg: imageMiss1Profile5Jpg600, webp: imageMiss1Profile5Webp600},
+    ],
     QAtexts: [
       {
         question: '1.&nbsp;Почему ты&nbsp;решила пойти на&nbsp;кастинг «МиСС Очарование&nbsp;— 2024» и&nbsp;что&nbsp;для&nbsp;тебя значит участие в&nbsp;проекте?',
@@ -108,7 +208,14 @@ export const missList = [
     id: 2, name: 'Александра Хабидулина', age: '22 года', group: 'БМТ1-43Б', height: 159,
     imageWebp: `${ImageMiss2Webp200} 200w, ${ImageMiss2Webp400} 400w,  ${ImageMiss2Webp800} 800w`,
     imageJpg: `${ImageMiss2Jpg200} 200w, ${ImageMiss2Jpg400} 400w,  ${ImageMiss2Jpg800} 800w`,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss2Profile1Jpg600, webp: imageMiss2Profile1Webp600},
+      {jpg: imageMiss2Profile2Jpg600, webp: imageMiss2Profile2Webp600},
+      {jpg: imageMiss2Profile3Jpg600, webp: imageMiss2Profile3Webp600},
+      {jpg: imageMiss2Profile4Jpg600, webp: imageMiss2Profile4Webp600},
+      {jpg: imageMiss2Profile5Jpg600, webp: imageMiss2Profile5Webp600},
+      {jpg: imageMiss2Profile6Jpg600, webp: imageMiss2Profile6Webp600},
+    ],
     QAtexts: [
       {
         question: '1.&nbsp;Почему ты&nbsp;решила пойти на&nbsp;кастинг «МиСС Очарование&nbsp;— 2024» и&nbsp;что&nbsp;для&nbsp;тебя значит участие в&nbsp;проекте?',
@@ -147,7 +254,14 @@ export const missList = [
   },
   {
     id: 3, name: 'Дарья Марченко', age: '21 год', group: 'ИБМ6-21Б', height: 159,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss3Profile2Jpg600, webp: imageMiss3Profile2Webp600},
+      {jpg: imageMiss3Profile1Jpg600, webp: imageMiss3Profile1Webp600},
+      {jpg: imageMiss3Profile3Jpg600, webp: imageMiss3Profile3Webp600},
+      {jpg: imageMiss3Profile4Jpg600, webp: imageMiss3Profile4Webp600},
+      {jpg: imageMiss3Profile5Jpg600, webp: imageMiss3Profile5Webp600},
+      {jpg: imageMiss3Profile6Jpg600, webp: imageMiss3Profile6Webp600},
+    ],
     imageWebp: `${ImageMiss3Webp200} 200w, ${ImageMiss3Webp400} 400w,  ${ImageMiss3Webp800} 800w`,
     imageJpg: `${ImageMiss3Jpg200} 200w, ${ImageMiss3Jpg400} 400w,  ${ImageMiss3Jpg800} 800w`,
     QAtexts: [
@@ -188,7 +302,12 @@ export const missList = [
   },
   {
     id: 4, name: 'Елена Вершинина', age: '18 лет', group: 'МТ4-21Б', height: 176,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss4Profile1Jpg600, webp: imageMiss4Profile1Webp600},
+      {jpg: imageMiss4Profile2Jpg600, webp: imageMiss4Profile2Webp600},
+      {jpg: imageMiss4Profile3Jpg600, webp: imageMiss4Profile3Webp600},
+      {jpg: imageMiss4Profile4Jpg600, webp: imageMiss4Profile4Webp600},
+    ],
     imageWebp: `${ImageMiss4Webp200} 200w, ${ImageMiss4Webp400} 400w,  ${ImageMiss4Webp800} 800w`,
     imageJpg: `${ImageMiss4Jpg200} 200w, ${ImageMiss4Jpg400} 400w,  ${ImageMiss4Jpg800} 800w`,
     QAtexts: [
@@ -230,7 +349,13 @@ export const missList = [
   },
   {
     id: 5, name: 'София Сахно', age: '20 лет', group: 'СМ7-61Б', height: 164,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss5Profile5Jpg600, webp: imageMiss5Profile5Webp600},
+      {jpg: imageMiss5Profile1Jpg600, webp: imageMiss5Profile1Webp600},
+      {jpg: imageMiss5Profile2Jpg600, webp: imageMiss5Profile2Webp600},
+      {jpg: imageMiss5Profile3Jpg600, webp: imageMiss5Profile3Webp600},
+      {jpg: imageMiss5Profile4Jpg600, webp: imageMiss5Profile4Webp600},
+    ],
     imageWebp: `${ImageMiss5Webp200} 200w, ${ImageMiss5Webp400} 400w,  ${ImageMiss5Webp800} 800w`,
     imageJpg: `${ImageMiss5Jpg200} 200w, ${ImageMiss5Jpg400} 400w,  ${ImageMiss5Jpg800} 800w`,
     QAtexts: [
@@ -272,7 +397,12 @@ export const missList = [
   },
   {
     id: 6, name: 'Юлия Тузкова', age: '18 лет', group: 'РК6-21Б', height: 164,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss6Profile1Jpg600, webp: imageMiss6Profile1Webp600},
+      {jpg: imageMiss6Profile2Jpg600, webp: imageMiss6Profile2Webp600},
+      {jpg: imageMiss6Profile3Jpg600, webp: imageMiss6Profile3Webp600},
+      {jpg: imageMiss6Profile4Jpg600, webp: imageMiss6Profile4Webp600},
+    ],
     imageWebp: `${ImageMiss6Webp200} 200w, ${ImageMiss6Webp400} 400w,  ${ImageMiss6Webp800} 800w`,
     imageJpg: `${ImageMiss6Jpg200} 200w, ${ImageMiss6Jpg400} 400w,  ${ImageMiss6Jpg800} 800w`,
     QAtexts: [
@@ -316,7 +446,12 @@ export const missList = [
   },
   {
     id: 7, name: 'Дарья Федоренко', age: '22 года', group: 'ИУ1-103', height: 163,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss7Profile1Jpg600, webp: imageMiss7Profile1Webp600},
+      {jpg: imageMiss7Profile2Jpg600, webp: imageMiss7Profile2Webp600},
+      {jpg: imageMiss7Profile3Jpg600, webp: imageMiss7Profile3Webp600},
+      {jpg: imageMiss7Profile4Jpg600, webp: imageMiss7Profile4Webp600},
+    ],
     imageWebp: `${ImageMiss7Webp200} 200w, ${ImageMiss7Webp400} 400w,  ${ImageMiss7Webp800} 800w`,
     imageJpg: `${ImageMiss7Jpg200} 200w, ${ImageMiss7Jpg400} 400w,  ${ImageMiss7Jpg800} 800w`,
     QAtexts: [
@@ -362,7 +497,12 @@ export const missList = [
   },
   {
     id: 8, name: 'Полина Мрыхина', age: '18 лет', group: 'ЛТ6-25Б', height: 168,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss8Profile1Jpg600, webp: imageMiss8Profile1Webp600},
+      {jpg: imageMiss8Profile2Jpg600, webp: imageMiss8Profile2Webp600},
+      {jpg: imageMiss8Profile3Jpg600, webp: imageMiss8Profile3Webp600},
+      {jpg: imageMiss8Profile4Jpg600, webp: imageMiss8Profile4Webp600},
+    ],
     imageWebp: `${ImageMiss8Webp200} 200w, ${ImageMiss8Webp400} 400w,  ${ImageMiss8Webp800} 800w`,
     imageJpg: `${ImageMiss8Jpg200} 200w, ${ImageMiss8Jpg400} 400w,  ${ImageMiss8Jpg800} 800w`,
     QAtexts: [
@@ -402,7 +542,12 @@ export const missList = [
   },
   {
     id: 9, name: 'Елизавета Дубовицкая', age: '20 лет', group: 'ЮР-46', height: 161,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss9Profile1Jpg600, webp: imageMiss9Profile1Webp600},
+      {jpg: imageMiss9Profile2Jpg600, webp: imageMiss9Profile2Webp600},
+      {jpg: imageMiss9Profile3Jpg600, webp: imageMiss9Profile3Webp600},
+      {jpg: imageMiss9Profile4Jpg600, webp: imageMiss9Profile4Webp600},
+    ],
     imageWebp: `${ImageMiss9Webp200} 200w, ${ImageMiss9Webp400} 400w,  ${ImageMiss9Webp800} 800w`,
     imageJpg: `${ImageMiss9Jpg200} 200w, ${ImageMiss9Jpg400} 400w,  ${ImageMiss9Jpg800} 800w`,
     QAtexts: [
@@ -442,7 +587,12 @@ export const missList = [
   },
   {
     id: 10, name: 'Дарья Федорова', age: '18 лет', group: 'ФН2-42Б', height: 174,
-    bioImages: [],
+    bioImages: [
+      {jpg: imageMiss10Profile1Jpg600, webp: imageMiss10Profile1Webp600},
+      {jpg: imageMiss10Profile2Jpg600, webp: imageMiss10Profile2Webp600},
+      {jpg: imageMiss10Profile3Jpg600, webp: imageMiss10Profile3Webp600},
+      {jpg: imageMiss10Profile4Jpg600, webp: imageMiss10Profile4Webp600},
+    ],
     imageWebp: `${ImageMiss10Webp200} 200w, ${ImageMiss10Webp400} 400w,  ${ImageMiss10Webp800} 800w`,
     imageJpg: `${ImageMiss10Jpg200} 200w, ${ImageMiss10Jpg400} 400w,  ${ImageMiss10Jpg800} 800w`,
     QAtexts: [

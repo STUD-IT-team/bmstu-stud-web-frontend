@@ -18,3 +18,16 @@ animation-roll-down(start-height=0, duration=2s, padding=0)
             opacity 1
             padding padding
             max-height unset
+
+animation-index-delay(delay=0.05s)
+    animation-delay 'calc(var(--animation-index) * %s)' % delay
+animation-float(time=0.5s, translateX=0, translateY=-20px)
+    opacity 0
+    animation float time ease forwards
+    @keyframes float
+        from
+            opacity 0
+            transform translate(translateX, translateY)
+        to
+            opacity 1
+            transform translateY(0, 0)
