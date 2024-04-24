@@ -30,7 +30,7 @@
         height 150px
         border-radius borderRadiusS
         overflow hidden
-        background mix(white, transparent, 20%)
+        background mix(white, transparent, 10%)
         
 
   .partners-descriptions-container
@@ -50,10 +50,12 @@
         min-width 200px
         max-width 350px
         img
-          height 100%
-          width 100%
-          padding 25px
-          background mix(white, transparent, 20%)
+          object-fit: contain 
+          height 330px
+          width 330px
+          padding 30px
+          margin 15px
+          background mix(white, transparent, 10%)
           border-radius borderRadiusL
       .link
         hover-effect()
