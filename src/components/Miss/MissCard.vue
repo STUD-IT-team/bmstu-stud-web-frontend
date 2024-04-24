@@ -105,6 +105,20 @@
       color colorMiss2
       width 100%
       text-align center
+  .section-nominations
+    display flex
+    flex-wrap wrap
+    padding 5px
+    margin-bottom 5px
+    margin-top -8px
+    gap 3px
+    .nomination
+      font-small-x()
+      centered-flex-container()
+      background colorMiss1
+      color colorText1
+      border-radius borderRadiusXS
+      padding 4px 5px
 </style>
 
 <template>
@@ -125,6 +139,9 @@
         <div class="slider" :style="{'--progress': progressToMax}">{{ Math.ceil(progressTotal * 100 * 100 / 100) }}%</div>
       </div>
       <div class="votes-count">Количество голосов: {{ votesCount }}</div>
+    </section>
+    <section v-if="showNominations" class="section-nominations">
+      <div v-for="nomination in nominations" class="nomination">{{ nomination }}</div>
     </section>
   </router-link>
 </template>
@@ -160,6 +177,8 @@ export default {
     votesCount: Number,
     maxVotesCount: Number,
     totalVotesCount: Number,
+    showNominations: Boolean,
+    nominations: Array,
   },
 
   computed: {

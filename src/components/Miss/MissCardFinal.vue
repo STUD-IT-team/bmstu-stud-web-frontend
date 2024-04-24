@@ -61,6 +61,21 @@
       font-large-x()
       font-bold()
 
+    .section-nominations
+      display flex
+      flex-wrap wrap
+      margin-top 5px
+      padding-right 50px
+      gap 3px
+      .nomination
+        font-small()
+        font-bold()
+        centered-flex-container()
+        background colorText1
+        color colorMiss2
+        border-radius borderRadiusXS
+        padding 5px 10px
+
     .card-crown
       width 20%
       position absolute
@@ -77,6 +92,10 @@
           color colorMiss1
       .title
         color colorMiss1
+      .section-nominations
+        .nomination
+          background colorMiss1
+          color colorText1
 </style>
 
 <template>
@@ -92,6 +111,9 @@
       <div class="group">Группа: {{ group }}<br></div>
       <span class="title">{{ title }}</span>
 
+      <section class="section-nominations">
+        <div v-for="nomination in nominations" class="nomination">{{ nomination }}</div>
+      </section>
 
       <img v-if="light" class="card-crown" src="../../../res/icons/crownLilac.svg" alt="crownLilac"/>
       <img v-else class="card-crown" src="../../../res/icons/crownWhite.svg" alt="crownWhite"/>
@@ -131,6 +153,7 @@ export default {
       type: String,
       required: true,
     },
+    nominations: Array,
   },
 
   computed: {

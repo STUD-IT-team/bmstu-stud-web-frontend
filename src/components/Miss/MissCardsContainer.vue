@@ -38,8 +38,10 @@
               :imageJpg="miss.imageJpg"
               :votes-count="miss.votesCount"
               :show-votes="showVotes"
+              :show-nominations="showNominations"
               :max-votes-count="maxVotesCount"
               :total-votes-count="totalVotesCount"
+              :nominations="miss.nominations"
     ></MissCard>
     <transition name="opacity">
       <CircleLoading v-if="loading" class="loading" size="30px"></CircleLoading>
@@ -58,6 +60,7 @@ export default {
 
   props: {
     showVotes: Boolean,
+    showNominations: Boolean,
 
     excludedIds: {
       type: Array,
