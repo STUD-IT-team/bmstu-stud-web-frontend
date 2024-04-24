@@ -50,9 +50,11 @@
       @media ({mobile})
         padding 0 40px
       .partner
+        object-fit: contain 
         flex 1
-        min-width 40px
-        max-width 80px
+        max-width 150px
+        length auto
+        padding 15px
         hover-effect()
 
   .footer-bottom-title

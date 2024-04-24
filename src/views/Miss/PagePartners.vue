@@ -26,10 +26,12 @@
     .partner-icon
       cursor pointer
       img
+        padding 13px
         height 150px
         border-radius borderRadiusS
         overflow hidden
         background mix(white, transparent, 20%)
+        
 
   .partners-descriptions-container
     margin-bottom 60px
@@ -50,7 +52,8 @@
         img
           height 100%
           width 100%
-          background white
+          padding 25px
+          background mix(white, transparent, 20%)
           border-radius borderRadiusL
       .link
         hover-effect()

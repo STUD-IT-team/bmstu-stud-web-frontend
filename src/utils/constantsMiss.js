@@ -486,13 +486,13 @@ export const missList = [
 
 
 import ImagePartner1 from '#~/images/miss/missPartners/PartnerUMP.png';
-import ImagePartner2 from '#~/images/miss/missPartners/PartnerCOSCO.png';
+import ImagePartner2 from '#~/images/miss/missPartners/PartnerCOSCO.svg';
 import ImagePartner3 from '#~/images/miss/missPartners/PartnerAdelfi.png';
 import ImagePartner4 from '#~/images/miss/missPartners/PartnerAkhmadulina.png';
-import ImagePartner5 from '#~/images/miss/missPartners/PartnerBaumabskoeBratstvo.png';
+import ImagePartner5 from '#~/images/miss/missPartners/PartnerBaumanskoeBratstvo.png';
 import ImagePartner6 from '#~/images/miss/missPartners/PartnerBrodway.png';
 import ImagePartner7 from '#~/images/miss/missPartners/PartnerCHG.png';
-import ImagePartner8 from '#~/images/miss/missPartners/PartnerCG.png';
+import ImagePartner8 from '#~/images/miss/missPartners/PartnerICG.png';
 import ImagePartner9 from '#~/images/miss/missPartners/PartnerKAMAZ.png';
 import ImagePartner10 from '#~/images/miss/missPartners/PartnerKreateh.png';
 import ImagePartner11 from '#~/images/miss/missPartners/PartnerLaGrase.png';
@@ -509,13 +509,13 @@ import ImagePartner21 from '#~/images/miss/missPartners/PartnerZvezdochka.png';
 
 export const partnersList = [
 
-       {
+    {
        logo: ImagePartner1,
        title: 'Управление молодёжной политики',
        description: 'Управление молодёжной политики — одно из ключевых подразделений МГТУ им. Н.Э. Баумана, играющее главную роль в развитии молодёжной сферы в нашем Университете. В его структуре действуют отделы, способствующие реализации творческих и социальных идей молодёжи и стимулирующие развитие науки. Управление проводит анализ потребностей молодёжи, создает программы поддержки для их реализации, формирует условия для активного участия молодёжи в жизни Университета и поддерживает талантливых и перспективных студентов. «Лидеры управляют будущим — мы создаем лидеров!»',
        href: 'https://t.me/b2b_bmstu',
-     },
-     {
+    },
+    {
       logo: ImagePartner2,
       title: 'COSCO',
       description: 'COSCO — новый российский бренд косметики для домашнего ухода, созданный профессиональными технологами. Их система Five Step Care предлагает быстрый и качественный уход всего в 5 шагов. Регулярное использование продуктов COSCO поможет сохранить здоровье и молодость кожи.',
