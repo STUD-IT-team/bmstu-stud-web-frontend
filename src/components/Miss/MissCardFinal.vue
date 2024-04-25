@@ -84,7 +84,9 @@
       display flex
       flex-wrap wrap
       margin-top 5px
-      padding-right 50px
+      padding-right 70px
+      @media({mobile})
+        padding-right 30px
       gap 3px
       .nomination
         font-small()

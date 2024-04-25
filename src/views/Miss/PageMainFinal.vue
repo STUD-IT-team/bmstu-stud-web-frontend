@@ -55,17 +55,17 @@
                      title="МИСС ОЧАРОВАНИЕ"
       ></MissCardFinal>
       <MissCardFinal class="card"
-                     :group="missList[1].group"
-                     :name="missList[1].name"
-                     :id="missList[1].id"
-                     :image-jpg="missList[1].imageJpg"
-                     :image-webp="missList[1].imageWebp"
-                     :nominations="missList[1].nominations"
+                     :group="missList[5].group"
+                     :name="missList[5].name"
+                     :id="missList[5].id"
+                     :image-jpg="missList[5].imageJpg"
+                     :image-webp="missList[5].imageWebp"
+                     :nominations="missList[5].nominations"
                      title="ВИЦЕ-МИСС"
                      light
       ></MissCardFinal>
     </section>
-    <MissCardsContainer class="cards-container-all" :excluded-ids="[1, 2]" show-nominations></MissCardsContainer>
+    <MissCardsContainer class="cards-container-all" :excluded-ids="[1, 6]" show-nominations></MissCardsContainer>
   </div>
 </template>
 
