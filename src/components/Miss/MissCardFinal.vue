@@ -10,7 +10,8 @@
   overflow hidden
   background white
   display flex
-  width 600px
+  width 100%
+  max-width 600px
   height 195px
   &:hover
     .miss-final-photo
@@ -18,21 +19,27 @@
       transform scale(1.1)
       transition all 0.4s ease-out-fast
   .miss-final-photo
-    width 190px
-    height 195px
+    width 150px
+    min-width 150px
+    @media ({mobile})
+      width 130px
+      min-width 130px
+    height 100%
     object-fit cover
-    display inline-block
     transition all 0.4s ease-in-out
     //.photo
     //  height 280px
   .card-final-form
     background colorMiss1
     padding 15px
-    display inline
-    height 195px
+    height 100%
     width 100%
     position relative
     circle-size = 30px
+    circle-size-mobile = 20px
+    @media ({mobile})
+      padding-left 8px
+      padding-top 8px
     .circle-name-container
       display flex
       align-items center
@@ -41,8 +48,16 @@
         font-medium()
         color colorMiss1
         width circle-size
+        min-width circle-size
         height circle-size
+        min-height circle-size
         line-height circle-size
+        @media ({mobile})
+          width circle-size-mobile
+          min-width circle-size-mobile
+          height circle-size-mobile
+          min-height circle-size-mobile
+          line-height circle-size-mobile
         text-align center
         display inline-block
         background white
@@ -54,12 +69,16 @@
         display inline
         color colorMiss2
         line-height circle-size
+        @media ({mobile})
+          line-height 1
     .group
       font-small()
       display inline
     .title
       font-large-x()
       font-bold()
+      @media ({mobile})
+        font-large()
 
     .section-nominations
       display flex
