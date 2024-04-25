@@ -31,7 +31,7 @@
         border-radius borderRadiusS
         overflow hidden
         background mix(white, transparent, 10%)
-        
+
 
   .partners-descriptions-container
     margin-bottom 60px
@@ -50,7 +50,7 @@
         min-width 200px
         max-width 350px
         img
-          object-fit: contain 
+          object-fit: contain
           height 330px
           width 330px
           padding 30px
@@ -63,6 +63,8 @@
       .info-container
         flex 2
         padding 20px
+        @media ({mobile})
+          padding-top 0
         .title
           font-large()
           margin-bottom 10px
