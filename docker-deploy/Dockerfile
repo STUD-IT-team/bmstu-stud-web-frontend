@@ -28,6 +28,12 @@ RUN export DOMAIN_URL=${DOMAIN_URL} && \
 
 # Finally - get only needed files from previous build stage. Static files + config
 FROM nginx:${NGINX_RELEASE:-1.23}
+
+#install nginx modules
+#RUN apt-get update -y && apt-get install  --no-install-recommends -y \
+#    nginx-plus-module-brotli
+
+COPY --from=build /home/node/front/dist /frontend-dist
 # Copy all builded bundle
 COPY --from=build /home/node/front/dist /frontend-dist
 # Copy SEO-files
