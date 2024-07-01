@@ -19,13 +19,20 @@ text-section-max-height = 265px
   gap 40px
   position relative
   align-items center
+  trans()
   img
-    height 64px
-    max-width 64px
+    height 72px
+    max-width 72px
   .text
     font-small()
     header
       font-large-x()
+  &:hover
+    background colorPalette5
+    .text
+      color colorWhite
+      header
+        color colorWhite
 </style>
 
 <template>

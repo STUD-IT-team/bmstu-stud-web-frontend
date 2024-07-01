@@ -19,6 +19,13 @@ padding-sides = 20px
     .header
       font-large-xx()
       margin-bottom 20px
+    select
+      margin-top 20px
+      background colorPalette1
+      font-small()
+      color colorWhite
+      padding 10px 30px
+      border-radius borderRadiusL
     .navbar-orgs
       font-small()
       color colorText3
@@ -33,6 +40,7 @@ padding-sides = 20px
       display flex
       flex-direction column
       gap between-orgs-gap
+
 
     .navbar-organizations
       margin-left-size = 'min(-%s, calc((100vw - %s) / -2))' % (padding-sides main-part-max-width)
@@ -79,6 +87,13 @@ padding-sides = 20px
       ⟶
       <g class="current">Организации</g>
       </div>
+
+      <select name="Фильтр">
+        <option>Все организации</option>
+        <option>Отряды</option>
+        <option>ССФ</option>
+        <option>Клубы</option>
+      </select>
       
       <div class="orgs-container">
         <Organization v-for="(oneOrg, idx) in orgs"
