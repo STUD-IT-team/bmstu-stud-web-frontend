@@ -130,7 +130,24 @@ export default class MY_API extends REST_API {
     deleteNew = (id) => this.delete(`/api/feed`, {_model: Models.Feed, id});
 
 
-
+    getOrgs = () => ({ok: true, status: 200, data: {
+        feed: [
+            {
+                id: 1,
+                title: "MediaBMSTU",
+                description: "Спасибо медиа",
+                head_title: "Руководитель",
+                head_name: "Егор Федорук",
+            },
+            {
+                id: 2,
+                title: "ISCRA",
+                description: "Приходите на конференцию",
+                head_title: "Руководитель",
+                head_name: "Полина Третьяк (навсегда)",
+            },
+        ]
+    }})
 
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
