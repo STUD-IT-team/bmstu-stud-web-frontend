@@ -20,6 +20,8 @@
   <div class="root-page-news">
     <div class="emotions-sector">
       <img src="/res/images/video.png" alt=""/>
+      <!-- <iframe width="100%" height="700" src="https://rutube.ru/play/embed/c6cc4d620b1d4338901770a44b3e82f4" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> -->
+      <img src="/res/icons/create-emotions-circle.svg" alt=""/>
     </div>
     <Footer></Footer>
   </div>
