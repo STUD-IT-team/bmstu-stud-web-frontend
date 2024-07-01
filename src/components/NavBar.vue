@@ -131,7 +131,7 @@ max-main-part-width = 1300px
   <nav class="root-navbar">
     <div class="main-part">
       <router-link :to="{name: 'login'}" class="left-container">
-        <img src="/res/icons/stud_colored.svg">
+        <img src="/res/icons/stud-logo-colored.svg">
       </router-link>
       <div class="middle-container">
         <input type="checkbox" class="burger-menu-input" id="burger-menu-state-store" ref="burgerMenuInput">

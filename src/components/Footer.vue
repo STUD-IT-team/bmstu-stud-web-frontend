@@ -88,7 +88,7 @@
         <img src="/res/icons/hoomans.svg" alt="">
       </div>
       <span class="footer-label">Студенческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана, 2024 г.</span>
-      <img src="/res/icons/stud-logo-color.svg" alt="logo">
+      <img src="/res/icons/stud-logo-colored.svg" alt="logo">
     </div>
   </footer>
 </template>
