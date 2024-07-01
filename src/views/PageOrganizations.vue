@@ -19,15 +19,25 @@ padding-sides = 20px
     .header
       font-large-xx()
       margin-bottom 20px
-    select
+    .filter-bar
+      display flex
       margin-top 20px
-      background colorPalette1
-      font-small()
-      color colorWhite
-      padding 10px 30px
-      border-radius borderRadiusL
+      justify-content space-between
+      select
+        background colorPalette1
+        font-medium()
+        color colorWhite
+        padding 10px 30px
+        border-radius borderRadiusMax
+      input
+        font-medium()
+        width 40%
+        color colorWhite
+        padding 10px 30px
+        border-radius borderRadiusMax
+        border colorPalette1 solid 2px
     .navbar-orgs
-      font-small()
+      font-medium()
       color colorText3
       .link
         &:hover
@@ -81,12 +91,14 @@ padding-sides = 20px
     <!-- <Header></Header> -->
 
     <main class="main-container">
-      <!-- <header class="header">Организации</header> -->
+
       <div class="navbar-orgs">
       <router-link to="/" class="link">Главная</router-link>
       ⟶
       <g class="current">Организации</g>
       </div>
+      
+      <div class="filter-bar">
 
       <select name="Фильтр">
         <option>Все организации</option>
@@ -94,7 +106,11 @@ padding-sides = 20px
         <option>ССФ</option>
         <option>Клубы</option>
       </select>
+
+      <input placeholder="Введите название организации">
       
+      </div>
+
       <div class="orgs-container">
         <Organization v-for="(oneOrg, idx) in orgs"
             :id="oneOrg.id"
