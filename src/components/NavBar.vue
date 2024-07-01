@@ -6,7 +6,7 @@
 @require '../styles/components.styl'
 @require '../styles/animations.styl'
 
-max-main-part-width = 1300px
+max-main-part-width = 1180px
 
 .root-navbar
   position fixed
@@ -35,13 +35,7 @@ max-main-part-width = 1300px
       height 60px
       cursor pointer
       img
-        //fill colorText1
-        //stroke none
-        transition all .5s
-        @media ({desktop})
-          &:hover
-            //fill colorText4
-            filter opacity(0.8)
+        height 100%
         
     .right-container
       //height 20px
@@ -130,9 +124,9 @@ max-main-part-width = 1300px
   <!-- <nav class="root-navbar" :class="{'with-bg': isScrolledMoreThanScreen}"> -->
   <nav class="root-navbar">
     <div class="main-part">
-      <router-link :to="{name: 'login'}" class="left-container">
-        <img src="/res/icons/stud_colored.svg">
-      </router-link>
+      <!-- <router-link :to="{name: 'login'}" class="left-container"> -->
+      <img src="/res/icons/stud-logo-colored.svg">
+      <!-- </router-link> -->
       <div class="middle-container">
         <input type="checkbox" class="burger-menu-input" id="burger-menu-state-store" ref="burgerMenuInput">
         <label v-if="isScrolledMoreThanScreen" class="burger-menu-switcher" for="burger-menu-state-store"><img src="/res/icons/menu.svg" alt="menu"></label>
