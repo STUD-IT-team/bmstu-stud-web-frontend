@@ -10,7 +10,10 @@
   .emotions-sector
     position relative
     img
+      margin-top 80px
+      top 10px
       width 100%
+      
 </style>
 
 <template>
