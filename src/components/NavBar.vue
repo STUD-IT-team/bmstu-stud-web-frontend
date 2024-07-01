@@ -6,7 +6,7 @@
 @require '../styles/components.styl'
 @require '../styles/animations.styl'
 
-max-main-part-width = 1150px
+max-main-part-width = 1300px
 
 .root-navbar
   position fixed
@@ -15,8 +15,8 @@ max-main-part-width = 1150px
   padding 10px 10%
   @media ({mobile})
     padding 10px 10px
-  background mix(colorBg, transparent, 20%)
-  backdrop-filter blur(20px) brightness(1.5)
+  background colorBg
+  box-shadow 0 10px 10px mix(black, transparent, 10%)
   font-large()
   trans()
   @media ({mobile})
@@ -34,19 +34,25 @@ max-main-part-width = 1150px
     .right-container
       height 60px
       cursor pointer
-      hover-effect()
       img
-        height 100%
-        width 50px
+        //fill colorText1
+        //stroke none
+        transition all .5s
+        @media ({desktop})
+          &:hover
+            //fill colorText4
+            filter opacity(0.8)
+        
     .right-container
-      height 20px
+      //height 20px
     .middle-container
       flex 0.7
       position relative
       .nav-buttons-container
+        color colorText1
         display flex
-        gap 15px
-        justify-content space-between
+        gap 25px
+        justify-content left
         align-items center
         white-space nowrap
         overflow hidden
@@ -57,7 +63,10 @@ max-main-part-width = 1150px
           align-items flex-start
         .link
           padding 0 5px
-          hover-effect-underline()
+          transition all .2s
+          @media ({desktop})
+              &:hover
+                color colorText4
           &.router-link-exact-active
             background-size 100% 1px
       .burger-menu-input
@@ -83,12 +92,26 @@ max-main-part-width = 1150px
 
     .left-container
     .nav-buttons-container
-    .right-container
+    .right-container 
+      position relative
+      display flex
+      align-items center
+      justify-items right
+      .login-button
+        button()
+        font-large()
+        height 3.5rem
+        padding 5px 50px
+        color colorText2
+        background transparent
+        border colorText2 solid 1px
+        border-radius borderRadiusMax
       & > *
         animation-float(0.5s, 0, -20px)
         animation-index-delay(0.05s)
   &.with-bg
     block-bg()
+    background colorText4
     display flex
     .left-container
       height 35px
@@ -104,24 +127,27 @@ max-main-part-width = 1150px
 </style>
 
 <template>
-  <nav class="root-navbar" :class="{'with-bg': isScrolledMoreThanScreen}">
+  <!-- <nav class="root-navbar" :class="{'with-bg': isScrolledMoreThanScreen}"> -->
+  <nav class="root-navbar">
     <div class="main-part">
       <router-link :to="{name: 'login'}" class="left-container">
-        <img style="--animation-index: 0" src="/res/icons/stud-logo.svg" alt="stud-logo">
+        <img src="/res/icons/stud_colored.svg">
       </router-link>
       <div class="middle-container">
         <input type="checkbox" class="burger-menu-input" id="burger-menu-state-store" ref="burgerMenuInput">
         <label v-if="isScrolledMoreThanScreen" class="burger-menu-switcher" for="burger-menu-state-store"><img src="/res/icons/menu.svg" alt="menu"></label>
         <nav class="nav-buttons-container">
-          <router-link style="--animation-index: 1" :to="{name: 'news'}" class="link">Новости</router-link>
-          <router-link style="--animation-index: 2" :to="{name: 'calendar'}" class="link">Мероприятия</router-link>
-          <router-link style="--animation-index: 3" :to="{name: 'miss'}" class="link">Мисс Очарование 2024</router-link>
+          <router-link style="--animation-index: 1" :to="{name: 'news'}" class="link">Главная</router-link>
+          <router-link style="--animation-index: 2" :to="{name: 'calendar'}" class="link">О нас</router-link>
+          <router-link style="--animation-index: 3" :to="{name: 'miss'}" class="link">Организации</router-link>
         </nav>
       </div>
       <div v-if="$store?.state?.user?.isAdmin" class="right-container" @click="logout">
         <img style="--animation-index: 4" src="/res/icons/logout.svg" alt="logout">
       </div>
-      <div v-else class="right-container"></div>
+      <div v-else class="right-container">
+        <router-link class="login-button" :to="{name: 'miss'}">Вход</router-link>
+      </div>
     </div>
   </nav>
 </template>
