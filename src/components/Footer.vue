@@ -40,15 +40,13 @@
           width 67px
           margin-right 30px
           hover-effect()
-
-    .picture
-      img
-        height 403px
+        
 
   .bottom-part
     display flex
     justify-content center
     align-items center
+    flex-direction row
     gap 10px
     margin-top 40px
     border-top 1px solid colorBorder
@@ -59,6 +57,15 @@
 
     img
       height 22px
+    
+    .picture
+      img
+        position absolute
+        // height 403px
+        height 33vw
+        width 30vw
+        right 0px
+        bottom 0px
 </style>
 
 <template>
@@ -66,20 +73,22 @@
     <div class="main-part">
       <div class="contacts">
         <header class="header">Контакты</header>
-        <a class="address" href="https://yandex.ru/maps/-/CDRYrHYz">г.Москва, 2-я Бауманская улица, 5с4, южное крыло, ауд. 339ю</a>
+        <a class="address" href="https://yandex.ru/maps/-/CDRYrHYz">г.Москва, 2-я Бауманская улица, 5с4, южное крыло,
+          ауд. 339ю</a>
         <a class="phone" href="tel:+74952636855">+7 (495) 263-68-55</a>
         <div class="messengers">
           <a href="https://vk.com/studsovet_bmstu"><img src="/res/icons/vk.svg" alt="vk"></a>
-          <a href="https://t.me/studsovet_bmstu"><img src="/res/icons/telegram.svg" alt="tg"></a>
+          <a href="https://t.me/studsovet_bmstu"><img src="/res/icons/tg.svg" alt="tg"></a>
         </div>
-      </div>
-      <div class="picture">
-        <img src="/res/icons/crane.svg" alt="">
       </div>
     </div>
     <div class="bottom-part">
+
+      <div class="picture">
+        <img src="/res/icons/hoomans.svg" alt="">
+      </div>
       <span class="footer-label">Студенческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана, 2024 г.</span>
-      <img src="/res/icons/stud-logo.svg" alt="logo">
+      <img src="/res/icons/stud-logo-colored.svg" alt="logo">
     </div>
   </footer>
 </template>
