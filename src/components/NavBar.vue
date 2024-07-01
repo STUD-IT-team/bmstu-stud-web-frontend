@@ -133,7 +133,7 @@ max-main-part-width = 1180px
         <nav class="nav-buttons-container">
           <router-link style="--animation-index: 1" :to="{name: 'news'}" class="link">Главная</router-link>
           <router-link style="--animation-index: 2" :to="{name: 'calendar'}" class="link">О нас</router-link>
-          <router-link style="--animation-index: 3" :to="{name: 'miss'}" class="link">Организации</router-link>
+          <router-link style="--animation-index: 3" :to="{name: 'organizations'}" class="link">Организации</router-link>
         </nav>
       </div>
       <div v-if="$store?.state?.user?.isAdmin" class="right-container" @click="logout">
