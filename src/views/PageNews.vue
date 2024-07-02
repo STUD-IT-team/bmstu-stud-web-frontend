@@ -5,68 +5,160 @@
 @require '../styles/components.styl'
 @require '../styles/utils.styl'
 
-.root-page-news
+.root-page-news 
   position relative
-  .emotions-sector
+  .emotions-sector 
     position relative
-    img
-      margin-top 80px
-      top 10px
-      width 100%
-      
+    .background-video 
+      img 
+        margin-top 80px
+        top 10px
+        width 100%
+    .overlay-video
+      .stud-logo
+        img
+          position absolute
+          top 29%
+          left 11%
+          width 30%
+
+      .create-emotions-circle
+        img 
+          position absolute
+          top 67%
+          right 11%
+          width 13%
+
+          // --color #fff
+          // --border 5px
+          // // --offset 5px
+          // --gap 10px
+
+          // border-radius 50%
+          // cursor pointer
+          // padding calc(var(--border) + var(--gap))
+          // border var(--offset) solid #0000
+          // --_m radial-gradient(50% 50%, #000 calc(100% - var(--offset)), #0000 calc(100% - var(--border)))
+          // -webkit-mask var(--_m)
+          // mask var(--_m)
+          // --_g #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%, #0000
+          // --_s var(--offset)
+          // --_r 100% 100% at
+          // background radial-gradient(var(--_r) 0 0, var(--_g)) calc(100% + var(--_s)) calc(100% + var(--_s)),
+          //             radial-gradient(var(--_r) 100% 0, var(--_g)) calc(0% - var(--_s)) calc(100% + var(--_s)),
+          //             radial-gradient(var(--_r) 0 100%, var(--_g)) calc(100% + var(--_s)) calc(0% - var(--_s)),
+          //             radial-gradient(var(--_r) 100% 100%, var(--_g)) calc(0% - var(--_s)) calc(0% - var(--_s))
+          // background-size 50% 50%
+          // background-repeat no-repeat
+          // transition .4s
+
+          // &:hover 
+          //   --_s 0px
+  .number-slider
+    position relative
+    .number
+      display flex
+      justify-content center
+      align-items center
+
+
 </style>
 
 <template>
   <div class="root-page-news">
     <div class="emotions-sector">
-      <img src="/res/images/video.png" alt=""/>
-      <!-- <iframe width="100%" height="700" src="https://rutube.ru/play/embed/c6cc4d620b1d4338901770a44b3e82f4" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> -->
-      <img src="/res/icons/create-emotions-circle.svg" alt=""/>
+      <div class="background-video">
+        <img src="/res/images/video.png" alt="" />
+        <!-- <iframe width="100%" height="700" src="https://rutube.ru/play/embed/c6cc4d620b1d4338901770a44b3e82f4"
+          frameBorder="0" allow="clipboard-write autoplay" webkitAllowFullScreen mozallowfullscreen
+          allowFullScreen></iframe> -->
+
+        <!-- <iframe width="1080" height="720"
+          src="https://www.youtube-nocookie.com/embed/nGZg03iaXzE?si=e6ChpbMEmXX-f7zd&amp;controls=0"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+      </div>
+      <div class="overlay-video">
+        <div class="create-emotions-circle">
+          <a href="#slider" @click.prevent="scrollToSlider">
+          <!-- <a href="#slider"> -->
+            <img src="/res/icons/create-emotions-circle.svg" alt="" />
+          </a>
+        </div>
+        <div class="stud-logo">
+          <img src="/res/icons/stud-logo-video.svg" alt="" />
+        </div>
+      </div>
     </div>
-    <Footer></Footer>
+
+  
+  <ul class="number-slider" id='slider'>
+    <SliderOneNumber v-for="numberEvent in numbersStud"
+                      class="num"
+                      :num="numberEvent.count"
+                      :event="numberEvent.event"
+    ></SliderOneNumber>
+  </ul>
   </div>
+  <Footer></Footer>
 </template>
 
 
 <script>
-import Header from "~/components/Header/Header.vue";
-import New from "~/components/New.vue";
-
-import StudLogo from "#~/images/stud-logo-circle.svg";
-import Picture from "#~/images/stud-logo-circle.svg";
-import ListingBlock from "~/components/ListingBlock.vue";
-import Footer from "~/components/Footer.vue";
+import Header from "~/components/Header/Header.vue"
+// import {numbersStud} from "~/utils/utils.js"
+// import New from "~/components/New.vue"
+// import StudLogo from "#~/images/stud-logo-circle.svg"
+// import Picture from "#~/images/stud-logo-circle.svg"
+// import ListingBlock from "~/components/ListingBlock.vue"
+import Footer from "~/components/Footer.vue"
 
 
 export default {
-  components: { Footer, ListingBlock, New, Header },
+  components: { Footer, Header},
+  // props: {
+  // },
+
 
   data() {
     return {
       news: [],
-
+      numbersStud: [],
       loading: false,
-
-      StudLogo,
-      Picture,
     }
   },
 
+  computed:{
+    // numbersStud(){
+    //   return allStudNumber();
+    // }
+  },
+
   mounted() {
-    this.getNews();
+    this.getNews()
+    // this.getStudNums()
+
+    
   },
 
   methods: {
     async getNews() {
-      this.loading = true;
-      const { data, ok, status } = await this.$api.getNews();
-      this.loading = false;
+      this.loading = true
+      const { data, ok, status } = await this.$api.getNews()
+      this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить новости')
       }
 
-      this.news = data.feed;
-    }
+      this.news = data.feed
+    },
+    scrollToSlider() {
+      const sliderElement = document.getElementById('slider');
+      if (sliderElement) {
+        sliderElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
   }
 }
 </script>
