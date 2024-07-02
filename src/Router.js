@@ -17,6 +17,8 @@ import PageContacts from "~/views/Miss/PageContacts.vue";
 import pagePartners from "~/views/Miss/PagePartners.vue";
 import PageMissProfile from "~/views/Miss/PageMissProfile.vue";
 import PageOrganizations from "~/views/PageOrganizations.vue";
+import PageOrganization from "~/views/PageOrganization.vue";
+
 
 export default function createVueRouter(Store) {
     const routes = [
@@ -25,6 +27,8 @@ export default function createVueRouter(Store) {
         {path: '/events', name: 'events', component: PageCalendar, meta: {}},
         {path: '/calendar', name: 'calendar', component: PageCalendar, meta: {}},
         {path: '/organizations', name: 'organizations', component: PageOrganizations, meta: {}},
+        {path: '/organization', name: 'organization', component: PageOrganization, meta: {}},
+
 
         {path: '/register', name: 'register', component: Registration, meta: {noLoginRequired: true}},
         {path: '/login', name: 'login', component: Login, meta: {noLoginRequired: true}},
