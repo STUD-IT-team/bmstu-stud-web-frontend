@@ -119,8 +119,6 @@ padding-sides = 20px
                 height: 1rem;
                 border: 1px solid #727272;
                 border-radius: 3px;
-          
-
         
       .input-container
         position relative
@@ -150,6 +148,13 @@ padding-sides = 20px
             top -0.5rem
             padding 0 5px
             background colorBg
+        img
+          filter invert(100%)
+          position absolute
+          top 0.4rem
+          right 20px
+          height 2rem
+          cursor pointer
 
     .navbar-orgs
       font-medium()
@@ -165,40 +170,6 @@ padding-sides = 20px
       display flex
       flex-direction column
       gap between-orgs-gap
-
-
-    .navbar-organizations
-      margin-left-size = 'min(-%s, calc((100vw - %s) / -2))' % (padding-sides main-part-max-width)
-      padding-left-size = 'max(%s, calc((100vw - %s) / 2))' % (padding-sides main-part-max-width)
-      margin-left margin-left-size
-      padding 20px padding-left-size
-      width 100vw
-      border 1px solid white
-      border-left none
-      border-right none
-      margin-bottom 50px
-      .organization-button
-        padding 5px 3px
-        font-medium()
-        trans()
-        hover-effect-underline()
-    .orgs-blocks-section-container
-      display flex
-      gap between-columns-gap
-      @media ({mobile})
-        flex-direction column-reverse
-      .orgs-container
-        width 100%
-        display flex
-        flex-direction column
-        gap between-orgs-gap
-      .side-blocks-container
-        display flex
-        flex-direction column
-        gap between-orgs-gap
-        > *
-          @media ({desktop})
-            width 360px
 </style>
 
 <template>
@@ -248,13 +219,12 @@ padding-sides = 20px
         
           <input>
           <label>Введите название организации</label>
-        
+          <img src="/res/icons/search.svg">        
         </div>
       
       </div>
 
       <div class="orgs-container">
-        
         <Organization v-for="(oneOrg, idx) in orgs"
             :id="oneOrg.id"
             :title="oneOrg.title"

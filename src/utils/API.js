@@ -176,6 +176,52 @@ export default class MY_API extends REST_API {
 
     }})
 
+    getLeads = () => ({ok: true, status: 200, data: {
+        leads: [
+            {
+                id: 1,
+                name: "Иван Токарев",
+                title: "Председатель",
+                description: "Председатель ССФИУ",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 2,
+                name: "Анастасия Евдокимова",
+                title: "Медиа",
+                description: "Заместитель председателя ССФИУ, глава направления медиа",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 3,
+                name: "Василий Леденев",
+                title: "Координаторы",
+                description: "Глава отдела координаторов",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 4,
+                name: "Ольга Пасько",
+                title: "Техподдержка",
+                description: "Глава отдела технической поддержки",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 5,
+                name: "Роман Ленчин",
+                title: "ITS BMSTU",
+                description: "Глава ITS BMSTU",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+        ]
+
+    }})
+
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
             throw SyntaxError(`Model for request '${path}' not specified`);

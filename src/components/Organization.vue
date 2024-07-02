@@ -36,15 +36,19 @@ text-section-max-height = 265px
 </style>
 
 <template>
-  <div class="root-org">
-    <img src="/res/images/stud-logo-circle.svg">
-    <div class="text">
-      <header>{{title}}</header>
-      {{text}}
-      <br>
-      {{headTitle}}: {{headName}}
+
+  <router-link to="organization">
+    <div class="root-org">
+      <img src="/res/images/stud-logo-circle.svg">
+      <div class="text">
+        <header>{{title}}</header>
+        {{text}}
+        <br>
+        {{headTitle}}: {{headName}}
+      </div>
     </div>
-  </div>
+  </router-link>
+  
 </template>
 
 <script>
