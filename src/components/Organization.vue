@@ -19,7 +19,7 @@ text-section-max-height = 265px
   gap 40px
   position relative
   align-items center
-  trans()
+  trans(0.5s)
   img
     height 72px
     max-width 72px
