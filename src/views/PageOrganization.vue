@@ -74,6 +74,8 @@ padding-sides = 20px
       
       &::-webkit-scrollbar
         display none
+.gap
+  margin-top 4rem
 </style>
 
 <template>
@@ -89,7 +91,6 @@ padding-sides = 20px
       ⟶
       <g class="current">{{title}}</g>
       </div>
-
       <div class="org-header">
         <img src="/res/images/placeholders/org-placeholder.jpg">
         <div class="org-description">
@@ -106,6 +107,8 @@ padding-sides = 20px
         </div>
       </div>
       
+      <div class="gap"></div>
+
       <div class="people">
         <PersonCard :style="'transform: rotate('+(Math.random()*6-3)+'deg)'" v-for="(oneLead, idx) in leads"
               :id="oneLead.id"
@@ -116,6 +119,11 @@ padding-sides = 20px
               :link-vk="oneLead.linkVk"
           ></PersonCard>
       </div>
+
+      <div class="gap"></div>
+
+      <Carousel>
+      </Carousel>
 
 
     </main>
@@ -128,6 +136,7 @@ padding-sides = 20px
 <script>
 import Header from "~/components/Header/Header.vue";
 import PersonCard from "~/components/PersonCard.vue";
+import Carousel from "~/components/Carousel.vue";
 
 import StudLogo from "#~/images/stud-logo-circle.svg";
 import Picture from "#~/images/stud-logo-circle.svg";
@@ -136,7 +145,7 @@ import Footer from "~/components/Footer.vue";
 
 
 export default {
-  components: {Footer, ListingBlock, PersonCard, Header},
+  components: {Footer, ListingBlock, PersonCard, Header, Carousel},
 
   
 
