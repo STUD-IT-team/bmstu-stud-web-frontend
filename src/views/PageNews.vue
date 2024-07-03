@@ -66,7 +66,10 @@
     padding-left 15rem
     
     overflow-x scroll
+
     scrollbar-width none
+    .scroll-touch
+      -webkit-overflow-scrolling touch;
     &::-webkit-scrollbar
       display none
 
@@ -142,7 +145,6 @@ import Header from "~/components/Header/Header.vue"
 // import SliderOneNumber from "../components/SliderOneNumber.vue";
 import Footer from "~/components/Footer.vue"
 
-
 export default {
   components: { Footer},
   // props: {
@@ -159,8 +161,21 @@ export default {
 
   mounted() {
     // this.getNews()
-    this.getStudNums()
+    this.getStudNums();
+
+    const list = document.querySelector('.number-slider');
+    if (list) {
+      list.addEventListener('wheel', function(ev) {
+        let items = this.querySelectorAll('.number-item');
+        if (ev.wheelDelta > 0) {
+          this.prepend(items[items.length - 1]);
+        } else {
+          this.append(items[0]);
+        }
+      });
+    }
   },
+  
 
   methods: {
     async getNews() {
