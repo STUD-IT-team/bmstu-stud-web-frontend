@@ -218,6 +218,38 @@ export default class MY_API extends REST_API {
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
             },
+            {
+                id: 6,
+                name: "Патя Кучкова",
+                title: "Отдел вайба",
+                description: "Глава отдела внутреннего взаимодействия",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 7,
+                name: "Илья Чистяков",
+                title: "Сотрудничество",
+                description: "Глава отдела сотрудничества",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 8,
+                name: "Фёдор Кривоносов",
+                title: "Видео",
+                description: "Глава отдела видео",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 9,
+                name: "Иван Павлов",
+                title: "ITS TECH",
+                description: "Глава ITS TECH",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
         ]
 
     }})

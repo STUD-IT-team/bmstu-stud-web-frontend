@@ -6,15 +6,19 @@
 @require '../styles/components.styl'
 @require '../styles/animations.styl'
 
-block-bg-color = colorBg2
-images-section-width = 250px
-text-section-max-height = 265px
+
+titleHeight = 3rem
+titleWidth = 13rem
+cardHeight = 28rem
+cardWidth = 18rem
+iconSize = 2.5rem
 
 trans-speed = 0.5s
 
-card-color = colorBg
-
+  
 .root-person
+  --cardColorText colorText1
+  --cardColorBg colorBg
   block(none)
   align-content left
   width max-content
@@ -22,16 +26,29 @@ card-color = colorBg
   box-sizing border-box
   padding 0
   trans(trans-speed)
+  input[type=radio]
+    height titleHeight+cardHeight
+    width cardWidth
+    box-sizing border-box
+    position absolute
+    opacity 0
+    &:checked ~
+      .title-box
+      .card-box
+        --cardColorText: colorWhite
+        --cardColorBg: colorPalette4
+        .card-content .links img
+          filter brightness(1000%)
   .title-box
     trans(trans-speed)
-    width 17 rem
-    height 3rem
-    background colorBg
+    width titleWidth
+    height titleHeight
+    background var(--cardColorBg)
     border none
     border-radius borderRadiusL
     border-bottom-left-radius 0
     border-bottom-right-radius 0
-    color colorText1
+    margin-bottom -1px
     &:before
       content ''
       display block
@@ -46,18 +63,18 @@ card-color = colorBg
       border-bottom-right-radius 0
       box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
     .title-text
+      color var(--cardColorText)
       trans(trans-speed)
-      font-large()
+      font-medium()
       padding 15px 20px
   .card-box
     trans(trans-speed)
-    width 22rem
-    height 32rem
-    background colorBg
+    width cardWidth
+    height cardHeight
+    background var(--cardColorBg)
     border none
     border-radius borderRadiusL
     border-top-left-radius 0
-    color colorText1
     &:before
       content ''
       display block
@@ -80,10 +97,12 @@ card-color = colorBg
         width 100%
         border-radius borderRadiusL
       .name
+        color var(--cardColorText)
         trans(trans-speed)
         padding-top 1rem
-        font-large()
+        font-medium()
       .description
+        color var(--cardColorText)
         trans(trans-speed)
         padding-top 0.5rem
         font-small()
@@ -91,25 +110,20 @@ card-color = colorBg
         flex 1
         display flex
         gap 0.6rem
+        align-items end
         img
-          display block
+          display inline-block
           position relative
           trans(trans-speed)
           border-radius 0
-          width 2.5rem
-          top calc(100% - 2.5rem)
+          width iconSize
   &:hover
     .title-box
     .card-box
-      background colorPalette1
-      .title-text
-        color colorWhite
-      .card-content
-        .name 
-        .description
-          color colorWhite
-        .links img
-          filter brightness(1000%)
+      --cardColorText: colorWhite
+      --cardColorBg: colorPalette1
+      .card-content .links img
+        filter brightness(1000%)
           
 
 
@@ -118,6 +132,7 @@ card-color = colorBg
 <template>
 
   <div class="root-person">
+    <input type="radio" name="selectCard">
     <div class="title-box">
         <div class="title-text">
           {{title}}
