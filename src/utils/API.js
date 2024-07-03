@@ -196,6 +196,14 @@ export default class MY_API extends REST_API {
             },
             {
                 id: 3,
+                name: "Адам Ливанский",
+                title: "Слоняра",
+                description: "Советник председатела ССФИУ",
+                linkTg: "https://t.me/ivantokarev",
+                linkVk: "https://vk.com/ivanvolzhskiy",
+            },
+            {
+                id: 4,
                 name: "Василий Леденев",
                 title: "Координаторы",
                 description: "Глава отдела координаторов",
@@ -203,7 +211,7 @@ export default class MY_API extends REST_API {
                 linkVk: "https://vk.com/ivanvolzhskiy",
             },
             {
-                id: 4,
+                id: 5,
                 name: "Ольга Пасько",
                 title: "Техподдержка",
                 description: "Глава отдела технической поддержки",
@@ -211,7 +219,7 @@ export default class MY_API extends REST_API {
                 linkVk: "https://vk.com/ivanvolzhskiy",
             },
             {
-                id: 5,
+                id: 6,
                 name: "Роман Ленчин",
                 title: "ITS BMSTU",
                 description: "Глава ITS BMSTU",
@@ -219,7 +227,7 @@ export default class MY_API extends REST_API {
                 linkVk: "https://vk.com/ivanvolzhskiy",
             },
             {
-                id: 6,
+                id: 7,
                 name: "Патя Кучкова",
                 title: "Отдел вайба",
                 description: "Глава отдела внутреннего взаимодействия",
@@ -227,7 +235,7 @@ export default class MY_API extends REST_API {
                 linkVk: "https://vk.com/ivanvolzhskiy",
             },
             {
-                id: 7,
+                id: 8,
                 name: "Илья Чистяков",
                 title: "Сотрудничество",
                 description: "Глава отдела сотрудничества",
@@ -235,7 +243,7 @@ export default class MY_API extends REST_API {
                 linkVk: "https://vk.com/ivanvolzhskiy",
             },
             {
-                id: 8,
+                id: 9,
                 name: "Фёдор Кривоносов",
                 title: "Видео",
                 description: "Глава отдела видео",
@@ -243,7 +251,7 @@ export default class MY_API extends REST_API {
                 linkVk: "https://vk.com/ivanvolzhskiy",
             },
             {
-                id: 9,
+                id: 10,
                 name: "Иван Павлов",
                 title: "ITS TECH",
                 description: "Глава ITS TECH",
