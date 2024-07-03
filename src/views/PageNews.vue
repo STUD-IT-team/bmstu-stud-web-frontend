@@ -56,29 +56,38 @@
 
           // &:hover 
           //   --_s 0px
-  .number-slider 
+  .number-slider
     display flex
-    justify-content start
-    padding 0
+    // flex-wrap nowrap
+    justify-content space-around
     list-style-type none
+    white-space nowrap
+
+    padding-left 15rem
+    
+    overflow-x scroll
+    scrollbar-width none
+    &::-webkit-scrollbar
+      display none
 
     .number-item
       display flex
       flex-direction column
       align-items center
+
       border 1px solid colorPalette1
       border-radius 20px
-      padding 15px
+      padding 10px
       padding-bottom 1px
       margin 15px
 
-    .number
-      font-large-xx()
-      color colorPalette1
+      .number
+        font-large-xx()
+        color colorPalette1
 
-    .description
-      font-large-x()
-      color colorPalette1
+      .description
+        font-large-x()
+        color colorPalette1
 
 
 </style>
@@ -111,7 +120,6 @@
       </div>
     </div>
 
-  
   <ul class="number-slider" id='slider'>
     <li v-for="numberEvent in numbersStud" class="number-item">
       <div class="number">{{ numberEvent.num }}</div>
@@ -131,12 +139,12 @@ import Header from "~/components/Header/Header.vue"
 // import StudLogo from "#~/images/stud-logo-circle.svg"
 // import Picture from "#~/images/stud-logo-circle.svg"
 // import ListingBlock from "~/components/ListingBlock.vue"
-import SliderOneNumber from "../components/SliderOneNumber.vue";
+// import SliderOneNumber from "../components/SliderOneNumber.vue";
 import Footer from "~/components/Footer.vue"
 
 
 export default {
-  components: { Footer, SliderOneNumber},
+  components: { Footer},
   // props: {
   // },
 
