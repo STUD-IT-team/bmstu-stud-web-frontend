@@ -27,8 +27,20 @@ padding-sides = 20px
         color colorText1
     .people
       padding-top 20px
+      padding-bottom 20px
       display flex
       gap 0
+      height max-content
+
+      padding-left 50rem
+      padding-right 50rem
+      margin-left -50rem
+      margin-right -50rem
+      overflow-x scroll
+      scrollbar-width: none;
+      
+      &::-webkit-scrollbar
+        display none
 </style>
 
 <template>
@@ -88,7 +100,7 @@ export default {
       StudLogo,
       Picture,
 
-      title: 'MediaBMSTU',
+      title: 'Студенческий Совет факультета ИУ',
     }
   },
 
