@@ -53,3 +53,15 @@ export const Events = {
     item: Event,
   }
 }
+
+export const StudNumber = {
+  num: String,
+  description: String,
+}
+
+export const StudNumbers = {
+  studNumbers: {
+    type: Array,
+    item: StudNumber,
+  }
+}

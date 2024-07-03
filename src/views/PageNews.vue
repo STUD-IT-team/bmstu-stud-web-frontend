@@ -10,7 +10,8 @@
   .emotions-sector 
     position relative
     .background-video 
-      img 
+      img
+        user-select none
         margin-top 80px
         top 10px
         width 100%
@@ -24,6 +25,7 @@
 
       .create-emotions-circle
         img 
+          user-select: none
           position absolute
           top 67%
           right 11%
@@ -54,12 +56,29 @@
 
           // &:hover 
           //   --_s 0px
-  .number-slider
-    position relative
-    .number
+  .number-slider 
+    display flex
+    justify-content start
+    padding 0
+    list-style-type none
+
+    .number-item
       display flex
-      justify-content center
+      flex-direction column
       align-items center
+      border 1px solid colorPalette1
+      border-radius 20px
+      padding 15px
+      padding-bottom 1px
+      margin 15px
+
+    .number
+      font-large-xx()
+      color colorPalette1
+
+    .description
+      font-large-x()
+      color colorPalette1
 
 
 </style>
@@ -94,12 +113,12 @@
 
   
   <ul class="number-slider" id='slider'>
-    <SliderOneNumber v-for="numberEvent in numbersStud"
-                      class="num"
-                      :num="numberEvent.count"
-                      :event="numberEvent.event"
-    ></SliderOneNumber>
+    <li v-for="numberEvent in numbersStud" class="number-item">
+      <div class="number">{{ numberEvent.num }}</div>
+      <div class="description">{{ numberEvent.description }}</div>
+    </li>
   </ul>
+
   </div>
   <Footer></Footer>
 </template>
@@ -112,34 +131,27 @@ import Header from "~/components/Header/Header.vue"
 // import StudLogo from "#~/images/stud-logo-circle.svg"
 // import Picture from "#~/images/stud-logo-circle.svg"
 // import ListingBlock from "~/components/ListingBlock.vue"
+import SliderOneNumber from "../components/SliderOneNumber.vue";
 import Footer from "~/components/Footer.vue"
 
 
 export default {
-  components: { Footer, Header},
+  components: { Footer, SliderOneNumber},
   // props: {
   // },
 
 
   data() {
     return {
-      news: [],
+      // news: [],
       numbersStud: [],
       loading: false,
     }
   },
 
-  computed:{
-    // numbersStud(){
-    //   return allStudNumber();
-    // }
-  },
-
   mounted() {
-    this.getNews()
-    // this.getStudNums()
-
-    
+    // this.getNews()
+    this.getStudNums()
   },
 
   methods: {
@@ -152,6 +164,16 @@ export default {
       }
 
       this.news = data.feed
+    },
+    async getStudNums() {
+      this.loading = true
+      const { data, ok, status } = await this.$api.getStudNums()
+      this.loading = false
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить студ в цифрах')
+      }
+
+      this.numbersStud = data.studNumbers
     },
     scrollToSlider() {
       const sliderElement = document.getElementById('slider');
