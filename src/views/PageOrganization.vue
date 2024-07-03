@@ -25,6 +25,39 @@ padding-sides = 20px
           color colorText4
       .current
         color colorText1
+
+    .org-header
+      margin-top 20px
+      display flex
+      img
+        width 25%
+        margin 20px
+        border-radius borderRadiusL
+      .org-description
+        display flex
+        flex-direction column
+        margin 20px
+        .title
+          font-large-x()
+          margin-bottom 20px
+          padding 6px 20px 1px
+          border 1px solid colorText1
+          border-radius borderRadiusS
+          width max-content
+        .text
+          flex 1
+          font-medium()
+        .links
+          display flex
+          gap 1rem
+          justify-content left
+          img
+            display inline-block
+            position relative
+            border-radius 0
+            width 3.5rem
+            margin 0
+
     .people
       padding-top 20px
       padding-bottom 20px
@@ -55,6 +88,22 @@ padding-sides = 20px
       <router-link to="/organizations" class="link">Организации</router-link>
       ⟶
       <g class="current">{{title}}</g>
+      </div>
+
+      <div class="org-header">
+        <img src="/res/images/placeholders/org-placeholder.jpg">
+        <div class="org-description">
+          <div class="title">
+            {{title}}
+          </div>
+          <div class="text">
+            {{description}}
+          </div>
+          <div class="links">
+            <a :href="linkVk"><img src="/res/icons/vk.svg" alt="vk"></a>
+            <a :href="linkTg"><img src="/res/icons/tg.svg" alt="tg"></a>
+          </div>
+        </div>
       </div>
       
       <div class="people">
@@ -93,14 +142,19 @@ export default {
 
   data() {
     return {
+      
+      title: 'Студенческий Совет факультета ИУ',
+      description: 'Описание организации',
+      linkVk: 'https://vk.com/studsovet_iu',
+      linkTg: 'https://t.me/studsovet_iu',
       leads: [],
+      
 
       loading: false,
 
       StudLogo,
       Picture,
 
-      title: 'Студенческий Совет факультета ИУ',
     }
   },
 

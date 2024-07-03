@@ -141,7 +141,7 @@ trans-speed = 0.5s
     </div>
     <div class=card-box>
       <div class="card-content">
-        <img src="/res/images/person-placeholder.jpg">
+        <img src="/res/images/placeholders/person-placeholder.jpg">
         <div class="name">
           {{name}}
         </div>
