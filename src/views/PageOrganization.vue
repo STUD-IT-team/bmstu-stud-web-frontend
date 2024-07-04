@@ -122,7 +122,7 @@ padding-sides = 20px
 
       <div class="gap"></div>
 
-      <Carousel>
+      <Carousel :images="this.photos">
       </Carousel>
 
 
@@ -151,13 +151,15 @@ export default {
 
   data() {
     return {
-      
+      // блок описания
       title: 'Студенческий Совет факультета ИУ',
       description: 'Описание организации',
       linkVk: 'https://vk.com/studsovet_iu',
       linkTg: 'https://t.me/studsovet_iu',
+      // блок карточек
       leads: [],
-      
+      // блок фоток
+      photos: [],
 
       loading: false,
 
@@ -171,20 +173,31 @@ export default {
 
   mounted() {
     this.getLeads();
+    this.getPhotos();
   },
 
 
   methods: {
     async getLeads() {
-      this.loading = true;
+      // this.loading = true;
       const {data, ok, status} = await this.$api.getLeads();
-      this.loading = false;
+      // this.loading = false;
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
       }
 
       this.leads = data.leads;
-    }
+    },
+    async getPhotos() {
+      this.loading = true;
+      const {data, ok, status} = await this.$api.getOrgPhotos();
+      this.loading = false
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить фотографии')
+      }
+
+      this.photos = data.photos;
+    },
   }
 }
 </script>
