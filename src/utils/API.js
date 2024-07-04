@@ -110,9 +110,9 @@ export default class MY_API extends REST_API {
     getBigNews = () => ({
         ok: true, status: 200, data: {
             studBigNews: [
-                { title: "Мисс Сон", description: "Только сегодня только сейчас Успен спит!!!!", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-one.png?token=GHSAT0AAAAAACUJGBTBAA4LI6FSP7BTDXOAZUGPFYA"},
-                { title: "Мисс Очарование", description: "Антошка Успенский грустно и очаровательно лежит", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-two.png?token=GHSAT0AAAAAACUJGBTAW3CD4DFT6FDTFHJ2ZUGPFZA"},
-                { title: "Мисс Тарелка", description: "Как классно сидит!!! 10/10 пусть теперь поест", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-three.png?token=GHSAT0AAAAAACUJGBTBOMGEGPMSEJ4Q5YT2ZUGPFYQ"},
+                { title: "Мисс Сон", description: "Только сегодня только сейчас Успен спит!!!!", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-one.png?token=GHSAT0AAAAAACUJGBTBNH4XUKL4HKUNMNVQZUGRPQQ"},
+                { title: "Мисс Очарование", description: "Антошка Успенский грустно и очаровательно лежит", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-two.png?token=GHSAT0AAAAAACUJGBTANQXV6DQ6DCALCWA6ZUGRPRQ"},
+                { title: "Мисс Тарелка", description: "Как классно сидит!!! 10/10 пусть теперь поест", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-three.png?token=GHSAT0AAAAAACUJGBTBCJ3D4ASEJYHMCZGMZUGRPSA"},
             ]
         }
     })
