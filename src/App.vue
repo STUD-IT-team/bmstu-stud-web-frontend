@@ -34,7 +34,7 @@
       </transition>
     </router-view>
   </div>
-  <NavBar v-if="!/^\/miss/.test($route.path)"></NavBar>
+  <NavBar v-if="!/^\/miss/.test($route.path)" id="navbar"></NavBar>
 
   <Popups ref="popups"></Popups>
   <Modals ref="modals" class="root-modals"></Modals>
@@ -128,6 +128,7 @@ export default {
     return {
       transitionName: "",
       global: undefined,
+      prevScrollPos: window.pageYOffset,
     }
   },
 
@@ -152,6 +153,12 @@ export default {
     window.addEventListener('resize', (e) => {
       this.checkMobileScreen();
     });
+
+    document.body.addEventListener('scroll', this.handleScroll);
+  },
+
+  unmounted () {
+    document.body.removeEventListener('scroll', this.handleScroll);
   },
 
   methods: {
@@ -161,7 +168,18 @@ export default {
         return;
       }
       this.global.$isMobile = false;
-    }
+    },
+    handleScroll (event) {
+      var currentScrollPos = document.body.scrollTop
+      console.log(currentScrollPos)
+      if (this.prevScrollPos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0"
+      }
+      else {
+        document.getElementById("navbar").style.top = "-"+Math.min(80,currentScrollPos)+"px"
+      }
+      this.prevScrollPos = currentScrollPos
+    },
   }
 };
 </script>
