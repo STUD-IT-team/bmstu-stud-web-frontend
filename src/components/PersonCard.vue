@@ -118,6 +118,8 @@ trans-speed = 0.5s
           border-radius 0
           width iconSize
   &:hover
+    //input:checked ~ .title-box
+    //input:checked ~ .card-box
     .title-box
     .card-box
       --cardColorText: colorWhite
@@ -132,7 +134,11 @@ trans-speed = 0.5s
 <template>
 
   <div class="root-person">
-    <input type="radio" name="selectCard">
+    <input 
+      type="radio"
+      name="selectCard"
+      disabled
+      :checked="head">
     <div class="title-box">
         <div class="title-text">
           {{title}}
@@ -194,6 +200,10 @@ export default {
     linkTg: {
       type: String,
       default: '',
+    },
+    head: {
+      type: Boolean,
+      default: false,
     },
     // imagesSrc: {
     //   type: Array,

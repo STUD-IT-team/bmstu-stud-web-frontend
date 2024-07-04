@@ -185,6 +185,7 @@ export default class MY_API extends REST_API {
                 description: "Председатель ССФИУ",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: true,
             },
             {
                 id: 2,
@@ -193,6 +194,7 @@ export default class MY_API extends REST_API {
                 description: "Заместитель председателя ССФИУ, глава направления медиа",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 3,
@@ -201,6 +203,7 @@ export default class MY_API extends REST_API {
                 description: "Советник председатела ССФИУ",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 4,
@@ -209,6 +212,7 @@ export default class MY_API extends REST_API {
                 description: "Глава отдела координаторов",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 5,
@@ -217,6 +221,7 @@ export default class MY_API extends REST_API {
                 description: "Глава отдела технической поддержки",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 6,
@@ -225,6 +230,7 @@ export default class MY_API extends REST_API {
                 description: "Глава ITS BMSTU",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 7,
@@ -233,6 +239,7 @@ export default class MY_API extends REST_API {
                 description: "Глава отдела внутреннего взаимодействия",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 8,
@@ -241,6 +248,7 @@ export default class MY_API extends REST_API {
                 description: "Глава отдела сотрудничества",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 9,
@@ -249,6 +257,7 @@ export default class MY_API extends REST_API {
                 description: "Глава отдела видео",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
             {
                 id: 10,
@@ -257,6 +266,7 @@ export default class MY_API extends REST_API {
                 description: "Глава ITS TECH",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
+                head: false,
             },
         ]
 
