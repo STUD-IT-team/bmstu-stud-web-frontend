@@ -88,7 +88,9 @@ padding-sides = 20px
       <div class="filter-bar">
         
 
-        <Dropdown></Dropdown>
+        <Dropdown
+          name="org-categories-dropdown"
+          :items="categories"></Dropdown>
         
         <div class="input-container">
         
@@ -135,6 +137,29 @@ export default {
   data() {
     return {
       orgs: [],
+
+      categories: [
+        {
+          id: 0,
+          text: "Все организации",
+        },
+        {
+          id: 1,
+          text: "ССФ",
+        },
+        {
+          id: 2,
+          text: "Отряды",
+        },
+        {
+          id: 3,
+          text: "Клубы",
+        },
+        {
+          id: 4,
+          text: "Отделы",
+        },
+      ],
 
       loading: false,
 

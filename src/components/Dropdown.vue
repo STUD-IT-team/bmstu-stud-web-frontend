@@ -84,7 +84,7 @@
         <input
           type="radio" 
           :name="name" 
-          :checked="idx==0"
+          :checked="item.id==defaultId"
           @click="setOption('item'+item.id)">
         {{item.text}}
       </label> 
@@ -111,34 +111,17 @@ export default {
   components: {CircleLoading},
 
   props: {
-    images: Array,
+    name: String,
+    items: Array,
+    defaultId: {
+      type: Number,
+      default: 0,  
+    }
+
   },
 
   data() {
     return {
-      name: "drpdn",
-      items: [
-        {
-          id: 0,
-          text: "Все организации",
-        },
-        {
-          id: 1,
-          text: "ССФ",
-        },
-        {
-          id: 2,
-          text: "Отряды",
-        },
-        {
-          id: 3,
-          text: "Клубы",
-        },
-        {
-          id: 4,
-          text: "Отделы",
-        },
-      ],
       
       collapsed: true,
       text: '',
@@ -158,7 +141,9 @@ export default {
   },
 
   mounted() {
-    this.text = this.items[0].text
+    var defaultIdx = this.defaultId
+    var defaultIdx = this.items.findIndex(function(item, i){item.id==defaultIdx})
+    this.text = this.items[this.defaultId].text
   },
 
   methods: { 
