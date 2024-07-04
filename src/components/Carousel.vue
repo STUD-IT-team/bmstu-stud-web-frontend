@@ -7,7 +7,7 @@
 @require '../styles/animations.styl'
 
 carousel-width = 1140px
-carousel-height = 550px
+carousel-height = 720px
 
 section
     background-color: colorBg2;
@@ -62,7 +62,7 @@ section
       height: fit-content;
       position: absolute;
       transition: 1s;
-      opacity 0.8
+      opacity 1
 
 .nav 
     position: absolute;
@@ -109,16 +109,18 @@ section
 
 <section>
   <div class="buttons">
-    <input type="radio" name="radio-btn" id="radio1" class="button" @click="this.changeSlide(0)" checked>
-    <input type="radio" name="radio-btn" id="radio2" class="button" @click="changeSlide(1)">
-    <input type="radio" name="radio-btn" id="radio3" class="button" @click="this.changeSlide(2)">
-    <input type="radio" name="radio-btn" id="radio4" class="button" @click="this.changeSlide(3)">
+    <input type="radio" v-for="(image, idx) in images"
+      name="image-indicator"
+      :id="image.id"
+      class="button"
+      @click="this.changeSlide(image.id)"
+      :checked="idx==0">
   </div>
 
-  <img src="/res/images/placeholders/person-placeholder.jpg" alt="" class="slide">
-  <img src="/res/images/placeholders/org-placeholder.jpg" alt="" class="slide">
-  <img src="/res/images/placeholders/anime-placeholder.jpg" alt="" class="slide">
-  <img src="/res/images/placeholders/anime-placeholder.jpeg" alt="" class="slide">
+  <img v-for="image in images"
+    :src="image.src"
+    alt=""
+    class="slide">
 
   <div class="nav">
       <a class="side-button prev" @click="goPrev()"> <img src="/res/icons/arrow-left.svg"> </a>
@@ -126,6 +128,9 @@ section
   </div>
 </section>
   
+{{slides.length}}
+{{radioButton.length}}
+
 </template>
 
 <script>
@@ -140,39 +145,20 @@ import CircleLoading from "~/App.vue";
 
 
 
-
 export default {
   // emits: ['delete', 'pin', 'upnin', 'edit'],
 
   components: {CircleLoading},
 
   props: {
-    numberOfSlides: {
-        type: Number,
-        default: 5,
-    },
-    height: {
-        type: Number,
-        default: 300,
-    },
-    width: {
-        type: Number,
-        default: 500,
-    },
-    // imagesSrc: {
-    //   type: Array,
-    //   default: [],
-    // },
-    // // timePublished: Date,
-    // isPinned: Boolean,
-    // isCollapsedByDefault: Boolean,
+    images: Array,
   },
 
   data() {
     return {
 
-      slides: document.querySelectorAll(".slide"),
-      radioButton: document.querySelectorAll(".button"),
+      slides: [],
+      radioButton: [],
       counter: 0,
       // isCollapsed: this.$props.isCollapsedByDefault,
       // isEditBlockOpened: false,
@@ -187,7 +173,7 @@ export default {
     // }
   },
 
-  mounted() {
+  updated() {
     this.slides=document.querySelectorAll(".slide");
     this.radioButton=document.querySelectorAll(".button");
     this.slides.forEach(
@@ -195,10 +181,10 @@ export default {
             slide.style.left = `${index * 100}%`;
         }
     );
-    // this.isCollapsed = true;
   },
 
   methods: { 
+
     slideImage() {
         this.slides.forEach(
             (slide) => {

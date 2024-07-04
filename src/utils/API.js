@@ -262,6 +262,33 @@ export default class MY_API extends REST_API {
 
     }})
 
+
+    getOrgPhotos = () => ({ok: true, status: 200, data: {
+        photos: [
+            {
+                id: 1,
+                src: "https://sun9-68.userapi.com/impg/WeboL-Q1QA4u7oBwHOysqOA7Ej0Yq3xZlZTqeg/T7aqVm4kIPQ.jpg?size=1280x853&quality=95&sign=cd83b34b75225c864c3e49f77f54ba50&type=album",
+            },
+            {
+                id: 2,
+                src: "https://sun9-79.userapi.com/impg/7kN9tzNtU277N-PwnBATJoB7E3aoezlbc9D1iQ/Iee7EKGVjqA.jpg?size=1280x853&quality=95&sign=e4d090e703feff77c146222f3ac9b114&type=album",
+            },
+            {
+                id: 3,
+                src: "https://sun9-63.userapi.com/impg/2c14z0G7jNVg2dT-7XiPqweXjuMh8tpnWJ3jbg/OqoJm7QZ4Ao.jpg?size=1280x853&quality=95&sign=c2b228a1b5581e7a9b801273c33397c8&type=album",
+            },
+            {
+                id: 4,
+                src: "https://sun9-77.userapi.com/impg/ZGURGAldQfLtct4gAq5qQub7UiEvxcD18oM5kw/c9AgIlBFx6o.jpg?size=1280x853&quality=95&sign=dcd43f8bcf5fedf6792d047855cbe8db&type=album",
+            },
+            {
+                id: 5,
+                src: "https://sun9-47.userapi.com/impg/HxwXImMnb1FuNU5F0i0U4MenEtJZIExD8sFtBw/vlGvWd5l0Po.jpg?size=1280x853&quality=95&sign=0f2925662e879cde553e56981cd15cc0&type=album",
+            },
+        ]
+
+    }})
+
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
             throw SyntaxError(`Model for request '${path}' not specified`);
