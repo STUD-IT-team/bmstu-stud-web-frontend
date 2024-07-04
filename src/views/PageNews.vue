@@ -5,7 +5,15 @@
 @require '../styles/components.styl'
 @require '../styles/utils.styl'
 
+  
+
 .root-page-news 
+  .orange-star
+    img
+      position static
+      margin-left 95vw 
+      margin-bottom 0
+      padding 0
   position relative
   .emotions-sector 
     position relative
@@ -93,10 +101,25 @@
         color colorPalette1
 
 
+  .big-news-sector
+    display flex
+    width 100vw
+    flex-direction row
+    justify-content space-around
+    gap 10px 
+    padding 60px
+    padding-top 10px
+    overflow scroll
+    .one-big-new
+      display flex
+      flex-direction column
+      // img
+
 </style>
 
 <template>
   <div class="root-page-news">
+    
     <div class="emotions-sector">
       <div class="background-video">
         <img src="/res/images/video.png" alt="" />
@@ -113,7 +136,6 @@
       <div class="overlay-video">
         <div class="create-emotions-circle">
           <a href="#slider" @click.prevent="scrollToSlider">
-          <!-- <a href="#slider"> -->
             <img src="/res/icons/create-emotions-circle.svg" alt="" />
           </a>
         </div>
@@ -123,12 +145,24 @@
       </div>
     </div>
 
-  <ul class="number-slider" id='slider'>
-    <li v-for="numberEvent in numbersStud" class="number-item">
-      <div class="number">{{ numberEvent.num }}</div>
-      <div class="description">{{ numberEvent.description }}</div>
-    </li>
-  </ul>
+    <ul class="number-slider" id='slider'>
+      <li v-for="numberEvent in numbersStud" class="number-item">
+        <div class="number">{{ numberEvent.num }}</div>
+        <div class="description">{{ numberEvent.description }}</div>
+      </li>
+    </ul>
+
+    <div class="orange-star">
+      <img src="/res/icons/orange-star.svg" alt=""/>
+    </div>
+    <div class="big-news-sector">
+      <OneBigNew v-for="bigNew in bigNews"
+                      :title="bigNew.title"
+                      :description="bigNew.description"
+                      :img_url="bigNew.img_url">
+      </OneBigNew>
+
+    </div>
 
   </div>
   <Footer></Footer>
@@ -136,7 +170,6 @@
 
 
 <script>
-import Header from "~/components/Header/Header.vue"
 // import {numbersStud} from "~/utils/utils.js"
 // import New from "~/components/New.vue"
 // import StudLogo from "#~/images/stud-logo-circle.svg"
@@ -144,9 +177,10 @@ import Header from "~/components/Header/Header.vue"
 // import ListingBlock from "~/components/ListingBlock.vue"
 // import SliderOneNumber from "../components/SliderOneNumber.vue";
 import Footer from "~/components/Footer.vue"
+import OneBigNew from "~/components/OneBigNew.vue";
 
 export default {
-  components: { Footer},
+  components: { Footer, OneBigNew },
   // props: {
   // },
 
@@ -155,6 +189,7 @@ export default {
     return {
       // news: [],
       numbersStud: [],
+      bigNews: [],
       loading: false,
     }
   },
@@ -162,6 +197,7 @@ export default {
   mounted() {
     // this.getNews()
     this.getStudNums();
+    this.getBigNews();
 
     const list = document.querySelector('.number-slider');
     if (list) {
@@ -188,6 +224,7 @@ export default {
 
       this.news = data.feed
     },
+
     async getStudNums() {
       this.loading = true
       const { data, ok, status } = await this.$api.getStudNums()
@@ -197,6 +234,17 @@ export default {
       }
 
       this.numbersStud = data.studNumbers
+    },
+
+    async getBigNews() {
+      this.loading = true
+      const { data, ok, status } = await this.$api.getBigNews()
+      this.loading = false
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить крупные новости')
+      }
+
+      this.bigNews = data.studBigNews
     },
     scrollToSlider() {
       const sliderElement = document.getElementById('slider');

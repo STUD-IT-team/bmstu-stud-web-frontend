@@ -65,3 +65,16 @@ export const StudNumbers = {
     item: StudNumber,
   }
 }
+
+export const StudBigNew = {
+  title: String,
+  description: String,
+  img_url: String,
+}
+
+export const StudBigNews = {
+  studNumbers: {
+    type: Array,
+    item: StudBigNew,
+  }
+}
