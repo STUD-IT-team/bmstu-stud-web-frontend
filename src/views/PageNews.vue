@@ -7,7 +7,6 @@
 
 between-news-gap = 30px
 between-columns-gap = between-news-gap
-main-part-max-width = 1140px
 padding-sides = 20px
 
 .root-page-news

@@ -6,7 +6,6 @@
 @require '../styles/components.styl'
 @require '../styles/animations.styl'
 
-max-main-part-width = 1180px
 
 .root-navbar
   position fixed
@@ -23,7 +22,7 @@ max-main-part-width = 1180px
     font-medium()
   .main-part
     centered-margin()
-    max-width max-main-part-width
+    max-width main-part-max-width
     display flex
     justify-content space-between
     align-items center
