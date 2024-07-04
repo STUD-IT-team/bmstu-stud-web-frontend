@@ -6,10 +6,11 @@
 @require '../styles/components.styl'
 @require '../styles/animations.styl'
 
-carousel-width = 1140px
-carousel-height = 720px
+carousel-width = main-part-max-width * 0.6
+carousel-height = 960px * 0.6
 
 section
+    left (main-part-max-width - carousel-width) * 0.5
     background-color: colorBg2;
     height: carousel-height
     width: carousel-width;
@@ -39,6 +40,7 @@ section
         //background colorPalette5
         //opacity 0.5
         &:after
+          trans(0.1s)
           position relative
           left 1rem
           bottom 3rem

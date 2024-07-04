@@ -6,7 +6,6 @@
 @require '../styles/utils.styl'
 
 between-orgs-gap = 15px
-main-part-max-width = 1140px
 padding-sides = 20px
 
 
