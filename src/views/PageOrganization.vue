@@ -117,6 +117,7 @@ padding-sides = 20px
               :description="oneLead.description"
               :link-tg="oneLead.linkTg"
               :link-vk="oneLead.linkVk"
+              :head="oneLead.head"
           ></PersonCard>
       </div>
 
