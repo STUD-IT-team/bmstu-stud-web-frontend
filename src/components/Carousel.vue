@@ -21,15 +21,18 @@ section
     border-radius borderRadiusL
     box-shadow 0 1px 2px 2px mix(black, transparent, 20%)
     .buttons
+      z-index 2
       display: flex;
       position: absolute;
       color: colorPalette4
-      bottom: 0;
-      gap 5px
+      bottom: 2rem;
+      //background mix(black, transparent, 30%)
+      //padding 5px 20px 0
+      //border-radius borderRadiusMax
+      gap 0px
       input[type="radio"]
-        height: 5rem;
+        height: 3rem;
         width: 2rem;
-        z-index 2
         cursor pointer
         appearance none
         padding 0
@@ -38,7 +41,7 @@ section
         &:after
           position relative
           left 1rem
-          bottom 1.5rem
+          bottom 3rem
           z-index 1
           margin-top 70px
           display block
@@ -113,7 +116,7 @@ section
       name="image-indicator"
       :id="image.id"
       class="button"
-      @click="this.changeSlide(image.id)"
+      @click="this.changeSlide(idx)"
       :checked="idx==0">
   </div>
 
@@ -127,9 +130,6 @@ section
       <a class="side-button next" @click="goNext()"> <img src="/res/icons/arrow-right.svg"> </a>
   </div>
 </section>
-  
-{{slides.length}}
-{{radioButton.length}}
 
 </template>
 
@@ -173,6 +173,7 @@ export default {
     // }
   },
 
+  // Чтобы подгружалось по готовности разметки
   updated() {
     this.slides=document.querySelectorAll(".slide");
     this.radioButton=document.querySelectorAll(".button");
