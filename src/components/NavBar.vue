@@ -50,7 +50,7 @@ max-main-part-width = 1180px
         align-items center
         white-space nowrap
         overflow hidden
-        max-height 300px // css animable
+        max-height 120px // css animable
         trans()
         @media ({mobile})
           flex-direction column
@@ -94,7 +94,7 @@ max-main-part-width = 1180px
       .login-button
         button()
         font-large()
-        height 3.5rem
+        height 60px
         padding 5px 50px
         color colorText2
         background transparent
