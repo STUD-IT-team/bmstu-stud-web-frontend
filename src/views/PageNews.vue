@@ -11,6 +11,7 @@ padding-sides = 20px
 
 .root-page-news
   .main-container
+    margin-top 100px
     padding 0 padding-sides
     padding-top 50px
     centered-margin()
@@ -54,48 +55,9 @@ padding-sides = 20px
 
 <template>
   <div class="root-page-news">
-    <Header></Header>
-
     <main class="main-container">
-      <header class="header">Лента новостей</header>
-
-      <nav class="navbar-organizations">
-        <router-link to="#" class="organization-button">Все события</router-link>
-      </nav>
-
-      <section class="news-blocks-section-container">
-        <div class="news-container">
-          <New v-for="(oneNew, idx) in news"
-             :id="oneNew.id"
-             :title="oneNew.title"
-             :text="oneNew.description"
-             organization-name="Студнческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана"
-             :organization-logo="StudLogo"
-             :images-src="[Picture]"
-             :time-published="oneNew.created_at"
-             @delete="news.splice(idx, 1)"
-          ></New>
-        </div>
-        <div class="side-blocks-container">
-          <ListingBlock title="Поздравляем!"
-                        :text-rows="[
-                        'Поздравляем Антона Павленко с ДР!!!',
-                        'Поздравляем Антона Успенского со званием мисс',
-                        'А вас не бесит it отдел?',
-                        'Это студенческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана',
-                      ]">
-          </ListingBlock>
-          <ListingBlock title="Горячие новости"
-                        :text-rows="[
-                        'А вас не бесит it отдел?',
-                        'Меня лично бесит',
-                        'Можно выйти пж?',
-                        'Блин кнопку выхода не сделали :(',
-                        'Я запрещаю вам выходить из IT-отдела!',
-                      ]">
-          </ListingBlock>
-        </div>
-      </section>
+      <NumbersScroll>
+      </NumbersScroll>
     </main>
 
     <Footer></Footer>
@@ -106,6 +68,7 @@ padding-sides = 20px
 <script>
 import Header from "~/components/Header/Header.vue";
 import New from "~/components/New.vue";
+import NumbersScroll from "~/components/NumbersScroll.vue"
 
 import StudLogo from "#~/images/stud-logo-circle.svg";
 import Picture from "#~/images/stud-logo-circle.svg";
@@ -114,7 +77,7 @@ import Footer from "~/components/Footer.vue";
 
 
 export default {
-  components: {Footer, ListingBlock, New, Header},
+  components: {Footer, ListingBlock, New, Header, NumbersScroll},
 
   data() {
     return {
