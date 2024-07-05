@@ -278,7 +278,7 @@ export default class MY_API extends REST_API {
                 id: 3,
                 name: "Адам Ливанский",
                 title: "Слоняра",
-                description: "Советник председатела ССФИУ",
+                description: "Советник председателя ССФИУ",
                 linkTg: "https://t.me/ivantokarev",
                 linkVk: "https://vk.com/ivanvolzhskiy",
                 head: false,
