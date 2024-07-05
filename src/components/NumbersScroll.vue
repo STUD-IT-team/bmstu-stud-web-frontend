@@ -156,7 +156,7 @@ export default {
             console.log(delta)
             scroll.style.left = (Number(scroll.offsetLeft) + delta) + 'px'
             var fChild = scroll.firstChild
-            if (scroll.offsetLeft < -500 + 10) {
+            if (scroll.offsetLeft < -(scroll.clientWidth - window.screen.width) + 10) {
                 // console.log(scroll.clientWidth)
                 console.log(window.screen.width)
                 console.log(scroll.offsetLeft)
