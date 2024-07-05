@@ -131,7 +131,7 @@ export default class MY_API extends REST_API {
 
 
     getOrgs = () => ({ok: true, status: 200, data: {
-        feed: [
+        orgs: [
             {
                 id: 1,
                 title: "MediaBMSTU",
@@ -173,8 +173,68 @@ export default class MY_API extends REST_API {
                 tag: "Отдел",
             },
         ]
+    }}
+    )
 
-    }})
+    getOrgsByTag = (tag) => ({ok: true, status: 200, data: {
+        orgs: [
+            {
+                id: 1,
+                title: "MediaBMSTU",
+                description: "Спасибо медиа",
+                head_title: "Руководитель",
+                head_name: "Егор Федорук",
+                tag: "Отдел",
+            },
+            {
+                id: 2,
+                title: "ISCRA",
+                description: "Приходите на конференцию",
+                head_title: "Руководитель",
+                head_name: "Полина Третьяк (навсегда)",
+                tag: "Клуб",
+            },
+            {
+                id: 3,
+                title: "Студенческий Совет факультета ИУ",
+                description: "ITS пиво",
+                head_title: "Председатель",
+                head_name: "Иван Токарев",
+                tag: "ССФ",
+            },
+            {
+                id: 2,
+                title: "IT-отдел",
+                description: "Мы в телявизоре",
+                head_title: "Руководитель",
+                head_name: "Антон Павленко",
+                tag: "Отдел",
+            },
+            {
+                id: 2,
+                title: "Техническая поддержка",
+                description: "Suiiii",
+                head_title: "Руководитель",
+                head_name: "Егор Клевлин (солнышко)",
+                tag: "Отдел",
+            },
+        ].filter((item)=>(item.tag==tag))
+    }}
+    )
+
+    getOrgsByQuery = (query) => ({ok: true, status: 200, data: {
+        orgs: [
+            {
+                id: 1,
+                title: query,
+                description: "Какая-то орга",
+                head_title: "Руководитель",
+                head_name: "Какой-то мужик",
+                tag: "Отдел",
+            },
+        ]
+    }}
+    )
 
     getLeads = () => ({ok: true, status: 200, data: {
         leads: [

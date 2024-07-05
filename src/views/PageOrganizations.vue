@@ -43,6 +43,7 @@ padding-sides = 20px
           padding 10px 30px
           border-radius borderRadiusMax
           border colorPalette1 solid 2px
+          &:valid ~ label
           &:focus ~ label
             font-small()
             left 25px
@@ -71,6 +72,10 @@ padding-sides = 20px
       display flex
       flex-direction column
       gap between-orgs-gap
+      .message-empty
+        font-medium()
+        color colorText3
+        padding 0 20px  
 </style>
 
 <template>
@@ -89,15 +94,20 @@ padding-sides = 20px
         
 
         <Dropdown
+          ref="orgCategoriesDropdown"
           name="org-categories-dropdown"
-          :items="categories"></Dropdown>
+          :items="categories"
+          @updateFilter="getOrgsByTag()"></Dropdown>
         
-        <div class="input-container">
-        
-          <input>
+        <form 
+          class="input-container"
+          @submit="getOrgsByQuery()">
+          
+          <input ref="searchBar" required >
           <label>Введите название организации</label>
-          <img src="/res/icons/search.svg">        
-        </div>
+          <img src="/res/icons/search.svg"
+            @click="getOrgsByQuery()">        
+        </form>
       
       </div>
 
@@ -109,6 +119,9 @@ padding-sides = 20px
             :headTitle="oneOrg.head_title"
             :head-name="oneOrg.head_name"
         ></Organization>
+        <span class="message-empty" v-if="orgs.length==0">
+          Организаций не найдено :(
+        </span>
       </div>
 
 
@@ -142,22 +155,27 @@ export default {
         {
           id: 0,
           text: "Все организации",
+          value: "default",
         },
         {
           id: 1,
-          text: "ССФ",
+          text: "Студенческие Советы факультетов",
+          value: "ССФ",
         },
         {
           id: 2,
           text: "Отряды",
+          value: "Отряд",
         },
         {
           id: 3,
           text: "Клубы",
+          value: "Клуб",
         },
         {
           id: 4,
           text: "Отделы",
+          value: "Отдел",
         },
       ],
 
@@ -166,13 +184,6 @@ export default {
       StudLogo,
       Picture,
 
-      getTag: function () {        
-        return document.querySelector("input[name='org-type-select']:checked").id
-      },
-
-      checkTag: function (org) {
-        return true
-      },
     }
   },
 
@@ -184,15 +195,47 @@ export default {
 
 
   methods: {
-    async getOrgs(tag="") {
-      this.loading = true;
-      const {data, ok, status} = await this.$api.getOrgs();
+    async getOrgsByTag() {
+      const tag = this.$refs.orgCategoriesDropdown.value
+      if(tag=="default")  
+        {this.getOrgs()}
+      else {
+        this.loading = true;            
+        const {data, ok, status} = await this.$api.getOrgsByTag(tag);
+        this.loading = false;
+
+        if (!ok) {
+          this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+        }
+
+        this.orgs = data.orgs;
+      }
+    },
+    async getOrgsByQuery() {
+      event.preventDefault()
+      const query = this.$refs.searchBar.value
+      this.loading = true;            
+      const {data, ok, status} = await this.$api.getOrgsByQuery(query);
       this.loading = false;
+
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
       }
 
-      this.orgs = data.feed;
+      this.orgs = data.orgs;
+    },
+    async getOrgs() {
+      this.loading = true;
+      
+      const {data, ok, status} = await this.$api.getOrgs();
+      
+      this.loading = false;
+
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+      }
+
+      this.orgs = data.orgs;
     }
   }
 }

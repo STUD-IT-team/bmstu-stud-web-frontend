@@ -12,7 +12,7 @@
   button
     button()  
     margin-left 0
-    width 300px
+    width 500px
     display: flex;
     border-radius borderRadiusMax
     border none
@@ -48,7 +48,7 @@
     display flex
     flex-direction column
     margin-top 10px
-    width 300px
+    width 500px
     background colorBg
     box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
     border-radius borderRadiusS
@@ -78,14 +78,12 @@
       <img src="/res/icons/arrow-right-card.svg" :id="name+'-arrow'">
     </button>
     <div class="option-list" :id="name+'-optionList'">
-      <label v-for="(item, idx) in items"
-          :ref="'item'+item.id"
-          :id="'item'+item.id">
+      <label v-for="(item, idx) in items">
         <input
           type="radio" 
           :name="name" 
           :checked="item.id==defaultId"
-          @click="setOption('item'+item.id)">
+          @click="setOption(idx)">
         {{item.text}}
       </label> 
     </div>
@@ -104,6 +102,7 @@ import {ref} from 'vue';
 
 
 
+// const itemRefs = ref([])
 
 export default {
   // emits: ['delete', 'pin', 'upnin', 'edit'],
@@ -122,9 +121,10 @@ export default {
 
   data() {
     return {
-      
       collapsed: true,
       text: '',
+      value: '',
+      currentIdx: 0,
 
       loading: false,
     }
@@ -144,6 +144,7 @@ export default {
     var defaultIdx = this.defaultId
     var defaultIdx = this.items.findIndex(function(item, i){item.id==defaultIdx})
     this.text = this.items[this.defaultId].text
+    this.value = this.items[this.defaultId].value
   },
 
   methods: { 
@@ -163,10 +164,14 @@ export default {
       this.collapsed = true
     },
     setOption(option) {
-      // this.text = ref(option).text
-      // ref(this.name).style.color = "colorBg3"
-      this.text = document.getElementById(option).textContent
+      this.currentIdx = option
+      this.updateData()
       this.hideOptions()
+      this.$emit('updateFilter')
+    },
+    updateData() {
+      this.value = this.items[this.currentIdx].value
+      this.text = this.items[this.currentIdx].text
     }
   }
 };
