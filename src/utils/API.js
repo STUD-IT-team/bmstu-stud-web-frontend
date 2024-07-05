@@ -105,14 +105,14 @@ export default class MY_API extends REST_API {
                 { num: "6", description: "программистов" },
             ]
         }
-    })  
-    
+    })
+
     getBigNews = () => ({
         ok: true, status: 200, data: {
             studBigNews: [
-                { title: "Мисс Сон", description: "Только сегодня только сейчас Успен спит!!!!", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-one.png?token=GHSAT0AAAAAACUJGBTBNH4XUKL4HKUNMNVQZUGRPQQ"},
-                { title: "Мисс Очарование", description: "Антошка Успенский грустно и очаровательно лежит", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-two.png?token=GHSAT0AAAAAACUJGBTANQXV6DQ6DCALCWA6ZUGRPRQ"},
-                { title: "Мисс Тарелка", description: "Как классно сидит!!! 10/10 пусть теперь поест", img_url: "https://raw.githubusercontent.com/just-rudy/pics-test/main/big-new-three.png?token=GHSAT0AAAAAACUJGBTBCJ3D4ASEJYHMCZGMZUGRPSA"},
+                { title: "Мисс Сон", description: "Только сегодня только сейчас Успен спит!!!!", imgUrl: "res/images/big-new-one.png", redirectLink: "https://vk.com/antoshka_uspenskiy?from=search" },
+                { title: "Мисс Очарование", description: "Антошка Успенский грустно и очаровательно лежит", imgUrl: "res/images/big-new-two.png", redirectLink: "https://vk.com/miss_bmstu" },
+                { title: "Мисс Тарелка", description: "Как классно сидит!!! 10/10 пусть теперь поест", imgUrl: "res/images/big-new-three.png", redirectLink: "https://vk.com/antoshka_uspenskiy?from=search" },
             ]
         }
     })

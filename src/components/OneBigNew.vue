@@ -5,45 +5,73 @@
 @require '../styles/buttons.styl'
 @require '../styles/components.styl'
 
-
 .news-container
   block(colorPalette4)
   padding 0px
   padding-top 20px
   width 400px
   height 315px
-  // margin 0px
-  button
+  display flex
+  flex-direction column
+  position relative
+
+  .button-read-more
     color white
+    width 230px
     background colorPalette4
-    font-small()
+    font-small-x()
     border-radius 15px
-    border-width 0
-    padding 2px
-    margin 10px
+    border-width 1px
+    border-color colorPalette4
+    border-style solid
+    padding 3px
+    margin 8px
     align-self right
     position relative
     left 150px
+    transition background 0.3s, color 0.3s, filter 0.3s
+
+    svg
+      fill white
+      transition fill 0.3s
+
+    &:hover
+      background white
+      color colorPalette4
+
+      svg
+        fill orange
+
   .title
     padding 28px
     padding-bottom 0px
     padding-top 0px
-    // margin-top 0px
     font-medium()
     color colorPalette4
+
   img
+    position absolute
+    bottom 0
+    left 50%
+    transform translateX(-50%)
     border-radius 23px
     width 396px
-    user-select: none
-
+    user-select none
 
 </style>
 
 <template>
   <div class="news-container">
     <div class="title">{{ title }}</div>
-    <button class="button-orange"> &emsp; Читать подробнее ―――⟶ &emsp;</button>
-    <img :src=img_url alt="">
+    <button class="button-read-more">
+      &emsp; Читать подробнее
+      <svg width="88" height="8" viewBox="0 0 88 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M87.3535 4.35353C87.5487 4.15827 87.5487 3.84169 87.3535 3.64643L84.1715 0.464446C83.9762 0.269184 83.6596 0.269184 83.4644 0.464447C83.2691 0.659709 83.2691 0.976291 83.4644 1.17155L86.2928 3.99998L83.4644 6.82841C83.2691 7.02367 83.2691 7.34025 83.4644 7.53551C83.6596 7.73078 83.9762 7.73078 84.1715 7.53551L87.3535 4.35353ZM0.674316 4.5L86.9999 4.49998L86.9999 3.49998L0.674316 3.5L0.674316 4.5Z" />
+      </svg>
+    </button>
+
+    <img :src="imgUrl" alt="">
   </div>
 </template>
 
@@ -60,7 +88,12 @@ export default {
       required: true,
     },
 
-    img_url: {
+    imgUrl: {
+      type: String,
+      required: true,
+    },
+
+    redirectLink: {
       type: String,
       required: true,
     },

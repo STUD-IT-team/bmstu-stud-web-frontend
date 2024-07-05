@@ -33,7 +33,7 @@ export const Event = {
   date: Date,
   approved: Boolean,
   created_at: Date,
-  reg_url: {
+  reg_url: {    
     type: String,
     required: false,
   },
@@ -69,7 +69,8 @@ export const StudNumbers = {
 export const StudBigNew = {
   title: String,
   description: String,
-  img_url: String,
+  imgUrl: String,
+  redirectLink: String,
 }
 
 export const StudBigNews = {

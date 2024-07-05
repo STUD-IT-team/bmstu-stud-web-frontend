@@ -103,13 +103,13 @@
 
   .big-news-sector
     display flex
-    width 100vw
+    flex-wrap wrap
     flex-direction row
     justify-content space-around
+    width 100vw
     gap 10px 
-    padding 60px
     padding-top 10px
-    overflow scroll
+    overflow-x scroll
     .one-big-new
       display flex
       flex-direction column
@@ -159,11 +159,10 @@
       <OneBigNew v-for="bigNew in bigNews"
                       :title="bigNew.title"
                       :description="bigNew.description"
-                      :img_url="bigNew.img_url">
+                      :imgUrl="bigNew.imgUrl"
+                      :redirectLink="bigNew.redirectLink">
       </OneBigNew>
-
     </div>
-
   </div>
   <Footer></Footer>
 </template>
