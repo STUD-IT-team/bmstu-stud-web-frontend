@@ -8,13 +8,13 @@
   
 
 .root-page-news 
+  position relative
   .orange-star
     img
       position static
       margin-left 95vw 
       margin-bottom 0
       padding 0
-  position relative
   .emotions-sector 
     position relative
     .background-video 
@@ -108,6 +108,7 @@
     justify-content space-around
     width 100vw
     gap 10px 
+    padding 25px
     padding-top 10px
     overflow-x scroll
     .one-big-new
@@ -119,7 +120,7 @@
 
 <template>
   <div class="root-page-news">
-    
+
     <div class="emotions-sector">
       <div class="background-video">
         <img src="/res/images/video.png" alt="" />
@@ -153,14 +154,11 @@
     </ul>
 
     <div class="orange-star">
-      <img src="/res/icons/orange-star.svg" alt=""/>
+      <img src="/res/icons/orange-star.svg" alt="" />
     </div>
     <div class="big-news-sector">
-      <OneBigNew v-for="bigNew in bigNews"
-                      :title="bigNew.title"
-                      :description="bigNew.description"
-                      :imgUrl="bigNew.imgUrl"
-                      :redirectLink="bigNew.redirectLink">
+      <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
+        :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
       </OneBigNew>
     </div>
   </div>
@@ -200,7 +198,7 @@ export default {
 
     const list = document.querySelector('.number-slider');
     if (list) {
-      list.addEventListener('wheel', function(ev) {
+      list.addEventListener('wheel', function (ev) {
         let items = this.querySelectorAll('.number-item');
         if (ev.wheelDelta > 0) {
           this.prepend(items[items.length - 1]);
@@ -210,7 +208,7 @@ export default {
       });
     }
   },
-  
+
 
   methods: {
     async getNews() {
