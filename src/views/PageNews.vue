@@ -107,8 +107,8 @@
     flex-direction row
     justify-content space-around
     width 100vw
-    gap 10px 
-    padding 25px
+    gap 0px 
+    padding 40px
     padding-top 10px
     overflow-x scroll
     .one-big-new
@@ -161,6 +161,7 @@
         :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
       </OneBigNew>
     </div>
+    <FSC></FSC>
   </div>
   <Footer></Footer>
 </template>
@@ -175,9 +176,10 @@
 // import SliderOneNumber from "../components/SliderOneNumber.vue";
 import Footer from "~/components/Footer.vue"
 import OneBigNew from "~/components/OneBigNew.vue";
+import FSC from "~/components/FacultyStudCouncils.vue";
 
 export default {
-  components: { Footer, OneBigNew },
+  components: { Footer, OneBigNew, FSC },
   // props: {
   // },
 

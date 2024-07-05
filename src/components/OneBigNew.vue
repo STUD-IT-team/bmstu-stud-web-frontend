@@ -14,7 +14,7 @@
   display flex
   flex-direction column
   position relative
-  overflow hidden
+  overflow scroll
   border-radius 23px
   transition background 0.3s, transform 0.3s
 
