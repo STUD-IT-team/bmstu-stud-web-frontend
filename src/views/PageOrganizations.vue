@@ -57,15 +57,6 @@ padding-sides = 20px
           right 20px
           height 2rem
           cursor pointer
-
-    .navbar-orgs
-      font-medium()
-      color colorText3
-      .link
-        &:hover
-          color colorText4
-      .current
-        color colorText1
     .orgs-container
       padding-top 30px
       width 100%
@@ -84,11 +75,8 @@ padding-sides = 20px
 
     <main class="main-container">
 
-      <div class="navbar-orgs">
-      <router-link to="/" class="link">Главная</router-link>
-      ⟶
-      <g class="current">Организации</g>
-      </div>
+      <AddressBar :path="path">
+      </AddressBar>
       
       <div class="filter-bar">
         
@@ -136,6 +124,7 @@ padding-sides = 20px
 import Header from "~/components/Header/Header.vue";
 import Organization from "~/components/Organization.vue";
 import Dropdown from "~/components/Dropdown.vue";
+import AddressBar from "~/components/AddressBar.vue";
 
 
 import StudLogo from "#~/images/stud-logo-circle.svg";
@@ -145,11 +134,24 @@ import Footer from "~/components/Footer.vue";
 
 
 export default {
-  components: {Footer, ListingBlock, Organization, Header, Dropdown},
+  components: {Footer, ListingBlock, Organization, Header, Dropdown, AddressBar},
 
   data() {
     return {
       orgs: [],
+
+      path: [
+        {
+          name: "Главная",
+          address: "/",
+          current: false,
+        },
+        {
+          name: "Организации",
+          address: "/organizations",
+          current: true,
+        },
+      ],
 
       categories: [
         {

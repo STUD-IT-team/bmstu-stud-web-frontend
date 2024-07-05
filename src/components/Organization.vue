@@ -37,7 +37,7 @@ text-section-max-height = 265px
 
 <template>
 
-  <router-link to="organization">
+  <router-link :to="'organizations/:?orgId='+id">
     <div class="root-org">
       <img src="/res/images/stud-logo-circle.svg">
       <div class="text">

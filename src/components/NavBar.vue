@@ -131,7 +131,7 @@
         <label v-if="isScrolledMoreThanScreen" class="burger-menu-switcher" for="burger-menu-state-store"><img src="/res/icons/menu.svg" alt="menu"></label>
         <nav class="nav-buttons-container">
           <router-link style="--animation-index: 1" :to="{name: 'news'}" class="link">Главная</router-link>
-          <router-link style="--animation-index: 2" :to="{name: 'calendar'}" class="link">О нас</router-link>
+          <router-link style="--animation-index: 2" :to="{name: 'about'}" class="link">О нас</router-link>
           <router-link style="--animation-index: 3" :to="{name: 'organizations'}" class="link">Организации</router-link>
         </nav>
       </div>

@@ -83,13 +83,9 @@ padding-sides = 20px
 
     <main class="main-container">
 
-      <div class="navbar-orgs">
-      <router-link to="/" class="link">Главная</router-link>
-      ⟶
-      <router-link to="/organizations" class="link">Организации</router-link>
-      ⟶
-      <g class="current">{{title}}</g>
-      </div>
+      <AddressBar :path="path">
+      </AddressBar>
+
       <div class="org-header">
         <img src="/res/images/placeholders/org-placeholder.jpg">
         <div class="org-description">
@@ -137,6 +133,7 @@ padding-sides = 20px
 import Header from "~/components/Header/Header.vue";
 import PersonCard from "~/components/PersonCard.vue";
 import Carousel from "~/components/Carousel.vue";
+import AddressBar from "~/components/AddressBar.vue";
 
 import StudLogo from "#~/images/stud-logo-circle.svg";
 import Picture from "#~/images/stud-logo-circle.svg";
@@ -145,17 +142,21 @@ import Footer from "~/components/Footer.vue";
 
 
 export default {
-  components: {Footer, ListingBlock, PersonCard, Header, Carousel},
+  components: {Footer, ListingBlock, PersonCard, Header, Carousel, AddressBar},
 
   
 
   data() {
     return {
+      // ID
+      orgId: Number,
+      // адресная строка
+      path: Array,
       // блок описания
-      title: 'Студенческий Совет факультета ИУ',
-      description: 'Описание организации',
-      linkVk: 'https://vk.com/studsovet_iu',
-      linkTg: 'https://t.me/studsovet_iu',
+      title: String,
+      description: String,
+      linkVk: String,
+      linkTg: String,
       // блок карточек
       leads: [],
       // блок фоток
@@ -172,16 +173,72 @@ export default {
   
 
   mounted() {
+    let params = new URLSearchParams(document.location.search)
+    this.orgId=params.get('orgId')
+    console.log(this.orgId)
+    if (this.orgId===null) {
+      this.orgId = 0
+    }
+    this.getInfo();
     this.getLeads();
     this.getPhotos();
   },
 
 
   methods: {
+    getPath() {
+      if (this.orgId!=0) {
+        return [
+          {
+            name: "Главная",
+            address: "/",
+            current: false,
+          },
+          {
+            name: "Организации",
+            address: "/organizations",
+            current: false,
+          },
+          {
+            name: this.title,
+            address: "",
+            current: true,
+          },
+        ]
+      }
+      else {
+        return [
+          {
+            name: "Главная",
+            address: "/",
+            current: false,
+          },
+          {
+            name: "О нас",
+            address: "",
+            current: true,
+          },
+        ]
+      }
+    },
+    async getInfo() {
+      this.loading = true;
+      const {data, ok, status} = await this.$api.getOrgInfo(this.orgId);
+      console.log(this.orgId)
+      this.loading = false;
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
+      }
+      this.title = data.title
+      this.description = data.description
+      this.linkTg = data.linkTg
+      this.linkVk = data.linkVk
+      this.path = this.getPath()
+    },
     async getLeads() {
-      // this.loading = true;
-      const {data, ok, status} = await this.$api.getLeads();
-      // this.loading = false;
+      this.loading = true;
+      const {data, ok, status} = await this.$api.getLeads(this.orgId);
+      this.loading = false;
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
       }
@@ -190,7 +247,7 @@ export default {
     },
     async getPhotos() {
       this.loading = true;
-      const {data, ok, status} = await this.$api.getOrgPhotos();
+      const {data, ok, status} = await this.$api.getOrgPhotos(this.orgId);
       this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить фотографии')

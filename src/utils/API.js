@@ -236,7 +236,25 @@ export default class MY_API extends REST_API {
     }}
     )
 
-    getLeads = () => ({ok: true, status: 200, data: {
+
+    getOrgInfo = (orgId) => ({ok: true, status: 200, data: 
+        (orgId==0) ?
+        {
+            title: 'Студенческий Совет МГТУ им. Н.Э. Баумана',
+            description: 'Описание организации',
+            linkVk: 'https://vk.com/studsovet_bmstu',
+            linkTg: 'https://t.me/studsovet_bmstu',
+        }
+        :
+        {
+            title: 'Студенческий Совет факультета ИУ',
+            description: 'Описание организации',
+            linkVk: 'https://vk.com/studsovet_iu',
+            linkTg: 'https://t.me/studsovet_iu',
+    }}
+    )
+
+    getLeads = (orgId) => ({ok: true, status: 200, data: {
         leads: [
             {
                 id: 1,
@@ -333,7 +351,7 @@ export default class MY_API extends REST_API {
     }})
 
 
-    getOrgPhotos = () => ({ok: true, status: 200, data: {
+    getOrgPhotos = (orgId) => ({ok: true, status: 200, data: {
         photos: [
             {
                 id: 1,
