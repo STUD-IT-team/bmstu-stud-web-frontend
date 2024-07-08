@@ -28,15 +28,27 @@ padding-sides = 20px
     .org-header
       margin-top 20px
       display flex
-      img
+      .logo-container
+        position relative
+        top 0
+        display block
         width 25%
-        max-height (main-part-max-width + padding-sides * 2) * 0.25
-        margin 20px
-        border-radius borderRadiusL
+        padding-top 25%
+        .logo
+          position absolute
+          top 0
+          bottom 0
+          left 0
+          right 0
+          img
+            width 100%
+            height 100%
+            object-fit contain
+            border-radius borderRadiusL
       .org-description
         display flex
         flex-direction column
-        margin 20px
+        margin 0 40px
         .title
           font-large-x()
           margin-bottom 20px
@@ -88,7 +100,11 @@ padding-sides = 20px
       </AddressBar>
 
       <div class="org-header">
-        <img :src="logoSrc">
+        <div class="logo-container">
+          <div class="logo">
+            <img :src="logoSrc">
+          </div>
+        </div>
         <div class="org-description">
           <div class="title">
             {{title}}
