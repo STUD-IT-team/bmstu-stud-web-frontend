@@ -19,9 +19,9 @@
 
 	.box 
 		position absolute
-		top 1450px
+		top 1550px
 		left 45%
-		width 100px
+		width 150px
 		height 150px
 		transform-style preserve-3d
 		animation animate 20s linear infinite
@@ -57,8 +57,9 @@
 		border-radius 100%
 		border 4px double rgb(0, 0, 0)
 
-	img:hover 
-		transform translateY(-2px)
+	.box
+		img:hover 
+			transform translateY(-20px)
 
 </style>
 

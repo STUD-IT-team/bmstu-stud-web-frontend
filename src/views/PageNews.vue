@@ -4,11 +4,12 @@
 @require '../styles/fonts.styl'
 @require '../styles/components.styl'
 @require '../styles/utils.styl'
-
   
 
 .root-page-news 
   position relative
+  max-width 1440px
+  margin auto
   .orange-star
     img
       position static
@@ -100,27 +101,25 @@
         font-large-x()
         color colorPalette1
 
-
-  .big-news-sector
-    display flex
-    flex-wrap wrap
-    flex-direction row
-    justify-content space-around
-    width 100vw
-    gap 0px 
-    padding 40px
-    padding-top 10px
-    overflow-x scroll
-    .one-big-new
+  .big-news-container
+    margin auto
+    overflow auto
+    max-width 1281px 
+    .big-news-sector
       display flex
-      flex-direction column
-      // img
+      flex-direction row
+      justify-content space-between
+      gap 29.5px 
+      .one-big-new
+        overflow hidden
+        display flex
+        flex-direction column
+        // img
 
 </style>
 
 <template>
   <div class="root-page-news">
-
     <div class="emotions-sector">
       <div class="background-video">
         <img src="/res/images/video.png" alt="" />
@@ -156,12 +155,15 @@
     <div class="orange-star">
       <img src="/res/icons/orange-star.svg" alt="" />
     </div>
-    <div class="big-news-sector">
-      <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
-        :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
-      </OneBigNew>
+    <div class="big-news-container">
+      <div class="big-news-sector">
+        <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
+          :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
+        </OneBigNew>
+      </div>
     </div>
     <FSC></FSC>
+    <SC></SC>
   </div>
   <Footer></Footer>
 </template>
@@ -177,9 +179,10 @@
 import Footer from "~/components/Footer.vue"
 import OneBigNew from "~/components/OneBigNew.vue";
 import FSC from "~/components/FacultyStudCouncils.vue";
+import SC from "~/components/StudCounsilClubs.vue";
 
 export default {
-  components: { Footer, OneBigNew, FSC },
+  components: { Footer, OneBigNew, FSC, SC },
   // props: {
   // },
 

@@ -6,15 +6,12 @@
 @require '../styles/components.styl'
 
 .news-container
+  width 407px
   block(colorPalette4)
   padding 0px
   padding-top 20px
-  width 400px
-  height 315px
-  display flex
-  flex-direction column
+  height 310px  
   position relative
-  overflow scroll
   border-radius 23px
   transition background 0.3s, transform 0.3s
 
@@ -24,13 +21,11 @@
     background colorPalette4
     font-small-x()
     border-radius 15px
-    border-width 1px
-    border-color colorPalette4
-    border-style solid
-    padding 3px
+    border 1px colorPalette4 solid
+    padding 3px 13px
     margin 8px
-    align-self right
     position relative
+    top 10px
     left 150px
     transition background 0.3s, color 0.3s
 
@@ -55,7 +50,8 @@
   .description
     font-medium()
     position absolute
-    top 80px
+    top 90px
+    left 10px
     color white
     padding 20px
     width 100%
@@ -69,10 +65,11 @@
   img
     position absolute
     bottom 0
+    left 0
     border-radius 20px
-    width 396px
-    user-select none
-    transition filter 0.3s
+    width 100%
+    user-select: none
+    transition filter 0.2s
 
   &:hover img
     filter brightness(0.3)
@@ -83,7 +80,7 @@
   <div class="news-container">
     <div class="title">{{ title }}</div>
     <a :href="redirectLink" target="_blank" class="button-read-more">
-      &emsp; Читать подробнее
+      Читать подробнее
       <svg width="88" height="8" viewBox="0 0 88 8" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M87.3535 4.35353C87.5487 4.15827 87.5487 3.84169 87.3535 3.64643L84.1715 0.464446C83.9762 0.269184 83.6596 0.269184 83.4644 0.464447C83.2691 0.659709 83.2691 0.976291 83.4644 1.17155L86.2928 3.99998L83.4644 6.82841C83.2691 7.02367 83.2691 7.34025 83.4644 7.53551C83.6596 7.73078 83.9762 7.73078 84.1715 7.53551L87.3535 4.35353ZM0.674316 4.5L86.9999 4.49998L86.9999 3.49998L0.674316 3.5L0.674316 4.5Z" />
