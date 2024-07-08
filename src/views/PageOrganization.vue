@@ -78,7 +78,7 @@ padding-sides = 20px
 </style>
 
 <template>
-  <div class="root-page-orgs">
+  <div class="root-page-orgs" :key="$route.name">
     <!-- <Header></Header> -->
 
     <main class="main-container">
@@ -170,18 +170,14 @@ export default {
     }
   },
 
-  
+  watch: {
+    '$route' (to,from) {
+      this.initialize()
+    }
+  },
 
   mounted() {
-    let params = new URLSearchParams(document.location.search)
-    this.orgId=params.get('orgId')
-    console.log(this.orgId)
-    if (this.orgId===null) {
-      this.orgId = 0
-    }
-    this.getInfo();
-    this.getLeads();
-    this.getPhotos();
+    this.initialize();
   },
 
 
@@ -224,7 +220,7 @@ export default {
     async getInfo() {
       this.loading = true;
       const {data, ok, status} = await this.$api.getOrgInfo(this.orgId);
-      console.log(this.orgId)
+      // console.log(this.orgId)
       this.loading = false;
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
@@ -254,6 +250,17 @@ export default {
       }
 
       this.photos = data.photos;
+    },
+    initialize() {
+      var params = new URLSearchParams(document.location.search)
+      this.orgId=params.get('orgId')
+      //console.log(this.orgId)
+      if (this.orgId===null) {
+        this.orgId = 0
+      }
+      this.getInfo();
+      this.getLeads();
+      this.getPhotos();
     },
   }
 }
