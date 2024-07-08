@@ -10,7 +10,8 @@ carousel-width = main-part-max-width * 0.6
 carousel-height = 960px * 0.6
 
 section
-    left (main-part-max-width - carousel-width) * 0.5
+    //left (main-part-max-width - carousel-width) * 0.5
+    margin auto
     background-color: colorBg2;
     height: carousel-height
     width: carousel-width;
