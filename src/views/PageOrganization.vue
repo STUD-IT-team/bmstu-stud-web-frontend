@@ -30,6 +30,7 @@ padding-sides = 20px
       display flex
       img
         width 25%
+        max-height (main-part-max-width + padding-sides * 2) * 0.25
         margin 20px
         border-radius borderRadiusL
       .org-description
@@ -87,7 +88,7 @@ padding-sides = 20px
       </AddressBar>
 
       <div class="org-header">
-        <img src="/res/images/placeholders/org-placeholder.jpg">
+        <img :src="logoSrc">
         <div class="org-description">
           <div class="title">
             {{title}}
@@ -153,6 +154,7 @@ export default {
       // адресная строка
       path: Array,
       // блок описания
+      logoSrc: String,
       title: String,
       description: String,
       linkVk: String,
@@ -225,6 +227,7 @@ export default {
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
       }
+      this.logoSrc = data.logo_src
       this.title = data.title
       this.description = data.description
       this.linkTg = data.linkTg

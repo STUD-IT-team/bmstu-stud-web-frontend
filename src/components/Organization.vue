@@ -23,6 +23,7 @@ text-section-max-height = 265px
   img
     height 72px
     max-width 72px
+    border-radius borderRadiusS
   .text
     font-small()
     header
@@ -39,7 +40,7 @@ text-section-max-height = 265px
 
   <router-link :to="'organizations/:?orgId='+id">
     <div class="root-org">
-      <img src="/res/images/stud-logo-circle.svg">
+      <img :src="logoSrc">
       <div class="text">
         <header>{{title}}</header>
         {{text}}
@@ -71,6 +72,10 @@ export default {
     title: {
       type: String,
       default: '',
+    },
+    logoSrc: {
+      type: String,
+      required: true
     },
     text: {
       type: String,

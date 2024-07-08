@@ -103,8 +103,9 @@ padding-sides = 20px
         <Organization v-for="(oneOrg, idx) in orgs"
             :id="oneOrg.id"
             :title="oneOrg.title"
+            :logo-src="oneOrg.logo_src"
             :text="oneOrg.description"
-            :headTitle="oneOrg.head_title"
+            :head-title="oneOrg.head_title"
             :head-name="oneOrg.head_name"
         ></Organization>
         <span class="message-empty" v-if="orgs.length==0">

@@ -135,6 +135,7 @@ export default class MY_API extends REST_API {
             {
                 id: 1,
                 title: "MediaBMSTU",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Спасибо медиа",
                 head_title: "Руководитель",
                 head_name: "Егор Федорук",
@@ -143,6 +144,7 @@ export default class MY_API extends REST_API {
             {
                 id: 2,
                 title: "ISCRA",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Приходите на конференцию",
                 head_title: "Руководитель",
                 head_name: "Полина Третьяк (навсегда)",
@@ -151,6 +153,7 @@ export default class MY_API extends REST_API {
             {
                 id: 3,
                 title: "Студенческий Совет факультета ИУ",
+                logo_src: "/res/images/placeholders/org-placeholder.jpg",
                 description: "ITS пиво",
                 head_title: "Председатель",
                 head_name: "Иван Токарев",
@@ -159,6 +162,7 @@ export default class MY_API extends REST_API {
             {
                 id: 2,
                 title: "IT-отдел",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Мы в телявизоре",
                 head_title: "Руководитель",
                 head_name: "Антон Павленко",
@@ -167,6 +171,7 @@ export default class MY_API extends REST_API {
             {
                 id: 2,
                 title: "Техническая поддержка",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Suiiii",
                 head_title: "Руководитель",
                 head_name: "Егор Клевлин (солнышко)",
@@ -181,6 +186,7 @@ export default class MY_API extends REST_API {
             {
                 id: 1,
                 title: "MediaBMSTU",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Спасибо медиа",
                 head_title: "Руководитель",
                 head_name: "Егор Федорук",
@@ -189,6 +195,7 @@ export default class MY_API extends REST_API {
             {
                 id: 2,
                 title: "ISCRA",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Приходите на конференцию",
                 head_title: "Руководитель",
                 head_name: "Полина Третьяк (навсегда)",
@@ -197,6 +204,7 @@ export default class MY_API extends REST_API {
             {
                 id: 3,
                 title: "Студенческий Совет факультета ИУ",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "ITS пиво",
                 head_title: "Председатель",
                 head_name: "Иван Токарев",
@@ -205,6 +213,7 @@ export default class MY_API extends REST_API {
             {
                 id: 2,
                 title: "IT-отдел",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Мы в телявизоре",
                 head_title: "Руководитель",
                 head_name: "Антон Павленко",
@@ -213,6 +222,7 @@ export default class MY_API extends REST_API {
             {
                 id: 2,
                 title: "Техническая поддержка",
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Suiiii",
                 head_title: "Руководитель",
                 head_name: "Егор Клевлин (солнышко)",
@@ -227,6 +237,7 @@ export default class MY_API extends REST_API {
             {
                 id: 1,
                 title: query,
+                logo_src: "/res/images/stud-logo-circle.svg",
                 description: "Какая-то орга",
                 head_title: "Руководитель",
                 head_name: "Какой-то мужик",
@@ -241,6 +252,7 @@ export default class MY_API extends REST_API {
         (orgId==0) ?
         {
             title: 'Студенческий Совет МГТУ им. Н.Э. Баумана',
+            logo_src: '/res/icons/stud-logo-colored.svg',
             description: 'Описание организации',
             linkVk: 'https://vk.com/studsovet_bmstu',
             linkTg: 'https://t.me/studsovet_bmstu',
@@ -248,6 +260,7 @@ export default class MY_API extends REST_API {
         :
         {
             title: 'Студенческий Совет факультета ИУ',
+            logo_src: '/res/images/placeholders/org-placeholder.jpg',
             description: 'Описание организации',
             linkVk: 'https://vk.com/studsovet_iu',
             linkTg: 'https://t.me/studsovet_iu',
