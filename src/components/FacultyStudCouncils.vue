@@ -44,7 +44,7 @@
 		height 100%
 		transform-origin center
 		transform-style preserve-3d
-		transform rotateY(calc(var(--i) * 36deg)) translateZ(450px)
+		transform rotateY(calc(var(--i) * 40deg)) translateZ(400px) //rotateY (--i) * (360/cnt)deg
 		-webkit-box-reflect below 2px linear-gradient(transparent, transparent, rgba(4, 4, 4, 0.267))
 
 	.box span img 
@@ -55,8 +55,8 @@
 		height 100%
 		// transition 0.5s
 		border-radius 100%
-		// box-shadow 0 1px 2px colorPalette4
-		// border 4px double colorPalette4
+		// box-shadow 0 1px 3px colorPalette1
+		border 4px double colorPalette1
 
 	.box
 		img:hover 

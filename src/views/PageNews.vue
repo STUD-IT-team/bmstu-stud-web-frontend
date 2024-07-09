@@ -22,6 +22,9 @@
         margin-top 80px
         top 10px
         width 100%
+      video
+        pointer-events none
+        width 100%
     .overlay-video
       .stud-logo
         img
@@ -35,8 +38,8 @@
           user-select: none
           position absolute
           bottom 10%
-          right 11%
-          width 13%
+          right 5%
+          width 10%
 
           // --color #fff
           // --border 5px
@@ -112,7 +115,12 @@
   <div class="root-page-news">
     <div class="emotions-sector">
       <div class="background-video">
-        <img src="/res/images/video.png" alt="" />
+        <!-- <img src="/res/images/video.png" alt="" /> -->
+
+        <video width="100%" autoplay muted loop disablePictureInPicture>
+          <source src="http://localhost:9000/videos/main_vid.mp4" type="video/mp4">
+          Ваш браузер не поддерживает это видео
+        </video>
       </div>
       <div class="overlay-video">
         <div class="create-emotions-circle">
@@ -120,9 +128,9 @@
             <img src="/res/icons/create-emotions-circle.svg" alt="" />
           </a>
         </div>
-        <div class="stud-logo">
+        <!-- <div class="stud-logo">
           <img src="/res/icons/stud-logo-video.svg" alt="" />
-        </div>
+        </div> -->
       </div>
     </div>
 
