@@ -125,6 +125,7 @@ expanded-width = 500px
           cursor pointer
           appearance none
           &:after
+            trans(0.2s)
             content ''
             display block
             height radio-radius
@@ -176,9 +177,44 @@ expanded-width = 500px
             border-top 2px solid colorPalette1
             z-index -1
           .radio-event
+            trans(0.5s)
+            opacity 0
+            position relative
             height radio-radius
             width radio-radius
             margin-top - (radio-radius * 0.5)
+            input
+              position relative
+              height radio-radius
+              width radio-radius
+              cursor pointer
+              appearance none
+              &:before
+                trans(0.2s)
+                content ''
+                position absolute
+                top radio-radius * 0.15
+                left radio-radius * 0.15
+                height radio-radius * 0.7
+                width radio-radius * 0.7
+                background colorWhite
+                border-radius borderRadiusMax
+                outline solid 3px colorPalette1
+              &:hover
+                &:before
+                  outline solid 4px colorPalette2
+            input:checked
+              &:before
+                top radio-radius * 0.05
+                left radio-radius * 0.05
+                height radio-radius * 0.9
+                width radio-radius * 0.9
+                outline solid 4px colorPalette4
+          label
+            font-medium()
+            position absolute
+            top 22px
+
       .future
         position relative
         top indicator-height * 0.5
@@ -227,13 +263,17 @@ expanded-width = 500px
         <div class="month" ref="month" v-for="month in Array.from({length: 12}, (_,index)=>index)">
           <div class="month-events-flex" 
               ref="monthEventFlex">
-            <input type="radio" 
+            <div 
               class="radio-event" 
-              v-for="(event, idx) in selectEventsByMonth(month)" 
-              name="eventSelect"
-              ref="eventSelect"
-              :checked="event.id==currentEventIdx"
-              @input="setEvent(event.id)">
+              ref="radioEvent" 
+              v-for="(event, idx) in selectEventsByMonth(month)">
+              <input type="radio" 
+                name="eventSelect"
+                ref="eventSelect"
+                :checked="event.id==currentEventIdx"
+                @input="setEvent(event.id)">
+              <label >{{getShortDate(event.date)}}</label>
+            </div>
           </div>
           <input type="radio" 
             ref="monthSelect" 
@@ -279,6 +319,20 @@ export default {
         "ИЮНЬ",
         "ИЮЛЬ",
       ],
+      monthsGenitive: [
+        "АВГУСТА",
+        "СЕНТЯБРЯ",
+        "ОКТЯБРЯ",
+        "НОЯБРЯ",
+        "ДЕКАБРЯ",
+        "ЯНВАРЯ",
+        "ФЕВРАЛЯ",
+        "МАРТА",
+        "АПРЕЛЯ",
+        "МАЯ",
+        "ИЮНЯ",
+        "ИЮЛЯ",
+      ],
       currentMonthIdx: 0,
       currentEventIdx: 0,
       events: [{
@@ -287,7 +341,7 @@ export default {
         info: "300+ базовичков",
         imgSrc: "/res/images/shmb.jpg",
         description: "Лес кайф костёр палатки +вайб, только людей поменьше",
-        date: new Date('23 Aug 2024 00:00:00 GMT')
+        date: new Date('16 Aug 2024 00:00:00 GMT')
       },
       {
         id: 1,
@@ -317,6 +371,9 @@ export default {
   },
 
   methods: {
+    getShortDate(date) {
+      return date.getDate() + " " + this.monthsGenitive[(date.getMonth() + 5) % 12]
+    },
     getMonthOffset(month) {
       return month * (200 + 14)
     },
@@ -325,33 +382,46 @@ export default {
     },
     expandMonth(month) {
       this.$refs.monthEventFlex[month].style.width = "500px"
+      let monthEvents = this.selectEventsByMonth(month)
+      if (monthEvents.length > 0) {
+        for (const eventIdx in monthEvents) {
+          this.$refs.radioEvent[monthEvents[eventIdx].id].style.opacity = "1"
+        }  
+      }
     },
     contractMonth(month) {
       this.$refs.monthEventFlex[month].style.width = "200px"
+      let monthEvents = this.selectEventsByMonth(month)
+      if (monthEvents.length > 0) {
+        for (const eventIdx in monthEvents) {
+          this.$refs.radioEvent[monthEvents[eventIdx].id].style.opacity = "0"
+        }  
+      }
+      
     },
     scrollToMonth(month) {
       var target = this.getMonthOffset(month)
       this.$refs.timelineScroll.scrollTo({left: target, behavior: 'smooth'})
-      return new Promise((resolve, reject) => {
-        const failed = setTimeout(() => {
-          reject();
-        }, 2000);
+      // return new Promise((resolve, reject) => {
+      //   const failed = setTimeout(() => {
+      //     reject();
+      //   }, 2000);
 
-        const scrollWaiter = () => {
-          if (this.$refs.timelineScroll.scrollLeft === target) {
-            this.$refs.timelineScroll.removeEventListener("scroll", scrollWaiter);
-            clearTimeout(failed);
-            resolve();
-          }
-        };
-        if (this.$refs.timelineScroll.scrollLeft === target) {
-          clearTimeout(failed);
-          resolve();
-        } else {
-          this.$refs.timelineScroll.addEventListener("scroll", scrollWaiter);
-          //this.$refs.timelineScroll.getBoundingClientRect();
-        }
-      })
+      //   const scrollWaiter = () => {
+      //     if (this.$refs.timelineScroll.scrollLeft === target) {
+      //       this.$refs.timelineScroll.removeEventListener("scroll", scrollWaiter);
+      //       clearTimeout(failed);
+      //       resolve();
+      //     }
+      //   };
+      //   if (this.$refs.timelineScroll.scrollLeft === target) {
+      //     clearTimeout(failed);
+      //     resolve();
+      //   } else {
+      //     this.$refs.timelineScroll.addEventListener("scroll", scrollWaiter);
+      //     //this.$refs.timelineScroll.getBoundingClientRect();
+      //   }
+      // })
     },
     monthSelect(month) {
       //this.autoScrolling = true
@@ -376,7 +446,7 @@ export default {
         month = this.currentMonthIdx + 1
       if (this.$refs.timelineScroll.scrollLeft < currentMonthOffset - 0)
         month = this.currentMonthIdx - 1
-      console.log(month)
+      // console.log(month)
       if (month < 0) month = 0
       if (month > 11) month = 11
       if (this.currentMonthIdx != month) {
@@ -386,7 +456,7 @@ export default {
     },
     setEvent(eventIdx) {
       this.currentEventIdx = eventIdx
-      console.log("event set: " + eventIdx)
+      // console.log("event set: " + eventIdx)
     },
   }
 };
