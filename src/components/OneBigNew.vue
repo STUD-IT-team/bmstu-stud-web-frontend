@@ -10,7 +10,7 @@
   min-width 407px
   height 310px  
   padding 0px
-  padding-top 20px
+  padding 10px
   position relative
   border-radius 23px
   transition background 0.3s, transform 0.3s
@@ -23,10 +23,10 @@
     background colorPalette4
     border 1px colorPalette4 solid
     border-radius 15px
-    padding 4px 13px
+    padding 4px 10px
     position relative
-    top 1px
-    left 140px
+    top 5px
+    left 130px
     transition background 0.3s, color 0.3s
 
     svg
@@ -41,9 +41,6 @@
         fill orange
 
   .title
-    padding 28px
-    padding-bottom 0px
-    padding-top 0px
     font-large()
     color colorPalette4
 

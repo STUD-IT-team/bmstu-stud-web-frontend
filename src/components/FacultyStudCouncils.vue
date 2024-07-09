@@ -13,16 +13,16 @@
     img 
       position relative
       left 5%
-      border-radius 40px
+      border-radius 3vw
       top 0
       width 90%
 
 	.box 
-		position absolute
-		top 1550px
-		left 45%
-		width 150px
-		height 150px
+		position relative
+		bottom 30vw
+		left 45vw
+		width 10vw
+		height 10vw
 		transform-style preserve-3d
 		animation animate 20s linear infinite
 
@@ -53,9 +53,10 @@
 		left 0
 		width 100%
 		height 100%
-		transition 0.5s
+		// transition 0.5s
 		border-radius 100%
-		border 4px double rgb(0, 0, 0)
+		// box-shadow 0 1px 2px colorPalette4
+		// border 4px double colorPalette4
 
 	.box
 		img:hover 

@@ -7,14 +7,23 @@
 
 
 .stud-clubs
-	padding 0 0 0 0
-	img
-		width 100%
+  .background-img 
+    // margin 5px 0px
+    display block
+    img 
+      position relative
+      left 5%
+      border-radius 3vw
+      top 0
+      width 90%
+
 </style>
 
 <template>
 	<div class="stud-clubs">
-		<img src="/res/icons/clubs-bg.svg" alt="no bg"/>
+		<div class="background-img">
+			<img src="/res/icons/clubs-bg.svg" alt="" />
+		</div>
 	</div>
 </template>
 
