@@ -32,7 +32,7 @@ padding-sides = 20px
         position relative
         top 0
         display block
-        width 25%
+        min-width 25%
         padding-top 25%
         .logo
           position absolute
