@@ -6,11 +6,11 @@
 @require '../styles/components.styl'
 
 .news-container
-  width 407px
   block(colorPalette4)
+  min-width 407px
+  height 310px  
   padding 0px
   padding-top 20px
-  height 310px  
   position relative
   border-radius 23px
   transition background 0.3s, transform 0.3s
@@ -128,10 +128,6 @@ export default {
   },
 
   methods: {
-    openRedirectLink() {
-      // Открыть ссылку в новой вкладке
-      window.open(this.redirectLink, '_blank');
-    }
   },
 };
 </script>

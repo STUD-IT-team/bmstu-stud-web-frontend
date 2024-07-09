@@ -13,9 +13,7 @@
   .orange-star
     img
       position static
-      margin-left 95vw 
-      margin-bottom 0
-      padding 0
+      margin-left 95vw
   .emotions-sector 
     position relative
     .background-video 
@@ -36,7 +34,7 @@
         img 
           user-select: none
           position absolute
-          top 67%
+          bottom 10%
           right 11%
           width 13%
 
@@ -67,13 +65,10 @@
           //   --_s 0px
   .number-slider
     display flex
-    // flex-wrap nowrap
     justify-content space-around
-    list-style-type none
+    list-style: none
     white-space nowrap
 
-    padding-left 15rem
-    
     overflow-x scroll
 
     scrollbar-width none
@@ -103,18 +98,13 @@
 
   .big-news-container
     margin auto
+    padding-bottom 60px
     overflow auto
-    max-width 1281px 
+    max-width 1282px
     .big-news-sector
       display flex
-      flex-direction row
       justify-content space-between
-      gap 29.5px 
-      .one-big-new
-        overflow hidden
-        display flex
-        flex-direction column
-        // img
+      gap 29px 
 
 </style>
 
@@ -157,8 +147,11 @@
     </div>
     <div class="big-news-container">
       <div class="big-news-sector">
-        <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
-          :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
+        <OneBigNew v-for="bigNew in bigNews" 
+                          :title="bigNew.title" 
+                          :description="bigNew.description"
+                          :imgUrl="bigNew.imgUrl" 
+                          :redirectLink="bigNew.redirectLink">
         </OneBigNew>
       </div>
     </div>
