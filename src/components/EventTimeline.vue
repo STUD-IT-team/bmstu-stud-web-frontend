@@ -182,7 +182,7 @@ expanded-width = 700px
             z-index -1
           .radio-event
             trans(0.5s)
-            opacity 0.2
+            opacity 0
             position relative
             height radio-radius
             width radio-radius
@@ -280,7 +280,7 @@ expanded-width = 700px
       </div>
     </transition>
     <div class="current">{{months[currentMonthIdx]}}</div>
-    <div class="timeline-container" ref="timelineScroll" @wheel="handleScroll()">  
+    <div class="timeline-container" ref="timelineScroll" @wheel="handleScroll">  
       <div class="timeline" ref="timeline">
         <div class="month" ref="month" v-for="month in Array.from({length: 12}, (_,index)=>index)">
           <div class="month-events-flex" 
@@ -375,6 +375,14 @@ export default {
       },
       {
         id: 2,
+        title: "СТАРОСТАТ",
+        info: "Выезд для старост окда",
+        imgSrc: "/res/images/starostat.jpg",
+        description: "Старосты старосты старосты",
+        date: new Date('29 Sept 2024')
+      },
+      {
+        id: 3,
         title: "МИСТЕР МУСКУЛ",
         info: "Самые горячие техподы университета",
         imgSrc: "/res/images/missPlaceholder.jpg",
@@ -461,7 +469,10 @@ export default {
       //while (this.$refs.timelineScroll.offsetLeft != month*(200+14)) {}
       //this.$refs.timelineScroll.scrollTo({left: this.$refs.month[month].offsetLeft+28, behavior: 'smooth'})
     },
-    handleScroll() {
+    handleScroll(event) {
+      event.preventDefault()
+      this.$refs.timelineScroll.scrollLeft += event.deltaY*0.5
+      // console.log(event.wheelDelta)
       var month = this.currentMonthIdx
       var currentMonthOffset = this.getMonthOffset(this.currentMonthIdx)
       if (this.$refs.timelineScroll.scrollLeft > currentMonthOffset + 200)
