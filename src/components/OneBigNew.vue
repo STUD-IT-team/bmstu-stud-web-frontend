@@ -17,16 +17,16 @@
 
   .button-read-more
     color white
-    width 230px
+    font-small()
+    // width 224px
+    // height 25px
     background colorPalette4
-    font-small-x()
-    border-radius 15px
     border 1px colorPalette4 solid
-    padding 3px 13px
-    margin 8px
+    border-radius 15px
+    padding 4px 13px
     position relative
-    top 10px
-    left 150px
+    top 1px
+    left 140px
     transition background 0.3s, color 0.3s
 
     svg
@@ -44,7 +44,7 @@
     padding 28px
     padding-bottom 0px
     padding-top 0px
-    font-medium()
+    font-large()
     color colorPalette4
 
   .description

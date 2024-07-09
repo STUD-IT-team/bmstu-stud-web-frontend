@@ -113,15 +113,6 @@
     <div class="emotions-sector">
       <div class="background-video">
         <img src="/res/images/video.png" alt="" />
-        <!-- <iframe width="100%" height="700" src="https://rutube.ru/play/embed/c6cc4d620b1d4338901770a44b3e82f4"
-          frameBorder="0" allow="clipboard-write autoplay" webkitAllowFullScreen mozallowfullscreen
-          allowFullScreen></iframe> -->
-
-        <!-- <iframe width="1080" height="720"
-          src="https://www.youtube-nocookie.com/embed/nGZg03iaXzE?si=e6ChpbMEmXX-f7zd&amp;controls=0"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
       </div>
       <div class="overlay-video">
         <div class="create-emotions-circle">
@@ -182,7 +173,6 @@ export default {
 
   data() {
     return {
-      // news: [],
       numbersStud: [],
       bigNews: [],
       loading: false,
@@ -190,7 +180,6 @@ export default {
   },
 
   mounted() {
-    // this.getNews()
     this.getStudNums();
     this.getBigNews();
 
@@ -209,17 +198,6 @@ export default {
 
 
   methods: {
-    async getNews() {
-      this.loading = true
-      const { data, ok, status } = await this.$api.getNews()
-      this.loading = false
-      if (!ok) {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить новости')
-      }
-
-      this.news = data.feed
-    },
-
     async getStudNums() {
       this.loading = true
       const { data, ok, status } = await this.$api.getStudNums()
@@ -236,7 +214,7 @@ export default {
       const { data, ok, status } = await this.$api.getBigNews()
       this.loading = false
       if (!ok) {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить крупные новости')
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить новости')
       }
 
       this.bigNews = data.studBigNews
