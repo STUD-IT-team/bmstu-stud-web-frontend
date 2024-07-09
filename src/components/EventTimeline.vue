@@ -231,13 +231,15 @@ expanded-width = 500px
               class="radio-event" 
               v-for="(event, idx) in selectEventsByMonth(month)" 
               name="eventSelect"
+              ref="eventSelect"
+              :checked="event.id==currentEventIdx"
               @input="setEvent(event.id)">
           </div>
           <input type="radio" 
             ref="monthSelect" 
             class="radio-month" 
             name="monthSelect" 
-            :checked="month==0"
+            :checked="month==currentMonthIdx"
             @click="monthSelect(month)">
           <label for="monthSelect">{{months[month]}}</label>
         </div>
@@ -264,6 +266,11 @@ export default {
   data() {
     return {
       months: [
+        "АВГУСТ",
+        "СЕНТЯБРЬ",
+        "ОКТЯБРЬ",
+        "НОЯБРЬ",
+        "ДЕКАБРЬ",
         "ЯНВАРЬ",
         "ФЕВРАЛЬ",
         "МАРТ",
@@ -271,11 +278,6 @@ export default {
         "МАЙ",
         "ИЮНЬ",
         "ИЮЛЬ",
-        "АВГУСТ",
-        "СЕНТЯБРЬ",
-        "ОКТЯБРЬ",
-        "НОЯБРЬ",
-        "ДЕКАБРЬ",
       ],
       currentMonthIdx: 0,
       currentEventIdx: 0,
@@ -319,7 +321,7 @@ export default {
       return month * (200 + 14)
     },
     selectEventsByMonth(month) {
-      return this.events.filter((event) => event.date.getMonth()==month)
+      return this.events.filter((event) => (event.date.getMonth() + 5) % 12==month)
     },
     expandMonth(month) {
       this.$refs.monthEventFlex[month].style.width = "500px"
@@ -358,7 +360,11 @@ export default {
       this.currentMonthIdx = month
       //this.$refs.timelineScroll.scrollTo({left: month*(200+14), behavior: 'smooth'})
       this.scrollToMonth(month)//.then(() => {
-        this.expandMonth(this.currentMonthIdx)
+      this.expandMonth(this.currentMonthIdx)
+      if (this.selectEventsByMonth(month).length != 0) {
+        this.$refs.eventSelect[this.selectEventsByMonth(month)[0].id].checked = true
+        this.setEvent(this.selectEventsByMonth(month)[0].id)
+      }
       //})
       //while (this.$refs.timelineScroll.offsetLeft != month*(200+14)) {}
       //this.$refs.timelineScroll.scrollTo({left: this.$refs.month[month].offsetLeft+28, behavior: 'smooth'})
