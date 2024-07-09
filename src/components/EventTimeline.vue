@@ -12,16 +12,16 @@ indicator-height = 76px
 radio-radius = 14px
 
 collapsed-width = 200px
-expanded-width = 500px
+expanded-width = 700px
 
 .root-timeline
-  trans(0.5s)
+  //trans(0.5s)
   position relative
   margin auto
   max-width main-part-max-width
   width 100%
   .event
-    trans(0.5s)
+    //trans(0.5s)
     position relative
     //top 0
     display block
@@ -87,13 +87,14 @@ expanded-width = 500px
       img
         filter brightness(0.4) blur(10px)
   .current
-    padding 20px 20px 20px 80px
+    padding-left 80px
     background colorPalette1
     border-radius 0 borderRadiusM borderRadiusM 0
     width indicator-width
     height indicator-height
     display flex
     align-items center
+    padding-top 5px
     font-large()
     color colorWhite
   .timeline-container
@@ -157,6 +158,9 @@ expanded-width = 500px
         &:first-child
           .month-events-flex
             width expanded-width
+          .month-events-flex
+            .radio-event
+              opacity 1
         .month-events-flex
           trans(0.3s)
           position relative
@@ -178,7 +182,7 @@ expanded-width = 500px
             z-index -1
           .radio-event
             trans(0.5s)
-            opacity 0
+            opacity 0.2
             position relative
             height radio-radius
             width radio-radius
@@ -210,6 +214,7 @@ expanded-width = 500px
                 height radio-radius * 0.9
                 width radio-radius * 0.9
                 outline solid 4px colorPalette4
+                
           label
             font-medium()
             position absolute
@@ -235,6 +240,8 @@ expanded-width = 500px
     bottom indicator-height
     right 0
     z-index 1
+    user-events none
+    pointer-events none
   &:after
     content ''
     background colorWhite
@@ -244,19 +251,34 @@ expanded-width = 500px
     bottom indicator-height
     left 100%
     z-index 10
-        
 
+        
+.event-fade-enter-active
+  trans(0.3s)
+
+.event-fade-leave-active
+  trans(0.3s)
+
+.event-fade-enter-from
+  //transition all 1s
+  transform translateY(10px)
+  opacity 0
+.event-fade-leave-to 
+  transform translateY(-10px)
+  opacity 0
 
 </style>
 
 <template>
 <div class="root-timeline">
-    <div class="event" :key="currentEventIdx">
-      <img :src="events[currentEventIdx].imgSrc">
-      <span class="title">{{events[currentEventIdx].title}}</span>
-      <span class="info">{{events[currentEventIdx].info}}</span>
-      <span class="description">{{events[currentEventIdx].description}}</span>
-    </div>
+    <transition name="event-fade" mode="out-in">
+      <div class="event" :key="this.currentEventIdx">
+        <img :src="events[currentEventIdx].imgSrc">
+        <span class="title">{{events[currentEventIdx].title}}</span>
+        <span class="info">{{events[currentEventIdx].info}}</span>
+        <span class="description">{{events[currentEventIdx].description}}</span>
+      </div>
+    </transition>
     <div class="current">{{months[currentMonthIdx]}}</div>
     <div class="timeline-container" ref="timelineScroll" @wheel="handleScroll()">  
       <div class="timeline" ref="timeline">
@@ -381,7 +403,7 @@ export default {
       return this.events.filter((event) => (event.date.getMonth() + 5) % 12==month)
     },
     expandMonth(month) {
-      this.$refs.monthEventFlex[month].style.width = "500px"
+      this.$refs.monthEventFlex[month].style.width = "700px"
       let monthEvents = this.selectEventsByMonth(month)
       if (monthEvents.length > 0) {
         for (const eventIdx in monthEvents) {
