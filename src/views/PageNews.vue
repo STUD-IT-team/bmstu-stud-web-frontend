@@ -7,7 +7,6 @@
   
 
 .root-page-news 
-  position relative
   max-width 1440px
   margin auto
   .orange-star
@@ -138,18 +137,15 @@
     </div>
     <div class="big-news-container">
       <div class="big-news-sector">
-        <OneBigNew v-for="bigNew in bigNews" 
-                          :title="bigNew.title" 
-                          :description="bigNew.description"
-                          :imgUrl="bigNew.imgUrl" 
-                          :redirectLink="bigNew.redirectLink">
+        <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
+          :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
         </OneBigNew>
       </div>
     </div>
     <FSC></FSC>
     <SC></SC>
+    <Footer></Footer>
   </div>
-  <Footer></Footer>
 </template>
 
 
