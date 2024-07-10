@@ -158,19 +158,12 @@ export default {
   },
 
   mounted() {
-    document.body.addEventListener('scroll', this.watchForScroll);
-    this.watchForScroll();
   },
 
   unmounted() {
-    document.body.removeEventListener('scroll', this.watchForScroll);
   },
 
   methods: {
-    watchForScroll(e) {
-      this.$refs.burgerMenuInput.checked = false;
-      this.isScrolledMoreThanScreen = (document.body.scrollTop >= window.innerHeight);
-    },
     logout() {
       this.$store.dispatch('DELETE_USER');
       this.$router.push({name: 'default'});
