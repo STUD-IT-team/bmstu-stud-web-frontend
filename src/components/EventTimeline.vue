@@ -88,13 +88,16 @@ expanded-width = 700px
       img
         filter brightness(0.4) blur(10px)
   .current
-    padding-left 80px
+    position relative
+    //padding-left 80px
     background colorPalette1
-    border-radius 0 borderRadiusM borderRadiusM 0
+    //border-radius 0 borderRadiusM borderRadiusM 0
+    border-radius borderRadiusM
     width indicator-width
     height indicator-height
     display flex
     align-items center
+    justify-content center
     padding-top 5px
     font-large()
     color colorWhite
