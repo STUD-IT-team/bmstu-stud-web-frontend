@@ -8,7 +8,6 @@
   
 
 .root-page-news 
-  position relative
   .orange-star
     img
       position static
@@ -161,8 +160,8 @@
         :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
       </OneBigNew>
     </div>
-  </div>
   <Footer></Footer>
+  </div>
 </template>
 
 
