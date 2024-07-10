@@ -53,6 +53,7 @@ expanded-width = 700px
       text-align right
       padding-right 20px
       align-items center
+      justify-content end
       font-large-xxx()
       color colorWhite
     .info
@@ -270,12 +271,14 @@ expanded-width = 700px
 </style>
 
 <template>
-<div class="root-timeline">
+<div class="root-timeline" :key="loading" v-if="loading==false">
+  
     <transition name="event-fade" mode="out-in">
       <div class="event" :key="this.currentEventIdx">
-        <img :src="events[currentEventIdx].imgSrc">
         <span class="title">{{events[currentEventIdx].title}}</span>
-        <span class="info">{{events[currentEventIdx].info}}</span>
+        <img :src="events[currentEventIdx].media.imageUrl">
+        <span class="title">{{events[currentEventIdx].title}}</span>
+        <span class="info">{{events[currentEventIdx].prompt}}</span>
         <span class="description">{{events[currentEventIdx].description}}</span>
       </div>
     </transition>
@@ -294,7 +297,7 @@ expanded-width = 700px
                 ref="eventSelect"
                 :checked="event.id==currentEventIdx"
                 @input="setEvent(event.id)">
-              <label >{{getShortDate(event.date)}}</label>
+              <label >{{getShortDate(new Date(event.date))}}</label>
             </div>
           </div>
           <input type="radio" 
@@ -323,10 +326,12 @@ export default {
   components: {CircleLoading},
 
   props: {
+    //events: [],
   },
 
   data() {
     return {
+      events: [],
       months: [
         "АВГУСТ",
         "СЕНТЯБРЬ",
@@ -357,50 +362,71 @@ export default {
       ],
       currentMonthIdx: 0,
       currentEventIdx: 0,
-      events: [{
-        id: 0,
-        title: "ШКОЛА ПЕРЕД ШКОЛОЙ",
-        info: "300+ базовичков",
-        imgSrc: "/res/images/shmb.jpg",
-        description: "Лес кайф костёр палатки +вайб, только людей поменьше",
-        date: new Date('16 Aug 2024 00:00:00 GMT')
-      },
-      {
-        id: 1,
-        title: "ШКОЛА МОЛОДОГО БАУМАНЦА",
-        info: "1719 первашей",
-        imgSrc: "/res/images/shmb.jpg",
-        description: "Лес кайф костёр палатки +вайб. Техподы с лопатами и колунами, штабисты с тушёнкой, кураторы уплетают втихаря доширак, медийщики нервно курят за шатром.",
-        date: new Date('23 Aug 2024 00:00:00 GMT')
-      },
-      {
-        id: 2,
-        title: "СТАРОСТАТ",
-        info: "Выезд для старост окда",
-        imgSrc: "/res/images/starostat.jpg",
-        description: "Старосты старосты старосты",
-        date: new Date('29 Sept 2024')
-      },
-      {
-        id: 3,
-        title: "МИСТЕР МУСКУЛ",
-        info: "Самые горячие техподы университета",
-        imgSrc: "/res/images/missPlaceholder.jpg",
-        description: "Мужественные мужчины спорят кто самый мужественный мужчина",
-        date: new Date('24 Apr 2024 00:00:00 GMT')
-      },
-      ],
+      // events: [{
+      //   id: 0,
+      //   title: "ШКОЛА ПЕРЕД ШКОЛОЙ",
+      //   info: "300+ базовичков",
+      //   imgSrc: "/res/images/shmb.jpg",
+      //   description: "Лес кайф костёр палатки +вайб, только людей поменьше",
+      //   date: new Date('16 Aug 2024 00:00:00 GMT')
+      // },
+      // {
+      //   id: 1,
+      //   title: "ШКОЛА МОЛОДОГО БАУМАНЦА",
+      //   info: "1719 первашей",
+      //   imgSrc: "/res/images/shmb.jpg",
+      //   description: "Лес кайф костёр палатки +вайб. Техподы с лопатами и колунами, штабисты с тушёнкой, кураторы уплетают втихаря доширак, медийщики нервно курят за шатром.",
+      //   date: new Date('23 Aug 2024 00:00:00 GMT')
+      // },
+      // {
+      //   id: 2,
+      //   title: "СТАРОСТАТ",
+      //   info: "Выезд для старост окда",
+      //   imgSrc: "/res/images/starostat.jpg",
+      //   description: "Старосты старосты старосты",
+      //   date: new Date('29 Sept 2024')
+      // },
+      // {
+      //   id: 3,
+      //   title: "МИСТЕР МУСКУЛ",
+      //   info: "Самые горячие техподы университета",
+      //   imgSrc: "/res/images/missPlaceholder.jpg",
+      //   description: "Мужественные мужчины спорят кто самый мужественный мужчина",
+      //   date: new Date('24 Apr 2024 00:00:00 GMT')
+      // },
+      // ],
       autoScrolling: false,
+      loading: true,
     }
   },
 
   computed: {
   },
 
+  created() {
+    this.getEvents().then(function() {})
+    // console.log(this.events)
+  },
+
   mounted() {
+    //this.getEvents()
   },
 
   methods: {
+    async getEvents() {
+      console.log("ГОООООООООООООООООООЛ")
+      this.loading = true
+      const { data, ok, status } = await this.$api.getEvents()
+
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить события')
+      }
+
+      this.events = data.events
+      this.loading = false
+      console.log("ГОООООООООООООООООООЛ")
+      console.log(this.events)
+    },
     getShortDate(date) {
       return date.getDate() + " " + this.monthsGenitive[(date.getMonth() + 5) % 12]
     },
@@ -408,7 +434,7 @@ export default {
       return month * (200 + 14)
     },
     selectEventsByMonth(month) {
-      return this.events.filter((event) => (event.date.getMonth() + 5) % 12==month)
+      return this.events.filter((event) => ((new Date(event.date)).getMonth() + 5) % 12==month)
     },
     expandMonth(month) {
       this.$refs.monthEventFlex[month].style.width = "700px"
