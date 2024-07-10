@@ -8,6 +8,8 @@
 between-orgs-gap = 15px
 padding-sides = 20px
 
+*
+  overflow-wrap break-word
 
 .root-page-orgs
   .main-container
@@ -28,6 +30,7 @@ padding-sides = 20px
     .org-header
       margin-top 20px
       display flex
+      width 100%
       .logo-container
         position relative
         top 0
@@ -49,6 +52,7 @@ padding-sides = 20px
         display flex
         flex-direction column
         margin 0 40px
+        min-width 0
         .title
           font-large-x()
           margin-bottom 20px
