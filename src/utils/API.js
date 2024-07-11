@@ -397,7 +397,7 @@ export default class MY_API extends REST_API {
         data = Object.assign({}, data);
         const _model = data._model;
         delete data._model;
-        const {ok, data: dataRes, status} = await requestFunc.bind(this.__proto__)(path, data);
+        const { ok, data: dataRes, status } = await requestFunc.bind(this)(path, data);
         if (!ok) {
             return {ok, data: dataRes, status};
         }
