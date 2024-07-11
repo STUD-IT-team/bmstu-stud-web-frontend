@@ -111,7 +111,7 @@ export default class MY_API extends REST_API {
         ok: true, status: 200, data: {
             studBigNews: [
                 { title: "Мисс Сон", description: "Только сегодня только сейчас Успен спит!!!!", imgUrl: "res/images/big-new-one.png", redirectLink: "https://vk.com/antoshka_uspenskiy?from=search" },
-                { title: "Мисс Очарование", description: "Антошка Успенский грустно и очаровательно лежит", imgUrl: "res/images/big-new-two.png", redirectLink: "https://vk.com/miss_bmstu" },
+                { title: "Мисс Очарование", description: "Антошка Успенский грустно и очаровательно лежит. Давайте ему похлопаем. Он молодец, хорошо лежит. Жалко, что грустно. Мисс очерование масштаюный конкурс много денег, сил и красивых техподов.", imgUrl: "res/images/big-new-two.png", redirectLink: "https://vk.com/miss_bmstu" },
                 { title: "Мисс Тарелка", description: "Как классно сидит!!! 10/10 пусть теперь поест", imgUrl: "res/images/big-new-three.png", redirectLink: "https://vk.com/antoshka_uspenskiy?from=search" },
             ]
         }

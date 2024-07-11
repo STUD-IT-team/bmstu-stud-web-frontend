@@ -71,7 +71,6 @@
     img:hover 
       transform translateY(-20px)
       box-shadow 0 16px 32px rgba(0, 0, 0, 0.35), 0 8px 8px rgba(0, 0, 0, 0.28)
-
 </style>
 
 <template>

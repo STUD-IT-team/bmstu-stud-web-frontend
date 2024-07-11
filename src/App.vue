@@ -34,7 +34,7 @@
       </transition>
     </router-view>
   </div>
-  <NavBar v-if="!/^\/miss/.test($route.path)" id="navbar"></NavBar>
+  <!-- <NavBar v-if="!/^\/miss/.test($route.path)" id="navbar"></NavBar> -->
 
   <Popups ref="popups"></Popups>
   <Modals ref="modals" class="root-modals"></Modals>
