@@ -210,7 +210,8 @@ export default {
 
   watch: {
     '$route' (to,from) {
-      this.initialize()
+      if (to.name == "organization")
+        this.initialize()
     }
   },
 
@@ -260,7 +261,7 @@ export default {
       const {data, ok, status} = await this.$api.getOrgInfo(this.orgId);
       this.loading = false;
       if (!ok) {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
       }
       this.logoSrc = `/media/${data.logo.key}`
       this.title = data.name
