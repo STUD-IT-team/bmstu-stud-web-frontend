@@ -6,6 +6,8 @@
 @require '../styles/components.styl'
 
 .stud-faculties 
+  position relative
+  margin auto
   .background-img 
     display block
     img 
@@ -89,45 +91,46 @@
       <img src="/res/icons/stud-faculties-bg.svg" alt="">
     </div>
     <div class="box">
-      <span v-for="(image, index) in images" :key="index" :style="getSpanStyle(index)" class="one-image">
+      <span v-for="(club, index) in clubs" :key="index" :style="getSpanStyle(index)" class="one-image">
         <span class="bg"></span>
-        <img :src="image" />
+        <img :src="club.imgUrl" />
       </span>
     </div>
   </div>
 </template>
 
+
 <script>
 export default {
   data() {
     return {
-      images: [
-        'https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album',
-        'https://sun9-75.userapi.com/impg/RyPiAsi6vKqEZiM8CQPA6xeY9yjtX1IpYXz2lw/4Ej3z8wd69c.jpg?size=1668x1667&quality=95&sign=b5b5cafc5f13e6d5aa856d199267e95f&type=album',
-        'https://sun9-69.userapi.com/impg/RSls9NiDfFfioAKUXwpgg-x-GOmY7b1EyIAlTw/KQ35hPG7bHs.jpg?size=1081x1080&quality=95&sign=7c01bc15e95413d90b73b0ac5193d485&type=album',
-        'https://sun9-17.userapi.com/impg/fqmrqXHRU0i8zRQFEee5snXQM_Zm39KmE19rbQ/zoZQQw7Q3WI.jpg?size=2560x2560&quality=95&sign=aed6280091da857176c1366d59023827&type=album',
-        'https://sun9-13.userapi.com/impg/vuG_tke_7W_sHXjwaHNv04qKe6RAsFF-EuhzyQ/fYUTaNl2M24.jpg?size=1080x1080&quality=95&sign=96298b3c53c2804b5100c33e31e68233&type=album',
-        'https://sun9-22.userapi.com/impg/auBf_amipunZjyGLYTiEzbPtcvPPA7THtCQYGQ/tv2oqPK-fdo.jpg?size=1955x2160&quality=95&sign=5308bf91e6b9d46d5bef3bbf24487b51&type=album',
-        'https://sun9-75.userapi.com/impg/RyPiAsi6vKqEZiM8CQPA6xeY9yjtX1IpYXz2lw/4Ej3z8wd69c.jpg?size=1668x1667&quality=95&sign=b5b5cafc5f13e6d5aa856d199267e95f&type=album',
-        'https://sun9-69.userapi.com/impg/RSls9NiDfFfioAKUXwpgg-x-GOmY7b1EyIAlTw/KQ35hPG7bHs.jpg?size=1081x1080&quality=95&sign=7c01bc15e95413d90b73b0ac5193d485&type=album',
-        'https://sun9-17.userapi.com/impg/fqmrqXHRU0i8zRQFEee5snXQM_Zm39KmE19rbQ/zoZQQw7Q3WI.jpg?size=2560x2560&quality=95&sign=aed6280091da857176c1366d59023827&type=album',
-        'https://sun9-13.userapi.com/impg/vuG_tke_7W_sHXjwaHNv04qKe6RAsFF-EuhzyQ/fYUTaNl2M24.jpg?size=1080x1080&quality=95&sign=96298b3c53c2804b5100c33e31e68233&type=album',
-        'https://sun9-43.userapi.com/impg/xf0vjmMtRk5PuyzZVaBHeN9GlrQM8zG_VpZUAg/XpZObatXmXk.jpg?size=2560x2560&quality=95&sign=d7bbb2febd66d9c7b0b5f1946a782acd&type=album',
-        'https://sun9-76.userapi.com/impg/YmVaO8clIf_NC9JuCI7DrX6Sxss-lWENDxkXBg/SFIUaLHE4GM.jpg?size=932x846&quality=95&sign=da4780033d948d117cd82f79ccabec78&type=album',
-        'https://sun9-59.userapi.com/impg/7MTcy51k_yKUr-Z4vHYmUJYmCv1WPz2O_g-vsg/9sdFxKy1eXU.jpg?size=2085x2084&quality=95&sign=346501584bba9946b41401cf2827590a&type=album',
-        'https://sun9-33.userapi.com/impg/M25sTKnMn8GWX8apdvsoZw_VExmlkvMdeO54kw/1cpbHF9OHw4.jpg?size=2560x2560&quality=95&sign=fe9a6a44fbfdde98d83a5c39cecfff57&type=album',
-        'https://sun9-22.userapi.com/impg/auBf_amipunZjyGLYTiEzbPtcvPPA7THtCQYGQ/tv2oqPK-fdo.jpg?size=1955x2160&quality=95&sign=5308bf91e6b9d46d5bef3bbf24487b51&type=album'
-      ]
+      clubs: []
     };
   },
+
+  mounted() {
+    this.getFacList();
+  },
+
   methods: {
+    async getFacList() {
+      this.loading = true
+      const { data, ok, status } = await this.$api.getFacList()
+      this.loading = false
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить клубы')
+      }
+
+      this.clubs = data.clubsList
+    },
+
     getSpanStyle(index) {
-      const angle = (360 / this.images.length) * index;
+      const angle = (360 / this.clubs.length) * index;
       return {
         '--i': index,
         transform: `rotateY(${angle}deg) translateZ(450px)`
       };
-    }
+    },
   }
 };
 </script>
