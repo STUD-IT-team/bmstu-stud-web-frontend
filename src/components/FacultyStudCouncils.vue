@@ -12,7 +12,7 @@
     img 
       position relative
       left 5%
-      border-radius 20px
+      border-radius 40px
       top 0
       width 90%
 
