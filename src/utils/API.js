@@ -93,6 +93,7 @@ export default class MY_API extends REST_API {
     getNew = (id) => this.get(`/api/feed`, { _model: Models.Feed, id });
     deleteNew = (id) => this.delete(`/api/feed`, { _model: Models.Feed, id });
 
+    getEncounters = (id) => this.get(`/feed/encounters/${id}`, { _model: Models.Encounters})
     getStudNums = () => ({
         ok: true, status: 200, data: {
             studNumbers: [

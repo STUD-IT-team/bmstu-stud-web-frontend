@@ -140,7 +140,7 @@
 
     <ul class="number-slider" id='slider'>
       <li v-for="numberEvent in numbersStud" class="number-item">
-        <div class="number">{{ numberEvent.num }}</div>
+        <div class="number">{{ numberEvent.count }}</div>
         <div class="description">{{ numberEvent.description }}</div>
       </li>
     </ul>
@@ -155,7 +155,9 @@
         </OneBigNew>
       </div>
     </div>
-    <FSC></FSC>
+    <EventTimeline>
+    </EventTimeline>
+    <FSC></FSC> <!-- Даш не делай так пж -->
     <SC></SC>
     <Footer></Footer>
   </div>
@@ -167,9 +169,10 @@ import Footer from "~/components/Footer.vue"
 import OneBigNew from "~/components/OneBigNew.vue";
 import FSC from "~/components/FacultyStudCouncils.vue";
 import SC from "~/components/StudCounsilClubs.vue";
+import EventTimeline from "~/components/EventTimeline.vue";
 
 export default {
-  components: { Footer, OneBigNew, FSC, SC },
+  components: { Footer, OneBigNew, FSC, SC, EventTimeline },
   // props: {
   // },
 
@@ -183,7 +186,7 @@ export default {
   },
 
   mounted() {
-    this.getStudNums();
+    this.getEncounters();
     this.getBigNews();
 
     const list = document.querySelector('.number-slider');
@@ -201,15 +204,15 @@ export default {
 
 
   methods: {
-    async getStudNums() {
+    async getEncounters() {
       this.loading = true
-      const { data, ok, status } = await this.$api.getStudNums()
+      const { data, ok, status } = await this.$api.getEncounters(0)
       this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить студ в цифрах')
       }
 
-      this.numbersStud = data.studNumbers
+      this.numbersStud = data.encounter
     },
 
     async getBigNews() {

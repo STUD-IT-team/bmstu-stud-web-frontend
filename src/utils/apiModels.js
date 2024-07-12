@@ -27,6 +27,21 @@ export const Feeds = {
   }
 }
 
+export const Encounters = {
+  encounter: {
+    type: Array,
+    item: {
+      type: Object,
+      fields: {
+        club_id: Number,
+        count: String,
+        description: String,
+        id: Number,
+      }
+    }
+  }
+}
+
 export const Event = {
   id: Number,
   description: String,
