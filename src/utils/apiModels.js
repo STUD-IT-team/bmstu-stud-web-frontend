@@ -66,6 +66,19 @@ export const StudNumbers = {
   }
 }
 
+export const Club = {
+  title: String,
+  imgUrl: String,
+  redirectLink: String,
+}
+
+export const ClubsList = {
+  clubsList: {
+    type: Array,
+    item: Club,
+  }
+}
+
 export const StudBigNew = {
   title: String,
   description: String,

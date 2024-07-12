@@ -15,15 +15,12 @@
       margin-left 95vw
   .emotions-sector 
     position relative
-    .background-video 
-      img
-        user-select none
-        margin-top 80px
-        top 10px
-        width 100%
+    .background-video
       video
         pointer-events none
         width 100%
+        top 10px
+        margin-top 80px
     .overlay-video
       .stud-logo
         img
@@ -33,38 +30,46 @@
           width 30%
 
       .create-emotions-circle
-        img 
-          user-select: none
+        position: relative
+        img
+          user-select none
           position absolute
-          bottom 10%
+          bottom 30px
           right 5%
-          width 10%
+          width 13%
 
-          // --color #fff
-          // --border 5px
-          // // --offset 5px
-          // --gap 10px
+          --color: #fff          /* Inner color */
+          --border: 4px          /* Border thickness */
+          --offset: 10px         /* Offset for the border effect */
+          --gap: 3px            /* Gap for padding */
 
-          // border-radius 50%
-          // cursor pointer
-          // padding calc(var(--border) + var(--gap))
-          // border var(--offset) solid #0000
-          // --_m radial-gradient(50% 50%, #000 calc(100% - var(--offset)), #0000 calc(100% - var(--border)))
-          // -webkit-mask var(--_m)
-          // mask var(--_m)
-          // --_g #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%, #0000
-          // --_s var(--offset)
-          // --_r 100% 100% at
-          // background radial-gradient(var(--_r) 0 0, var(--_g)) calc(100% + var(--_s)) calc(100% + var(--_s)),
-          //             radial-gradient(var(--_r) 100% 0, var(--_g)) calc(0% - var(--_s)) calc(100% + var(--_s)),
-          //             radial-gradient(var(--_r) 0 100%, var(--_g)) calc(100% + var(--_s)) calc(0% - var(--_s)),
-          //             radial-gradient(var(--_r) 100% 100%, var(--_g)) calc(0% - var(--_s)) calc(0% - var(--_s))
-          // background-size 50% 50%
-          // background-repeat no-repeat
-          // transition .4s
+          border-radius: 50%
+          cursor: pointer
+          padding: calc(var(--border) + var(--gap))
+          border: var(--offset) solid #0000
 
-          // &:hover 
-          //   --_s 0px
+          --_m: radial-gradient(50% 50%, #000 calc(100% - var(--offset)), #0000 calc(100% - var(--border)))
+          -webkit-mask: var(--_m)
+          mask: var(--_m)
+
+          --_g: #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%, #0000
+          --_s: var(--offset)
+          --_r: 100% 100% at
+          background: radial-gradient(var(--_r) 0 0, var(--_g)) calc(100% + var(--_s)) calc(100% + var(--_s)),
+                      radial-gradient(var(--_r) 100% 0, var(--_g)) calc(0% - var(--_s)) calc(100% + var(--_s)),
+                      radial-gradient(var(--_r) 0 100%, var(--_g)) calc(100% + var(--_s)) calc(0% - var(--_s)),
+                      radial-gradient(var(--_r) 100% 100%, var(--_g)) calc(0% - var(--_s)) calc(0% - var(--_s))
+          background-size: 50% 50%
+          background-repeat: no-repeat
+          
+          transition: .4s ease-out
+          opacity: 0.7 
+
+          &:hover
+            --_s: 0px
+            opacity: 1
+
+
   .number-slider
     display flex
     justify-content space-around
@@ -114,9 +119,9 @@
   <div class="root-page-news">
     <div class="emotions-sector">
       <div class="background-video">
-        <!-- <img src="/res/images/video.png" alt="" /> -->
+         <!-- <img src="/res/images/video.png" alt="" /> -->
 
-        <video width="100%" autoplay muted loop disablePictureInPicture>
+         <video width="100%" autoplay muted loop disablePictureInPicture>
           <source src="http://localhost:9000/videos/main_vid.mp4" type="video/mp4">
           Ваш браузер не поддерживает это видео
         </video>
@@ -127,9 +132,9 @@
             <img src="/res/icons/create-emotions-circle.svg" alt="" />
           </a>
         </div>
-        <!-- <div class="stud-logo">
-          <img src="/res/icons/stud-logo-video.svg" alt="" />
-        </div> -->
+        <!-- <div class="stud-logo"> -->
+          <!-- <img src="/res/icons/stud-logo-video.svg" alt="" /> -->
+        <!-- </div> -->
       </div>
     </div>
 
@@ -158,12 +163,6 @@
 
 
 <script>
-// import {numbersStud} from "~/utils/utils.js"
-// import New from "~/components/New.vue"
-// import StudLogo from "#~/images/stud-logo-circle.svg"
-// import Picture from "#~/images/stud-logo-circle.svg"
-// import ListingBlock from "~/components/ListingBlock.vue"
-// import SliderOneNumber from "../components/SliderOneNumber.vue";
 import Footer from "~/components/Footer.vue"
 import OneBigNew from "~/components/OneBigNew.vue";
 import FSC from "~/components/FacultyStudCouncils.vue";
@@ -223,6 +222,7 @@ export default {
 
       this.bigNews = data.studBigNews
     },
+    
     scrollToSlider() {
       const sliderElement = document.getElementById('slider');
       if (sliderElement) {
