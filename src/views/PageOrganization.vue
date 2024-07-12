@@ -135,8 +135,8 @@ padding-sides = 20px
               :title="oneLead.role_name"
               :description="oneLead.spec"
               :imageSrc="`/media/${oneLead.image.key}`"
-              :link-tg="oneLead.tg_url"
-              :link-vk="oneLead.vk_url"
+              :link-tg="parseExternalLink(oneLead.tg_url)"
+              :link-vk="parseExternalLink(oneLead.vk_url)"
               :head="true"
           ></PersonCard>
         <PersonCard 
@@ -147,8 +147,8 @@ padding-sides = 20px
               :title="oneLead.sub_club_name"
               :description="oneLead.spec"
               :imageSrc="`/media/${oneLead.image.key}`"
-              :link-tg="oneLead.tg_url"
-              :link-vk="oneLead.vk_url"
+              :link-tg="parseExternalLink(oneLead.tg_url)"
+              :link-vk="parseExternalLink(oneLead.vk_url)"
               :head="false"
           ></PersonCard>
       </div>
@@ -171,6 +171,8 @@ import Header from "~/components/Header/Header.vue";
 import PersonCard from "~/components/PersonCard.vue";
 import Carousel from "~/components/Carousel.vue";
 import AddressBar from "~/components/AddressBar.vue";
+import {parseExternalLink} from "~/utils/utils";
+
 
 import StudLogo from "#~/images/stud-logo-circle.svg";
 import Picture from "#~/images/stud-logo-circle.svg";
@@ -221,6 +223,9 @@ export default {
 
 
   methods: {
+    parseExternalLink(link) {
+      return parseExternalLink(link)
+    },
     getPath() {
       if (this.orgId!=0) {
         return [
@@ -266,8 +271,9 @@ export default {
       this.logoSrc = `/media/${data.logo.key}`
       this.title = data.name
       this.description = data.description
-      this.linkTg = data.tg_url
-      this.linkVk = data.vk_url
+      // this.linkTg = data.tg_url
+      this.linkVk = parseExternalLink(data.vk_url)
+      this.linkTg = parseExternalLink(data.tg_url)
       this.leads = data.main_orgs
       this.subLeads = data.sub_orgs
       this.path = this.getPath()
