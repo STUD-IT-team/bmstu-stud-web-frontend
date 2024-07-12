@@ -126,14 +126,30 @@ padding-sides = 20px
       <div class="gap"></div>
 
       <div class="people">
-        <PersonCard :style="'transform: rotate('+(Math.random()*6-3)+'deg)'" v-for="(oneLead, idx) in leads"
+
+        <PersonCard 
+          :style="'transform: rotate('+(Math.random()*6-3)+'deg)'" 
+          v-for="(oneLead, idx) in leads"
               :id="oneLead.id"
               :name="oneLead.name"
-              :title="oneLead.title"
-              :description="oneLead.description"
-              :link-tg="oneLead.linkTg"
-              :link-vk="oneLead.linkVk"
-              :head="oneLead.head"
+              :title="oneLead.role_name"
+              :description="oneLead.spec"
+              :imageSrc="`/media/${oneLead.image.key}`"
+              :link-tg="oneLead.tg_url"
+              :link-vk="oneLead.vk_url"
+              :head="true"
+          ></PersonCard>
+        <PersonCard 
+          :style="'transform: rotate('+(Math.random()*6-3)+'deg)'" 
+          v-for="(oneLead, idx) in subLeads"
+              :id="oneLead.id"
+              :name="oneLead.name"
+              :title="oneLead.sub_club_name"
+              :description="oneLead.spec"
+              :imageSrc="`/media/${oneLead.image.key}`"
+              :link-tg="oneLead.tg_url"
+              :link-vk="oneLead.vk_url"
+              :head="false"
           ></PersonCard>
       </div>
 
@@ -242,27 +258,18 @@ export default {
     async getInfo() {
       this.loading = true;
       const {data, ok, status} = await this.$api.getOrgInfo(this.orgId);
-      // console.log(this.orgId)
       this.loading = false;
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
       }
-      this.logoSrc = data.logo_src
-      this.title = data.title
+      this.logoSrc = `/media/${data.logo.key}`
+      this.title = data.name
       this.description = data.description
-      this.linkTg = data.linkTg
-      this.linkVk = data.linkVk
+      this.linkTg = data.tg_url
+      this.linkVk = data.vk_url
+      this.leads = data.main_orgs
+      this.subLeads = data.sub_orgs
       this.path = this.getPath()
-    },
-    async getLeads() {
-      this.loading = true;
-      const {data, ok, status} = await this.$api.getLeads(this.orgId);
-      this.loading = false;
-      if (!ok) {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить руководителей')
-      }
-
-      this.leads = data.leads;
     },
     async getPhotos() {
       this.loading = true;
@@ -272,17 +279,15 @@ export default {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить фотографии')
       }
 
-      this.photos = data.photos;
+      this.photos = data.media;
     },
     initialize() {
       var params = new URLSearchParams(document.location.search)
       this.orgId=params.get('orgId')
-      //console.log(this.orgId)
       if (this.orgId===null) {
         this.orgId = 0
       }
       this.getInfo();
-      this.getLeads();
       this.getPhotos();
     },
   }

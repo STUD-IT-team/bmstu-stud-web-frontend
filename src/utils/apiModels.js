@@ -1,3 +1,12 @@
+export const Media = {
+  type: Object,
+  fields: {
+    id: Number,
+    key: String,
+    name: String,
+  }
+}
+
 export const User = {
   id: String,
   name: String,
@@ -51,5 +60,64 @@ export const Events = {
   events: {
     type: Array,
     item: Event,
+  }
+}
+
+export const MainOrg = {
+  type: Object,
+  fields: {
+    id: Number,
+    image: Media, // Фото человека
+    name: String, // Фамилия Имя
+    role_name: String, //Название должности (председатель и тд)
+    spec: String, // Описание
+    tg_url: String,
+    vk_url: String,
+  }
+}
+export const SubOrg = {
+  type: Object,
+  fields: {
+    id: Number,
+    image: Media, // Фото человека
+    name: String, // Фамилия Имя
+    sub_club_name: String, //Название должности (председатель и тд)
+    spec: String, // Описание
+    tg_url: String,
+    vk_url: String,
+  }
+}
+
+export const Club = {
+  id: Number,
+  name: String,
+  short_name: String,
+  description: String,
+  logo: Media,
+  tg_url: String,
+  vk_url: String,
+  type: String, //Тип - отряд, клуб и тд
+  main_orgs: { //Глава организации
+    type: Array,
+    item: MainOrg,
+  },
+  sub_orgs: {
+    type: Array,
+    item: SubOrg,
+  },
+}
+
+export const Clubs = {
+  type: Array,
+  item: {
+    type: Object,
+    fields: Club,
+  }
+}
+
+export const Images = {
+  media:{
+    type: Array,
+    item: Media,
   }
 }

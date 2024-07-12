@@ -147,7 +147,7 @@ trans-speed = 0.5s
     </div>
     <div class=card-box>
       <div class="card-content">
-        <img src="/res/images/placeholders/person-placeholder.jpg">
+        <img :src="imageSrc">
         <div class="name">
           {{name}}
         </div>
@@ -168,7 +168,6 @@ trans-speed = 0.5s
 import CircleLoading from "~/App.vue";
 
 export default {
-  // emits: ['delete', 'pin', 'upnin', 'edit'],
 
   components: {CircleLoading},
 
@@ -177,10 +176,6 @@ export default {
       type: Number,
       required: true,
     },
-    // organizationLogo: {
-    //   type: String,
-    //   required: false,
-    // },
     name: {
       type: String,
       default: '',
@@ -190,6 +185,10 @@ export default {
       default: '',
     },
     description: {
+      type: String,
+      default: '',
+    },
+    imageSrc: {
       type: String,
       default: '',
     },
@@ -205,32 +204,15 @@ export default {
       type: Boolean,
       default: false,
     },
-    // imagesSrc: {
-    //   type: Array,
-    //   default: [],
-    // },
-    // // timePublished: Date,
-    // isPinned: Boolean,
-    // isCollapsedByDefault: Boolean,
   },
 
   data() {
     return {
-      // isCollapsed: this.$props.isCollapsedByDefault,
-      // isEditBlockOpened: false,
-
       loading: false,
     }
   },
 
-  computed: {
-    // datePrettified() {
-    //   return this.timePublished.toLocaleDateString('ru-RU', {day: "numeric", month: "short", hour: "numeric", minute: "numeric"});
-    // }
-  },
-
   mounted() {
-    // this.isCollapsed = true;
   },
 
   methods: {  }
