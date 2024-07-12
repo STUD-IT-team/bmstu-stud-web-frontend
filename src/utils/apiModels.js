@@ -73,9 +73,25 @@ export const Event = {
 }
 
 export const Events = {
-  events: {
+  event: {
     type: Array,
-    item: Event,
+    item: {
+      type: Object,
+      fields: {
+        approved: Boolean,
+        created_at: String,
+        created_by: Number,
+        date: String,
+        description: String,
+        feedback_url: String,
+        id: Number,
+        media: Media,
+        prompt: String,
+        reg_open_date: String,
+        reg_url: String,
+        title: String,
+      }
+    }
   }
 }
 

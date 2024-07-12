@@ -130,30 +130,7 @@ export default class MY_API extends REST_API {
         }
     })
 
-    getEvents = () => ({
-        ok: true, status: 200, data: {
-            events: [
-                {
-                    approved: true,
-                    createdAt: "2024-01-01",
-                    createdBy: "",
-                    date: "2024-01-01",
-                    description: "Описание",
-                    feedback_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                    id: 0,
-                    media: {
-                        id: 0,
-                        imageUrl: "/res/images/shmb.jpg",
-                        name: "event0",
-                    },
-                    prompt: "Промпт",
-                    reg_open_date: "2024-01-01",
-                    reg_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                    title: "Заголовок",
-                },
-            ]
-        }
-    })
+    getEvents = () => this.get(`/events/`, { _model: Models.Events})
 
 
     async modelParsedRequest(requestFunc, path, data = {}) {
