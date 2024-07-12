@@ -7,7 +7,6 @@
 
 .stud-faculties 
   .background-img 
-    margin auto
     display block
     img 
       position relative
@@ -18,10 +17,10 @@
 
   .box 
     position relative
-    bottom 30vw
-    left 45vw
-    width 10vw
-    height 10vw
+    bottom 400px
+    left 645px
+    width 10%
+    height 10%
     transform-style preserve-3d
     animation animate 25s linear infinite
 
@@ -40,15 +39,14 @@
       position absolute
       top 0
       left 0
-      width 100%
-      height 100%
+      width 130px
+      height 130px
       transform-style preserve-3d
       backface-visibility hidden
       display flex
       justify-content center
       align-items center
       border-radius 50%
-      // background colorPalette1
       -webkit-box-reflect below 2px colorPalette1
       transition all 0.3s ease
       pointer-events all
@@ -74,13 +72,15 @@
         border 1px solid colorPalette1
         pointer-events none
 
-      img 
-        width 95%
-        height 95%
-        border-radius 50%
-        box-shadow 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22)
-        transition all 0.3s ease
-        pointer-events none
+		img 
+			width 93%
+			height 93%
+			border-radius 50%
+			box-shadow 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22)
+
+    img:hover 
+      transform translateY(-20px)
+      box-shadow 0 16px 32px rgba(0, 0, 0, 0.35), 0 8px 8px rgba(0, 0, 0, 0.28)
 </style>
 
 <template>
