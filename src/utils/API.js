@@ -129,57 +129,57 @@ export default class MY_API extends REST_API {
     getNew = (id) => this.get(`/api/feed`, {_model: Models.Feed, id});
     deleteNew = (id) => this.delete(`/api/feed`, {_model: Models.Feed, id});
 
-
-    getOrgs = () => ({ok: true, status: 200, data: {
-        orgs: [
-            {
-                id: 1,
-                title: "MediaBMSTU",
-                logo_src: "/res/images/stud-logo-circle.svg",
-                description: "Спасибо медиа",
-                head_title: "Руководитель",
-                head_name: "Егор Федорук",
-                tag: "Отдел",
-            },
-            {
-                id: 2,
-                title: "ISCRA",
-                logo_src: "/res/images/stud-logo-circle.svg",
-                description: "Приходите на конференцию",
-                head_title: "Руководитель",
-                head_name: "Полина Третьяк (навсегда)",
-                tag: "Клуб",
-            },
-            {
-                id: 3,
-                title: "Студенческий Совет факультета ИУ",
-                logo_src: "/res/images/placeholders/org-placeholder.jpg",
-                description: "ITS пиво",
-                head_title: "Председатель",
-                head_name: "Иван Токарев",
-                tag: "ССФ",
-            },
-            {
-                id: 2,
-                title: "IT-отдел",
-                logo_src: "/res/images/stud-logo-circle.svg",
-                description: "Мы в телявизоре",
-                head_title: "Руководитель",
-                head_name: "Антон Павленко",
-                tag: "Отдел",
-            },
-            {
-                id: 2,
-                title: "Техническая поддержка",
-                logo_src: "/res/images/stud-logo-circle.svg",
-                description: "Suiiii",
-                head_title: "Руководитель",
-                head_name: "Егор Клевлин (солнышко)",
-                tag: "Отдел",
-            },
-        ]
-    }}
-    )
+    getOrgs = () => this.get(`/clubs`, {_model: Models.Clubs});
+    // getOrgs = () => ({ok: true, status: 200, data: {
+    //     orgs: [
+    //         {
+    //             id: 1,
+    //             title: "MediaBMSTU",
+    //             logo_src: "/res/images/stud-logo-circle.svg",
+    //             description: "Спасибо медиа",
+    //             head_title: "Руководитель",
+    //             head_name: "Егор Федорук",
+    //             tag: "Отдел",
+    //         },
+    //         {
+    //             id: 2,
+    //             title: "ISCRA",
+    //             logo_src: "/res/images/stud-logo-circle.svg",
+    //             description: "Приходите на конференцию",
+    //             head_title: "Руководитель",
+    //             head_name: "Полина Третьяк (навсегда)",
+    //             tag: "Клуб",
+    //         },
+    //         {
+    //             id: 3,
+    //             title: "Студенческий Совет факультета ИУ",
+    //             logo_src: "/res/images/placeholders/org-placeholder.jpg",
+    //             description: "ITS пиво",
+    //             head_title: "Председатель",
+    //             head_name: "Иван Токарев",
+    //             tag: "ССФ",
+    //         },
+    //         {
+    //             id: 2,
+    //             title: "IT-отдел",
+    //             logo_src: "/res/images/stud-logo-circle.svg",
+    //             description: "Мы в телявизоре",
+    //             head_title: "Руководитель",
+    //             head_name: "Антон Павленко",
+    //             tag: "Отдел",
+    //         },
+    //         {
+    //             id: 2,
+    //             title: "Техническая поддержка",
+    //             logo_src: "/res/images/stud-logo-circle.svg",
+    //             description: "Suiiii",
+    //             head_title: "Руководитель",
+    //             head_name: "Егор Клевлин (солнышко)",
+    //             tag: "Отдел",
+    //         },
+    //     ]
+    // }}
+    // )
 
     getOrgsByTag = (tag) => ({ok: true, status: 200, data: {
         orgs: [

@@ -44,8 +44,11 @@ text-section-max-height = 265px
       <div class="text">
         <header>{{title}}</header>
         {{text}}
+        <span v-for="(lead, idx) in leads">
         <br>
-        {{headTitle}}: {{headName}}
+        {{lead.spec}}: {{lead.name}}
+        <!-- {{lead}} -->
+        </span>
       </div>
     </div>
   </router-link>
@@ -56,7 +59,6 @@ text-section-max-height = 265px
 import CircleLoading from "~/App.vue";
 
 export default {
-  // emits: ['delete', 'pin', 'upnin', 'edit'],
 
   components: {CircleLoading},
 
@@ -65,10 +67,6 @@ export default {
       type: Number,
       required: true,
     },
-    // organizationLogo: {
-    //   type: String,
-    //   required: false,
-    // },
     title: {
       type: String,
       default: '',
@@ -81,41 +79,19 @@ export default {
       type: String,
       required: true,
     },
-    headTitle: {
-      type: String,
-      default: 'Руководитель',
+    leads: {
+      type: Array,
+      default: [],
     },
-    headName: {
-      type: String,
-      default: '',
-      required: true,
-    },
-    // imagesSrc: {
-    //   type: Array,
-    //   default: [],
-    // },
-    // // timePublished: Date,
-    // isPinned: Boolean,
-    // isCollapsedByDefault: Boolean,
   },
 
   data() {
     return {
-      // isCollapsed: this.$props.isCollapsedByDefault,
-      // isEditBlockOpened: false,
-
       loading: false,
     }
   },
 
-  computed: {
-    // datePrettified() {
-    //   return this.timePublished.toLocaleDateString('ru-RU', {day: "numeric", month: "short", hour: "numeric", minute: "numeric"});
-    // }
-  },
-
   mounted() {
-    // this.isCollapsed = true;
   },
 
   methods: {  }

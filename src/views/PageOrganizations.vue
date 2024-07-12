@@ -102,11 +102,10 @@ padding-sides = 20px
       <div class="orgs-container">
         <Organization v-for="(oneOrg, idx) in orgs"
             :id="oneOrg.id"
-            :title="oneOrg.title"
-            :logo-src="oneOrg.logo_src"
+            :title="oneOrg.name"
+            :logo-src="`/media/${oneOrg.logo.key}`"
             :text="oneOrg.description"
-            :head-title="oneOrg.head_title"
-            :head-name="oneOrg.head_name"
+            :leads="oneOrg.orgs"
         ></Organization>
         <span class="message-empty" v-if="orgs.length==0">
           Организаций не найдено :(
@@ -238,7 +237,8 @@ export default {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
       }
 
-      this.orgs = data.orgs;
+      this.orgs = data.clubs;
+      console.log(this.orgs)
     }
   }
 }
