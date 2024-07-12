@@ -124,8 +124,8 @@ section
   </div>
 
   <img v-for="image in images"
-    :src="image.src"
-    alt=""
+    :src="`/media/images/${image.key}`"
+    :alt="image.name"
     class="slide">
 
   <div class="nav">
@@ -139,18 +139,7 @@ section
 <script>
 import CircleLoading from "~/App.vue";
 
-
-// var slides = document.querySelectorAll(".slide")
-// var radioButton = document.querySelectorAll(".button")
-
-// var counter = 0;
-
-
-
-
 export default {
-  // emits: ['delete', 'pin', 'upnin', 'edit'],
-
   components: {CircleLoading},
 
   props: {
@@ -163,19 +152,11 @@ export default {
       slides: [],
       radioButton: [],
       counter: 0,
-      // isCollapsed: this.$props.isCollapsedByDefault,
-      // isEditBlockOpened: false,
 
       loading: false,
     }
   },
-
-  computed: {
-    // datePrettified() {
-    //   return this.timePublished.toLocaleDateString('ru-RU', {day: "numeric", month: "short", hour: "numeric", minute: "numeric"});
-    // }
-  },
-
+  
   // Чтобы подгружалось по готовности разметки
   updated() {
     this.slides=document.querySelectorAll(".slide");
