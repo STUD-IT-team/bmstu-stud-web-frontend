@@ -7,7 +7,7 @@
 
 .stud-faculties 
   .background-img 
-    margin 10px 0px
+    margin auto
     display block
     img 
       position relative

@@ -4,54 +4,52 @@
 @require '../styles/fonts.styl'
 @require '../styles/components.styl'
 @require '../styles/utils.styl'
-  
 
-.root-page-news 
-  max-width 1440px
-  margin auto
+.root-page-news
+  display flex
+  flex-direction column
+  align-items center
+
+
   .orange-star
     img
       position static
-      margin-left 95vw
-  .emotions-sector 
+      margin-left 1300px
+
+  .emotions-sector
+    width 100%
     position relative
+
     .background-video
       video
         pointer-events none
         width 100%
         top 10px
         margin-top 80px
+
     .overlay-video
-      .stud-logo
-        img
-          position absolute
-          top 29%
-          left 11%
-          width 30%
+      width 100%
 
       .create-emotions-circle
-        position: relative
+        position relative
+
         img
           user-select none
           position absolute
           bottom 30px
           right 5%
           width 13%
-
-          --color: #fff          /* Inner color */
-          --border: 4px          /* Border thickness */
-          --offset: 10px         /* Offset for the border effect */
-          --gap: 3px            /* Gap for padding */
-
+          --color: #fff
+          --border: 4px
+          --offset: 10px
+          --gap: 3px
           border-radius: 50%
           cursor: pointer
           padding: calc(var(--border) + var(--gap))
           border: var(--offset) solid #0000
-
           --_m: radial-gradient(50% 50%, #000 calc(100% - var(--offset)), #0000 calc(100% - var(--border)))
           -webkit-mask: var(--_m)
           mask: var(--_m)
-
           --_g: #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%, #0000
           --_s: var(--offset)
           --_r: 100% 100% at
@@ -61,26 +59,24 @@
                       radial-gradient(var(--_r) 100% 100%, var(--_g)) calc(0% - var(--_s)) calc(0% - var(--_s))
           background-size: 50% 50%
           background-repeat: no-repeat
-          
           transition: .4s ease-out
-          opacity: 0.7 
-
+          opacity: 0.7
           &:hover
             --_s: 0px
             opacity: 1
 
-
   .number-slider
+    width 100%
     display flex
     justify-content space-around
-    list-style: none
+    list-style none
     white-space nowrap
-
     overflow-x scroll
-
     scrollbar-width none
+
     .scroll-touch
-      -webkit-overflow-scrolling touch;
+      -webkit-overflow-scrolling touch
+
     &::-webkit-scrollbar
       display none
 
@@ -88,7 +84,6 @@
       display flex
       flex-direction column
       align-items center
-
       border 1px solid colorPalette1
       border-radius 20px
       padding 10px
@@ -102,16 +97,22 @@
       .description
         font-large-x()
         color colorPalette1
-
-  .big-news-container
+    
+  .content-wrapper
+    max-width 1440px
+    width 100%
     margin auto
-    padding-bottom 60px
-    overflow auto
-    max-width 1282px
-    .big-news-sector
-      display flex
-      justify-content space-between
-      gap 29px 
+
+    .big-news-container
+      margin auto
+      padding-bottom 60px
+      overflow auto
+      max-width 1282px
+
+      .big-news-sector
+        display flex
+        justify-content space-between
+        gap 29px
 
 </style>
 
@@ -119,9 +120,7 @@
   <div class="root-page-news">
     <div class="emotions-sector">
       <div class="background-video">
-         <!-- <img src="/res/images/video.png" alt="" /> -->
-
-         <video width="100%" autoplay muted loop disablePictureInPicture>
+        <video width="100%" autoplay muted loop disablePictureInPicture>
           <source src="http://localhost:9000/videos/main_vid.mp4" type="video/mp4">
           Ваш браузер не поддерживает это видео
         </video>
@@ -132,9 +131,6 @@
             <img src="/res/icons/create-emotions-circle.svg" alt="" />
           </a>
         </div>
-        <!-- <div class="stud-logo"> -->
-          <!-- <img src="/res/icons/stud-logo-video.svg" alt="" /> -->
-        <!-- </div> -->
       </div>
     </div>
 
@@ -148,19 +144,21 @@
     <div class="orange-star">
       <img src="/res/icons/orange-star.svg" alt="" />
     </div>
-    <div class="big-news-container">
-      <div class="big-news-sector">
-        <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
-          :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
-        </OneBigNew>
+
+    <div class="content-wrapper">
+      <div class="big-news-container">
+        <div class="big-news-sector">
+          <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
+            :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
+          </OneBigNew>
+        </div>
       </div>
+      <FSC></FSC>
+      <SC></SC>
     </div>
-    <FSC></FSC>
-    <SC></SC>
     <Footer></Footer>
   </div>
 </template>
-
 
 <script>
 import Footer from "~/components/Footer.vue"
@@ -170,10 +168,6 @@ import SC from "~/components/StudCounsilClubs.vue";
 
 export default {
   components: { Footer, OneBigNew, FSC, SC },
-  // props: {
-  // },
-
-
   data() {
     return {
       numbersStud: [],
@@ -181,7 +175,6 @@ export default {
       loading: false,
     }
   },
-
   mounted() {
     this.getStudNums();
     this.getBigNews();
@@ -198,8 +191,6 @@ export default {
       });
     }
   },
-
-
   methods: {
     async getStudNums() {
       this.loading = true
@@ -208,10 +199,8 @@ export default {
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить студ в цифрах')
       }
-
       this.numbersStud = data.studNumbers
     },
-
     async getBigNews() {
       this.loading = true
       const { data, ok, status } = await this.$api.getBigNews()
@@ -219,10 +208,8 @@ export default {
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить новости')
       }
-
       this.bigNews = data.studBigNews
     },
-    
     scrollToSlider() {
       const sliderElement = document.getElementById('slider');
       if (sliderElement) {

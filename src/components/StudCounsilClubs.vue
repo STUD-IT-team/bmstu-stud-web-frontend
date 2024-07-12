@@ -7,7 +7,7 @@
 
 .stud-clubs
   position relative
-  margin 10px 0px
+  margin auto
   left 5%
   .background-img
     display block
@@ -24,7 +24,7 @@
     img
       position absolute
       border-radius 50%
-      width 13vw
+      width 13%
       // animation fall 1s ease-in-out forwards
       // transform translateY(0)
       animation fall 1s cubic-bezier(0.285, 1.650, 0.485, 0.640)
@@ -43,7 +43,7 @@
     </div>
     <div class="club-holder">
       <div v-for="(club, index) in clubs" :key="index">
-        <img :src="club.imgUrl" :alt="club.title" :style="{ bottom: `${bottoms[index]}vw`, left: `${lefts[index]}vw` }"/>
+        <img :src="club.imgUrl" :alt="club.title" :style="{ bottom: `${bottoms[index]}%`, left: `${lefts[index]}%` }"/>
       </div>
     </div>
   </div>
