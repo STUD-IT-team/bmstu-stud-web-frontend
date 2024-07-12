@@ -151,7 +151,7 @@
     <div class="big-news-container">
       <div class="big-news-sector">
         <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
-          :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
+          :imgUrl="`/media/${bigNew.media.key}`" :redirectLink="bigNew.vk_post_url">
         </OneBigNew>
       </div>
     </div>
@@ -217,13 +217,13 @@ export default {
 
     async getBigNews() {
       this.loading = true
-      const { data, ok, status } = await this.$api.getBigNews()
+      const { data, ok, status } = await this.$api.getNews()
       this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить новости')
       }
 
-      this.bigNews = data.studBigNews
+      this.bigNews = data.feed
     },
     
     scrollToSlider() {

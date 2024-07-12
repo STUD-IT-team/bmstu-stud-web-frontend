@@ -1,3 +1,12 @@
+export const Media = {
+  type: Object,
+  fields: {
+    id: Number,
+    key: String,
+    name: String,
+  }
+}
+
 export const User = {
   id: String,
   name: String,
@@ -7,23 +16,23 @@ export const User = {
 }
 
 export const Feed = {
-  id: Number,
-  title: String,
-  description: String,
-  media: Object,
-  registration_url: {
-    type: String,
-    required: false,
-  },
-  created_by: Number,
-  updated_at: Date,
-  created_at: Date,
-}
-
-export const Feeds = {
   feed: {
     type: Array,
-    item: Feed,
+    item: {
+      type: Object,
+      fields: {
+        approved: Boolean,
+        created_at: String,
+        created_by: Number,
+        description: String,
+        id: Number,
+        media: Media,
+        title: String,
+        updated_at: String,
+        views: Number,
+        vk_post_url: String,
+      }
+    }
   }
 }
 
@@ -41,6 +50,7 @@ export const Encounters = {
     }
   }
 }
+
 
 export const Event = {
   id: Number,
