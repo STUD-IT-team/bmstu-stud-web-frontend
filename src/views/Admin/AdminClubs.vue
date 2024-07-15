@@ -57,7 +57,7 @@
         p
           font-small()
           padding 10px 10px
-        button
+        .button
           button()
           width 100px
           font-small()
@@ -122,8 +122,8 @@
         </summary>
         <div class="info-block">
           <p>{{club.description}}</p>
-          <router-link :to="'adminClubEdit/:?orgId='+club.id">
-            <button>Перейти</button>
+          <router-link class="button" :to="'club/:?orgId='+club.id">
+            Перейти
           </router-link>
         </div>
       </details>
