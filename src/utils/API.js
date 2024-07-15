@@ -119,6 +119,33 @@ export default class MY_API extends REST_API {
             ]
         }
     })
+    
+    getFacList = () => ({
+        ok: true, status: 200, data: {
+            clubsList: [
+                {title: "1", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
+                {title: "2", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album"},
+                {title: "3", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album"},
+                {title: "4", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album"},
+                {title: "5", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album"},
+                {title: "6", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album"},
+                {title: "7", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album"},
+                {title: "8", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"},
+                {title: "9", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album"},
+                {title: "10", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album"},
+                {title: "11", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
+                {title: "12", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album"},
+                {title: "13", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album"},
+                {title: "14", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album"},
+                // {title: "15", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album"},
+                // {title: "16", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album"},
+                // {title: "17", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album"},
+                // {title: "18", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"},
+                // {title: "19", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album"},
+                // {title: "20", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album"},
+            ]
+        }
+    })
 
     getBigNews = () => ({
         ok: true, status: 200, data: {
