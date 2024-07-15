@@ -124,7 +124,7 @@ section
   </div>
 
   <img v-for="image in images"
-    :src="`/media/images/${image.key}`"
+    :src="`/media/${image.key}`"
     :alt="image.name"
     class="slide">
 
