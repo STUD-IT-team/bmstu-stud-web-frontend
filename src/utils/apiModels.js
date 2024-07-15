@@ -108,10 +108,32 @@ export const Club = {
 }
 
 export const Clubs = {
-  type: Array,
-  item: {
-    type: Object,
-    fields: Club,
+  clubs: {
+    type: Array,
+    item: {
+      type: Object,
+      fields: {
+        id: Number,
+        name: String,
+        short_name: String,
+        description: String,
+        logo: Media,
+        tg_url: String,
+        vk_url: String,
+        type: String, //Тип - отряд, клуб и тд
+        orgs: { //Глава организации
+          type: Array,
+          item: {
+            type: Object,
+            fields: {
+              id: Number,
+              name: String,
+              spec: String,
+            },
+          }
+        },
+      }
+    }
   }
 }
 
