@@ -101,7 +101,7 @@
     <form 
       class="input-container"
       @submit="getOrgsByQuery()">
-      <input ref="searchBar" required >
+      <input ref="searchBar"  >
       <label>Введите название организации</label>
       <img src="/res/icons/search.svg"
         @click="getOrgsByQuery()">        
@@ -160,7 +160,24 @@ export default {
       }
 
       this.orgs = data.clubs;
-    }
+    },
+  
+    async getOrgsByQuery() {
+      event.preventDefault()
+      const query = this.$refs.searchBar.value
+      this.loading = true;            
+      const {data, ok, status} = (query) ? 
+        await this.$api.getOrgsByQuery(query)
+        : await this.$api.getOrgs()
+      this.loading = false
+
+      if (!ok) {
+        //this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+        this.orgs = [];
+      }
+      else
+        this.orgs = data.clubs;
+    },
   }
 }
 </script>
