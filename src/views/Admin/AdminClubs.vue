@@ -107,20 +107,22 @@
         @click="getOrgsByQuery()">        
     </form>
     <div class="club-list">
-      <details>
+      <details v-for="(club, idx) in orgs">
         <summary>
           <img src="/res/images/stud-logo-circle.svg">
           <span class="text">
-            <header>Название организации</header>
-            Руководитель: Петя Петров
+            <header>{{club.name}}</header>
+            <p v-for="org in club.orgs">
+              {{org.spec}}: {{org.name}}
+            </p>
           </span>
           <span class="type">
-            Клуб
+            {{club.type}}
           </span>
         </summary>
         <div class="info-block">
-          <p>Краткое описание организации</p>
-          <router-link :to="'adminClubEdit/:?orgId='+id">
+          <p>{{club.description}}</p>
+          <router-link :to="'adminClubEdit/:?orgId='+club.id">
             <button>Перейти</button>
           </router-link>
         </div>
@@ -136,13 +138,29 @@ export default {
 
   data() {
     return {
+      orgs: [],
+      loading: false,
     }
   },
 
   mounted() {
+    this.getOrgs()
   },
 
   methods: {
+    async getOrgs() {
+      this.loading = true;
+      
+      const {data, ok, status} = await this.$api.getOrgs();
+      
+      this.loading = false;
+
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+      }
+
+      this.orgs = data.clubs;
+    }
   }
 }
 </script>
