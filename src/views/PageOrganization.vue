@@ -95,7 +95,7 @@ padding-sides = 20px
 </style>
 
 <template>
-  <div class="root-page-orgs" :key="$route.name">
+  <div class="root-page-orgs" v-if="error != true" :key="$route.name">
     <!-- <Header></Header> -->
 
     <main class="main-container">
@@ -203,6 +203,7 @@ export default {
       photos: [],
 
       loading: false,
+      error: true,
 
       StudLogo,
       Picture,
@@ -212,7 +213,8 @@ export default {
 
   watch: {
     '$route' (to,from) {
-      if (to.name == "organization")
+      if (to.name == "organization" || to.name == "about")
+        this.error = true
         this.initialize()
     }
   },
@@ -263,20 +265,31 @@ export default {
     },
     async getInfo() {
       this.loading = true;
-      const {data, ok, status} = await this.$api.getOrgInfo(this.orgId);
-      this.loading = false;
-      if (!ok) {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
+      
+      try {
+        const {data, ok, status} = await this.$api.getOrgInfo(this.orgId);
+        this.loading = false;
+        if (!ok) {
+          this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
+        }
+        else {
+          this.error = false
+          this.logoSrc = `/media/${data.logo.key}`
+          this.title = data.name
+          this.description = data.description
+          this.linkVk = parseExternalLink(data.vk_url)
+          this.linkTg = parseExternalLink(data.tg_url)
+          this.leads = data.main_orgs
+          this.subLeads = data.sub_orgs
+          this.path = this.getPath()
+        }
       }
-      this.logoSrc = `/media/${data.logo.key}`
-      this.title = data.name
-      this.description = data.description
-      // this.linkTg = data.tg_url
-      this.linkVk = parseExternalLink(data.vk_url)
-      this.linkTg = parseExternalLink(data.tg_url)
-      this.leads = data.main_orgs
-      this.subLeads = data.sub_orgs
-      this.path = this.getPath()
+      catch {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
+        this.error = true
+        this.loading = false;
+      }
+      
     },
     async getPhotos() {
       this.loading = true;
