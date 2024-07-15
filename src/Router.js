@@ -17,6 +17,10 @@ import PageContacts from "~/views/Miss/PageContacts.vue";
 import pagePartners from "~/views/Miss/PagePartners.vue";
 import PageMissProfile from "~/views/Miss/PageMissProfile.vue";
 
+import PageAdminMenu from "~/views/Admin/AdminMenu.vue";
+import AdminClubs from "~/views/Admin/AdminClubs.vue";
+import AdminClubEdit from "~/views/Admin/AdminClubEdit.vue";
+
 export default function createVueRouter(Store) {
     const routes = [
         {path: '/', name: 'default', redirect: '/news'},
@@ -42,6 +46,11 @@ export default function createVueRouter(Store) {
             {path: '/miss/contacts', name: 'missContacts', component: PageContacts, meta: {}},
             {path: '/miss/profile/:missId', name: 'missProfile', component: PageMissProfile, meta: {}},
         ]},
+
+        {path: '/admin', component: PageAdminMenu, meta: {}, children: [
+            {path: '/admin/clubs', name: 'adminClubs', component: AdminClubs, meta: {}},  
+        ]},
+        {path: '/admin/club/:orgId', name: 'adminClubEdit', component: AdminClubEdit, meta: {noLoginRequired: true}},
 
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
     ];
