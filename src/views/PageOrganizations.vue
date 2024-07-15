@@ -85,7 +85,7 @@ padding-sides = 20px
           ref="orgCategoriesDropdown"
           name="org-categories-dropdown"
           :items="categories"
-          @updateFilter="getOrgsByTag()"></Dropdown>
+          @updateFilter="getOrgsByType()"></Dropdown>
         
         <form 
           class="input-container"
@@ -102,11 +102,10 @@ padding-sides = 20px
       <div class="orgs-container">
         <Organization v-for="(oneOrg, idx) in orgs"
             :id="oneOrg.id"
-            :title="oneOrg.title"
-            :logo-src="oneOrg.logo_src"
+            :title="oneOrg.name"
+            :logo-src="`/media/${oneOrg.logo.key}`"
             :text="oneOrg.description"
-            :head-title="oneOrg.head_title"
-            :head-name="oneOrg.head_name"
+            :leads="oneOrg.orgs"
         ></Organization>
         <span class="message-empty" v-if="orgs.length==0">
           Организаций не найдено :(
@@ -163,7 +162,7 @@ export default {
         {
           id: 1,
           text: "Студенческие Советы факультетов",
-          value: "ССФ",
+          value: "IT",
         },
         {
           id: 2,
@@ -198,20 +197,21 @@ export default {
 
 
   methods: {
-    async getOrgsByTag() {
-      const tag = this.$refs.orgCategoriesDropdown.value
-      if(tag=="default")  
+    async getOrgsByType() {
+      const type = this.$refs.orgCategoriesDropdown.value
+      if(type=="default")  
         {this.getOrgs()}
       else {
         this.loading = true;            
-        const {data, ok, status} = await this.$api.getOrgsByTag(tag);
+        const {data, ok, status} = await this.$api.getOrgsByType(type);
         this.loading = false;
 
         if (!ok) {
           this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+          this.orgs = [];
         }
-
-        this.orgs = data.orgs;
+        else
+          this.orgs = data.clubs;
       }
     },
     async getOrgsByQuery() {
@@ -222,10 +222,11 @@ export default {
       this.loading = false;
 
       if (!ok) {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+        //this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+        this.orgs = [];
       }
-
-      this.orgs = data.orgs;
+      else
+        this.orgs = data.clubs;
     },
     async getOrgs() {
       this.loading = true;
@@ -238,7 +239,7 @@ export default {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
       }
 
-      this.orgs = data.orgs;
+      this.orgs = data.clubs;
     }
   }
 }
