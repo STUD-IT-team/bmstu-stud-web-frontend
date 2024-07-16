@@ -63,9 +63,46 @@
       padding 10px 20px
       display flex
       flex-direction column
+      gap 10px
       .header
         font-large()
         text-align center
+      button
+        button()
+        border 2px solid colorPalette1
+      .person-container
+        border-bottom solid 2px colorPalette3
+        padding-bottom 15px
+        .row
+          label
+            font-medium()
+          input
+            font-small()
+          img
+            position relative
+            bottom 5px
+        .person-dropdown
+          position relative
+          summary
+            font-large()
+            img
+              filter none
+              position absolute
+              top 0
+              height 30px
+              cursor pointer
+          input
+            font-medium()
+            padding 10px 20px
+            border-radius borderRadiusM
+            border 2px solid colorPalette1
+          img
+            position relative
+            top 10px
+            height 30px
+            width 30px
+            filter brightness(0)
+            cursor pointer
     .image-wrapper
       width 100%
       .image-container
@@ -112,6 +149,7 @@
           width 30px
           height 30px
           cursor pointer
+          filter brightness(0.8)
         input
           border-radius borderRadiusS
           width 80%
@@ -256,32 +294,55 @@
           Руководители
         </span>
 
-        <!-- <label>{{club.main_orgs[0].role_name}}: {{club.main_orgs[0].name}}</label> -->
-        <!-- <div class="input-container" v-for="(lead, idx) in club.main_orgs">
-          <div class="row">
-            <label ref="labelLead">
-              {{lead.role_name}}: {{lead.name}}
+        <div class=person-container v-for="(lead, idx) in club.main_orgs" ref="personContainer">
+
+          <details class="person-dropdown">
+            <summary>
+              <label>{{lead.name}}</label> 
+              <img src="/res/icons/trash.svg" @click="this.deleteLead(idx)">
+            </summary>
+            <input>
+            <img src="/res/icons/search.svg">
+            <label v-for="member in this.members">
+              {{member.name}}
             </label>
-            <img src="/res/icons/edit.svg" @click="showInput(idx+5)">
+          </details>
+
+
+          <div class="input-container">
+            <div class="row">
+              <label ref="labelRoleName">
+                Роль: {{lead.role_name}}
+              </label>
+              <img src="/res/icons/edit.svg" @click="showInput(2*idx+5)">
+            </div>
+            <div class="row" ref="rowRole" style="display: none">
+              <input ref="inputRoleNameField" :value="lead.role_name">
+              <button @click="setRoleName(idx)">ОК</button>
+            </div>
           </div>
-          <div class="row" ref="rowInputLinkVk" style="display: none">
-            <input id="club-lead-role" ref="inputLeadRoleField" :value="lead.">
-            <input id="club-lead-name" ref="inputLeadNameField" :value="club.vk_url">
-            <button @click="setLinkVk()">ОК</button>
+
+          <div class="input-container">
+            <div class="row">
+              <p style="white-space: pre-line" ref="labelRoleSpec">
+                Описание: <br>{{lead.spec}}
+              </p>
+              <img src="/res/icons/edit.svg" @click="showInput(2*idx+6)">
+            </div>
+            <div class="row" ref="rowRole" style="display: none">
+              <textarea id="club-description" ref="inputRoleSpecField">{{lead.spec}}</textarea>
+              <button @click="setRoleSpec(idx)">ОК</button>
+            </div>
           </div>
-        </div> -->
+
+        </div>
+
+        <button @click="addLead()">+</button>
+
       </div>
 
       <div class="image-wrapper">
         <div class="image-container">
-          <img v-for="image in photos" 
-          :src="`/media/${image.key}`">
-          <img v-for="image in photos" 
-          :src="`/media/${image.key}`">
-          <img v-for="image in photos" 
-          :src="`/media/${image.key}`">
-          <img v-for="image in photos" 
-          :src="`/media/${image.key}`">
           <img v-for="image in photos" 
           :src="`/media/${image.key}`">
         </div>
@@ -303,6 +364,7 @@ export default {
       club: Object,
       photos: Array,
       orgId: Number,
+      memberList: [],
 
       categories: [
         {
@@ -332,9 +394,18 @@ export default {
 
   created() {
     this.initialize()
+    //this.getAllMembers()
   },
 
   methods: {
+    async getAllMembers() {
+      this.loading = true
+      const {data, ok, status} = await this.$api.getAllMembers()
+      this.loading = false
+      this.memberList = data
+      console.log(this.memberList)
+      //return this.memberList
+    },
     showInput(idx) {
       var row
       if (idx == 0)
@@ -347,6 +418,9 @@ export default {
         row = this.$refs.rowInputLinkTg
       if (idx == 4)
         row = this.$refs.rowInputLinkVk
+      if (idx >= 5)
+        var row = this.$refs.rowRole[idx-5]
+
       if (getComputedStyle(row).display == "none")
         row.style.display = "flex"
       else
@@ -391,6 +465,33 @@ export default {
         this.$refs.labelLinkVk.style.color = "#FF9301"
       }
       this.showInput(4)
+    },
+    setRoleName(idx) {
+      const newVal = this.$refs.inputRoleNameField[idx].value
+      if (newVal != this.club.main_orgs[idx].role_name) {
+        this.club.main_orgs[idx].role_name = newVal
+        this.$refs.labelRoleName[idx].style.color = "#FF9301"
+      }
+      this.showInput(idx*2 + 5)
+    },
+    setRoleSpec(idx) {
+      const newVal = this.$refs.inputRoleSpecField[idx].value
+      if (newVal != this.club.main_orgs[idx].spec) {
+        this.club.main_orgs[idx].spec = newVal
+        this.$refs.labelRoleSpec[idx].style.color = "#FF9301"
+      }
+      this.showInput(idx*2 + 6)
+    },
+    addLead() {
+      this.club.main_orgs.push({
+          name: "Иван Иванов",
+          role_name: "Руководитель",
+          spec: `Руководитель организации ${this.club.name}`,
+      })
+      console.log(this.club.main_orgs)
+    },
+    deleteLead(idx) {
+      this.club.main_orgs.splice(idx, 1)
     },
     parseExternalLink(link) {
       return parseExternalLink(link)

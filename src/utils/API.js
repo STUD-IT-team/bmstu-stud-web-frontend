@@ -136,6 +136,7 @@ export default class MY_API extends REST_API {
     getOrgInfo = (orgId) => this.get(`/clubs/${orgId}`, {_model: Models.Club});
     getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.Images});
     
+    getAllMembers = () => this.get(`/members/`, { _model: Models.Members})
 
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
