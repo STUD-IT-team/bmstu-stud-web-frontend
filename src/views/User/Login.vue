@@ -71,7 +71,7 @@
     .form
       width 45%
       text-align left
-      color colorText1
+      color white
       .header
         font-large-xx()
       .profile-button
