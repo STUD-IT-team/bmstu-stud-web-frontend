@@ -5,143 +5,224 @@
 @require '../styles/components.styl'
 @require '../styles/utils.styl'
 
+
 between-news-gap = 30px
 between-columns-gap = between-news-gap
 padding-sides = 20px
 
 .root-page-news
-  .main-container
-    padding 0 padding-sides
-    padding-top 50px
-    centered-margin()
-    max-width (main-part-max-width + padding-sides * 2)
-    .header
-      font-large-xx()
-      margin-bottom 20px
-    .navbar-organizations
-      margin-left-size = 'min(-%s, calc((100vw - %s) / -2))' % (padding-sides main-part-max-width)
-      padding-left-size = 'max(%s, calc((100vw - %s) / 2))' % (padding-sides main-part-max-width)
-      margin-left margin-left-size
-      padding 20px padding-left-size
-      width 100vw
-      border 1px solid white
-      border-left none
-      border-right none
-      margin-bottom 50px
-      .organization-button
-        padding 5px 3px
-        font-medium()
-        trans()
-        hover-effect-underline()
-    .news-blocks-section-container
-      display flex
-      gap between-columns-gap
-      @media ({mobile})
-        flex-direction column-reverse
-      .news-container
+  display flex
+  flex-direction column
+  align-items center
+
+
+  .orange-star
+    img
+      position static
+      margin-left 1300px
+
+  .emotions-sector
+    width 100%
+    position relative
+
+    .background-video
+      video
+        pointer-events none
         width 100%
+        top 10px
+        margin-top 80px
+
+    .overlay-video
+      width 100%
+
+      .create-emotions-circle
+        position relative
+
+        img
+          user-select none
+          position absolute
+          bottom 30px
+          right 5%
+          width 13%
+          --color: #fff
+          --border: 4px
+          --offset: 10px
+          --gap: 3px
+          border-radius: 50%
+          cursor: pointer
+          padding: calc(var(--border) + var(--gap))
+          border: var(--offset) solid #0000
+          --_m: radial-gradient(50% 50%, #000 calc(100% - var(--offset)), #0000 calc(100% - var(--border)))
+          -webkit-mask: var(--_m)
+          mask: var(--_m)
+          --_g: #0000 calc(99% - var(--border)), var(--color) calc(100% - var(--border)) 99%, #0000
+          --_s: var(--offset)
+          --_r: 100% 100% at
+          background: radial-gradient(var(--_r) 0 0, var(--_g)) calc(100% + var(--_s)) calc(100% + var(--_s)),
+                      radial-gradient(var(--_r) 100% 0, var(--_g)) calc(0% - var(--_s)) calc(100% + var(--_s)),
+                      radial-gradient(var(--_r) 0 100%, var(--_g)) calc(100% + var(--_s)) calc(0% - var(--_s)),
+                      radial-gradient(var(--_r) 100% 100%, var(--_g)) calc(0% - var(--_s)) calc(0% - var(--_s))
+          background-size: 50% 50%
+          background-repeat: no-repeat
+          transition: .4s ease-out
+          opacity: 0.7
+          &:hover
+            --_s: 0px
+            opacity: 1
+
+  .number-slider
+    width 100%
+    display flex
+    justify-content space-around
+    list-style none
+    white-space nowrap
+    overflow-x scroll
+    scrollbar-width none
+
+    .scroll-touch
+      -webkit-overflow-scrolling touch
+
+    &::-webkit-scrollbar
+      display none
+
+    .number-item
+      display flex
+      flex-direction column
+      align-items center
+      border 1px solid colorPalette1
+      border-radius 20px
+      padding 10px
+      padding-bottom 1px
+      margin 15px
+
+      .number
+        font-large-xx()
+        color colorPalette1
+
+      .description
+        font-large-x()
+        color colorPalette1
+    
+  .content-wrapper
+    max-width 1440px
+    width 100%
+    margin auto
+
+    .big-news-container
+      margin auto
+      padding-bottom 60px
+      overflow auto
+      max-width 1282px
+
+      .big-news-sector
         display flex
-        flex-direction column
-        gap between-news-gap
-      .side-blocks-container
-        display flex
-        flex-direction column
-        gap between-news-gap
-        > *
-          @media ({desktop})
-            width 360px
+        justify-content space-between
+        gap 29px
+
 </style>
 
 <template>
   <div class="root-page-news">
-    <Header></Header>
-
-    <main class="main-container">
-      <header class="header">Лента новостей</header>
-
-      <nav class="navbar-organizations">
-        <router-link to="#" class="organization-button">Все события</router-link>
-      </nav>
-
-      <section class="news-blocks-section-container">
-        <div class="news-container">
-          <New v-for="(oneNew, idx) in news"
-             :id="oneNew.id"
-             :title="oneNew.title"
-             :text="oneNew.description"
-             organization-name="Студнческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана"
-             :organization-logo="StudLogo"
-             :images-src="[Picture]"
-             :time-published="oneNew.created_at"
-             @delete="news.splice(idx, 1)"
-          ></New>
+    <div class="emotions-sector">
+      <div class="background-video">
+        <video width="100%" autoplay muted loop disablePictureInPicture>
+          <source src="http://localhost:9000/videos/main_vid.mp4" type="video/mp4">
+          Ваш браузер не поддерживает это видео
+        </video>
+      </div>
+      <div class="overlay-video">
+        <div class="create-emotions-circle">
+          <a href="#slider" @click.prevent="scrollToSlider">
+            <img src="/res/icons/create-emotions-circle.svg" alt="" />
+          </a>
         </div>
-        <div class="side-blocks-container">
-          <ListingBlock title="Поздравляем!"
-                        :text-rows="[
-                        'Поздравляем Антона Павленко с ДР!!!',
-                        'Поздравляем Антона Успенского со званием мисс',
-                        'А вас не бесит it отдел?',
-                        'Это студенческий совет МГТУ&nbsp;им.&nbsp;Н.Э.&nbsp;Баумана',
-                      ]">
-          </ListingBlock>
-          <ListingBlock title="Горячие новости"
-                        :text-rows="[
-                        'А вас не бесит it отдел?',
-                        'Меня лично бесит',
-                        'Можно выйти пж?',
-                        'Блин кнопку выхода не сделали :(',
-                        'Я запрещаю вам выходить из IT-отдела!',
-                      ]">
-          </ListingBlock>
-        </div>
-      </section>
-    </main>
+      </div>
+    </div>
 
+    <ul class="number-slider" id='slider'>
+      <li v-for="numberEvent in numbersStud" class="number-item">
+        <div class="number">{{ numberEvent.num }}</div>
+        <div class="description">{{ numberEvent.description }}</div>
+      </li>
+    </ul>
+
+    <div class="orange-star">
+      <img src="/res/icons/orange-star.svg" alt="" />
+    </div>
+
+    <div class="content-wrapper">
+      <div class="big-news-container">
+        <div class="big-news-sector">
+          <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
+            :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
+          </OneBigNew>
+        </div>
+      </div>
+      <Events></Events>
+      <FSC></FSC>
+      <SC></SC>
+    </div>
     <Footer></Footer>
   </div>
 </template>
 
-
 <script>
-import Header from "~/components/Header/Header.vue";
-import New from "~/components/New.vue";
-
-import StudLogo from "#~/images/stud-logo-circle.svg";
-import Picture from "#~/images/stud-logo-circle.svg";
-import ListingBlock from "~/components/ListingBlock.vue";
-import Footer from "~/components/Footer.vue";
-
+import Footer from "~/components/Footer.vue"
+import OneBigNew from "~/components/OneBigNew.vue";
+import FSC from "~/components/FacultyStudCouncils.vue";
+import SC from "~/components/StudCounsilClubs.vue";
+import Events from "~/components/EventTimeline.vue";
 
 export default {
-  components: {Footer, ListingBlock, New, Header},
-
+  components: { Footer, OneBigNew, FSC, SC, Events },
   data() {
     return {
-      news: [],
-
+      numbersStud: [],
+      bigNews: [],
       loading: false,
-
-      StudLogo,
-      Picture,
     }
   },
-
   mounted() {
-    this.getNews();
-  },
+    this.getStudNums();
+    this.getBigNews();
 
+    const list = document.querySelector('.number-slider');
+    if (list) {
+      list.addEventListener('wheel', function (ev) {
+        let items = this.querySelectorAll('.number-item');
+        if (ev.wheelDelta > 0) {
+          this.prepend(items[items.length - 1]);
+        } else {
+          this.append(items[0]);
+        }
+      });
+    }
+  },
   methods: {
-    async getNews() {
-      this.loading = true;
-      const {data, ok, status} = await this.$api.getNews();
-      this.loading = false;
+    async getStudNums() {
+      this.loading = true
+      const { data, ok, status } = await this.$api.getStudNums()
+      this.loading = false
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить студ в цифрах')
+      }
+      this.numbersStud = data.studNumbers
+    },
+    async getBigNews() {
+      this.loading = true
+      const { data, ok, status } = await this.$api.getBigNews()
+      this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить новости')
       }
-
-      this.news = data.feed;
-    }
+      this.bigNews = data.studBigNews
+    },
+    scrollToSlider() {
+      const sliderElement = document.getElementById('slider');
+      if (sliderElement) {
+        sliderElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
   }
 }
 </script>

@@ -42,7 +42,7 @@ export const Event = {
   date: Date,
   approved: Boolean,
   created_at: Date,
-  reg_url: {
+  reg_url: {    
     type: String,
     required: false,
   },
@@ -60,6 +60,19 @@ export const Events = {
   events: {
     type: Array,
     item: Event,
+  }
+}
+
+
+export const StudNumber = {
+  num: String,
+  description: String,
+}
+
+export const StudNumbers = {
+  studNumbers: {
+    type: Array,
+    item: StudNumber,
   }
 }
 
@@ -143,3 +156,4 @@ export const Images = {
     item: Media,
   }
 }
+
