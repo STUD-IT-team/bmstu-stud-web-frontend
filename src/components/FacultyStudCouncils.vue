@@ -8,6 +8,7 @@
 .stud-faculties 
   position relative
   margin auto
+
   .background-img 
     display block
     img 
@@ -49,6 +50,7 @@
       backface-visibility hidden
       display flex
       align-items center
+      justify-content center
       border-radius 50%
       -webkit-box-reflect below 2px colorPalette1
       transition all 0.3s ease
@@ -75,12 +77,20 @@
         transition all 0.3s ease
         border 1px solid colorPalette1
         pointer-events none
+        display flex
+        justify-content center
+        align-items center
 
       img 
         width 93%
         height 93%
         border-radius 50%
         box-shadow 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22)
+      
+      a
+        display flex
+        justify-content center
+        align-items center
 
     img:hover 
       transform translateY(-20px)

@@ -153,6 +153,7 @@
           </OneBigNew>
         </div>
       </div>
+      <Events></Events>
       <FSC></FSC>
       <SC></SC>
     </div>
@@ -165,9 +166,10 @@ import Footer from "~/components/Footer.vue"
 import OneBigNew from "~/components/OneBigNew.vue";
 import FSC from "~/components/FacultyStudCouncils.vue";
 import SC from "~/components/StudCounsilClubs.vue";
+import Events from "~/components/EventTimeline.vue";
 
 export default {
-  components: { Footer, OneBigNew, FSC, SC },
+  components: { Footer, OneBigNew, FSC, SC, Events },
   data() {
     return {
       numbersStud: [],
