@@ -1,6 +1,6 @@
 
 // ----------------------------------------------------------------------
-import { apply } from "file-loader"
+// import { apply } from "file-loader"
 
 // req: get /club/media/{club_id}
 export const Media = {
@@ -34,32 +34,6 @@ export const Clubs = {
         updated_at: String,
         views: Number,
         vk_post_url: String,
-      }
-    }
-  }
-}
-
-export const Encounters = {
-  encounter: {
-        id: Number,
-        name: String,
-        short_name: String,
-        description: String,
-        logo: Media, // id key name
-        tg_url: String,
-        vk_url: String,
-        type: String, //Тип - отряд, клуб и тд
-        orgs: { //Глава организации
-          type: Array,
-          item: {
-            type: Object,
-            fields: {
-              id: Number,
-              name: String,
-              spec: String,
-            },
-          }
-        },
       }
     }
   }

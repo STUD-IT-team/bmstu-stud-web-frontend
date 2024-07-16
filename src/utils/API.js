@@ -5,63 +5,17 @@ import * as Models from "~/utils/apiModels";
 export default class MY_API extends REST_API {
     login = (login, password) => this.post('/guard/login', { _model: Models.User, login, password });
     logout = () => this.delete('/api/user/session', { _model: {} });
+    register = (name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS) => this.post('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS });
+    getUser = () => this.get('/api/user', { _model: Models.User });
+    getUserById = (id) => this.get(`/api/user`, { _model: Models.User, id });
+    sendConfirmationLetter = (name, email) => this.post('/api/email/confirm', { _model: Models.User, name, email });
+    confirmEmailByCode = (secretCode) => this.put('/api/user/email/confirm', { _model: Models.User, secretCode });
+    changePassword = (oldPassword, newPassword) => this.put('/api/user/password', { _model: Models.User, oldPassword, newPassword });
+    editProfile = (name, group, telegram, vk, email, phone_number) => this.put('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number });
+    sendRestorePasswordLetter = (secretCode, newPassword) => this.post('/api/user/password/restore', { _model: Models.User, secretCode, newPassword });
+    restorePassword = (secretCode, newPassword) => this.put('/api/user/password', { _model: Models.User, secretCode, newPassword });
+    authCode = (secretCode, clientBrowser, clientOS) => this.post('/api/user/auth/status', { _model: Models.User, secretCode, clientBrowser, clientOS });
 
-    getEvents = (startDate, endDate) => ({
-        ok: true, status: 200, data: {
-            events: [
-                {
-                    id: 1,
-                    description: "Cобытие 1",
-                    date: new Date('2024-03-16'),
-                    approved: true,
-                    created_at: new Date('2024-03-20'),
-                    reg_url: 'http://ya.ru',
-                    reg_open_date: new Date('2024-03-16'),
-                    feedback_url: 'http://google.com',
-                },
-                {
-                    id: 2,
-                    description: "Cобытие 2",
-                    date: new Date('2024-03-17'),
-                    approved: true,
-                    created_at: new Date('2024-03-20'),
-                    reg_url: 'http://ya.ru',
-                    reg_open_date: new Date('2024-03-16'),
-                    feedback_url: 'http://google.com',
-                },
-                {
-                    id: 3,
-                    description: "Cобытие 3",
-                    date: new Date('2024-03-18'),
-                    approved: true,
-                    created_at: new Date('2024-03-20'),
-                    reg_url: 'http://ya.ru',
-                    reg_open_date: new Date('2024-03-16'),
-                    feedback_url: 'http://google.com',
-                },
-                {
-                    id: 4,
-                    description: "Cобытие 4",
-                    date: new Date('2024-03-16'),
-                    approved: true,
-                    created_at: new Date('2024-03-20'),
-                    reg_url: 'http://ya.ru',
-                    reg_open_date: new Date('2024-03-16'),
-                    feedback_url: 'http://google.com',
-                },
-                {
-                    id: 5,
-                    description: "Cобытие 5",
-                    date: new Date('2024-03-15'),
-                    approved: true,
-                    created_at: new Date('2024-03-20'),
-                    reg_url: 'http://ya.ru',
-                    reg_open_date: new Date('2024-03-16'),
-                    feedback_url: 'http://google.com',
-                },
-            ]
-        }
-    })
 
     // getEvents = ()
     // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
@@ -72,19 +26,19 @@ export default class MY_API extends REST_API {
 
     getEncounters = (id) => this.get(`/feed/encounters/${id}`, { _model: Models.Encounters})
 
-    getStudNums = () => ({
-        ok: true, status: 200, data: {
-            studNumbers: [
-                { num: ">360", description: "выездов" },
-                { num: "100+", description: "мероприятий" },
-                { num: "34", description: "клубов и организаций" },
-                { num: ">1300", description: "активистов" },
-                { num: "30 000", description: "охват студентов" },
-                { num: "5", description: "программистов" },
-                { num: "6", description: "программистов" },
-            ]
-        }
-    })
+    // getStudNums = () => ({
+    //     ok: true, status: 200, data: {
+    //         studNumbers: [
+    //             { num: ">360", description: "выездов" },
+    //             { num: "100+", description: "мероприятий" },
+    //             { num: "34", description: "клубов и организаций" },
+    //             { num: ">1300", description: "активистов" },
+    //             { num: "30 000", description: "охват студентов" },
+    //             { num: "5", description: "программистов" },
+    //             { num: "6", description: "программистов" },
+    //         ]
+    //     }
+    // })
 
     getClubsList = () => ({
         ok: true, status: 200, data: {

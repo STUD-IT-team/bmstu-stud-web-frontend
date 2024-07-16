@@ -158,8 +158,7 @@ padding-sides = 20px
           </OneBigNew>
         </div>
       </div>
-      <EventTimeline>
-      </EventTimeline>
+      <EventTimeline></EventTimeline>
       <FSC></FSC>
       <SC></SC>
     </div>
@@ -210,7 +209,7 @@ export default {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить студ в цифрах')
       }
 
-      this.numbersStud = data.encounter
+      this.numbersStud = data.encounters
     },
     async getBigNews() {
       this.loading = true
