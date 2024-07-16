@@ -139,7 +139,7 @@ export default {
   methods: {
     async login(data) {
       this.loading = true;
-      const {ok} = await this.$api.login(data.login, data.password, detectBrowser(), detectOS());
+      const {ok} = await this.$api.login(data.login, data.password);
       this.loading = false;
 
       if (!ok) {
