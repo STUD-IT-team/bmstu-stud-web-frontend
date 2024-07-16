@@ -8,11 +8,8 @@ export const Media = {
 }
 
 export const User = {
-  id: String,
-  name: String,
-  email: String,
-  tg: String,
-  vk: String,
+  login: String,
+  password: String,
 }
 
 export const Feed = {
@@ -42,7 +39,7 @@ export const Event = {
   date: Date,
   approved: Boolean,
   created_at: Date,
-  reg_url: {    
+  reg_url: {
     type: String,
     required: false,
   },
@@ -151,7 +148,7 @@ export const Clubs = {
 }
 
 export const Images = {
-  media:{
+  media: {
     type: Array,
     item: Media,
   }
