@@ -3,18 +3,8 @@ import validateModel from "@sergtyapkin/models-validator";
 import * as Models from "~/utils/apiModels";
 
 export default class MY_API extends REST_API {
-    login = (email, password, clientBrowser, clientOS) => this.post('/api/user/auth', { _model: Models.User, email, password, clientBrowser, clientOS });
-    register = (name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS) => this.post('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS });
+    login = (login, password) => this.post('/guard/login', { _model: Models.User, login, password });
     logout = () => this.delete('/api/user/session', { _model: {} });
-    getUser = () => this.get('/api/user', { _model: Models.User });
-    getUserById = (id) => this.get(`/api/user`, { _model: Models.User, id });
-    sendConfirmationLetter = (name, email) => this.post('/api/email/confirm', { _model: Models.User, name, email });
-    confirmEmailByCode = (secretCode) => this.put('/api/user/email/confirm', { _model: Models.User, secretCode });
-    changePassword = (oldPassword, newPassword) => this.put('/api/user/password', { _model: Models.User, oldPassword, newPassword });
-    editProfile = (name, group, telegram, vk, email, phone_number) => this.put('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number });
-    sendRestorePasswordLetter = (secretCode, newPassword) => this.post('/api/user/password/restore', { _model: Models.User, secretCode, newPassword });
-    restorePassword = (secretCode, newPassword) => this.put('/api/user/password', { _model: Models.User, secretCode, newPassword });
-    authCode = (secretCode, clientBrowser, clientOS) => this.post('/api/user/auth/status', { _model: Models.User, secretCode, clientBrowser, clientOS });
 
     getEvents = (startDate, endDate) => ({
         ok: true, status: 200, data: {
@@ -72,6 +62,8 @@ export default class MY_API extends REST_API {
             ]
         }
     })
+
+    getEvents = ()
     // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
     getNews = () => ({
         ok: true, status: 200, data: {
