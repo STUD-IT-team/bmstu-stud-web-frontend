@@ -98,3 +98,9 @@ export function compressEventsByDays(dateFrom, daysPeriod, events) {
   }
   return res;
 }
+
+export function parseExternalLink(link) {
+  const new_link = (/http(s)?:\/\/.*/.test(link) ? '' : 'https://') + link
+  console.log(new_link)
+  return new_link
+}

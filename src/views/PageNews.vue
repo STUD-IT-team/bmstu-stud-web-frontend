@@ -5,6 +5,11 @@
 @require '../styles/components.styl'
 @require '../styles/utils.styl'
 
+
+between-news-gap = 30px
+between-columns-gap = between-news-gap
+padding-sides = 20px
+
 .root-page-news
   display flex
   flex-direction column
@@ -173,8 +178,6 @@ export default {
   components: { Footer, OneBigNew, FSC, SC, EventTimeline },
   // props: {
   // },
-
-
   data() {
     return {
       numbersStud: [],

@@ -3,18 +3,8 @@ import validateModel from "@sergtyapkin/models-validator";
 import * as Models from "~/utils/apiModels";
 
 export default class MY_API extends REST_API {
-    login = (email, password, clientBrowser, clientOS) => this.post('/api/user/auth', { _model: Models.User, email, password, clientBrowser, clientOS });
-    register = (name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS) => this.post('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS });
+    login = (login, password) => this.post('/guard/login', { _model: Models.User, login, password });
     logout = () => this.delete('/api/user/session', { _model: {} });
-    getUser = () => this.get('/api/user', { _model: Models.User });
-    getUserById = (id) => this.get(`/api/user`, { _model: Models.User, id });
-    sendConfirmationLetter = (name, email) => this.post('/api/email/confirm', { _model: Models.User, name, email });
-    confirmEmailByCode = (secretCode) => this.put('/api/user/email/confirm', { _model: Models.User, secretCode });
-    changePassword = (oldPassword, newPassword) => this.put('/api/user/password', { _model: Models.User, oldPassword, newPassword });
-    editProfile = (name, group, telegram, vk, email, phone_number) => this.put('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number });
-    sendRestorePasswordLetter = (secretCode, newPassword) => this.post('/api/user/password/restore', { _model: Models.User, secretCode, newPassword });
-    restorePassword = (secretCode, newPassword) => this.put('/api/user/password', { _model: Models.User, secretCode, newPassword });
-    authCode = (secretCode, clientBrowser, clientOS) => this.post('/api/user/auth/status', { _model: Models.User, secretCode, clientBrowser, clientOS });
 
     getEvents = (startDate, endDate) => ({
         ok: true, status: 200, data: {
@@ -72,6 +62,8 @@ export default class MY_API extends REST_API {
             ]
         }
     })
+
+    // getEvents = ()
     // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
     getNews = () => this.get(`/feed/`, { _model: Models.Feed })
     // this.get(`/api/feed`, {_model: Models.Feeds});
@@ -79,6 +71,7 @@ export default class MY_API extends REST_API {
     deleteNew = (id) => this.delete(`/api/feed`, { _model: Models.Feed, id });
 
     getEncounters = (id) => this.get(`/feed/encounters/${id}`, { _model: Models.Encounters})
+
     getStudNums = () => ({
         ok: true, status: 200, data: {
             studNumbers: [
@@ -97,46 +90,47 @@ export default class MY_API extends REST_API {
         ok: true, status: 200, data: {
             clubsList: [
                 {title: "1", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
-                {title: "2", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album"},
-                {title: "3", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album"},
-                {title: "4", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album"},
-                {title: "5", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album"},
-                {title: "6", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album"},
-                // {title: "7", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album"},
-                // {title: "8", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"},
-                // {title: "9", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album"},
-                // {title: "10", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album"},
-                // {title: "11", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
-                // {title: "12", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album"},
-                // {title: "13", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album"},
-                // {title: "14", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album"},
-                // {title: "15", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album"},
-                // {title: "16", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album"},
-                // {title: "17", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album"},
-                // {title: "18", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"},
-                // {title: "19", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album"},
-                // {title: "20", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album"},
+                {title: "2", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album", redirectLink: "https://vk.com/shmb_bmstu"},
+                {title: "3", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album", redirectLink: "https://vk.com/kinobmstu"},
+                {title: "4", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album", redirectLink: "https://vk.com/kinobmstu"},
+                {title: "5", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album", redirectLink: "https://vk.com/bas.bmstu"},
+                {title: "6", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album", redirectLink: "https://vk.com/studsovet_sm"},
+                {title: "7", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album", redirectLink: "https://vk.com/studsovet_iu"},
+                {title: "8", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"   , redirectLink: "https://vk.com/funduki"},
+                {title: "9", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album", redirectLink: "https://vk.com/studsovet_bmstu?w=club26724538"},
+                {title: "10", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album", redirectLink: "https://vk.com/shmb_bmstu"},
+                {title: "11", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://vk.com/studsovet_bmstu?w=club26724538"},
+                {title: "12", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
+                {title: "13", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album", redirectLink: "https://vk.com/shmb_bmstu"},
+                {title: "14", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album", redirectLink: "https://vk.com/kinobmstu"},
+                {title: "15", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album", redirectLink: "https://vk.com/kinobmstu"},
+                {title: "16", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album", redirectLink: "https://vk.com/bas.bmstu"},
+                {title: "17", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album", redirectLink: "https://vk.com/studsovet_sm"},
+                {title: "18", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album", redirectLink: "https://vk.com/studsovet_iu"},
+                {title: "19", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"   , redirectLink: "https://vk.com/funduki"},
+                {title: "20", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album", redirectLink: "https://vk.com/studsovet_bmstu?w=club26724538"},
+                {title: "21", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album", redirectLink: "https://vk.com/shmb_bmstu"},
+                {title: "22", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://vk.com/studsovet_bmstu?w=club26724538"},
             ]
         }
     })
     
     getFacList = () => ({
         ok: true, status: 200, data: {
-            clubsList: [
-                {title: "1", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
-                {title: "2", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album"},
-                {title: "3", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album"},
-                {title: "4", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album"},
-                {title: "5", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album"},
-                {title: "6", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album"},
-                {title: "7", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album"},
-                {title: "8", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"},
-                {title: "9", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album"},
-                {title: "10", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album"},
-                {title: "11", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
-                {title: "12", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album"},
-                {title: "13", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album"},
-                {title: "14", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album"},
+            clubsList: [{title: "1", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
+                {title: "2", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album", redirectLink: "https://vk.com/shmb_bmstu"},
+                {title: "3", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album", redirectLink: "https://vk.com/kinobmstu"},
+                {title: "4", imgUrl: "https://sun9-76.userapi.com/impg/0e7XYEpKcMi9IcaqZkJTsNI3OPFN2hVGJuP5uQ/-md9G-wbHdY.jpg?size=1280x1280&quality=95&sign=82e5fc908838f9efc4d71b719f2a9a41&type=album", redirectLink: "https://vk.com/kinobmstu"},
+                {title: "5", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album", redirectLink: "https://vk.com/bas.bmstu"},
+                {title: "6", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album", redirectLink: "https://vk.com/studsovet_sm"},
+                {title: "7", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album", redirectLink: "https://vk.com/studsovet_iu"},
+                {title: "8", imgUrl: "https://sun9-2.userapi.com/impg/4BpH7AlsxwrelYzdE7Rp0kNyZ9xQ-OFNbT08FA/7epWyQ8n_TE.jpg?size=800x800&quality=95&sign=ca1cec7c94cf4accad0029d992557d6d&type=album"   , redirectLink: "https://vk.com/funduki"},
+                {title: "9", imgUrl: "https://sun9-44.userapi.com/impg/ht0S0-EKUAScuxykwYdq2EFK5FfO-ikEf6Y4Ag/TbUjDSjoYp4.jpg?size=1280x1280&quality=95&sign=b5622cc87e2916915fbf708d7ee32f99&type=album", redirectLink: "https://vk.com/studsovet_bmstu?w=club26724538"},
+                {title: "10", imgUrl: "https://sun9-79.userapi.com/impg/j9jyQHARxclWWZ22CujlA6_c5aO5ax1LaahgXw/nzKg0cLg13M.jpg?size=1280x1280&quality=96&sign=c9945e0beb6fb7315fb5f119de006c77&type=album", redirectLink: "https://vk.com/shmb_bmstu"},
+                {title: "11", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://vk.com/studsovet_bmstu?w=club26724538"},
+                {title: "12", imgUrl: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album", redirectLink: "https://sun9-50.userapi.com/impg/uSedlZUFrFDcSHnMGEAs2UbLnv2QvYdh69yv8Q/whDSLD5i8z0.jpg?size=1080x1080&quality=95&sign=8d4d152db6054c19dbabbf72c6f7173b&type=album"},
+                {title: "13", imgUrl: "https://sun9-17.userapi.com/impg/PJs3t2qnB8Iy4yly4iDc1kErgoIqjjq965VefA/U2wj4QvLgpo.jpg?size=1280x1280&quality=95&sign=cbfd9f808bba91a310cac1c1abc1ee71&type=album", redirectLink: "https://vk.com/shmb_bmstu"},
+                {title: "14", imgUrl: "https://sun9-60.userapi.com/impg/Bq-V12ARb-8YF0Nf3cQnjxokO0HkBS7gsxbxgQ/zq-1_X5Nzb8.jpg?size=1280x1280&quality=95&sign=2786febb0e173008def67951a183e0e9&type=album", redirectLink: "https://vk.com/kinobmstu"},
                 // {title: "15", imgUrl: "https://sun9-69.userapi.com/impg/YFHiI01b7xeTEFm-rMsD0POdJ2YvLglGuqDxRQ/PcLlgW3nrbY.jpg?size=1280x1280&quality=95&sign=f310d658369792c1e8b3253fc8f1f7a8&type=album"},
                 // {title: "16", imgUrl: "https://sun9-59.userapi.com/impg/3INu08QEp8rkk-uUxI2ymBnLQKkChIMBgG-eMA/JY4aU_YT4j4.jpg?size=1280x1280&quality=95&sign=b67e703cef4298d3054be1681849a959&type=album"},
                 // {title: "17", imgUrl: "https://sun9-77.userapi.com/impg/8PkgH7hW8pW3vIq_Dek1HAvmKU1EmSlUv5UVIQ/GbByQW22rSM.jpg?size=1080x1080&quality=95&sign=97091a9c4119180e3db8edb070cbffaf&type=album"},
@@ -160,6 +154,15 @@ export default class MY_API extends REST_API {
     getEvents = () => this.get(`/events/`, { _model: Models.Events})
 
 
+    getOrgs = () => this.get(`/clubs`, {_model: Models.Clubs});
+    getOrgsByType = (type) => this.get(`/clubs/type/${type}`, {_model: Models.Clubs});
+    getOrgsByQuery = (query) => this.get(`/clubs/search/${query}`, {_model: Models.Clubs});
+ 
+    getOrgInfo = (orgId) => this.get(`/clubs/${orgId}`, {_model: Models.Club});
+    getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.Images});
+    
+
+
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
             throw SyntaxError(`Model for request '${path}' not specified`);
@@ -168,6 +171,7 @@ export default class MY_API extends REST_API {
         const _model = data._model;
         delete data._model;
         const { ok, data: dataRes, status } = await requestFunc.bind(this)(path, data);
+
         if (!ok) {
             return { ok, data: dataRes, status };
         }

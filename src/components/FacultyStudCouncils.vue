@@ -8,6 +8,7 @@
 .stud-faculties 
   position relative
   margin auto
+
   .background-img 
     display block
     img 
@@ -19,6 +20,8 @@
 
   .box 
     position relative
+    // display flex
+    // justify-content space-around
     bottom 400px
     left 645px
     width 10%
@@ -46,8 +49,8 @@
       transform-style preserve-3d
       backface-visibility hidden
       display flex
-      justify-content center
       align-items center
+      justify-content center
       border-radius 50%
       -webkit-box-reflect below 2px colorPalette1
       transition all 0.3s ease
@@ -64,21 +67,30 @@
 
       .bg
         position absolute
+        top 0
+        right 0
         inset 0
         border-radius 50%
         background colorPalette1
         z-index -1
         transform translateZ(-1px)
         transition all 0.3s ease
-
         border 1px solid colorPalette1
         pointer-events none
+        display flex
+        justify-content center
+        align-items center
 
-		img 
-			width 93%
-			height 93%
-			border-radius 50%
-			box-shadow 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22)
+      img 
+        width 93%
+        height 93%
+        border-radius 50%
+        box-shadow 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22)
+      
+      a
+        display flex
+        justify-content center
+        align-items center
 
     img:hover 
       transform translateY(-20px)
@@ -93,7 +105,9 @@
     <div class="box">
       <span v-for="(club, index) in clubs" :key="index" :style="getSpanStyle(index)" class="one-image">
         <span class="bg"></span>
-        <img :src="club.imgUrl" />
+        <a :href="club.redirectLink">
+          <img :src="club.imgUrl" :href="club.redirectLink" />
+        </a>
       </span>
     </div>
   </div>
