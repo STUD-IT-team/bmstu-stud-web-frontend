@@ -63,7 +63,7 @@ export default class MY_API extends REST_API {
         }
     })
 
-    getEvents = ()
+    // getEvents = ()
     // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
     getNews = () => ({
         ok: true, status: 200, data: {
