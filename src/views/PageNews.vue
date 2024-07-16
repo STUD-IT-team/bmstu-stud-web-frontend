@@ -141,7 +141,7 @@ padding-sides = 20px
 
     <ul class="number-slider" id='slider'>
       <li v-for="numberEvent in numbersStud" class="number-item">
-        <div class="number">{{ numberEvent.num }}</div>
+        <div class="number">{{ numberEvent.count }}</div>
         <div class="description">{{ numberEvent.description }}</div>
       </li>
     </ul>
@@ -154,11 +154,12 @@ padding-sides = 20px
       <div class="big-news-container">
         <div class="big-news-sector">
           <OneBigNew v-for="bigNew in bigNews" :title="bigNew.title" :description="bigNew.description"
-            :imgUrl="bigNew.imgUrl" :redirectLink="bigNew.redirectLink">
+            :imgUrl="`/media/${bigNew.media.key}`" :redirectLink="bigNew.vk_post_url">
           </OneBigNew>
         </div>
       </div>
-      <Events></Events>
+      <EventTimeline>
+      </EventTimeline>
       <FSC></FSC>
       <SC></SC>
     </div>
@@ -171,10 +172,12 @@ import Footer from "~/components/Footer.vue"
 import OneBigNew from "~/components/OneBigNew.vue";
 import FSC from "~/components/FacultyStudCouncils.vue";
 import SC from "~/components/StudCounsilClubs.vue";
-import Events from "~/components/EventTimeline.vue";
+import EventTimeline from "~/components/EventTimeline.vue";
 
 export default {
-  components: { Footer, OneBigNew, FSC, SC, Events },
+  components: { Footer, OneBigNew, FSC, SC, EventTimeline },
+  // props: {
+  // },
   data() {
     return {
       numbersStud: [],
@@ -183,7 +186,7 @@ export default {
     }
   },
   mounted() {
-    this.getStudNums();
+    this.getEncounters();
     this.getBigNews();
 
     const list = document.querySelector('.number-slider');
@@ -199,23 +202,25 @@ export default {
     }
   },
   methods: {
-    async getStudNums() {
+    async getEncounters() {
       this.loading = true
-      const { data, ok, status } = await this.$api.getStudNums()
+      const { data, ok, status } = await this.$api.getEncounters(0)
       this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить студ в цифрах')
       }
-      this.numbersStud = data.studNumbers
+
+      this.numbersStud = data.encounter
     },
     async getBigNews() {
       this.loading = true
-      const { data, ok, status } = await this.$api.getBigNews()
+      const { data, ok, status } = await this.$api.getNews()
       this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить новости')
       }
-      this.bigNews = data.studBigNews
+
+      this.bigNews = data.feed
     },
     scrollToSlider() {
       const sliderElement = document.getElementById('slider');

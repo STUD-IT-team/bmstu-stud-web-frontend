@@ -65,26 +65,12 @@ export default class MY_API extends REST_API {
 
     // getEvents = ()
     // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
-    getNews = () => ({
-        ok: true, status: 200, data: {
-            feed: [
-                {
-                    id: 1,
-                    title: "Наши цели и задачи",
-                    description: "Наше дело не так однозначно, как может показаться: курс на социально-ориентированный национальный проект позволяет выполнить важные задания по разработке укрепления моральных ценностей. Равным образом, сложившаяся структура организации предоставляет широкие возможности для вывода текущих активов. Равным образом, выбранный нами инновационный путь представляет собой интересный эксперимент проверки поэтапного и последовательного развития общества. Но социально-экономическое развитие влечет за собой процесс внедрения и модернизации поставленных обществом задач",
-                    media: {},
-                    registration_url: null,
-                    created_by: 1,
-                    updated_at: new Date('2024-03-10'),
-                    created_at: new Date('2024-03-08'),
-                },
-            ]
-        }
-    })
+    getNews = () => this.get(`/feed/`, { _model: Models.Feed })
     // this.get(`/api/feed`, {_model: Models.Feeds});
     getNew = (id) => this.get(`/api/feed`, { _model: Models.Feed, id });
     deleteNew = (id) => this.delete(`/api/feed`, { _model: Models.Feed, id });
 
+    getEncounters = (id) => this.get(`/feed/encounters/${id}`, { _model: Models.Encounters})
 
     getStudNums = () => ({
         ok: true, status: 200, data: {
@@ -165,30 +151,7 @@ export default class MY_API extends REST_API {
         }
     })
 
-    getEvents = () => ({
-        ok: true, status: 200, data: {
-            events: [
-                {
-                    approved: true,
-                    createdAt: "2024-01-01",
-                    createdBy: "",
-                    date: "2024-01-01",
-                    description: "Описание",
-                    feedback_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                    id: 0,
-                    media: {
-                        id: 0,
-                        imageUrl: "/res/images/shmb.jpg",
-                        name: "event0",
-                    },
-                    prompt: "Промпт",
-                    reg_open_date: "2024-01-01",
-                    reg_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-                    title: "Заголовок",
-                },
-            ]
-        }
-    })
+    getEvents = () => this.get(`/events/`, { _model: Models.Events})
 
 
     getOrgs = () => this.get(`/clubs`, {_model: Models.Clubs});
@@ -207,7 +170,6 @@ export default class MY_API extends REST_API {
         data = Object.assign({}, data);
         const _model = data._model;
         delete data._model;
-
         const { ok, data: dataRes, status } = await requestFunc.bind(this)(path, data);
 
         if (!ok) {

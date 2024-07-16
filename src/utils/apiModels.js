@@ -1,5 +1,5 @@
-// ----------------------------------------------------------------------
 
+// ----------------------------------------------------------------------
 import { apply } from "file-loader"
 
 // req: get /club/media/{club_id}
@@ -17,12 +17,30 @@ export const Media = {
 // ----------------------------------------------------------------------
 // req: get /clubs /clubs/search /clubs/type 
 
+
 export const Clubs = {
   clubs: {
     type: Array,
     item: {
       type: Object,
       fields: {
+        approved: Boolean,
+        created_at: String,
+        created_by: Number,
+        description: String,
+        id: Number,
+        media: Media,
+        title: String,
+        updated_at: String,
+        views: Number,
+        vk_post_url: String,
+      }
+    }
+  }
+}
+
+export const Encounters = {
+  encounter: {
         id: Number,
         name: String,
         short_name: String,
@@ -138,7 +156,15 @@ export const Feed = {
 export const Feeds = {
   feed: {
     type: Array,
-    item: Feed,
+    item: {
+      type: Object,
+      fields: {
+        club_id: Number,
+        count: String,
+        description: String,
+        id: Number,
+      }
+    }
   }
 }
 
@@ -184,9 +210,25 @@ export const Event = {
 }
 
 export const Events = {
-  events: {
+  event: {
     type: Array,
-    item: Event,
+    item: {
+      type: Object,
+      fields: {
+        approved: Boolean,
+        created_at: String,
+        created_by: Number,
+        date: String,
+        description: String,
+        feedback_url: String,
+        id: Number,
+        media: Media,
+        prompt: String,
+        reg_open_date: String,
+        reg_url: String,
+        title: String,
+      }
+    }
   }
 }
 
