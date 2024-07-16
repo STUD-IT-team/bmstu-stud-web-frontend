@@ -45,7 +45,7 @@ input-border = 1px solid border-color
       padding-left 17px
       border-radius borderRadiusS
       border-color colorBorder
-      background-color colorBg3
+      background-color white
       //outline input-border
       //outline-offset 0
       transition all 0.2s ease, background-size 0.1s ease
