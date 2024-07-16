@@ -78,6 +78,7 @@
         img
           height 54px
           width 54px
+          object-fit scale-down
           border-radius borderRadiusS
         .text
           font-small()
@@ -109,7 +110,7 @@
     <div class="club-list">
       <details v-for="(club, idx) in orgs">
         <summary>
-          <img src="/res/images/stud-logo-circle.svg">
+          <img :src="`/media/${club.logo.key}`">
           <span class="text">
             <header>{{club.name}}</header>
             <p v-for="org in club.orgs">
@@ -122,7 +123,7 @@
         </summary>
         <div class="info-block">
           <p>{{club.description}}</p>
-          <router-link class="button" :to="'club/:?orgId='+club.id">
+          <router-link class="button" :to="'/admin/club/:?orgId='+club.id">
             Перейти
           </router-link>
         </div>

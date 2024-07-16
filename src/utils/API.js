@@ -42,14 +42,14 @@ export default class MY_API extends REST_API {
     getEvents = () => this.get(`/events/`, { _model: Models.Events })
 
 
-    getOrgs = () => this.get(`/clubs`, { _model: Models.Clubs });
-    getOrgsByType = (type) => this.get(`/clubs/type/${type}`, { _model: Models.Clubs });
-    getOrgsByQuery = (query) => this.get(`/clubs/search/${query}`, { _model: Models.Clubs });
-
-    getOrgInfo = (orgId) => this.get(`/clubs/${orgId}`, { _model: Models.Club });
-    getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, { _model: Models.Images });
-
-
+    getOrgs = () => this.get(`/clubs`, {_model: Models.Clubs});
+    getOrgsByType = (type) => this.get(`/clubs/type/${type}`, {_model: Models.Clubs});
+    getOrgsByQuery = (query) => this.get(`/clubs/search/${query}`, {_model: Models.Clubs});
+ 
+    getOrgInfo = (orgId) => this.get(`/clubs/${orgId}`, {_model: Models.Club});
+    getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.Images});
+    
+    getAllMembers = () => this.get(`/members/`, { _model: Models.Members})
 
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
