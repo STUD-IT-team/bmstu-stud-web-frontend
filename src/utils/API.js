@@ -93,6 +93,7 @@ export default class MY_API extends REST_API {
     getNew = (id) => this.get(`/api/feed`, { _model: Models.Feed, id });
     deleteNew = (id) => this.delete(`/api/feed`, { _model: Models.Feed, id });
 
+
     getStudNums = () => ({
         ok: true, status: 200, data: {
             studNumbers: [
@@ -198,6 +199,15 @@ export default class MY_API extends REST_API {
     })
 
 
+    getOrgs = () => this.get(`/clubs`, {_model: Models.Clubs});
+    getOrgsByType = (type) => this.get(`/clubs/type/${type}`, {_model: Models.Clubs});
+    getOrgsByQuery = (query) => this.get(`/clubs/search/${query}`, {_model: Models.Clubs});
+ 
+    getOrgInfo = (orgId) => this.get(`/clubs/${orgId}`, {_model: Models.Club});
+    getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.Images});
+    
+
+
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
             throw SyntaxError(`Model for request '${path}' not specified`);
@@ -205,7 +215,9 @@ export default class MY_API extends REST_API {
         data = Object.assign({}, data);
         const _model = data._model;
         delete data._model;
-        const { ok, data: dataRes, status } = await requestFunc.bind(this.__proto__)(path, data);
+
+        const { ok, data: dataRes, status } = await requestFunc.bind(this)(path, data);
+
         if (!ok) {
             return { ok, data: dataRes, status };
         }

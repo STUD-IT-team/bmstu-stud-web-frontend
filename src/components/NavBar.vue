@@ -6,7 +6,6 @@
 @require '../styles/components.styl'
 @require '../styles/animations.styl'
 
-max-main-part-width = 1180px
 
 .root-navbar
   position fixed
@@ -23,7 +22,7 @@ max-main-part-width = 1180px
     font-medium()
   .main-part
     centered-margin()
-    max-width max-main-part-width
+    max-width main-part-max-width
     display flex
     justify-content space-between
     align-items center
@@ -132,8 +131,8 @@ max-main-part-width = 1180px
         <label v-if="isScrolledMoreThanScreen" class="burger-menu-switcher" for="burger-menu-state-store"><img src="/res/icons/menu.svg" alt="menu"></label>
         <nav class="nav-buttons-container">
           <router-link style="--animation-index: 1" :to="{name: 'news'}" class="link">Главная</router-link>
-          <router-link style="--animation-index: 2" :to="{name: 'calendar'}" class="link">О нас</router-link>
-          <router-link style="--animation-index: 3" :to="{name: 'miss'}" class="link">Организации</router-link>
+          <router-link style="--animation-index: 2" :to="{name: 'about'}" class="link">О нас</router-link>
+          <router-link style="--animation-index: 3" :to="{name: 'organizations'}" class="link">Организации</router-link>
         </nav>
       </div>
       <div v-if="$store?.state?.user?.isAdmin" class="right-container" @click="logout">

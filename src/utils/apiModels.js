@@ -1,3 +1,12 @@
+export const Media = {
+  type: Object,
+  fields: {
+    id: Number,
+    key: String,
+    name: String,
+  }
+}
+
 export const User = {
   id: String,
   name: String,
@@ -54,6 +63,7 @@ export const Events = {
   }
 }
 
+
 export const StudNumber = {
   num: String,
   description: String,
@@ -66,29 +76,84 @@ export const StudNumbers = {
   }
 }
 
+export const MainOrg = {
+  type: Object,
+  fields: {
+    id: Number,
+    image: Media, // Фото человека
+    name: String, // Фамилия Имя
+    role_name: String, //Название должности (председатель и тд)
+    spec: String, // Описание
+    tg_url: String,
+    vk_url: String,
+  }
+}
+export const SubOrg = {
+  type: Object,
+  fields: {
+    id: Number,
+    image: Media, // Фото человека
+    name: String, // Фамилия Имя
+    sub_club_name: String, //Название должности (председатель и тд)
+    spec: String, // Описание
+    tg_url: String,
+    vk_url: String,
+  }
+}
+
 export const Club = {
-  title: String,
-  imgUrl: String,
-  redirectLink: String,
-}
-
-export const ClubsList = {
-  clubsList: {
-    type: Array,
-    item: Club,
-  }
-}
-
-export const StudBigNew = {
-  title: String,
+  id: Number,
+  name: String,
+  short_name: String,
   description: String,
-  imgUrl: String,
-  redirectLink: String,
+  logo: Media,
+  tg_url: String,
+  vk_url: String,
+  type: String, //Тип - отряд, клуб и тд
+  main_orgs: { //Глава организации
+    type: Array,
+    item: MainOrg,
+  },
+  sub_orgs: {
+    type: Array,
+    item: SubOrg,
+  },
 }
 
-export const StudBigNews = {
-  studNumbers: {
+export const Clubs = {
+  clubs: {
     type: Array,
-    item: StudBigNew,
+    item: {
+      type: Object,
+      fields: {
+        id: Number,
+        name: String,
+        short_name: String,
+        description: String,
+        logo: Media,
+        tg_url: String,
+        vk_url: String,
+        type: String, //Тип - отряд, клуб и тд
+        orgs: { //Глава организации
+          type: Array,
+          item: {
+            type: Object,
+            fields: {
+              id: Number,
+              name: String,
+              spec: String,
+            },
+          }
+        },
+      }
+    }
   }
 }
+
+export const Images = {
+  media:{
+    type: Array,
+    item: Media,
+  }
+}
+
