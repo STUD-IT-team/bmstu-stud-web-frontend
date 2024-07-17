@@ -210,10 +210,10 @@ export default {
   methods: {
     listenWindowMessages(event) {
       const message = JSON.parse(event.data);
-      console.log(message.type); // some type
+      //console.log(message.type); // some type
       switch (message.type) {
         case 'player:changeState':
-          console.log("PLAYER STATE CHANGED:", message.data.state); // текущее состояние плеера
+          //console.log("PLAYER STATE CHANGED:", message.data.state); // текущее состояние плеера
           break;
         case 'player:ready':
           this.playVideo();
