@@ -138,6 +138,9 @@ export default class MY_API extends REST_API {
     
     getAllMembers = () => this.get(`/members/`, { _model: Models.Members})
 
+    putClub = (club, club_id) => this.put(`/clubs/`, { _model: Models.Empty, club_id, club })
+    postMedia = (data, name) => this.post('/media/private', {_model:Models.MediaPost, data, name})
+
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {
             throw SyntaxError(`Model for request '${path}' not specified`);

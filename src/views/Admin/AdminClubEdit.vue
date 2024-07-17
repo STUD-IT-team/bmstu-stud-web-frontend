@@ -48,6 +48,18 @@
           object-fit scale-down
           border-radius borderRadiusM
           background colorPalette3
+        details
+          font-medium()
+          summary
+            color colorWhite
+            background colorPalette1
+            padding 5px 10px
+            border-radius borderRadiusM
+          p
+            padding 2px 10px
+            cursor pointer
+            &:hover
+              color colorPalette4
       .main-right
         width 100%
         height max-content
@@ -113,15 +125,70 @@
         display block
         //text-align center
         centered-margin()
-        img
-          width calc(25% - 10px)
+        .new-image-button
+        .image
+          position relative
           display inline-block
+          width calc(25% - 10px)
+          padding-top calc(15% - 10px)
           margin 5px
           border-radius borderRadiusM
+        .new-image-button
+          box-shadow 0 1px 2px 2px mix(black, transparent, 30%)
+          background mix(colorPalette3, white, 50%)
+          transform scale(0.9)
+          cursor pointer
+          &:hover
+            box-shadow 0 1px 2px 2px mix(black, transparent, 50%)
+            background colorPalette3
+            transform scale(1)
+          input
+          label
+            color colorBg
+            position absolute
+            top 0
+            left 0
+            display flex
+            align-items center
+            justify-content center
+            width 100%
+            height 100%
+          label
+            font-large-xx()
+            pointer-events none
+            text-shadow 0 3px 5px mix(black, transparent, 50%)
+          input
+            cursor pointer
+            opacity 0
+
+        .image
           box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
           &:hover
-            //box-shadow 0 1px 2px 2px mix(colorPalette4, transparent, 30%)
-            filter brightness(0.8)
+            box-shadow 0 1px 2px 2px mix(black, transparent, 30%)
+            .photo
+              filter brightness(0.8)
+            .icon
+              opacity 1
+          .icon
+            position absolute
+            display flex
+            align-items center
+            justify-content center
+            width 100%
+            height 100%
+            top 0
+            transform scale(0.5)
+            cursor pointer
+            opacity 0
+            &:hover
+              transform scale(0.6)
+          .photo
+            position absolute
+            top 0
+            border-radius borderRadiusM
+            object-fit cover
+            width 100%
+            height 100%
 
     .input-container
       position relative
@@ -196,7 +263,7 @@
         <router-link class="button" to="/admin/clubs">
           Назад
         </router-link>
-        <button class="button">
+        <button class="button" @click="restore()">
           Очистить всё
         </button>
       </div>
@@ -204,12 +271,13 @@
 
       <div class="main-info">
         <div class="main-left">
-          <img :src="`/media/${club.logo.key}`">
+          <img :src="`/media/${club.logo.key}`" ref="imgLogo">
+          <input type="file" ref="inputLogo" @change="updateLogo()">
           <details>
             <summary>
               {{club.type}}
             </summary>
-            <p v-for="type in categories">
+            <p v-for="(type, idx) in categories" @click="updateType(idx)" ref="typeSelect">
               {{type.text}}
             </p>
           </details>
@@ -265,7 +333,7 @@
         </span>
         <div class="input-container">
           <div class="row">
-            <label for="club-link-tg" ref="labelLinkTg">
+            <label ref="labelLinkTg">
               Телеграм: {{club.tg_url}}
             </label>
             <img src="/res/icons/edit.svg" @click="showInput(3)">
@@ -277,7 +345,7 @@
         </div>
         <div class="input-container">
           <div class="row">
-            <label for="club-link-vk" ref="labelLinkVk">
+            <label ref="labelLinkVk">
               ВКонтакте: {{club.vk_url}}
             </label>
             <img src="/res/icons/edit.svg" @click="showInput(4)">
@@ -343,9 +411,29 @@
 
       <div class="image-wrapper">
         <div class="image-container">
-          <img v-for="image in photos" 
-          :src="`/media/${image.key}`">
+          <div class="image" v-for="(image, idx) in photos">
+            <img class="photo" :src="`/media/${image.key}`">
+            <img class="icon" src="/res/icons/trash.svg" @click="deletePhoto(idx)">
+          </div>
+          <div class="new-image-button">
+            <label>+</label>
+            <input
+              ref="imageUpload" 
+              type="file" 
+              accept=".png,.jgp,.jpeg,.webm" 
+              @change="addPhoto($event)">
+          </div>
         </div>
+      </div>
+
+
+      <div class="button-container">
+        <button class="button">
+          Удалить организацию
+        </button>
+        <button class="button" @click="updateClub()">
+          Сохранить
+        </button>
       </div>
 
     </div>
@@ -362,6 +450,7 @@ export default {
   data() {
     return {
       club: Object,
+      clubBackup: Object,
       photos: Array,
       orgId: Number,
       memberList: [],
@@ -398,6 +487,62 @@ export default {
   },
 
   methods: {
+
+    async updateClub() {
+      var reader = new FileReader()
+      var logoByteArray = []
+      var file = this.$refs.inputLogo.files[0]
+      reader.readAsArrayBuffer(file)
+      reader.onloadend = function (evt) {
+        if (evt.target.readyState == FileReader.DONE) {
+          var arrayBuffer = evt.target.result,
+            array = new Uint8Array(arrayBuffer);
+          for (var i = 0; i < array.length; i++) {
+            logoByteArray.push(array[i]);
+          }
+        }
+        console.log(logoByteArray, file.name)
+        this.club.logo_id = this.$api.postMedia(logoByteArray, file.name)
+        this.putClub()
+
+      }.bind(this)
+      // clubToPut = {
+      //   description: this.club.description,
+      //   logo_id:
+      // }
+      // await this.$api.putClub(clubToPut, club_id)
+    },
+    putClub() {
+      var clubToPut = {
+        description: this.club.description,
+        logo_id: this.club.logo_id,
+        name: this.club.name,
+        orgs: [],
+        parent_id: 0,
+        short_name: this.club.short_name,
+        tg_url: this.club.tg_url,
+        vk_url: this.club.vk_url,
+        type: this.club.type
+      }
+
+      this.$api.putClub(clubToPut, this.orgId)
+
+    },
+    restore(){
+      this.club = {...this.clubBackup}
+      console.log(this.clubBackup)
+      console.log(this.club)
+      // document.reload(true)
+      this.$refs.labelName.style.color = "#631FB9"
+      this.$refs.labelShortName.style.color = "#631FB9"
+      this.$refs.labelDescription.style.color = "#631FB9"
+      this.$refs.labelLinkTg.style.color = "#631FB9"
+      this.$refs.labelLinkVk.style.color = "#631FB9"
+      for (idx in this.$refs.labelRoleName)
+        this.$refs.labelRoleName[idx].style.color = "#631FB9"
+        this.$refs.labelRoleSpec[idx].style.color = "#631FB9"
+
+    },
     async getAllMembers() {
       this.loading = true
       const {data, ok, status} = await this.$api.getAllMembers()
@@ -405,6 +550,20 @@ export default {
       this.memberList = data
       console.log(this.memberList)
       //return this.memberList
+    },
+    updateType(idx){
+      this.club.type = this.$refs.typeSelect[idx].innerText
+    },
+    updateLogo() {
+      var file = this.$refs.inputLogo.files[0]
+      //this.$refs.imgLogo.src = file.
+      var reader = new FileReader();
+      var component = this.$refs.imgLogo
+      reader.onloadend = function() {
+        component.src = reader.result;
+      }
+      reader.readAsDataURL(file)
+      // console.log(file)
     },
     showInput(idx) {
       var row
@@ -430,7 +589,7 @@ export default {
       const newVal = this.$refs.inputNameField.value
       if (newVal != this.club.name) {
         this.club.name = newVal
-        this.$refs.labelName.style.color = "#FF9301"
+        this.$refs.labelName.style.color = "#FF9301" //
       }
       this.showInput(0)
     },
@@ -438,7 +597,7 @@ export default {
       const newVal = this.$refs.inputShortNameField.value
       if (newVal != this.club.short_name) {
         this.club.short_name = newVal
-        this.$refs.labelShortName.style.color = "#FF9301"
+        this.$refs.labelShortName.style.color = "#FF9301" //
       }
       this.showInput(1)
     },
@@ -446,7 +605,7 @@ export default {
       const newVal = this.$refs.inputDescriptionField.value
       if (newVal != this.club.description) {
       this.club.description = newVal
-      this.$refs.labelDescription.style.color = "#FF9301"
+      this.$refs.labelDescription.style.color = "#FF9301" //
       }
       this.showInput(2)
     },
@@ -454,7 +613,7 @@ export default {
       const newVal = this.$refs.inputLinkTgField.value
       if (newVal != this.club.tg_url) {
         this.club.tg_url = newVal
-        this.$refs.labelLinkTg.style.color = "#FF9301"
+        this.$refs.labelLinkTg.style.color = "#FF9301" //
       }
       this.showInput(3)
     },
@@ -462,7 +621,7 @@ export default {
       const newVal = this.$refs.inputLinkVkField.value
       if (newVal != this.club.vk_url) {
         this.club.vk_url = newVal
-        this.$refs.labelLinkVk.style.color = "#FF9301"
+        this.$refs.labelLinkVk.style.color = "#FF9301" //
       }
       this.showInput(4)
     },
@@ -470,7 +629,7 @@ export default {
       const newVal = this.$refs.inputRoleNameField[idx].value
       if (newVal != this.club.main_orgs[idx].role_name) {
         this.club.main_orgs[idx].role_name = newVal
-        this.$refs.labelRoleName[idx].style.color = "#FF9301"
+        this.$refs.labelRoleName[idx].style.color = "#FF9301" //
       }
       this.showInput(idx*2 + 5)
     },
@@ -478,7 +637,7 @@ export default {
       const newVal = this.$refs.inputRoleSpecField[idx].value
       if (newVal != this.club.main_orgs[idx].spec) {
         this.club.main_orgs[idx].spec = newVal
-        this.$refs.labelRoleSpec[idx].style.color = "#FF9301"
+        this.$refs.labelRoleSpec[idx].style.color = "#FF9301" //
       }
       this.showInput(idx*2 + 6)
     },
@@ -492,6 +651,13 @@ export default {
     },
     deleteLead(idx) {
       this.club.main_orgs.splice(idx, 1)
+    },
+    addPhoto(event) {
+      var files = this.$refs.imageUpload.files
+      console.log(files)
+    },
+    deletePhoto(idx) {
+      this.photos.splice(idx, 1)
     },
     parseExternalLink(link) {
       return parseExternalLink(link)
@@ -507,8 +673,9 @@ export default {
         else {
           this.error = false
           this.club = data
-          console.log(data)
+          this.clubBackup = {...this.club}
           console.log(this.club)
+          console.log(this.clubBackup)
         }
       }
       catch {
@@ -533,6 +700,9 @@ export default {
       this.orgId=params.get('orgId')
       this.getInfo();
       this.getPhotos();
+      //this.clubBackup = this.club
+      console.log(this.club)
+      console.log(this.clubBackup)
     },
   
   }

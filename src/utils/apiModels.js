@@ -7,6 +7,14 @@ export const Media = {
   }
 }
 
+export const MediaPost = {
+  id: Number
+}
+
+export const Empty = {
+  
+}
+
 export const User = {
   id: String,
   name: String,
@@ -88,6 +96,28 @@ export const SubOrg = {
   }
 }
 
+export const ClubPut = {
+  description: String,
+  logo_id: Number,
+  name: String,
+  orgs: {
+    type: Array,
+    item: {
+      type: Object,
+      fields: {
+        member_id: Number,
+        role_name: String,
+        role_spec: String,
+      }
+    }
+  },
+  parent_id: Number,
+  short_name: String,
+  tg_url: String,
+  vk_url: String,
+  type: String,
+}
+
 export const Club = {
   id: Number,
   name: String,
@@ -106,6 +136,7 @@ export const Club = {
     item: SubOrg,
   },
 }
+
 
 export const Clubs = {
   clubs: {
