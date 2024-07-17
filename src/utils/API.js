@@ -18,7 +18,7 @@ export default class MY_API extends REST_API {
 
 
     // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
-    getNews = () => this.get(`/feed/`, { _model: Models.Feeds })
+    getNews = () => this.get(`/feed/${id}`, { _model: Models.Feeds })
     // this.get(`/api/feed`, {_model: Models.Feeds});
     getNew = (id) => this.get(`/feed/${id}`, { _model: Models.Feed });
     deleteNew = (id) => this.delete(`/feed/${id}`, { _model: Models.Feed });

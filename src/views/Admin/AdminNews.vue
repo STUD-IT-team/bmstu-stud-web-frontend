@@ -79,7 +79,7 @@
           border-radius borderRadiusM
           box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
           width 100%
-        button
+        .button
           button()
           width 30%
           margin 0
@@ -116,7 +116,9 @@
         <div class="content">
           <span class="text">{{oneNew.description}}</span>
           <img class="media" :src="`/media/${oneNew.media.key}`">
-          <button>Изменить</button>
+          <router-link class="button" :to="`/admin/new/:?newId=${oneNew.id}`">
+            Изменить
+          </router-link>
       </div>
      </div>
     </div>
