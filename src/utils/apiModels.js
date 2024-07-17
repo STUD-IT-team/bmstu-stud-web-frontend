@@ -1,6 +1,6 @@
-
 // ----------------------------------------------------------------------
-// import { apply } from "file-loader"
+
+import { apply } from "file-loader"
 
 // req: get /club/media/{club_id}
 export const Media = {
@@ -17,23 +17,31 @@ export const Media = {
 // ----------------------------------------------------------------------
 // req: get /clubs /clubs/search /clubs/type 
 
-
 export const Clubs = {
   clubs: {
     type: Array,
     item: {
       type: Object,
       fields: {
-        approved: Boolean,
-        created_at: String,
-        created_by: Number,
-        description: String,
         id: Number,
-        media: Media,
-        title: String,
-        updated_at: String,
-        views: Number,
-        vk_post_url: String,
+        name: String,
+        short_name: String,
+        description: String,
+        logo: Media, // id key name
+        tg_url: String,
+        vk_url: String,
+        type: String, //Тип - отряд, клуб и тд
+        orgs: { //Глава организации
+          type: Array,
+          item: {
+            type: Object,
+            fields: {
+              id: Number,
+              name: String,
+              spec: String,
+            },
+          }
+        },
       }
     }
   }
@@ -130,15 +138,7 @@ export const Feed = {
 export const Feeds = {
   feed: {
     type: Array,
-    item: {
-      type: Object,
-      fields: {
-        club_id: Number,
-        count: String,
-        description: String,
-        id: Number,
-      }
-    }
+    item: Feed,
   }
 }
 
@@ -156,7 +156,7 @@ export const Encounter = {
 
 // req get /feed/encounters/{club_id}
 export const Encounters = {
-  encounters: {
+  encounter: {
     type: Array,
     item: Encounter,
   }
@@ -164,58 +164,29 @@ export const Encounters = {
 
 
 // ---------------------------------------------------------------------
-// req: get /events/
+// 
 export const Event = {
   type: Object,
   fields: {
     id: Number,
     title: String,
-    prompt: String,
     description: String,
     media: Media,
-    approved: Boolean,
-    created_at: String,
     created_by: Number,
+    created_at: String,
     date: String,
     feedback_url: String,
+    prompt: String,
     reg_open_date: String,
     reg_url: String,
+    approved: Boolean,
   }
 }
 
 export const Events = {
   event: {
     type: Array,
-    item: {
-      type: Object,
-      fields: {
-        approved: Boolean,
-        created_at: String,
-        created_by: Number,
-        date: String,
-        description: String,
-        feedback_url: String,
-        id: Number,
-        media: Media,
-        prompt: String,
-        reg_open_date: String,
-        reg_url: String,
-        title: String,
-      }
-    }
-  }
-}
-
-
-export const StudNumber = {
-  num: String,
-  description: String,
-}
-
-export const StudNumbers = {
-  studNumbers: {
-    type: Array,
-    item: StudNumber,
+    item: Event,
   }
 }
 
