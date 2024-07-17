@@ -213,9 +213,10 @@ export default {
 
   watch: {
     '$route' (to,from) {
-      if (to.name == "organization" || to.name == "about")
+      if (to.name == "organization" || to.name == "about") {
         this.error = true
         this.initialize()
+        }
     }
   },
 
@@ -285,7 +286,6 @@ export default {
         }
       }
       catch(ex) {
-        console.log(ex)
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации (неизвестная ошибка)')
         this.error = true
         this.loading = false;
