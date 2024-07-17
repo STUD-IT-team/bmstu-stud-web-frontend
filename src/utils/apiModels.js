@@ -123,7 +123,7 @@ export const Feed = {
   id: Number,
   title: String,
   description: String,
-  media: Media,
+  media: Media.media,
   updated_at: Date,
   created_at: Date,
   created_by: Number,
