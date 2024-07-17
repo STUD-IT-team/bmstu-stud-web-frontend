@@ -213,9 +213,10 @@ export default {
 
   watch: {
     '$route' (to,from) {
-      if (to.name == "organization" || to.name == "about")
+      if (to.name == "organization" || to.name == "about") {
         this.error = true
         this.initialize()
+        }
     }
   },
 
