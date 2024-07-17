@@ -171,7 +171,6 @@ export default {
     },
     handleScroll (event) {
       var currentScrollPos = document.body.scrollTop
-      console.log(currentScrollPos)
       if (this.prevScrollPos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0"
       }

@@ -8,8 +8,8 @@ export const Media = {
     type: Object,
     fields: {
       id: Number,
-      key: String,
       name: String,
+      key: String,
       // ref_number: Number
     }
   }
@@ -23,14 +23,10 @@ export const Clubs = {
     item: {
       type: Object,
       fields: {
-        id: Number,
-        name: String,
-        short_name: String,
         description: String,
-        logo: Media, // id key name
-        tg_url: String,
-        vk_url: String,
-        type: String, //Тип - отряд, клуб и тд
+        id: Number,
+        logo: Media.media, // id key name
+        name: String,
         orgs: { //Глава организации
           type: Array,
           item: {
@@ -42,6 +38,10 @@ export const Clubs = {
             },
           }
         },
+        short_name: String,
+        tg_url: String,
+        type: String, //Тип - отряд, клуб и тд
+        vk_url: String,
       }
     }
   }
@@ -53,7 +53,7 @@ export const MainOrg = {
   type: Object,
   fields: {
     id: Number,
-    image: Media, // Фото человека
+    image: Media.media, // Фото человека
     name: String, // Фамилия Имя
     role_name: String, //Название должности (председатель и тд)
     spec: String, // Описание
@@ -65,7 +65,7 @@ export const SubOrg = {
   type: Object,
   fields: {
     id: Number,
-    image: Media, // Фото человека
+    image: Media.media, // Фото человека
     name: String, // Фамилия Имя
     sub_club_name: String, //Название должности (председатель и тд)
     spec: String, // Описание
@@ -96,7 +96,7 @@ export const Club = {
   name: String,
   short_name: String,
   description: String,
-  logo: Media,
+  logo: Media.media,
   tg_url: String,
   vk_url: String,
   type: String, //Тип - отряд, клуб и тд
@@ -125,7 +125,7 @@ export const Feed = {
     id: Number,
     title: String,
     description: String,
-    media: Media,
+    media: Media.media,
     updated_at: Date,
     created_at: Date,
     created_by: Number,
@@ -194,7 +194,15 @@ export const Events = {
 export const Images = {
   media: {
     type: Array,
-    item: Media,
+    item: {
+      type: Object,
+      fields: {
+        ref_number: Number,
+        id: Number,
+        name: String,
+        key: String,
+      }
+    },
   }
 }
 
