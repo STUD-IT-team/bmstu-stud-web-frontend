@@ -154,3 +154,24 @@ export const Images = {
   }
 }
 
+
+export const Member = {
+  id: Number,
+  isAdmin: Boolean,
+  login: String,
+  media: Media,
+  name: String,
+  role_id: Number,
+  telegram: String,
+  vk: String,
+}
+
+export const Members = {
+  members: {
+    type: Array,
+    item: {
+      type: Object,
+      fields: Member,
+    }
+  }
+}
