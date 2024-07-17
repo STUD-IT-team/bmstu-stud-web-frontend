@@ -284,8 +284,9 @@ export default {
           this.path = this.getPath()
         }
       }
-      catch {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
+      catch(ex) {
+        console.log(ex)
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации (неизвестная ошибка)')
         this.error = true
         this.loading = false;
       }
