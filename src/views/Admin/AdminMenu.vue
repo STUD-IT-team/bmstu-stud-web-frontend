@@ -23,7 +23,7 @@
       display flex
       flex-direction column
       gap 10px
-      button
+      .button
         button()
         border-radius borderRadiusMax
         border 2px solid colorPalette1
@@ -39,9 +39,9 @@
   <div class="root-admin-menu">
     <div class="main-container">
       <div class="navigation">
-        <button>Пользователи</button>
-        <button>Организации</button>
-        <button>Контент</button>
+        <router-link class="button" to="/admin/members/">Пользователи</router-link>
+        <router-link class="button" to="/admin/clubs/">Организации</router-link>
+        <router-link class="button" to="/admin/news/">Контент</router-link>
       </div>
       <div class="content">
         <router-view v-slot="{ Component }">
