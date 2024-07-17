@@ -57,6 +57,7 @@ export default function createVueRouter(Store) {
 
         {path: '/admin', component: PageAdminMenu, meta: {}, children: [
             {path: '/admin/clubs', name: 'adminClubs', component: AdminClubs, meta: {}},  
+            // {path: '/admin/members', name: 'adminMembers', component: AdminMembers, meta: {}},  
         ]},
         {path: '/admin/club/:orgId', name: 'adminClubEdit', component: AdminClubEdit, meta: {noLoginRequired: true}},
 
