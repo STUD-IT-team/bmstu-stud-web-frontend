@@ -11,6 +11,7 @@
     text-align center
     display flex
     justify-content space-between
+    gap 20px
     .animation
       width 45%
       > *
@@ -76,6 +77,13 @@
         font-large-xx()
       .profile-button
         button()
+      .register
+        font-small()
+        color colorPalette1
+        a
+          color colorPalette2
+          &:hover
+            color colorPalette4
 </style>
 
 <template>
@@ -89,6 +97,9 @@
 
       <section class="form">
         <header class="header">Авторизация</header>
+        <section class="register">Нет&nbsp;аккаунта?&nbsp;
+          <a href="/register"> Зарегистрироваться</a>
+        </section>
         <FormWithErrors
           ref="form"
           :fields="fields"
