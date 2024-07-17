@@ -100,11 +100,11 @@
   <div class="root-admin-news">
     <form 
       class="input-container"
-      @submit="getOrgsByQuery()">
+      @submit="getNewsByQuery()">
       <input ref="searchBar"  >
       <label>Введите запрос</label>
       <img src="/res/icons/search.svg"
-        @click="getOrgsByQuery()">        
+        @click="getNewsByQuery()">        
     </form>
 
     <div class="new-list">
