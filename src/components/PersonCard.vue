@@ -93,9 +93,19 @@ trans-speed = 0.5s
       height inherit
       display flex
       flex-direction column
-      img
+      .image-container
         width 100%
+        padding-top 100%
+        position relative
         border-radius borderRadiusL
+        img
+          position absolute
+          top 0
+          left 0
+          height 100%
+          width 100%
+          object-fit cover
+          border-radius borderRadiusL
       .name
         color var(--cardColorText)
         trans(trans-speed)
@@ -136,7 +146,6 @@ trans-speed = 0.5s
   <div class="root-person">
     <input 
       type="radio"
-      name="selectCard"
       disabled
       :checked="head">
     <div class="title-box">
@@ -147,7 +156,9 @@ trans-speed = 0.5s
     </div>
     <div class=card-box>
       <div class="card-content">
-        <img :src="imageSrc">
+        <div class="image-container">
+          <img :src="imageSrc">
+        </div>
         <div class="name">
           {{name}}
         </div>
