@@ -70,39 +70,6 @@ padding-sides = 20px
             --_s: 0px
             opacity: 1
 
-  .number-slider
-    width 100%
-    display flex
-    justify-content space-around
-    list-style none
-    white-space nowrap
-    overflow-x scroll
-    scrollbar-width none
-
-    .scroll-touch
-      -webkit-overflow-scrolling touch
-
-    &::-webkit-scrollbar
-      display none
-
-    .number-item
-      display flex
-      flex-direction column
-      align-items center
-      border 1px solid colorPalette1
-      border-radius 20px
-      padding 10px
-      padding-bottom 1px
-      margin 15px
-
-      .number
-        font-large-xx()
-        color colorPalette1
-
-      .description
-        font-large-x()
-        color colorPalette1
-
   .content-wrapper
     max-width 1440px
     width 100%
@@ -139,12 +106,7 @@ padding-sides = 20px
       </div>
     </div>
 
-    <ul class="number-slider" id='slider'>
-      <li v-for="numberEvent in numbersStud" class="number-item">
-        <div class="number">{{ numberEvent.num }}</div>
-        <div class="description">{{ numberEvent.description }}</div>
-      </li>
-    </ul>
+    <NumbersSlider id="slider"></NumbersSlider>
 
     <div class="orange-star">
       <img src="/res/icons/orange-star.svg" alt="" />
@@ -172,9 +134,10 @@ import OneBigNew from "~/components/OneBigNew.vue";
 import FacultyStudCouncils from "~/components/FacultyStudCouncils.vue";
 import StudCounsilClubs from "~/components/StudCounsilClubs.vue";
 import EventTimeline from "~/components/EventTimeline.vue";
+import NumbersSlider from "~/components/NumbersSlider.vue";
 
 export default {
-  components: { Footer, OneBigNew, FacultyStudCouncils, StudCounsilClubs, EventTimeline },
+  components: {NumbersSlider, Footer, OneBigNew, FacultyStudCouncils, StudCounsilClubs, EventTimeline },
   data() {
     return {
       numbersStud: [],
@@ -185,18 +148,6 @@ export default {
   mounted() {
     this.getStudNums();
     this.getBigNews();
-
-    const list = document.querySelector('.number-slider');
-    if (list) {
-      list.addEventListener('wheel', function (ev) {
-        let items = this.querySelectorAll('.number-item');
-        if (ev.wheelDelta > 0) {
-          this.prepend(items[items.length - 1]);
-        } else {
-          this.append(items[0]);
-        }
-      });
-    }
   },
   methods: {
     async getStudNums() {
