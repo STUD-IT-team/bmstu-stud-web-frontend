@@ -102,7 +102,7 @@ padding-sides = 20px
       .description
         font-large-x()
         color colorPalette1
-    
+
   .content-wrapper
     max-width 1440px
     width 100%
@@ -158,9 +158,9 @@ padding-sides = 20px
           </OneBigNew>
         </div>
       </div>
-      <Events></Events>
-      <FSC></FSC>
-      <SC></SC>
+      <EventTimeline></EventTimeline>
+      <FacultyStudCouncils></FacultyStudCouncils>
+      <StudCounsilClubs></StudCounsilClubs>
     </div>
     <Footer></Footer>
   </div>
@@ -169,12 +169,12 @@ padding-sides = 20px
 <script>
 import Footer from "~/components/Footer.vue"
 import OneBigNew from "~/components/OneBigNew.vue";
-import FSC from "~/components/FacultyStudCouncils.vue";
-import SC from "~/components/StudCounsilClubs.vue";
-import Events from "~/components/EventTimeline.vue";
+import FacultyStudCouncils from "~/components/FacultyStudCouncils.vue";
+import StudCounsilClubs from "~/components/StudCounsilClubs.vue";
+import EventTimeline from "~/components/EventTimeline.vue";
 
 export default {
-  components: { Footer, OneBigNew, FSC, SC, Events },
+  components: { Footer, OneBigNew, FacultyStudCouncils, StudCounsilClubs, EventTimeline },
   data() {
     return {
       numbersStud: [],
