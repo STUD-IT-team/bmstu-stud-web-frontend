@@ -169,16 +169,14 @@ export default {
       }
       this.global.$isMobile = false;
     },
-    handleScroll (event) {
-      var currentScrollPos = document.body.scrollTop
-      console.log(currentScrollPos)
+    handleScroll(event) {
+      var currentScrollPos = document.body.scrollTop;
       if (this.prevScrollPos > currentScrollPos) {
-        document.getElementById("navbar").style.top = "0"
+        document.getElementById("navbar").style.top = "0";
+      } else {
+        document.getElementById("navbar").style.top = "-"+Math.min(80,currentScrollPos)+"px";
       }
-      else {
-        document.getElementById("navbar").style.top = "-"+Math.min(80,currentScrollPos)+"px"
-      }
-      this.prevScrollPos = currentScrollPos
+      this.prevScrollPos = currentScrollPos;
     },
   }
 };
