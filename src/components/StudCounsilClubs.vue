@@ -194,10 +194,10 @@ export default {
         const realDelta = Math.sqrt(Math.pow(club.x - prevX, 2) + Math.pow(club.y - prevY, 2));
 
         if (isClubsInContact[idx]) {
-          if (realDelta < club.rad / 3) {
+          if (realDelta < club.rad / 2) {
             club.srot *= 0.9;
           }
-          if (realDelta < club.rad / 10) {
+          if (realDelta < club.rad / 5) {
             club.srot = 0;
           }
         }
@@ -220,7 +220,7 @@ export default {
       const delta = currentScrollValue - this.prevScrollValue;
       if (delta > 0) {
         this.clubs.forEach(club => {
-          club.sy += -delta / 30 * club.weight;
+          club.sy += -delta / 20 * club.weight;
         });
       }
 
