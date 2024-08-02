@@ -68,7 +68,6 @@
         border-radius 50%
         background colorPalette1
         z-index -1
-        //transform translateZ(-1px)
         transform translateZ(calc(var(--idx) * -2px))
         transition all 0.2s ease
         border 1px solid colorPalette1

@@ -14,24 +14,30 @@
     img
       border-radius 40px
       width 90%
-  
+
   .club-holder
     position absolute
     top 0
     left 0
     width 100%
     height 100%
-    img
+    .club-container
       position absolute
-      border-radius 50%
-      width 13%
+      size = 117px
+      width size
+      height size
       box-shadow 0px 5px 5px 0px rgba(0, 0, 0, 0.5)
-      animation rotate 2s linear infinite
-      animation-play-state paused
+      border-radius 99999px
+      overflow hidden
+      img
+        width 100%
+        height 100%
+        animation rotate 2s linear infinite
+        animation-play-state paused
 
-      &:hover
-        animation-play-state running
-  
+        &:hover
+          animation-play-state running
+
   @keyframes rotate
     from
       transform rotate(var(--start-angle)) translateZ(0)
@@ -46,13 +52,15 @@
       <img src="/res/icons/clubs-bg.svg" alt="" />
     </div>
     <div class="club-holder">
-      <div v-for="(club, index) in clubs" :key="index">
-        <a :href="club.redirectLink">
-          <img :src="club.imgUrl" :alt="club.title" :style="{
+      <div v-for="(club, index) in clubs" :key="index" class="club-container"
+           :style="{
             bottom: `${bottoms[index]}%`,
             left: `${lefts[index]}%`,
             '--start-angle': `${angles[index]}deg`,
-          }" />
+          }"
+      >
+        <a :href="club.redirectLink">
+          <img :src="club.imgUrl" :alt="club.title"/>
         </a>
       </div>
     </div>
