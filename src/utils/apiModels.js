@@ -23,7 +23,7 @@ export const Clubs = {
     item: {
       type: Object,
       fields: {
-        description: String,
+        short_description: String,
         id: Number,
         logo: Media.media, // id key name
         name: String,
