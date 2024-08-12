@@ -139,7 +139,7 @@
         <img style="--animation-index: 4" src="/res/icons/logout.svg" alt="logout">
       </div>
       <div v-else class="right-container">
-        <router-link class="login-button" :to="{name: 'miss'}">Вход</router-link>
+        <router-link class="login-button" :to="{name: 'login'}">Вход</router-link>
       </div>
     </div>
   </nav>

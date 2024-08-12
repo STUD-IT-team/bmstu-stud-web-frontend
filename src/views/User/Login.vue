@@ -6,11 +6,12 @@
   width 100%
   background colorBg
   .content
-    margin 150px auto
+    margin 100px auto
     max-width 1150px
     text-align center
     display flex
     justify-content space-between
+    gap 15px
     .animation
       width 45%
       > *
@@ -71,11 +72,18 @@
     .form
       width 45%
       text-align left
-      color colorText1
+      color white
       .header
         font-large-xx()
       .profile-button
         button()
+
+      .registration
+        font-small()
+        color colorPalette1
+        a
+          color colorPalette2
+
 </style>
 
 <template>
@@ -89,13 +97,11 @@
 
       <section class="form">
         <header class="header">Авторизация</header>
-        <FormWithErrors
-          ref="form"
-          :fields="fields"
-          submitText="Войти"
-          @success="login"
-          :loading="loading"
-        ></FormWithErrors>
+        <section class="registration">
+          Нет&nbsp;аккаунта?&nbsp;<a href="/register">Зарегистрироваться</a>
+        </section>
+        <FormWithErrors ref="form" :fields="fields" submitText="Войти" @success="login" :loading="loading">
+        </FormWithErrors>
       </section>
     </main>
   </div>
@@ -103,13 +109,13 @@
 
 <script>
 import FormWithErrors from "~/components/FormWithErrors.vue";
-import {detectBrowser, detectOS} from "~/utils/utils";
+import { detectBrowser, detectOS } from "~/utils/utils";
 import CircleLoading from "~/components/CircleLoading.vue";
-import {Validators} from "~/utils/validators";
+import { Validators } from "~/utils/validators";
 
 
 export default {
-  components: {CircleLoading, FormWithErrors},
+  components: { CircleLoading, FormWithErrors },
   data() {
     return {
       fields: {
@@ -139,7 +145,7 @@ export default {
   methods: {
     async login(data) {
       this.loading = true;
-      const {ok} = await this.$api.login(data.login, data.password, detectBrowser(), detectOS());
+      const { ok } = await this.$api.login(data.login, data.password);
       this.loading = false;
 
       if (!ok) {
@@ -149,9 +155,8 @@ export default {
       this.loading = true;
       await this.$store.dispatch('GET_USER');
       this.loading = false;
-      this.$router.push({name: 'default'});
+      this.$router.push({ name: 'default' });
     }
   }
 }
 </script>
-
