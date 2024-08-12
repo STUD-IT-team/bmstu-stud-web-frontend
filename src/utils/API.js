@@ -3,7 +3,7 @@ import validateModel from "@sergtyapkin/models-validator";
 import * as Models from "~/utils/apiModels";
 
 export default class MY_API extends REST_API {
-    login = (login, password) => this.post('/guard/login', { _model: Models.User, login, password});
+    login = (login, password) => this.post('/guard/login/', { _model: {}, login, password});
     register = (name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS) => this.post('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS });
     logout = () => this.delete('/api/user/session', { _model: {} });
     getUser = () => this.get('/api/user', { _model: Models.User });

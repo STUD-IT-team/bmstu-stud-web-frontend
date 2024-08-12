@@ -11,7 +11,7 @@
     text-align center
     display flex
     justify-content space-between
-    gap 15px
+    gap 20px
     .animation
       width 45%
       > *
@@ -77,13 +77,13 @@
         font-large-xx()
       .profile-button
         button()
-
-      .registration
+      .register
         font-small()
         color colorPalette1
         a
           color colorPalette2
-
+          &:hover
+            color colorPalette4
 </style>
 
 <template>
@@ -97,11 +97,16 @@
 
       <section class="form">
         <header class="header">Авторизация</header>
-        <section class="registration">
-          Нет&nbsp;аккаунта?&nbsp;<a href="/register">Зарегистрироваться</a>
+        <section class="register">Нет&nbsp;аккаунта?&nbsp;
+          <a href="/register"> Зарегистрироваться</a>
         </section>
-        <FormWithErrors ref="form" :fields="fields" submitText="Войти" @success="login" :loading="loading">
-        </FormWithErrors>
+        <FormWithErrors
+          ref="form"
+          :fields="fields"
+          submitText="Войти"
+          @success="login"
+          :loading="loading"
+        ></FormWithErrors>
       </section>
     </main>
   </div>
@@ -145,7 +150,7 @@ export default {
   methods: {
     async login(data) {
       this.loading = true;
-      const { ok } = await this.$api.login(data.login, data.password);
+      const {ok} = await this.$api.login(data.login, data.password);
       this.loading = false;
 
       if (!ok) {
