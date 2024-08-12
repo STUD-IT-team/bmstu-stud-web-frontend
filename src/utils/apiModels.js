@@ -120,6 +120,19 @@ export const ClubMembers = {
 }
 
 // ----------------------------------------------------------------------
+// req: get /members/
+
+export const Members = {
+  id: Number,
+  is_admin: Boolean,
+  login: String,
+  media: Media,
+  name: String,
+  telegram: String,
+  vk: String,
+}
+
+// ----------------------------------------------------------------------
 // req: get /clubs/{club_id}
 export const Club = {
   id: Number,

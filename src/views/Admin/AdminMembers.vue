@@ -5,7 +5,7 @@
 @require '../../styles/utils.styl'
 
 
-.root-admin-clubs
+.root-admin-members
   width 100%
   .input-container
     position relative
@@ -43,7 +43,7 @@
       right 20px
       height 2rem
       cursor pointer
-  .club-list
+  .members-list
     margin-top 50px
     display flex
     flex-direction column
@@ -54,7 +54,7 @@
         padding 10px
         box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
         border-radius borderRadiusS
-        p
+        span
           font-small()
           padding 10px 10px
         .button
@@ -75,21 +75,19 @@
         cursor pointer
         &:hover
           background colorPalette5
+          .name
+          .login
+            color colorWhite
         img
           height 54px
           width 54px
           object-fit scale-down
           border-radius borderRadiusS
-        .text
-          font-small()
-          header
-            font-large()
-        .type
+        .name
+          font-large()
+        .login
           font-medium()
-          color colorPalette3
-          flex 1
-          text-align right
-          padding-right 10px
+          color colorText3
 
 
 *
@@ -98,32 +96,31 @@
 </style>
 
 <template>
-  <div class="root-admin-clubs">
+  <div class="root-admin-members">
     <form 
       class="input-container"
-      @submit="getOrgsByQuery()">
+      @submit="getMembersByQuery()">
       <input ref="searchBar"  >
-      <label>Введите название организации</label>
+      <label>Введите имя пользователя</label>
       <img src="/res/icons/search.svg"
-        @click="getOrgsByQuery()">        
+        @click="getMembersByQuery()">        
     </form>
-    <div class="club-list">
-      <details v-for="(club, idx) in orgs">
+    <div class="members-list">
+      <details v-for="(member, idx) in members">
         <summary>
-          <img :src="`/media/${club.logo.key}`">
-          <span class="text">
-            <header>{{club.name}}</header>
-            <p v-for="org in club.orgs">
-              {{org.spec}}: {{org.name}}
-            </p>
+          <img :src="`/media/${member.media.key}`">
+          <span class="name">
+            {{member.name}}
           </span>
-          <span class="type">
-            {{club.type}}
+          <span class="login">
+            {{member.login}}
           </span>
         </summary>
         <div class="info-block">
-          <p>{{club.description}}</p>
-          <router-link class="button" :to="'/admin/club/:?orgId='+club.id">
+          <span>TG: {{member.telegram}}</span>
+          <br>
+          <span>VK: {{member.vk}}</span>
+          <router-link class="button" :to="'/admin/club/:?orgId='+member.id">
             Перейти
           </router-link>
         </div>
@@ -139,20 +136,20 @@ export default {
 
   data() {
     return {
-      orgs: [],
+      members: [],
       loading: false,
     }
   },
 
   mounted() {
-    this.getOrgs()
+    this.getMembers()
   },
 
   methods: {
-    async getOrgs() {
+    async getMembers() {
       this.loading = true;
       
-      const {data, ok, status} = await this.$api.getOrgs();
+      const {data, ok, status} = await this.$api.getMembers();
       
       this.loading = false;
 
@@ -160,24 +157,24 @@ export default {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
       }
 
-      this.orgs = data.clubs;
+      this.members = data.members;
     },
   
-    async getOrgsByQuery() {
+    async getMembersByQuery() {
       event.preventDefault()
       const query = this.$refs.searchBar.value
       this.loading = true;            
       const {data, ok, status} = (query) ? 
-        await this.$api.getOrgsByQuery(query)
-        : await this.$api.getOrgs()
+        await this.$api.getMembersByQuery(query)
+        : await this.$api.getMembers()
       this.loading = false
 
       if (!ok) {
         //this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
-        this.orgs = [];
+        this.members = [];
       }
       else
-        this.orgs = data.clubs;
+        this.members = data.members;
     },
   }
 }
