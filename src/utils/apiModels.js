@@ -1,5 +1,13 @@
 // ----------------------------------------------------------------------
 
+export const MediaPost = {
+  id: Number
+}
+
+export const Empty = {
+  
+}
+
 import { apply } from "file-loader"
 
 // req: get /club/media/{club_id}
@@ -74,10 +82,32 @@ export const SubOrg = {
   }
 }
 
+export const ClubPut = {
+  description: String,
+  logo_id: Number,
+  name: String,
+  orgs: {
+    type: Array,
+    item: {
+      type: Object,
+      fields: {
+        member_id: Number,
+        role_name: String,
+        role_spec: String,
+      }
+    }
+  },
+  parent_id: Number,
+  short_name: String,
+  tg_url: String,
+  vk_url: String,
+  type: String,
+}
+
 // ----------------------------------------------------------------------
 // req: get /clubs/members/{club_id}
 
-export const Members = {
+export const ClubMembers = {
   main_orgs: {
     type: Array,
     item: MainOrg,
@@ -115,6 +145,7 @@ export const User = {
   login: String,
   password: String,
 }
+
 
 // ---------------------------------------------------------------------
 // param
@@ -190,18 +221,39 @@ export const Events = {
   }
 }
 
-
-export const Images = {
-  media: {
+export const ClubPhotos = {
+  id: Number,
+  media:{
     type: Array,
     item: {
       type: Object,
       fields: {
-        ref_number: Number,
         id: Number,
         name: String,
         key: String,
+        ref_number: Number
       }
-    },
+    }
+  },
+}
+
+export const Member = {
+  id: Number,
+  isAdmin: Boolean,
+  login: String,
+  media: Media,
+  name: String,
+  role_id: Number,
+  telegram: String,
+  vk: String,
+}
+
+export const Members = {
+  members: {
+    type: Array,
+    item: {
+      type: Object,
+      fields: Member,
+    }
   }
 }
