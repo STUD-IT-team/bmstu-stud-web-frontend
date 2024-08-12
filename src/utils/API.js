@@ -47,7 +47,7 @@ export default class MY_API extends REST_API {
     getOrgsByQuery = (query) => this.get(`/clubs/search/${query}`, {_model: Models.Clubs});
  
     getOrgInfo = (orgId) => this.get(`/clubs/${orgId}`, {_model: Models.Club});
-    getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.Images});
+    getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.ClubPhotos});
     
     getAllMembers = () => this.get(`/members/`, { _model: Models.Members})
 

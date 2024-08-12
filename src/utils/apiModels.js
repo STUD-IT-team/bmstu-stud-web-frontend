@@ -221,11 +221,20 @@ export const Events = {
   }
 }
 
-export const Images = {
+export const ClubPhotos = {
+  id: Number,
   media:{
     type: Array,
-    item: Media,
-  }
+    item: {
+      type: Object,
+      fields: {
+        id: Number,
+        name: String,
+        key: String,
+        ref_number: Number
+      }
+    }
+  },
 }
 
 export const Member = {
