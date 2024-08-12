@@ -453,7 +453,7 @@ export default {
       clubBackup: Object,
       photos: Array,
       orgId: Number,
-      memberList: [],
+      mainOrgsBackup: [],
 
       categories: [
         {
@@ -530,26 +530,23 @@ export default {
     },
     restore(){
       this.club = {...this.clubBackup}
+      this.club.main_orgs = []
+      for (var idx in this.mainOrgsBackup) {
+        this.club.main_orgs.push({...this.mainOrgsBackup[idx]})
+      }
       console.log(this.clubBackup)
       console.log(this.club)
+      console.log(this.mainOrgsBackup)
       // document.reload(true)
       this.$refs.labelName.style.color = "#631FB9"
       this.$refs.labelShortName.style.color = "#631FB9"
       this.$refs.labelDescription.style.color = "#631FB9"
       this.$refs.labelLinkTg.style.color = "#631FB9"
       this.$refs.labelLinkVk.style.color = "#631FB9"
-      for (idx in this.$refs.labelRoleName)
+      for (var idx in this.$refs.labelRoleName)
         this.$refs.labelRoleName[idx].style.color = "#631FB9"
         this.$refs.labelRoleSpec[idx].style.color = "#631FB9"
 
-    },
-    async getAllMembers() {
-      this.loading = true
-      const {data, ok, status} = await this.$api.getAllMembers()
-      this.loading = false
-      this.memberList = data
-      console.log(this.memberList)
-      //return this.memberList
     },
     updateType(idx){
       this.club.type = this.$refs.typeSelect[idx].innerText
@@ -674,8 +671,12 @@ export default {
           this.error = false
           this.club = data
           this.clubBackup = {...this.club}
+          this.mainOrgsBackup = []
+          for (var idx in this.club.main_orgs) {
+            this.mainOrgsBackup.push({...this.club.main_orgs[idx]})
+          }
           console.log(this.club)
-          console.log(this.clubBackup)
+          console.log(this.mainOrgsBackup)
         }
       }
       catch {
