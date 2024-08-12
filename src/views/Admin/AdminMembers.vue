@@ -44,10 +44,18 @@
       height 2rem
       cursor pointer
   .members-list
-    margin-top 50px
+    margin-top 30px
     display flex
     flex-direction column
     gap 10px
+    .button-add-member
+      padding 10px
+      margin-bottom 10px
+      box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
+      border-radius borderRadiusS
+      text-align center
+      font-large()
+      color colorPalette3
     details
       .info-block
         margin-top 10px
@@ -106,6 +114,9 @@
         @click="getMembersByQuery()">        
     </form>
     <div class="members-list">
+      <router-link class="button-add-member" to="/admin/members/create">
+        +
+      </router-link>
       <details v-for="(member, idx) in members">
         <summary>
           <img :src="`/media/${member.media.key}`">
@@ -120,7 +131,7 @@
           <span>TG: {{member.telegram}}</span>
           <br>
           <span>VK: {{member.vk}}</span>
-          <router-link class="button" :to="'/admin/club/:?orgId='+member.id">
+          <router-link class="button" :to="'/admin/members/:?memberId='+member.id">
             Перейти
           </router-link>
         </div>

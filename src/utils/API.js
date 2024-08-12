@@ -4,7 +4,7 @@ import * as Models from "~/utils/apiModels";
 
 export default class MY_API extends REST_API {
     login = (login, password) => this.post('/guard/login/', { _model: {}, login, password});
-    register = (name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS) => this.post('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number, password, clientBrowser, clientOS });
+    register = (member) => this.post('/guard/register/', { _model: Models.RegisterMember, ...member});
     logout = () => this.delete('/api/user/session', { _model: {} });
     getUser = () => this.get('/api/user', { _model: Models.User });
     getUserById = (id) => this.get(`/api/user`, { _model: Models.User, id });
@@ -50,29 +50,13 @@ export default class MY_API extends REST_API {
     getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.ClubPhotos});
     
     getMembers = () => this.get(`/members`, { _model: Models.Members})
-    // getMembers = () => ({
-    //     ok: true, status: 200, data: {
-    //         members: [
-    //             {
-    //                 id: 0,
-    //                 is_admin: true,
-    //                 login: "CoolHacker228",
-    //                 media: {
-    //                     id: 0,
-    //                     key: "/images/1.jpg",
-    //                     name: "idk",
-    //                 },
-    //                 name: "Крутой чел",
-    //                 telegram: "t.me/",
-    //                 vk: "vk.com/",
-    //             }
-    //         ]
-    //     }
-    // })
     getMembersByQuery = (query) => this.get(`/members/search/${query}`, {_model: Models.Members});
+    getMember = (memberId) => this.get(`/members/${memberId}`, { _model: Models.Member})
+
 
     putClub = (club, club_id) => this.put(`/clubs/`, { _model: Models.Empty, club_id, club })
-    postMedia = (data, name) => this.post('/media/private', {_model:Models.MediaPost, data, name})
+    postMedia = (data, name) => this.post('/media/private/', {_model:Models.MediaPost, data, name})
+    putMember = (member, member_id) => this.put(`/members/${member_id}`, {_model: {}, ...member})
 
     async modelParsedRequest(requestFunc, path, data = {}) {
         if (!data._model) {

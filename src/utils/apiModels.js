@@ -1,7 +1,8 @@
 // ----------------------------------------------------------------------
 
 export const MediaPost = {
-  id: Number
+  id: Number,
+  key: String,
 }
 
 export const Empty = {
@@ -122,23 +123,35 @@ export const ClubMembers = {
 // ----------------------------------------------------------------------
 // req: get /members/
 
+
+export const Member = {
+  id: Number,
+  is_admin: Boolean,
+  login: String,
+  media: Media.media,
+  name: String,
+  telegram: String,
+  vk: String,
+}
+
+export const RegisterMember = {
+  login: String,
+  password: String,
+  name: String,
+  telegram: String,
+  vk: String,
+}
+
 export const Members = {
   members: {
     type: Array,
     item: {
       type: Object,
-      fields: {
-        id: Number,
-        is_admin: Boolean,
-        login: String,
-        media: Media.media,
-        name: String,
-        telegram: String,
-        vk: String,
-      },
+      fields: Member
     },
   }
 }
+
 
 // ----------------------------------------------------------------------
 // req: get /clubs/{club_id}
