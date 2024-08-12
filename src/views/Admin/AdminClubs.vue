@@ -122,7 +122,7 @@
           </span>
         </summary>
         <div class="info-block">
-          <p>{{club.description}}</p>
+          <p>{{club.short_description}}</p>
           <router-link class="button" :to="'/admin/club/:?orgId='+club.id">
             Перейти
           </router-link>
