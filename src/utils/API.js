@@ -49,26 +49,26 @@ export default class MY_API extends REST_API {
     getOrgInfo = (orgId) => this.get(`/clubs/${orgId}`, {_model: Models.Club});
     getOrgPhotos = (orgId) => this.get(`/clubs/media/${orgId}`, {_model: Models.ClubPhotos});
     
-    //getMembers = () => this.get(`/members/`, { _model: Models.Members})
-    getMembers = () => ({
-        ok: true, status: 200, data: {
-            members: [
-                {
-                    id: 0,
-                    is_admin: true,
-                    login: "CoolHacker228",
-                    media: {
-                        id: 0,
-                        key: "/images/1.jpg",
-                        name: "idk",
-                    },
-                    name: "Крутой чел",
-                    telegram: "t.me/",
-                    vk: "vk.com/",
-                }
-            ]
-        }
-    })
+    getMembers = () => this.get(`/members`, { _model: Models.Members})
+    // getMembers = () => ({
+    //     ok: true, status: 200, data: {
+    //         members: [
+    //             {
+    //                 id: 0,
+    //                 is_admin: true,
+    //                 login: "CoolHacker228",
+    //                 media: {
+    //                     id: 0,
+    //                     key: "/images/1.jpg",
+    //                     name: "idk",
+    //                 },
+    //                 name: "Крутой чел",
+    //                 telegram: "t.me/",
+    //                 vk: "vk.com/",
+    //             }
+    //         ]
+    //     }
+    // })
     getMembersByQuery = (query) => this.get(`/members/search/${query}`, {_model: Models.Members});
 
     putClub = (club, club_id) => this.put(`/clubs/`, { _model: Models.Empty, club_id, club })

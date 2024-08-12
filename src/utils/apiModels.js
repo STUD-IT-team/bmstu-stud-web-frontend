@@ -123,13 +123,21 @@ export const ClubMembers = {
 // req: get /members/
 
 export const Members = {
-  id: Number,
-  is_admin: Boolean,
-  login: String,
-  media: Media,
-  name: String,
-  telegram: String,
-  vk: String,
+  members: {
+    type: Array,
+    item: {
+      type: Object,
+      fields: {
+        id: Number,
+        is_admin: Boolean,
+        login: String,
+        media: Media.media,
+        name: String,
+        telegram: String,
+        vk: String,
+      },
+    },
+  }
 }
 
 // ----------------------------------------------------------------------
