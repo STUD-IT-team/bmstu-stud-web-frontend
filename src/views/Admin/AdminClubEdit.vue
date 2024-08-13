@@ -309,13 +309,26 @@
               <button @click="setShortName()">ОК</button>
             </div>
           </div>
+          <!-- Короткое описание -->
+          <div class="input-container">
+            <div class="row">
+              <p style="white-space: pre-line" ref="labelShortDescription">
+                Краткое описание: <br>{{club.short_description}}
+              </p>
+              <img src="/res/icons/edit.svg" @click="showInput(2)">
+            </div>
+            <div class="row" ref="rowInputShortDescription" style="display: none">
+              <textarea id="club-short-description" ref="inputShortDescriptionField">{{club.short_description}}</textarea>
+              <button @click="setShortDescription()">ОК</button>
+            </div>
+          </div>
           <!-- Описание -->
           <div class="input-container">
             <div class="row">
               <p style="white-space: pre-line" ref="labelDescription">
                 Описание: <br>{{club.description}}
               </p>
-              <img src="/res/icons/edit.svg" @click="showInput(2)">
+              <img src="/res/icons/edit.svg" @click="showInput(3)">
             </div>
             <div class="row" ref="rowInputDescription" style="display: none">
               <textarea id="club-description" ref="inputDescriptionField">{{club.description}}</textarea>
@@ -336,7 +349,7 @@
             <label ref="labelLinkTg">
               Телеграм: {{club.tg_url}}
             </label>
-            <img src="/res/icons/edit.svg" @click="showInput(3)">
+            <img src="/res/icons/edit.svg" @click="showInput(4)">
           </div>
           <div class="row" ref="rowInputLinkTg" style="display: none">
             <input id="club-link-tg" ref="inputLinkTgField" :value="club.tg_url">
@@ -348,7 +361,7 @@
             <label ref="labelLinkVk">
               ВКонтакте: {{club.vk_url}}
             </label>
-            <img src="/res/icons/edit.svg" @click="showInput(4)">
+            <img src="/res/icons/edit.svg" @click="showInput(5)">
           </div>
           <div class="row" ref="rowInputLinkVk" style="display: none">
             <input id="club-link-vk" ref="inputLinkVkField" :value="club.vk_url">
@@ -382,7 +395,7 @@
               <label ref="labelRoleName">
                 Роль: {{lead.role_name}}
               </label>
-              <img src="/res/icons/edit.svg" @click="showInput(2*idx+5)">
+              <img src="/res/icons/edit.svg" @click="showInput(2*idx+6)">
             </div>
             <div class="row" ref="rowRole" style="display: none">
               <input ref="inputRoleNameField" :value="lead.role_name">
@@ -395,7 +408,7 @@
               <p style="white-space: pre-line" ref="labelRoleSpec">
                 Описание: <br>{{lead.spec}}
               </p>
-              <img src="/res/icons/edit.svg" @click="showInput(2*idx+6)">
+              <img src="/res/icons/edit.svg" @click="showInput(2*idx+7)">
             </div>
             <div class="row" ref="rowRole" style="display: none">
               <textarea id="club-description" ref="inputRoleSpecField">{{lead.spec}}</textarea>
@@ -540,6 +553,7 @@ export default {
       // document.reload(true)
       this.$refs.labelName.style.color = "#631FB9"
       this.$refs.labelShortName.style.color = "#631FB9"
+      this.$refs.labelShortDescription.style.color = "#631FB9"
       this.$refs.labelDescription.style.color = "#631FB9"
       this.$refs.labelLinkTg.style.color = "#631FB9"
       this.$refs.labelLinkVk.style.color = "#631FB9"
@@ -569,13 +583,15 @@ export default {
       if (idx == 1)
         row = this.$refs.rowInputShortName
       if (idx == 2)
-        row = this.$refs.rowInputDescription
+        row = this.$refs.rowInputShortDescription
       if (idx == 3)
-        row = this.$refs.rowInputLinkTg
+        row = this.$refs.rowInputDescription
       if (idx == 4)
+        row = this.$refs.rowInputLinkTg
+      if (idx == 5)
         row = this.$refs.rowInputLinkVk
-      if (idx >= 5)
-        var row = this.$refs.rowRole[idx-5]
+      if (idx >= 6)
+        var row = this.$refs.rowRole[idx-6]
 
       if (getComputedStyle(row).display == "none")
         row.style.display = "flex"
@@ -598,13 +614,21 @@ export default {
       }
       this.showInput(1)
     },
+    setShortDescription() {
+      const newVal = this.$refs.inputShortDescriptionField.value
+      if (newVal != this.club.short_description) {
+      this.club.short_description = newVal
+      this.$refs.labelShortDescription.style.color = "#FF9301" //
+      }
+      this.showInput(2)
+    },
     setDescription() {
       const newVal = this.$refs.inputDescriptionField.value
       if (newVal != this.club.description) {
       this.club.description = newVal
       this.$refs.labelDescription.style.color = "#FF9301" //
       }
-      this.showInput(2)
+      this.showInput(3)
     },
     setLinkTg() {
       const newVal = this.$refs.inputLinkTgField.value
@@ -612,7 +636,7 @@ export default {
         this.club.tg_url = newVal
         this.$refs.labelLinkTg.style.color = "#FF9301" //
       }
-      this.showInput(3)
+      this.showInput(4)
     },
     setLinkVk() {
       const newVal = this.$refs.inputLinkVkField.value
@@ -620,7 +644,7 @@ export default {
         this.club.vk_url = newVal
         this.$refs.labelLinkVk.style.color = "#FF9301" //
       }
-      this.showInput(4)
+      this.showInput(5)
     },
     setRoleName(idx) {
       const newVal = this.$refs.inputRoleNameField[idx].value
@@ -628,7 +652,7 @@ export default {
         this.club.main_orgs[idx].role_name = newVal
         this.$refs.labelRoleName[idx].style.color = "#FF9301" //
       }
-      this.showInput(idx*2 + 5)
+      this.showInput(idx*2 + 6)
     },
     setRoleSpec(idx) {
       const newVal = this.$refs.inputRoleSpecField[idx].value
@@ -636,7 +660,7 @@ export default {
         this.club.main_orgs[idx].spec = newVal
         this.$refs.labelRoleSpec[idx].style.color = "#FF9301" //
       }
-      this.showInput(idx*2 + 6)
+      this.showInput(idx*2 + 7)
     },
     addLead() {
       this.club.main_orgs.push({
