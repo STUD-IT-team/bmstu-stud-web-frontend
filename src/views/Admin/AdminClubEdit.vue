@@ -419,6 +419,7 @@
         </div>
 
         <button @click="addLead()">+</button>
+        <MemberDropdown></MemberDropdown>
 
       </div>
 
@@ -456,9 +457,10 @@
 
 <script>
 import Dropdown from "~/components/Dropdown.vue";
+import MemberDropdown from "~/components/MemberDropdown.vue";
 
 export default {
-  components: {Dropdown},
+  components: {Dropdown, MemberDropdown},
 
   data() {
     return {
@@ -467,6 +469,7 @@ export default {
       photos: Array,
       orgId: Number,
       mainOrgsBackup: [],
+      create: false,
 
       categories: [
         {
@@ -502,23 +505,38 @@ export default {
   methods: {
 
     async updateClub() {
+      var method
+      if (this.create) {
+        method = this.postClub
+      }
+      else {
+        method = this.putClub
+      }
+
       var reader = new FileReader()
       var logoByteArray = []
       var file = this.$refs.inputLogo.files[0]
-      reader.readAsArrayBuffer(file)
-      reader.onloadend = function (evt) {
-        if (evt.target.readyState == FileReader.DONE) {
-          var arrayBuffer = evt.target.result,
-            array = new Uint8Array(arrayBuffer);
-          for (var i = 0; i < array.length; i++) {
-            logoByteArray.push(array[i]);
+      if (file) {
+        reader.readAsArrayBuffer(file)
+        reader.onloadend = async function (evt) {
+          if (evt.target.readyState == FileReader.DONE) {
+            var arrayBuffer = evt.target.result,
+              array = new Uint8Array(arrayBuffer);
+            for (var i = 0; i < array.length; i++) {
+              logoByteArray.push(array[i]);
+            }
           }
-        }
-        console.log(logoByteArray, file.name)
-        this.club.logo_id = this.$api.postMedia(logoByteArray, file.name)
-        this.putClub()
+          console.log(logoByteArray, file.name)
+          const {data, ok, status} = await this.$api.postMedia(logoByteArray, file.name)
+          this.club.logo_id = data.id
+          method()
 
-      }.bind(this)
+        }.bind(this)
+        
+      }
+      else {
+        method()
+      }
       // clubToPut = {
       //   description: this.club.description,
       //   logo_id:
@@ -528,7 +546,8 @@ export default {
     putClub() {
       var clubToPut = {
         description: this.club.description,
-        logo_id: this.club.logo_id,
+        short_description: this.club.short_description,
+        logo_id: this.club.logo.id,
         name: this.club.name,
         orgs: [],
         parent_id: 0,
@@ -723,6 +742,9 @@ export default {
     initialize() {
       var params = new URLSearchParams(document.location.search)
       this.orgId=params.get('orgId')
+      if (!this.orgId) {
+        this.create = true
+      }
       this.getInfo();
       this.getPhotos();
       //this.clubBackup = this.club
