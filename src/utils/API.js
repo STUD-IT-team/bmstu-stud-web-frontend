@@ -54,7 +54,7 @@ export default class MY_API extends REST_API {
     getMember = (memberId) => this.get(`/members/${memberId}`, { _model: Models.Member})
 
 
-    putClub = (club, club_id) => this.put(`/clubs/`, { _model: Models.Empty, club_id, club })
+    putClub = (club, club_id) => this.put(`/clubs/${club_id}`, { _model: Models.Empty, ...club })
     postMedia = (data, name) => this.post('/media/private/', {_model:Models.MediaPost, data, name})
     putMember = (member, member_id) => this.put(`/members/${member_id}`, {_model: {}, ...member})
 

@@ -6,6 +6,8 @@
 @require '../styles/components.styl'
 @require '../styles/animations.styl'
 
+*
+  trans(0.2s)
 
 .root-member-dropdown
   width 100%
@@ -14,6 +16,35 @@
     height 400px
     border solid 2px colorPalette1
     border-radius borderRadiusM
+    display flex
+    flex-direction column
+    gap 10px
+    padding 10px
+    overflow auto
+    .member
+      display flex
+      align-items center
+      gap 10px
+      padding 15px 20px
+      box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
+      border-radius borderRadiusS
+      border none
+      cursor pointer
+      &:hover
+        background colorPalette5
+        .name
+        .login
+          color colorWhite
+      img
+        height 54px
+        width 54px
+        object-fit contain
+        border-radius borderRadiusS 
+      .name
+        font-medium()
+      .login
+        font-small()
+        color colorPalette3
     
   
 
@@ -23,8 +54,15 @@
 
 <div class="root-member-dropdown">
   <div class="members-container">
-    <div class="member" v-for="member, idx in members">
-      AAA
+    {{member}}
+    <div class="member" v-for="member, idx in members" @click="setMember(idx)">
+      <img :src="`/media/${member.media.key}`">
+      <span class="name">
+        {{member.name}}
+      </span>
+      <span class="login">
+        {{member.login}}
+      </span>
     </div>
   </div>
 </div>
@@ -35,17 +73,7 @@
 import CircleLoading from "~/App.vue";
 import {ref} from 'vue';
 
-// var slides = document.querySelectorAll(".slide")
-// var radioButton = document.querySelectorAll(".button")
-
-// var counter = 0;
-
-
-
-// const itemRefs = ref([])
-
 export default {
-  // emits: ['delete', 'pin', 'upnin', 'edit'],
 
   components: {CircleLoading},
 
@@ -60,18 +88,12 @@ export default {
     }
   },
 
-  computed: {
-    // datePrettified() {
-    //   return this.timePublished.toLocaleDateString('ru-RU', {day: "numeric", month: "short", hour: "numeric", minute: "numeric"});
-    // }
-  },
-
   // Чтобы подгружалось по готовности разметки
   updated() {
   },
 
   mounted() {
-    
+    this.getMembers()
   },
 
   methods: { 
@@ -87,6 +109,9 @@ export default {
       }
 
       this.members = data.members;
+    },
+    setMember(idx) {
+      this.member = this.members[idx]
     }
   }
 };

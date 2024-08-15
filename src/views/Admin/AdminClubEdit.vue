@@ -419,7 +419,7 @@
         </div>
 
         <button @click="addLead()">+</button>
-        <MemberDropdown></MemberDropdown>
+        <MemberDropdown ref="MemberDropdown"></MemberDropdown>
 
       </div>
 
@@ -500,6 +500,15 @@ export default {
   created() {
     this.initialize()
     //this.getAllMembers()
+  },
+
+  watch: {
+    '$refs.MemberDropdown.data.member': {
+      handler: function(newValue) {
+        console.log('Current vaules:' + newValue);
+      },
+      deep: true
+    }
   },
 
   methods: {
