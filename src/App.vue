@@ -170,7 +170,8 @@ export default {
       this.global.$isMobile = false;
     },
     handleScroll(event) {
-      var currentScrollPos = document.body.scrollTop;
+      const currentScrollPos = document.body.scrollTop;
+
       if (this.prevScrollPos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
       } else {

@@ -213,9 +213,10 @@ export default {
 
   watch: {
     '$route' (to,from) {
-      if (to.name == "organization" || to.name == "about")
+      if (to.name == "organization" || to.name == "about") {
         this.error = true
         this.initialize()
+        }
     }
   },
 
@@ -284,8 +285,8 @@ export default {
           this.path = this.getPath()
         }
       }
-      catch {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
+      catch(ex) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации (неизвестная ошибка)')
         this.error = true
         this.loading = false;
       }
@@ -308,7 +309,8 @@ export default {
         this.orgId = 0
       }
       this.getInfo();
-      this.getPhotos();
+      if (this.error != true)
+        this.getPhotos()
     },
   }
 }

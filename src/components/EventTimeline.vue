@@ -277,9 +277,8 @@ expanded-width = 700px
 <div class="root-timeline" :key="loading" v-if="loading==false">
   
     <transition name="event-fade" mode="out-in">
-      <div class="event" :key="this.currentEventIdx">
-        <span class="title">{{events[currentEventIdx].title}}</span>
-        <img :src="events[currentEventIdx].media.imageUrl">
+      <div class="event" :key="this.currentEventIdx"> 
+        <img :src="`/media/${events[currentEventIdx].media.key}`">
         <span class="title">{{events[currentEventIdx].title}}</span>
         <span class="info">{{events[currentEventIdx].prompt}}</span>
         <span class="description">{{events[currentEventIdx].description}}</span>
@@ -412,12 +411,11 @@ export default {
   },
 
   mounted() {
-    //this.getEvents()
+    // this.getEvents()
   },
 
   methods: {
     async getEvents() {
-      console.log("ГОООООООООООООООООООЛ")
       this.loading = true
       const { data, ok, status } = await this.$api.getEvents()
 
@@ -425,10 +423,12 @@ export default {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить события')
       }
 
-      this.events = data.events
+      this.events = data.event
+      for (const eventIdx in this.events) {
+        this.events[eventIdx].id = eventIdx
+      }  
+
       this.loading = false
-      console.log("ГОООООООООООООООООООЛ")
-      console.log(this.events)
     },
     getShortDate(date) {
       return date.getDate() + " " + this.monthsGenitive[(date.getMonth() + 5) % 12]
