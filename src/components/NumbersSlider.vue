@@ -42,7 +42,7 @@
 <template>
   <ul class="root-number-slider" @scroll="onScroll" ref="root">
     <li v-for="numberEvent in numbersStud.concat(numbersStud)" class="number-item">
-      <div class="number">{{ numberEvent.num }}</div>
+      <div class="number">{{ numberEvent.count }}</div>
       <div class="description">{{ numberEvent.description }}</div>
     </li>
   </ul>
@@ -65,12 +65,12 @@ export default {
   methods: {
     async getStudNums() {
       this.loading = true
-      const { data, ok, status } = await this.$api.getStudNums()
+      const { data, ok, status } = await this.$api.getEncounters(0)
       this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить студ в цифрах')
       }
-      this.numbersStud = data.studNumbers;
+      this.numbersStud = data.encounter;
     },
 
     onScroll() {

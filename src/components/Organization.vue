@@ -38,7 +38,7 @@ text-section-max-height = 265px
 
 <template>
 
-  <router-link :to="'organizations/:?orgId='+id">
+  <router-link :to="{name: 'organization', params: {orgId: id}}">
     <div class="root-org">
       <img :src="logoSrc">
       <div class="text">

@@ -303,8 +303,7 @@ export default {
       this.photos = data.media;
     },
     initialize() {
-      var params = new URLSearchParams(document.location.search)
-      this.orgId=params.get('orgId')
+      this.orgId=this.$route.params.orgId
       if (this.orgId===null) {
         this.orgId = 0
       }
