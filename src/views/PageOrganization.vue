@@ -309,7 +309,8 @@ export default {
         this.orgId = 0
       }
       this.getInfo();
-      this.getPhotos();
+      if (this.error != true)
+        this.getPhotos()
     },
   }
 }
