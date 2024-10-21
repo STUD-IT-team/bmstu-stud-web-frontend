@@ -1,0 +1,56 @@
+{
+  "short_name": "СтудСовет",
+  "name": "Студенческий Совет МГТУ им. Н.Э. Баумана",
+  "description": "Вся самая важная информация о Студенческом Совете, собранная в одном месте! \n Просматривайте список мероприятий и записывайтесь на понравившиеся. Или вступайте в ряды Студенческого Совета, создавайте свои мероприятия, и находите именно вашу аудиторию благодаря этому сервису. \n Вместе - ещё веселее",
+  "icons": [
+    {
+      "src": "/static/favicon-dark.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/static/favicon-dark.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "background_color": "#1A1A1A",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#1A1A1A",
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Мероприятия",
+      "short_name": "Мероприятия",
+      "description": "Список всех ближайших мероприятий",
+      "url": "/events?source=pwa",
+      "icons": [{ "src": "/images/tomorrow.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Новости",
+      "short_name": "Новости",
+      "description": "Новости Студенческого Совета",
+      "url": "/news?source=pwa",
+      "icons": [{ "src": "/images/tomorrow.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot1.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/screenshot2.jpg",
+      "type": "image/jpg",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ]
+}

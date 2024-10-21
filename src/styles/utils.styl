@@ -1,0 +1,45 @@
+@require 'constants.styl'
+
+trans(time=0.2s)
+    transition all time ease
+
+centered-margin()
+    margin-left auto
+    margin-right auto
+    width 100%
+centered-flex-container()
+    display flex
+    align-items center
+    justify-content center
+centered-absolute-transform()
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+
+hover-effect()
+    cursor pointer
+    transition all 0.2s ease
+    @media ({desktop})
+        &:hover
+            opacity 0.7
+hover-effect-underline(color=white)
+    background linear-gradient(color, color) 50% 100% / 0 1px no-repeat
+    transition all .2s
+    @media ({desktop})
+        &:hover
+            background-size 100% 1px
+
+button-no-styles()
+    background none
+    outline none
+    border none
+    margin 0
+    padding 0
+
+pc-hidden()
+    @media ({desktop})
+        display none
+mobile-hidden()
+    @media ({mobile})
+        display none

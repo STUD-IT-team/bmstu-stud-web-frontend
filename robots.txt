@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /news
+Allow: /events
+Allow: /login
+Disallow: /register
+Disallow: /login/email
+Disallow: /profile
+Disallow: /password/change
+Disallow: /password/restore
+Sitemap: https://stud-it-dep.bmstu.ru/sitemap.xml
