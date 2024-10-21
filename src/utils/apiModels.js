@@ -185,26 +185,26 @@ export const User = {
 // ---------------------------------------------------------------------
 // param
 export const Feed = {
-  type: Object,
-  fields: {
-    approved: Boolean,
-    id: Number,
-    title: String,
-    description: String,
-    media: Media.media,
-    updated_at: Date,
-    created_at: Date,
-    created_by: Number,
-    views: Number,
-    vk_post_url: String
-  }
+  approved: Boolean,
+  id: Number,
+  title: String,
+  description: String,
+  media: Media.media,
+  updated_at: Date,
+  created_at: Date,
+  created_by: Number,
+  views: Number,
+  vk_post_url: String
 }
 
 // req get /feed
 export const Feeds = {
   feed: {
     type: Array,
-    item: Feed,
+    item: {
+      type: Object,
+      fields: Feed,
+    },
   }
 }
 

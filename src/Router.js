@@ -25,6 +25,8 @@ import AdminClubs from "~/views/Admin/AdminClubs.vue";
 import AdminMembers from "~/views/Admin/AdminMembers.vue";
 import AdminClubEdit from "~/views/Admin/AdminClubEdit.vue";
 import AdminMemberEdit from "~/views/Admin/AdminMemberEdit.vue";
+import AdminNews from "~/views/Admin/AdminNews.vue";
+import AdminNewEdit from "~/views/Admin/AdminNewEdit.vue";
 
 export default function createVueRouter(Store) {
     const routes = [
@@ -59,11 +61,13 @@ export default function createVueRouter(Store) {
 
         {path: '/admin', component: PageAdminMenu, meta: {}, children: [
             {path: '/admin/clubs', name: 'adminClubs', component: AdminClubs, meta: {}},  
-            {path: '/admin/members', name: 'adminMembers', component: AdminMembers, meta: {}},  
+            {path: '/admin/members', name: 'adminMembers', component: AdminMembers, meta: {}},
+            {path: '/admin/news', name: 'adminNews', component: AdminNews, meta: {}},
         ]},
         {path: '/admin/club/:orgId', name: 'adminClubEdit', component: AdminClubEdit, meta: {noLoginRequired: true}},
         {path: '/admin/members/:id', name: 'adminMemberEdit', component: AdminMemberEdit, meta: {noLoginRequired: true}},
         {path: '/admin/members/create', name: 'adminMemberEdit', component: AdminMemberEdit, meta: {noLoginRequired: true}},
+        {path: '/admin/new/:newId', name: 'adminNewEdit', component: AdminNewEdit, meta: {noLoginRequired: true}},
 
         {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
     ];
