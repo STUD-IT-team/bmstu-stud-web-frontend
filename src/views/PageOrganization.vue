@@ -304,8 +304,8 @@ export default {
     },
     async initialize() {
       this.orgId=this.$route.params.orgId
-      if (this.orgId===null) {
-        this.orgId = 0
+      if (!this.orgId) {
+        this.orgId = 1
       }
       await this.getInfo();
       if (this.error != true)
