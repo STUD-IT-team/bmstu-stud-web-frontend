@@ -162,7 +162,7 @@ export default {
         {
           id: 1,
           text: "Студенческие Советы факультетов",
-          value: "IT",
+          value: "ССФ",
         },
         {
           id: 2,
