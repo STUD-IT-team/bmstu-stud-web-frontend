@@ -41,32 +41,49 @@
         fill orange
 
   .title
-    font-large()
+    font-medium()
     color colorPalette4
 
-  .description
-    font-medium()
-    position absolute
-    top 90px
-    left 10px
-    color white
-    padding 20px
+ 
+
+  &:hover .image-container
+    .description 
+      display inline
+
+  .image-container
+    position relative
+    margin-top 15px
     width 100%
-    box-sizing border-box
-    text-align left
-    display none
-
-  &:hover .description
-    display inline
-
-  img
-    position absolute
-    bottom 0
-    left 0
+    height 79%
+    background colorBg2
     border-radius 20px
-    width 100%
-    user-select: none
-    transition filter 0.2s
+    .description
+      font-medium()
+      color colorPalette5
+      position absolute
+      top 0px
+      left 10px
+      color white
+      padding 20px
+      width 100%
+      height 100%
+      overflow auto
+      //scrollbar hidden
+      //box-sizing border-box
+      text-align left
+      display none
+      scrollbar-width none
+      &::-webkit-scrollbar
+        display none
+    img
+      bottom 0
+      left 0
+      width 100%
+      height 100%
+      border-radius 20px
+      object-fit cover
+      user-select: none
+      transition filter 0.2s
 
   &:hover img
     filter brightness(0.3)
@@ -83,8 +100,10 @@
           d="M87.3535 4.35353C87.5487 4.15827 87.5487 3.84169 87.3535 3.64643L84.1715 0.464446C83.9762 0.269184 83.6596 0.269184 83.4644 0.464447C83.2691 0.659709 83.2691 0.976291 83.4644 1.17155L86.2928 3.99998L83.4644 6.82841C83.2691 7.02367 83.2691 7.34025 83.4644 7.53551C83.6596 7.73078 83.9762 7.73078 84.1715 7.53551L87.3535 4.35353ZM0.674316 4.5L86.9999 4.49998L86.9999 3.49998L0.674316 3.5L0.674316 4.5Z" />
       </svg>
     </a>
-    <img :src="imgUrl" alt="">
-    <div class="description">{{ description }}</div>
+    <div class="image-container">
+      <img :src="imgUrl" alt="">
+      <div class="description">{{ description }}</div>
+    </div>
   </div>
 </template>
 

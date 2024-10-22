@@ -78,7 +78,7 @@ padding-sides = 20px
     .big-news-container
       margin auto
       padding-bottom 60px
-      overflow auto
+      overflow-x auto
       max-width 1282px
 
       .big-news-sector
