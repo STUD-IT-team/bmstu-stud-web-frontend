@@ -237,7 +237,7 @@ export const Event = {
     id: Number,
     title: String,
     description: String,
-    media: Media,
+    media: Media.media,
     created_by: Number,
     created_at: String,
     date: String,
@@ -250,7 +250,7 @@ export const Event = {
 }
 
 export const Events = {
-  event: {
+  events: {
     type: Array,
     item: Event,
   }

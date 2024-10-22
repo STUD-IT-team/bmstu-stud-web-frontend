@@ -364,39 +364,39 @@ export default {
       ],
       currentMonthIdx: 0,
       currentEventIdx: 0,
-      // events: [{
-      //   id: 0,
-      //   title: "ШКОЛА ПЕРЕД ШКОЛОЙ",
-      //   info: "300+ базовичков",
-      //   imgSrc: "/res/images/shmb.jpg",
-      //   description: "Лес кайф костёр палатки +вайб, только людей поменьше",
-      //   date: new Date('16 Aug 2024 00:00:00 GMT')
-      // },
-      // {
-      //   id: 1,
-      //   title: "ШКОЛА МОЛОДОГО БАУМАНЦА",
-      //   info: "1719 первашей",
-      //   imgSrc: "/res/images/shmb.jpg",
-      //   description: "Лес кайф костёр палатки +вайб. Техподы с лопатами и колунами, штабисты с тушёнкой, кураторы уплетают втихаря доширак, медийщики нервно курят за шатром.",
-      //   date: new Date('23 Aug 2024 00:00:00 GMT')
-      // },
-      // {
-      //   id: 2,
-      //   title: "СТАРОСТАТ",
-      //   info: "Выезд для старост окда",
-      //   imgSrc: "/res/images/starostat.jpg",
-      //   description: "Старосты старосты старосты",
-      //   date: new Date('29 Sept 2024')
-      // },
-      // {
-      //   id: 3,
-      //   title: "МИСТЕР МУСКУЛ",
-      //   info: "Самые горячие техподы университета",
-      //   imgSrc: "/res/images/missPlaceholder.jpg",
-      //   description: "Мужественные мужчины спорят кто самый мужественный мужчина",
-      //   date: new Date('24 Apr 2024 00:00:00 GMT')
-      // },
-      // ],
+        // events: [{
+        //   id: 0,
+        //   title: "ШКОЛА ПЕРЕД ШКОЛОЙ",
+        //   info: "300+ базовичков",
+        //   imgSrc: "/res/images/shmb.jpg",
+        //   description: "Лес кайф костёр палатки +вайб, только людей поменьше",
+        //   date: new Date('16 Aug 2024 00:00:00 GMT')
+        // },
+        // {
+        //   id: 1,
+        //   title: "ШКОЛА МОЛОДОГО БАУМАНЦА",
+        //   info: "1719 первашей",
+        //   imgSrc: "/res/images/shmb.jpg",
+        //   description: "Лес кайф костёр палатки +вайб. Техподы с лопатами и колунами, штабисты с тушёнкой, кураторы уплетают втихаря доширак, медийщики нервно курят за шатром.",
+        //   date: new Date('23 Aug 2024 00:00:00 GMT')
+        // },
+        // {
+        //   id: 2,
+        //   title: "СТАРОСТАТ",
+        //   info: "Выезд для старост окда",
+        //   imgSrc: "/res/images/starostat.jpg",
+        //   description: "Старосты старосты старосты",
+        //   date: new Date('29 Sept 2024')
+        // },
+        // {
+        //   id: 3,
+        //   title: "МИСТЕР МУСКУЛ",
+        //   info: "Самые горячие техподы университета",
+        //   imgSrc: "/res/images/missPlaceholder.jpg",
+        //   description: "Мужественные мужчины спорят кто самый мужественный мужчина",
+        //   date: new Date('24 Apr 2024 00:00:00 GMT')
+        // },
+        // ],
       autoScrolling: false,
       loading: true,
     }
@@ -423,7 +423,7 @@ export default {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить события')
       }
 
-      this.events = data.event
+      this.events = data.events
       for (const eventIdx in this.events) {
         this.events[eventIdx].id = eventIdx
       }  
@@ -437,7 +437,12 @@ export default {
       return month * (200 + 14)
     },
     selectEventsByMonth(month) {
-      return this.events.filter((event) => ((new Date(event.date)).getMonth() + 5) % 12==month)
+      if (this.events) {
+        return this.events.filter((event) => ((new Date(event.date)).getMonth() + 5) % 12==month)
+      }
+      else {
+        return []
+      }
     },
     expandMonth(month) {
       this.$refs.monthEventFlex[month].style.width = "700px"

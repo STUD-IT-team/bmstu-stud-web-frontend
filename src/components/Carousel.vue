@@ -65,7 +65,8 @@ section
             opacity 1
     img
       width: 100%;
-      height: fit-content;
+      height 100%
+      object-fit cover
       position: absolute;
       transition: 1s;
       opacity 1
