@@ -37,6 +37,7 @@
         transform rotate(calc(var(--rotation) * 1rad))
         width 100%
         height 100%
+        object-fit cover
         transition 0.2s ease
         &:hover
           filter brightness(1.1)
