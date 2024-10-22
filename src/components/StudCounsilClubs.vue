@@ -109,8 +109,8 @@ export default {
     clubsInfo.forEach((clubInfo, i) => {
       this.clubs.push(new Club(
         clubInfo.title,
-        clubInfo.imgUrl,
-        clubInfo.redirectLink,
+        `media/${clubInfo.logo.key}`,
+        `organizations/${clubInfo.id}`,
         Math.random() * boundingRect.width, // рандомная позиция из ширины области
         Math.random() * boundingRect.width * 0.6, // рандоимная позиция из примерной высоты области
         1, // исходный радиус потом сразу перепишется
@@ -229,13 +229,13 @@ export default {
 
     async getClubsList() {
       this.loading = true;
-      const { data, ok, status } = await this.$api.getClubsList();
+      const { data, ok, status } = await this.$api.getOrgsByType("Клуб");
       this.loading = false;
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить список клубов');
       }
 
-      return data.clubsList;
+      return data.clubs;
     },
   },
 };
