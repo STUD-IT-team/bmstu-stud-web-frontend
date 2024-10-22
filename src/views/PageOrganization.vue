@@ -220,8 +220,8 @@ export default {
     }
   },
 
-  mounted() {
-    this.initialize();
+  async mounted() {
+    await this.initialize();
   },
 
 
@@ -302,14 +302,14 @@ export default {
 
       this.photos = data.media;
     },
-    initialize() {
+    async initialize() {
       this.orgId=this.$route.params.orgId
       if (this.orgId===null) {
         this.orgId = 0
       }
-      this.getInfo();
+      await this.getInfo();
       if (this.error != true)
-        this.getPhotos()
+        await this.getPhotos()
     },
   }
 }
