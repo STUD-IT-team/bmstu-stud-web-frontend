@@ -77,8 +77,9 @@
         align-items center
 
       img
-        width 93%
-        height 93%
+        width 120px
+        height 120px
+        object-fit cover
         border-radius 50%
         box-shadow 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22)
         transition all 0.2s ease
@@ -97,8 +98,8 @@
     <div class="box">
       <span v-for="(club, index) in clubs" :style="{'--progress': index / clubs.length}" class="one-image">
         <span v-for="idx in 5" class="bg" :style="{'--idx': idx}"></span>
-        <a :href="club.redirectLink">
-          <img :src="club.imgUrl" :href="club.redirectLink" />
+        <a :href="`organizations/${club.id}`">
+          <img :src="`media/${club.logo.key}`" :href="`organizations/${club.id}`" />
         </a>
       </span>
     </div>
@@ -121,13 +122,14 @@ export default {
   methods: {
     async getFacList() {
       this.loading = true
-      const { data, ok, status } = await this.$api.getFacList()
+      const { data, ok, status } = await this.$api.getOrgsByType("ССФ")
       this.loading = false
       if (!ok) {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить клубы')
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить ССФы')
       }
 
-      this.clubs = data.clubsList
+      this.clubs = data.clubs
+      console.log(this.clubs)
     },
   }
 };
