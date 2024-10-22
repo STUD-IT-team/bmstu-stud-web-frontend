@@ -207,7 +207,7 @@ export default {
         this.loading = false;
 
         if (!ok) {
-          this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+          if (status!=404) this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
           this.orgs = [];
         }
         else
@@ -222,7 +222,7 @@ export default {
       this.loading = false;
 
       if (!ok) {
-        //this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
+        if (status!=404) this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
         this.orgs = [];
       }
       else
@@ -235,7 +235,7 @@ export default {
       
       this.loading = false;
 
-      if (!ok) {
+      if (!ok && status!=404) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить организации')
       }
 
