@@ -43,6 +43,7 @@
         
 
   .bottom-part
+    position relative
     display flex
     justify-content center
     align-items center
@@ -56,6 +57,8 @@
       font-medium()
 
     img
+      position absolute
+      bottom 0
       height 22px
     
     .picture
