@@ -271,7 +271,7 @@
 
       <div class="main-info">
         <div class="main-left">
-          <img :src="`/media/${club.logo.key}`" ref="imgLogo">
+          <img v-if="club.logo" :src="`/media/${club.logo.key}`" ref="imgLogo">
           <input type="file" ref="inputLogo" @change="updateLogo()">
           <details>
             <summary>
@@ -458,13 +458,28 @@
 <script>
 import Dropdown from "~/components/Dropdown.vue";
 import MemberDropdown from "~/components/MemberDropdown.vue";
+import {fileToByteArray} from "~/utils/utils";
 
 export default {
   components: {Dropdown, MemberDropdown},
 
   data() {
     return {
-      club: Object,
+      club: {
+        name: "Новая организация",
+        description: "Описание организации",
+        short_description: "Короткое описание организации",
+        orgs: [],
+        parent_id: 0,
+        short_name: "Организация",
+        tg_url: "",
+        vk_url: "",
+        type: "Клуб",
+        logo: {
+          id: Number,
+          key: String,
+        },
+      },
       clubBackup: Object,
       photos: Array,
       orgId: Number,
@@ -522,35 +537,55 @@ export default {
         method = this.putClub
       }
 
-      var reader = new FileReader()
-      var logoByteArray = []
-      var file = this.$refs.inputLogo.files[0]
-      if (file) {
-        reader.readAsArrayBuffer(file)
-        reader.onloadend = async function (evt) {
-          if (evt.target.readyState == FileReader.DONE) {
-            var arrayBuffer = evt.target.result,
-              array = new Uint8Array(arrayBuffer);
-            for (var i = 0; i < array.length; i++) {
-              logoByteArray.push(array[i]);
-            }
-          }
-          console.log(logoByteArray, file.name)
-          const {data, ok, status} = await this.$api.postMedia(logoByteArray, file.name)
-          this.club.logo_id = data.id
-          method()
+      // var reader = new FileReader()
+      // var logoByteArray = []
+      // var file = this.$refs.inputLogo.files[0]
+      // if (file) {
+      //   reader.readAsArrayBuffer(file)
+      //   reader.onloadend = async function (evt) {
+      //     if (evt.target.readyState == FileReader.DONE) {
+      //       var arrayBuffer = evt.target.result,
+      //         array = new Uint8Array(arrayBuffer);
+      //       for (var i = 0; i < array.length; i++) {
+      //         logoByteArray.push(array[i]);
+      //       }
+      //     }
+      //     console.log(logoByteArray, file.name)
+      //     const {data, ok, status} = await this.$api.postMedia(logoByteArray, file.name)
+      //     this.club.logo.id = data.id
+      //     console.log(data.id)
+      //     method()
 
-        }.bind(this)
-        
+      //   }.bind(this)
+      var file = this.$refs.inputLogo.files[0]
+      if (file) {        
+        var logoByteArray = await fileToByteArray(file)
+        console.log(logoByteArray)
+        const {data, ok, status} = await this.$api.postMedia(logoByteArray, file.name)
+        this.club.logo.id = data.id
+        console.log(data.id)
+      }      
+      method()
+    },
+    fileToByteArray(file) {
+      return fileToByteArray(file)
+    },
+    postClub() {
+      var clubToPost = {
+        description: this.club.description,
+        short_description: this.club.short_description,
+        logo_id: this.club.logo.id,
+        name: this.club.name,
+        orgs: [],
+        parent_id: 0,
+        short_name: this.club.short_name,
+        tg_url: this.club.tg_url,
+        vk_url: this.club.vk_url,
+        type: this.club.type
       }
-      else {
-        method()
-      }
-      // clubToPut = {
-      //   description: this.club.description,
-      //   logo_id:
-      // }
-      // await this.$api.putClub(clubToPut, club_id)
+
+      this.$api.postClub(clubToPost)
+
     },
     putClub() {
       var clubToPut = {
@@ -716,7 +751,7 @@ export default {
       try {
         const {data, ok, status} = await this.$api.getOrgInfo(this.orgId);
         this.loading = false;
-        if (!ok) {
+        if (!ok && !this.create) {
           this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
         }
         else {
@@ -732,8 +767,10 @@ export default {
         }
       }
       catch {
-        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
-        this.error = true
+        if (!this.create) {
+          this.$popups.error(`Ошибка ${status}`, 'Не удалось получить информацию об организации')
+          this.error = true
+        }
         this.loading = false;
       }
       
@@ -742,21 +779,27 @@ export default {
       this.loading = true;
       const {data, ok, status} = await this.$api.getOrgPhotos(this.orgId);
       this.loading = false
-      if (!ok) {
+      if (!ok && !this.create) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить фотографии')
+        this.photos = [];
+      }
+      else {
+        this.photos = data.media;
       }
 
-      this.photos = data.media;
     },
     initialize() {
-      var params = new URLSearchParams(document.location.search)
-      this.orgId=params.get('orgId')
+      this.orgId=this.$route.params.orgId
+      console.log(this.$route.params)
       if (!this.orgId) {
+        console.log("Creating mode yuppy")
         this.create = true
       }
-      this.getInfo();
-      this.getPhotos();
-      //this.clubBackup = this.club
+      else {
+        this.getInfo();
+        this.getPhotos();
+      }
+      this.clubBackup = this.club
       console.log(this.club)
       console.log(this.clubBackup)
     },
