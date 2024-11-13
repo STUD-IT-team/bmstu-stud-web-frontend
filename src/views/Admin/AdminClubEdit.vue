@@ -536,27 +536,6 @@ export default {
       else {
         method = this.putClub
       }
-
-      // var reader = new FileReader()
-      // var logoByteArray = []
-      // var file = this.$refs.inputLogo.files[0]
-      // if (file) {
-      //   reader.readAsArrayBuffer(file)
-      //   reader.onloadend = async function (evt) {
-      //     if (evt.target.readyState == FileReader.DONE) {
-      //       var arrayBuffer = evt.target.result,
-      //         array = new Uint8Array(arrayBuffer);
-      //       for (var i = 0; i < array.length; i++) {
-      //         logoByteArray.push(array[i]);
-      //       }
-      //     }
-      //     console.log(logoByteArray, file.name)
-      //     const {data, ok, status} = await this.$api.postMedia(logoByteArray, file.name)
-      //     this.club.logo.id = data.id
-      //     console.log(data.id)
-      //     method()
-
-      //   }.bind(this)
       var file = this.$refs.inputLogo.files[0]
       if (file) {        
         var logoByteArray = await fileToByteArray(file)
@@ -566,6 +545,17 @@ export default {
         console.log(data.id)
       }      
       method()
+
+      var mediaToPost = []
+      for (var idx in this.photos) {
+        console.log(this.photos[idx])
+        mediaToPost.push({
+          media_id: this.photos[idx].id,
+          ref_number: this.photos[idx].ref_number,
+        })
+      }
+
+      const {data, ok, status} = await this.$api.putClubMedia(this.club.id, mediaToPost)
     },
     fileToByteArray(file) {
       return fileToByteArray(file)
@@ -736,9 +726,15 @@ export default {
     deleteLead(idx) {
       this.club.main_orgs.splice(idx, 1)
     },
-    addPhoto(event) {
-      var files = this.$refs.imageUpload.files
-      console.log(files)
+    async addPhoto(event) {
+      var file = this.$refs.imageUpload.files[0]
+      if (file) {        
+        var byteArray = await fileToByteArray(file)
+        console.log(byteArray)
+        const {data, ok, status} = await this.$api.postMedia(byteArray, file.name)
+        this.photos.push(data)
+        console.log(data)
+      }
     },
     deletePhoto(idx) {
       this.photos.splice(idx, 1)
