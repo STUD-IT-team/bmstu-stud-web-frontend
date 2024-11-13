@@ -544,7 +544,7 @@ export default {
         this.club.logo.id = data.id
         console.log(data.id)
       }      
-      method()
+      await method()
 
       var mediaToPost = []
       for (var idx in this.photos) {
@@ -556,11 +556,16 @@ export default {
       }
 
       const {data, ok, status} = await this.$api.putClubMedia(this.club.id, mediaToPost)
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось обновить фотографии организации')
+      } else {
+        this.$popups.success(`Успех`, 'Фотографии организации успешно обновлены')
+      }
     },
     fileToByteArray(file) {
       return fileToByteArray(file)
     },
-    postClub() {
+    async postClub() {
       var clubToPost = {
         description: this.club.description,
         short_description: this.club.short_description,
@@ -574,10 +579,16 @@ export default {
         type: this.club.type
       }
 
-      this.$api.postClub(clubToPost)
+      const {data, ok, status} = await this.$api.postClub(clubToPost)
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось обновить информацию об организации')
+      } else {
+        this.$popups.success(`${status} ОК`, 'Информация об организации обновлена')
+      }
+
 
     },
-    putClub() {
+    async putClub() {
       var clubToPut = {
         description: this.club.description,
         short_description: this.club.short_description,
@@ -591,8 +602,12 @@ export default {
         type: this.club.type
       }
 
-      this.$api.putClub(clubToPut, this.orgId)
-
+      const {data, ok, status} = await this.$api.putClub(clubToPut, this.orgId)
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось обновить информацию об организации')
+      } else {
+        this.$popups.success(`Успех`, 'Информация об организации обновлена')
+      }
     },
     restore(){
       this.club = {...this.clubBackup}
@@ -732,6 +747,11 @@ export default {
         var byteArray = await fileToByteArray(file)
         console.log(byteArray)
         const {data, ok, status} = await this.$api.postMedia(byteArray, file.name)
+        if (!ok) {
+          this.$popups.error(`Ошибка ${status}`, 'Не удалось загрузить фотографию')
+        } else {
+          this.$popups.success(`Фотография загружена`, 'Она появится в фотографиях организации после сохранения')
+        }
         this.photos.push(data)
         console.log(data)
       }
@@ -788,7 +808,6 @@ export default {
       this.orgId=this.$route.params.orgId
       console.log(this.$route.params)
       if (!this.orgId) {
-        console.log("Creating mode yuppy")
         this.create = true
       }
       else {

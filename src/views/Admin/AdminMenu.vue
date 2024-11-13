@@ -13,8 +13,8 @@
     height max-content
     max-width 1440px
     width 100%
-    background colorWhite
     display flex
+    background colorWhite
     gap 30px
     .navigation
       //background colorPalette2
@@ -28,9 +28,8 @@
         border-radius borderRadiusMax
         border 2px solid colorPalette1
     .content
-      //background colorPalette3
       height 100%
-      width 100%
+      width calc(100% - 400px)
       
 
 </style>
