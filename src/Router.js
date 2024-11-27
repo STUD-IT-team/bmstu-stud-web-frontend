@@ -46,12 +46,13 @@ export default function createVueRouter(Store) {
             {path: '/admin/members', name: 'adminMembers', component: AdminMembers, meta: {}},
             {path: '/admin/news', name: 'adminNews', component: AdminNews, meta: {}},
         ]},
-        {path: '/admin/club/:orgId', name: 'adminClubEdit', component: AdminClubEdit, meta: {noLoginRequired: true}},
+        {path: '/admin/clubs/:orgId', name: 'adminClubEdit', component: AdminClubEdit, meta: {}},
+        {path: '/admin/clubs/create', name: 'adminClubCreate', component: AdminClubEdit, meta: {noLoginRequired: true}},
         {path: '/admin/members/:id', name: 'adminMemberEdit', component: AdminMemberEdit, meta: {noLoginRequired: true}},
-        {path: '/admin/members/create', name: 'adminMemberEdit', component: AdminMemberEdit, meta: {noLoginRequired: true}},
+        {path: '/admin/members/create', name: 'adminMemberCreate', component: AdminMemberEdit, meta: {noLoginRequired: true}},
         {path: '/admin/new/:newId', name: 'adminNewEdit', component: AdminNewEdit, meta: {noLoginRequired: true}},
 
-        {path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
+        //{path: '/:pathMatch(.*)*', name: 'page404', component: Page404},
     ];
 
     const Router = createRouter({

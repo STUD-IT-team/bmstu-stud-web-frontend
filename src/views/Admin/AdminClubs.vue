@@ -48,6 +48,14 @@
     display flex
     flex-direction column
     gap 10px
+    .button-add-club
+      padding 10px
+      margin-bottom 10px
+      box-shadow 0 1px 2px 2px mix(black, transparent, 10%)
+      border-radius borderRadiusS
+      text-align center
+      font-large()
+      color colorPalette3
     details
       .info-block
         margin-top 10px
@@ -108,6 +116,9 @@
         @click="getOrgsByQuery()">        
     </form>
     <div class="club-list">
+      <router-link class="button-add-club" to="/admin/clubs/create">
+        +
+      </router-link>
       <details v-for="(club, idx) in orgs">
         <summary>
           <img :src="`/media/${club.logo.key}`">
@@ -123,7 +134,7 @@
         </summary>
         <div class="info-block">
           <p>{{club.short_description}}</p>
-          <router-link class="button" :to="'/admin/club/:?orgId='+club.id">
+          <router-link class="button" :to="'/admin/clubs/'+club.id">
             Перейти
           </router-link>
         </div>

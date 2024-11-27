@@ -104,3 +104,13 @@ export function parseExternalLink(link) {
   console.log(new_link)
   return new_link
 }
+
+export async function fileToByteArray(file) {
+  const buffer = await file.arrayBuffer()
+  var array = new Uint8Array(buffer)
+  var byteArray = []
+  for (var i = 0; i < array.length; i++) {
+    byteArray.push(array[i]);
+  }
+  return byteArray
+}
