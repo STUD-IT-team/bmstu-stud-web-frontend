@@ -34,7 +34,7 @@ export default defineConfig({
       //   changeOrigin: true,
       // },
       '/api': {
-        target: `http://127.0.0.1:5000`,
+        target: `http://127.0.0.1:5000/bmstu-stud-web/api/`,
         secure: false,
         changeOrigin: false,
         rewrite: (path) => path.replace(/^\/api/, ''),
