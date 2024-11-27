@@ -26,6 +26,9 @@ services:
       - "443:443"
       - "${API_PORT}:9000"
     restart: unless-stopped
+    networks:
+      - default
+      - external-front-back
 
   # Needs to serve only http and get certs when certs is not created yet
   nginx-certbot:
@@ -49,3 +52,8 @@ services:
       - ./certbot/www/:/var/www/certbot/:rw
       - ./certbot/conf/:/etc/letsencrypt/:rw
     restart: no
+
+networks:
+  external-front-back:
+    external:
+      name: front-back
