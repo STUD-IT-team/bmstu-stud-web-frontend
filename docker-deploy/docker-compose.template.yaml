@@ -17,10 +17,13 @@ services:
       - '80:80'
       - '443:443'
       - '${API_PORT}:${API_PORT}'
+      - '${API_MEDIA_PORT}:${API_MEDIA_PORT}'
     environment:
       - DOMAIN_URL=${VITE_DEPLOY_HOSTNAME}
       - API_PORT
       - API_HOST
+      - API_MEDIA_PORT
+      - API_MEDIA_HOST
     networks:
       - external-front-back
       - default
