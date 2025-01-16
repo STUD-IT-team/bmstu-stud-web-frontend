@@ -85,6 +85,12 @@ export default defineConfig(({ mode }: { command: 'build' | 'serve'; mode: 'deve
           changeOrigin: false,
           rewrite: (path: string) => path.replace(/^\/api/, ''),
         },
+        '/media': {
+          target: env.VITE_DEV_API_MEDIA_PROXY_URL,
+          secure: false,
+          changeOrigin: false,
+          rewrite: (path: string) => path.replace(/^\/media/, ''),
+        },
       },
     },
     resolve: {
