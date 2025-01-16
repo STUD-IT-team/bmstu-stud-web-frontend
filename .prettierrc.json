@@ -1,0 +1,27 @@
+{
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "useTabs": false,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "bracketSameLine": true,
+  "trailingComma": "all",
+  "endOfLine": "lf",
+  "printWidth": 120,
+  "vueIndentScriptAndStyle": false,
+  "overrides": [
+    {
+      "files": ["**/*.?(m){js,ts}?(x)"],
+      "options": {
+        "parser": "typescript"
+      }
+    },
+    {
+      "files": ["**/*.vue"],
+      "options": {
+        "parser": "vue"
+      }
+    }
+  ]
+}

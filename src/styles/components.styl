@@ -1,0 +1,32 @@
+@import 'constants.styl'
+@import 'fonts.styl'
+@import 'buttons.styl'
+@import 'utils.styl'
+
+block(colorBorder=colorBorder)
+  display block
+  padding 35px
+  border colorBorder 2px solid
+  border-radius borderRadiusXL
+  header
+    font-large()
+  section
+    font-medium()
+block-bg(colorBg=colorBg2)
+  display block
+  background colorBg
+
+input()
+  cursor text
+  margin 0
+  padding 5px 10px
+  color colorText2
+  background colorBg3
+  border colorBorder 1px solid
+  border-radius borderRadiusXS
+  &::placeholder
+    color colorText4
+  &:focus
+    color colorText1
+    border-color colorBg6
+  trans()
