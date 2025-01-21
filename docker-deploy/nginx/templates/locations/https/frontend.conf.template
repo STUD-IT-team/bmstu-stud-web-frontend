@@ -7,6 +7,9 @@ location ~* ^/api(/.*)? {  # proxy to API
 location ~* ^/images/?.*$ {  # proxy to media storage
     proxy_pass http://${API_MEDIA_HOST}:${API_MEDIA_PORT};
 }
+location ~* ^/videos/?.*$ {  # proxy to media storage
+    proxy_pass http://${API_MEDIA_HOST}:${API_MEDIA_PORT};
+}
 location / {  # try files for SPA
     try_files $uri $uri/ $uri.html /index.html;
 }

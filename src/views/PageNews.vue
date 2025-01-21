@@ -96,7 +96,7 @@ padding-sides = 20px
     <div class="emotions-sector">
       <div class="background-video">
         <video width="100%" autoplay muted loop disablePictureInPicture>
-          <source src="http://localhost:9000/videos/main_vid.mp4" type="video/mp4">
+          <source src="/videos/main_vid.mp4" type="video/mp4">
           Ваш браузер не поддерживает это видео
         </video>
       </div>
