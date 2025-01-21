@@ -122,7 +122,7 @@ padding-sides = 20px
             v-for="bigNew in bigNews"
             :title="bigNew.title"
             :description="bigNew.description"
-            :img-url="`/media/${bigNew.media.key}`"
+            :img-url="`/${bigNew.media.key}`"
             :redirect-link="bigNew.vk_post_url"
           />
         </div>

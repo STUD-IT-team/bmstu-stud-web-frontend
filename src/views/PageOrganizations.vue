@@ -104,7 +104,7 @@ padding-sides = 20px
           v-for="(oneOrg, idx) in orgs"
           :id="oneOrg.id"
           :title="oneOrg.name"
-          :logo-src="`/media/${oneOrg.logo.key}`"
+          :logo-src="`/${oneOrg.logo.key}`"
           :text="oneOrg.description"
           :leads="oneOrg.orgs"
         />
