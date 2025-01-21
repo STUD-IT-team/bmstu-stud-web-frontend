@@ -4,7 +4,7 @@ index index.html;
 location ~* ^/api(/.*)? {  # proxy to API
     proxy_pass http://${API_HOST}:${API_PORT};
 }
-location /images/ {  # proxy to media storage
+location ~* ^/images/?.*$ {  # proxy to media storage
     proxy_pass http://${API_MEDIA_HOST}:${API_MEDIA_PORT};
 }
 location / {  # try files for SPA
