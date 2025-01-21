@@ -99,7 +99,7 @@
       <span v-for="(club, index) in clubs" :style="{'--progress': index / clubs.length}" class="one-image">
         <span v-for="idx in 5" class="bg" :style="{'--idx': idx}" />
         <a :href="`organizations/${club.id}`">
-          <img :src="`media/${club.logo.key}`" :href="`organizations/${club.id}`">
+          <img :src="`${club.logo.key}`" :href="`organizations/${club.id}`">
         </a>
       </span>
     </div>

@@ -17609,7 +17609,7 @@ radio-radius = 14px
   <div class="root-timeline" :key="loading" v-if="loading==false">
     <transition name="event-fade" mode="out-in">
       <div class="event" :key="currentEventIdx">
-        <img :src="`/media/${events[currentEventIdx].media.key}`">
+        <img :src="`/${events[currentEventIdx].media.key}`">
         <span class="title">{{ events[currentEventIdx].title }}</span>
         <span class="info">{{ events[currentEventIdx].prompt }}</span>
         <span class="description">{{ events[currentEventIdx].description }}</span>

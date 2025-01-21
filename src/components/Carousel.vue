@@ -130,7 +130,7 @@ section
 
     <img
       v-for="image in images"
-      :src="`/media/${image.key}`"
+      :src="`/${image.key}`"
       :alt="image.name"
       class="slide"
     >

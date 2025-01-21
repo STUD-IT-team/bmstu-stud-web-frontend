@@ -56,7 +56,7 @@
     <div class="members-container">
       {{ member }}
       <div class="member" v-for="member, idx in members" @click="setMember(idx)">
-        <img :src="`/media/${member.media.key}`">
+        <img :src="`/s${member.media.key}`">
         <span class="name">
           {{ member.name }}
         </span>

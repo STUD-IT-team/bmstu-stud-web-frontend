@@ -112,7 +112,7 @@ export default {
     clubsInfo.forEach((clubInfo, i) => {
       this.clubs.push(new Club(
         clubInfo.title,
-        `media/${clubInfo.logo.key}`,
+        `${clubInfo.logo.key}`,
         `organizations/${clubInfo.id}`,
         Math.random() * boundingRect.width, // рандомная позиция из ширины области
         Math.random() * boundingRect.width * 0.6, // рандоимная позиция из примерной высоты области
