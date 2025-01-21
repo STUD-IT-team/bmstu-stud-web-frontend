@@ -132,7 +132,7 @@ padding-sides = 20px
           :name="oneLead.name"
           :title="oneLead.role_name"
           :description="oneLead.spec"
-          :image-src="`/media/${oneLead.image.key}`"
+          :image-src="`/${oneLead.image.key}`"
           :link-tg="parseExternalLink(oneLead.tg_url)"
           :link-vk="parseExternalLink(oneLead.vk_url)"
           :head="true"
@@ -144,7 +144,7 @@ padding-sides = 20px
           :name="oneLead.name"
           :title="oneLead.sub_club_name"
           :description="oneLead.spec"
-          :image-src="`/media/${oneLead.image.key}`"
+          :image-src="`/${oneLead.image.key}`"
           :link-tg="parseExternalLink(oneLead.tg_url)"
           :link-vk="parseExternalLink(oneLead.vk_url)"
           :head="false"
@@ -261,7 +261,7 @@ export default {
         }
         else {
           this.error = false
-          this.logoSrc = `/media/${data.logo.key}`
+          this.logoSrc = `/${data.logo.key}`
           this.title = data.name
           this.description = data.description
           this.linkVk = parseExternalLink(data.vk_url)
