@@ -96,7 +96,7 @@ padding-sides = 20px
     <div class="emotions-sector">
       <div class="background-video">
         <video width="100%" autoplay muted loop disablePictureInPicture>
-          <source src="http://localhost:9000/videos/main_vid.mp4" type="video/mp4">
+          <source src=${mainVideoSrc} type="video/mp4">
           Ваш браузер не поддерживает это видео
         </video>
       </div>
@@ -150,11 +150,13 @@ export default {
       numbersStud: [],
       bigNews: [],
       loading: false,
+      mainVideoSrc: "",
     }
   },
   mounted() {
     this.getEncounters();
     this.getBigNews();
+    this.getMainVideo();
   },
   methods: {
     async getEncounters() {
@@ -166,6 +168,15 @@ export default {
       }
 
       this.numbersStud = data.encounter
+    },
+    async getMainVideo() {
+      this.loading = true
+      const { data, ok, status } = await this.$api.getMainVideo()
+      this.loading = false
+      if (!ok) {
+        this.$popups.error(`Ошибка ${status}`, 'Не удалось получить главное видео')
+      }
+      this.mainVideoSrc = data.key
     },
     async getBigNews() {
       this.loading = true
@@ -183,6 +194,7 @@ export default {
         sliderElement.scrollIntoView({ behavior: 'smooth' });
       }
     },
+    
   }
 }
 </script>

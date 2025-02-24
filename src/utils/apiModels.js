@@ -23,6 +23,19 @@ export const Media = {
     }
   }
 }
+
+export const MainVideo = {
+  video: {
+    type : Object,
+    fields: {
+      id : Number,
+      name : String,
+      key : String,
+      current : Boolean,
+      club_id : Number,
+    }
+  }
+}
 // ----------------------------------------------------------------------
 // req: get /clubs /clubs/search /clubs/type 
 

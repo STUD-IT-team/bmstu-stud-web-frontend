@@ -26,6 +26,8 @@ export default class MY_API extends REST_API {
 
     getEncounters = (id) => this.get(`/feed/encounters/${id}`, { _model: Models.Encounters })
 
+    getActiveMainVideo = () => this.get(`/media/main/video`, { _model: Models.MainVideo })
+
     getClubsList = (id) => this.get(`/clubs/type/${id}`, { _model: Models.Clubs })
 
     getFacList = () => ({    })
