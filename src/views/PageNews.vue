@@ -156,7 +156,7 @@ export default {
   mounted() {
     this.getEncounters();
     this.getBigNews();
-    this.getMainVideo();
+    this.getActiveMainVideo();
   },
   methods: {
     async getEncounters() {
@@ -169,9 +169,9 @@ export default {
 
       this.numbersStud = data.encounter
     },
-    async getMainVideo() {
+    async getActiveMainVideo() {
       this.loading = true
-      const { data, ok, status } = await this.$api.getMainVideo()
+      const { data, ok, status } = await this.$api.getActiveMainVideo()
       this.loading = false
       if (!ok) {
         this.$popups.error(`Ошибка ${status}`, 'Не удалось получить главное видео')
