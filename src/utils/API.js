@@ -5,22 +5,22 @@ import * as Models from "~/utils/apiModels";
 export default class MY_API extends REST_API {
     login = (login, password) => this.post('/guard/login/', { _model: {}, login, password});
     register = (member) => this.post('/guard/register/', { _model: Models.RegisterMember, ...member});
-    logout = () => this.delete('/api/user/session', { _model: {} });
-    getUser = () => this.get('/api/user', { _model: Models.User });
-    getUserById = (id) => this.get(`/api/user`, { _model: Models.User, id });
-    sendConfirmationLetter = (name, email) => this.post('/api/email/confirm', { _model: Models.User, name, email });
-    confirmEmailByCode = (secretCode) => this.put('/api/user/email/confirm', { _model: Models.User, secretCode });
-    changePassword = (oldPassword, newPassword) => this.put('/api/user/password', { _model: Models.User, oldPassword, newPassword });
-    editProfile = (name, group, telegram, vk, email, phone_number) => this.put('/api/user', { _model: Models.User, name, group, telegram, vk, email, phone_number });
-    sendRestorePasswordLetter = (secretCode, newPassword) => this.post('/api/user/password/restore', { _model: Models.User, secretCode, newPassword });
-    restorePassword = (secretCode, newPassword) => this.put('/api/user/password', { _model: Models.User, secretCode, newPassword });
-    authCode = (secretCode, clientBrowser, clientOS) => this.post('/api/user/auth/status', { _model: Models.User, secretCode, clientBrowser, clientOS });
+    logout = () => this.delete('/user/session', { _model: {} });
+    getUser = () => this.get('/user', { _model: Models.User });
+    getUserById = (id) => this.get(`/user`, { _model: Models.User, id });
+    sendConfirmationLetter = (name, email) => this.post('/email/confirm', { _model: Models.User, name, email });
+    confirmEmailByCode = (secretCode) => this.put('/user/email/confirm', { _model: Models.User, secretCode });
+    changePassword = (oldPassword, newPassword) => this.put('/user/password', { _model: Models.User, oldPassword, newPassword });
+    editProfile = (name, group, telegram, vk, email, phone_number) => this.put('/user', { _model: Models.User, name, group, telegram, vk, email, phone_number });
+    sendRestorePasswordLetter = (secretCode, newPassword) => this.post('/user/password/restore', { _model: Models.User, secretCode, newPassword });
+    restorePassword = (secretCode, newPassword) => this.put('/user/password', { _model: Models.User, secretCode, newPassword });
+    authCode = (secretCode, clientBrowser, clientOS) => this.post('/user/auth/status', { _model: Models.User, secretCode, clientBrowser, clientOS });
 
 
-    // this.get(`/api/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
+    // this.get(`/events`, {_model: Models.Events, start_date: startDate.toISOString(), end_date: endDate.toISOString()});
     getNews = () => this.get(`/feed/`, { _model: Models.Feeds })
     getNewsByQuery = (query) => this.get(`/feed/search/${query}`, { _model: Models.Feeds })
-    // this.get(`/api/feed`, {_model: Models.Feeds});
+    // this.get(`/feed`, {_model: Models.Feeds});
     getNew = (id) => this.get(`/feed/${id}`, { _model: Models.Feed });
     deleteNew = (id) => this.delete(`/feed/${id}`, { _model: Models.Feed });
 
