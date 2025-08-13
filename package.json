@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@sergtyapkin/image-uploader": "^1.0.0",
-    "@sergtyapkin/vue3-markdown": "^1.0.2",
+    "@sergtyapkin/vue3-markdown": "^0.1.0",
     "@sergtyapkin/modals-popups": "^1.1.1",
     "@sergtyapkin/models-validator": "^1.0.8",
     "@sergtyapkin/reconnecting-websocket": "^1.0.5",
