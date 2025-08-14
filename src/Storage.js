@@ -34,12 +34,12 @@ const Storage = new Vuex.Store({
   },
   actions: {
     async GET_USER(state) {
-      const {data, status, ok} = await this.$app.$api.getUser();
-      if (!ok) {
-        state.commit('DELETE_USER');
-        return;
-      }
-      state.commit('SET_USER', data);
+      // const {data, status, ok} = await this.$app.$api.getUser();
+      // if (!ok) {
+        // state.commit('DELETE_USER');
+        // return;
+      // }
+      // state.commit('SET_USER', data);
     },
     DELETE_USER(state) {
       state.commit('DELETE_USER');
